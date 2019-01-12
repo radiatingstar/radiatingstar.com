@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 import { rhythm, scale } from '../utils/typography'
 
-class Layout extends React.Component {
+class BlogLayout extends React.Component {
   render() {
     const { location, title, children } = this.props
     const rootPath = `${__PATH_PREFIX__}/`
@@ -72,4 +72,4 @@ class Layout extends React.Component {
   }
 }
 
-export default Layout
+export default BlogLayout
