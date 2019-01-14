@@ -5,6 +5,23 @@ import Image from 'gatsby-image'
 
 import { rhythm, scale } from '../utils/typography'
 
+const Title = styled.h1`
+  ${scale(1)};
+  margin: 0;
+`
+
+const Description = styled.h2`
+  font-size: ${rhythm(0.5)};
+`
+
+const SiteLabel = styled(Link)`
+  display: flex;
+`
+
+const SiteInfo = styled.div`
+margin-left: ${rhythm(1)}
+`
+
 export default class Header extends React.Component {
   render() {
     return (
@@ -14,26 +31,13 @@ export default class Header extends React.Component {
           const { title, description } = data.site.siteMetadata
           return (
             <header>
-              <h1
-                style={{
-                  ...scale(1.5),
-                  marginBottom: rhythm(1.5),
-                  marginTop: 0,
-                }}
-              >
-                <Link
-                  style={{
-                    boxShadow: `none`,
-                    textDecoration: `none`,
-                    color: `inherit`,
-                  }}
-                  to={`/`}
-                >
-                  <Image fixed={data.logo.childImageSharp.fixed} />
-                  {title}
-                  {description}
-                </Link>
-              </h1>
+              <SiteLabel to={`/`}>
+                <Image fixed={data.logo.childImageSharp.fixed} />
+                <SiteInfo>
+                  <Title>{title}</Title>
+                  <Description>{description}</Description>
+                </SiteInfo>
+              </SiteLabel>
             </header>
           )
         }}
@@ -46,7 +50,7 @@ const headerQuery = graphql`
   query HeaderQuery {
     logo: file(absolutePath: { regex: "/radiating-star.logo.png/" }) {
       childImageSharp {
-        fixed(width: 50, height: 50) {
+        fixed(width: 60, height: 60) {
           ...GatsbyImageSharpFixed
         }
       }
