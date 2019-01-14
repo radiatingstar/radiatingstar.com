@@ -1,49 +1,42 @@
 import React from 'react'
-import { Link } from 'gatsby'
+import styled from 'styled-components'
 
-import { rhythm, scale } from '../utils/typography'
+import { rhythm } from '../utils/typography'
+import Navigation from '../components/Navigation'
+import Header from './Header';
 
-class BlogLayout extends React.Component {
+const Page = styled.div`
+  background-color: silver;
+  background-image: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 50%,
+    transparent
+  );
+  background-size: 50px 50px;
+  overflow: hidden;
+`
+
+const Content = styled.main`
+  margin: ${rhythm(1.5)} auto;
+  padding: ${rhythm(3)};
+  max-width: ${rhythm(32)};
+  background: white;
+`
+
+export default class BlogLayout extends React.Component {
   render() {
     const { title, children } = this.props
-    const header = (
-      <h1
-        style={{
-          ...scale(1.5),
-          marginBottom: rhythm(1.5),
-          marginTop: 0,
-        }}
-      >
-        <Link
-          style={{
-            boxShadow: `none`,
-            textDecoration: `none`,
-            color: `inherit`,
-          }}
-          to={`/`}
-        >
-          {title}
-        </Link>
-      </h1>
-    )
 
     return (
-      <div
-        style={{
-          marginLeft: `auto`,
-          marginRight: `auto`,
-          maxWidth: rhythm(24),
-          padding: `${rhythm(1.5)} ${rhythm(3 / 4)}`,
-        }}
-      >
-        {header}
-        {children}
-        <footer>
-          © {new Date().getFullYear()}
-        </footer>
-      </div>
+      <Page>
+        <Content>
+          <Header/>
+          <Navigation />
+          {children}
+          <footer>© {new Date().getFullYear()}</footer>
+        </Content>
+      </Page>
     )
   }
 }
-
-export default BlogLayout
