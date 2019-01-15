@@ -2,8 +2,11 @@ import React from 'react'
 import styled from 'styled-components'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import Image from 'gatsby-image'
-
 import { rhythm, scale } from '../utils/typography'
+
+const HeaderContainer = styled.header`
+  a {color: hsla(0,0%,0%,0.9)}
+`
 
 const Title = styled.h1`
   ${scale(1)};
@@ -12,6 +15,7 @@ const Title = styled.h1`
 
 const Description = styled.h2`
   font-size: ${rhythm(0.5)};
+  margin: 0;
 `
 
 const SiteLabel = styled(Link)`
@@ -19,7 +23,7 @@ const SiteLabel = styled(Link)`
 `
 
 const SiteInfo = styled.div`
-margin-left: ${rhythm(1)}
+  margin-left: ${rhythm(1)}
 `
 
 export default class Header extends React.Component {
@@ -30,7 +34,7 @@ export default class Header extends React.Component {
         render={data => {
           const { title, description } = data.site.siteMetadata
           return (
-            <header>
+            <HeaderContainer>
               <SiteLabel to={`/`}>
                 <Image fixed={data.logo.childImageSharp.fixed} />
                 <SiteInfo>
@@ -38,7 +42,7 @@ export default class Header extends React.Component {
                   <Description>{description}</Description>
                 </SiteInfo>
               </SiteLabel>
-            </header>
+            </HeaderContainer>
           )
         }}
       />
@@ -50,7 +54,7 @@ const headerQuery = graphql`
   query HeaderQuery {
     logo: file(absolutePath: { regex: "/radiating-star.logo.png/" }) {
       childImageSharp {
-        fixed(width: 60, height: 60) {
+        fixed(width: 55, height: 55) {
           ...GatsbyImageSharpFixed
         }
       }
