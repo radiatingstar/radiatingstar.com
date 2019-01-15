@@ -62,6 +62,9 @@ const typography = new Typography({
         padding: `${rhythm(1 / 16)} ${rhythm(1 / 8)}`,
         textDecoration: 'none',
       },
+      'pre[class*="language-"]': {
+        margin: `${rhythm(1)} 0 !important`
+      }
     });
   },
 })

@@ -1,1 +1,1 @@
-// custom typefaces
+import 'prismjs/themes/prism-okaidia.css'
