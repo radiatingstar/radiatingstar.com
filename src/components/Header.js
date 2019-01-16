@@ -5,6 +5,10 @@ import Image from 'gatsby-image'
 import { rhythm, scale } from '../utils/typography'
 
 const HeaderContainer = styled.header`
+  margin: ${rhythm(1.5)} auto 0;
+  padding: ${rhythm(1.5)} ${rhythm(3)};
+  max-width: ${rhythm(32)};
+  background: white;
   a {color: hsla(0,0%,0%,0.9)}
 `
 

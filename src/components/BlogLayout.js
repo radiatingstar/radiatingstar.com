@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 import { rhythm } from '../utils/typography'
 import Navigation from '../components/Navigation'
-import Header from './Header';
+import Header from './Header'
 
 const Page = styled.div`
   background-color: silver;
@@ -17,10 +17,20 @@ const Page = styled.div`
 `
 
 const Content = styled.main`
-  margin: ${rhythm(1.5)} auto;
-  padding: ${rhythm(3)};
+  margin: 0 auto;
+  padding: ${rhythm(1.5)} ${rhythm(3)} 0;
   max-width: ${rhythm(32)};
   background: white;
+`
+
+const Footer = styled.footer`
+  margin: 0 auto ${rhythm(1.5)};
+  padding: ${rhythm(1.5)};
+  max-width: ${rhythm(32)};
+  text-align: center;
+  background: #f9f9f9;
+  border-top: 1px solid #ddd;
+  color: #666;
 `
 
 export default class BlogLayout extends React.Component {
@@ -29,12 +39,10 @@ export default class BlogLayout extends React.Component {
 
     return (
       <Page>
-        <Content>
-          <Header/>
-          <Navigation />
-          {children}
-          <footer>© {new Date().getFullYear()}</footer>
-        </Content>
+        <Header />
+        <Navigation />
+        <Content>{children}</Content>
+        <Footer>★</Footer>
       </Page>
     )
   }

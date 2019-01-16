@@ -4,9 +4,10 @@ import { Link } from 'gatsby'
 import { rhythm } from '../utils/typography'
 
 const Nav = styled.nav`
-  margin: ${rhythm(1.5)} -${rhythm(3.5)};
   padding: 1rem ${rhythm(3.5)};
   background: orange;
+  margin: 0 auto;
+  max-width: ${rhythm(32)};
 `
 
 const LinksList = styled.ul`
