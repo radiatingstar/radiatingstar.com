@@ -18,9 +18,14 @@ const Page = styled.div`
 
 const Content = styled.main`
   margin: 0 auto;
-  padding: ${rhythm(1.5)} ${rhythm(3)} ${rhythm(.5)};
+  padding: ${rhythm(1.5)} ${rhythm(1)} ${rhythm(.5)};
   max-width: ${rhythm(32)};
   background: white;
+  
+  @media screen and (min-width: 40rem) {
+    padding-left: ${rhythm(3)};
+    padding-right: ${rhythm(3)};
+  }
 `
 
 const Footer = styled.footer`
@@ -35,7 +40,7 @@ const Footer = styled.footer`
 
 export default class BlogLayout extends React.Component {
   render() {
-    const { title, children } = this.props
+    const { children } = this.props
 
     return (
       <Page>

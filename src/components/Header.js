@@ -6,10 +6,14 @@ import { rhythm, scale } from '../utils/typography'
 
 const HeaderContainer = styled.header`
   margin: ${rhythm(1.5)} auto 0;
-  padding: ${rhythm(1.5)} ${rhythm(3)};
+  padding: ${rhythm(1)};
   max-width: ${rhythm(32)};
   background: white;
   a {color: hsla(0,0%,0%,0.9)}
+  
+  @media screen and (min-width: 40rem) {
+    padding: ${rhythm(1.5)} ${rhythm(3)};
+  }
 `
 
 const Title = styled.h1`
@@ -24,6 +28,7 @@ const Description = styled.h2`
 
 const SiteLabel = styled(Link)`
   display: flex;
+  align-items: center;
 `
 
 const SiteInfo = styled.div`
