@@ -1,6 +1,18 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
+import styled from 'styled-components'
 import SEO from '../components/seo'
+import Header from '../components/Header'
+import { rhythm } from '../utils/typography'
+
+const Container = styled.div``
+
+const PostsBlock = styled.section`
+  margin: ${rhythm(2)} auto;
+  background: white;
+  max-width: 40rem;
+  padding: ${rhythm(1)};
+`
 
 class Index extends React.Component {
   render() {
@@ -8,22 +20,24 @@ class Index extends React.Component {
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
     return (
-      <div>
+      <Container>
         <SEO title="Radiating Star" />
-        <h1>{siteTitle}</h1>
-        <h2>Recent posts</h2>
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h3>
-                <Link to={'/blog' + node.fields.slug}>{title}</Link>
-              </h3>
-            </div>
-          )
-        })}
-        <Link to="/blog">All posts</Link>
-      </div>
+        <Header />
+        <PostsBlock>
+          <h3>Recent Posts</h3>
+          {posts.map(({ node }) => {
+            const title = node.frontmatter.title || node.fields.slug
+            return (
+              <div key={node.fields.slug}>
+                <h3>
+                  <Link to={'/blog' + node.fields.slug}>{title}</Link>
+                </h3>
+              </div>
+            )
+          })}
+          <Link to="/blog">Go to the blog</Link>
+        </PostsBlock>
+      </Container>
     )
   }
 }
@@ -39,7 +53,7 @@ export const pageQuery = graphql`
     }
     allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 5
+      limit: 3
     ) {
       edges {
         node {
