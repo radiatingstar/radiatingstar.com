@@ -10,14 +10,13 @@ const List = styled.ul`
   justify-content: space-between;
   list-style: none;
   padding: 0 0 ${rhythm(.5)};
-  margin: 0;
+  margin: 0 0 -${rhythm(.5)};
 `
 
 export default class PrevNextNav extends React.Component {
   render() {
     const previous = this.props.previous
     const next = this.props.next
-    console.log(this.props)
     return (
       <React.Fragment>
         <hr />

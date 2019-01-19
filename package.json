@@ -30,6 +30,8 @@
     "react-helmet": "^5.2.0",
     "react-typography": "^0.16.13",
     "styled-components": "^4.1.3",
+    "typeface-lato": "0.0.54",
+    "typeface-ubuntu": "0.0.65",
     "typography": "^0.16.17",
     "typography-breakpoint-constants": "^0.16.18"
   },

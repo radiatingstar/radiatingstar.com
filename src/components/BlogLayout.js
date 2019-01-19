@@ -18,7 +18,7 @@ const Page = styled.div`
 
 const Content = styled.main`
   margin: 0 auto;
-  padding: ${rhythm(1.5)} ${rhythm(3)} 0;
+  padding: ${rhythm(1.5)} ${rhythm(3)} ${rhythm(.5)};
   max-width: ${rhythm(32)};
   background: white;
 `

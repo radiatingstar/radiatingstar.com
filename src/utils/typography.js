@@ -7,16 +7,16 @@ const typography = new Typography({
   baseFontSize: '16px',
   baseLineHeight: 1.75,
   scaleRatio: 2,
-  headerFontFamily: ['TODO', 'Georgia', 'serif'],
-  bodyFontFamily: ['TODO', 'Georgia', 'serif'],
+  headerFontFamily: ['Ubuntu', 'sans-serif'],
+  bodyFontFamily: ['Lato', 'sans-serif'],
   bodyColor: 'hsla(0,0%,0%,0.9)',
   headerWeight: 900,
   bodyWeight: 400,
   boldWeight: 700,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => {
     return ({
-      h1: {
-        fontFamily: ['Montserrat', 'sans-serif'].join(','),
+      h2: {
+        fontFamily: ['Ubuntu', 'sans-serif'].join(','),
       },
       blockquote: {
         ...scale(1 / 5),
@@ -55,6 +55,7 @@ const typography = new Typography({
       },
       a: {
         textDecoration: 'none',
+        color: '#ffa500'
       },
       'mark,ins': {
         background: '#007acc',
