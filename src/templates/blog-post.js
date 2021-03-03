@@ -1,18 +1,8 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
-
+import { graphql } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 import SEO from '../components/seo'
-import { rhythm, scale } from '../utils/typography'
-import PrevNextNav from "../components/PrevNextNav";
-
-const PostMeta = styled.p`
-  ${scale(-1 / 5)};
-  display: block;
-  margin-bottom: ${rhythm(1)};
-  margin-top: ${rhythm(-1)};
-`
+import PrevNextNav from '../components/PrevNextNav'
 
 class BlogPostTemplate extends React.Component {
   render() {
@@ -24,7 +14,7 @@ class BlogPostTemplate extends React.Component {
       <BlogLayout location={this.props.location} title={siteTitle}>
         <SEO title={post.frontmatter.title} description={post.excerpt} />
         <h1>{post.frontmatter.title}</h1>
-        <PostMeta>{post.frontmatter.date}, by {author}</PostMeta>
+        <p className="mb-2 mt-2">{post.frontmatter.date}, by {author}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <PrevNextNav {...this.props.pageContext}/>
       </BlogLayout>

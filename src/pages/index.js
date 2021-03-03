@@ -1,18 +1,7 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-import styled from 'styled-components'
+import { graphql, Link } from 'gatsby'
 import SEO from '../components/seo'
 import Header from '../components/Header'
-import { rhythm } from '../utils/typography'
-
-const Container = styled.div``
-
-const PostsBlock = styled.section`
-  margin: ${rhythm(2)} auto;
-  background: white;
-  max-width: 40rem;
-  padding: ${rhythm(1)};
-`
 
 class Index extends React.Component {
   render() {
@@ -20,10 +9,10 @@ class Index extends React.Component {
     const siteTitle = data.site.siteMetadata.title
     const posts = data.allMarkdownRemark.edges
     return (
-      <Container>
-        <SEO title="Radiating Star" />
+      <div>
+        <SEO title={siteTitle} />
         <Header />
-        <PostsBlock>
+        <section className="m-2 bg-white max-w-lg p-2">
           <h3>Recent Posts</h3>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
@@ -36,8 +25,8 @@ class Index extends React.Component {
             )
           })}
           <Link to="/blog">Go to the blog</Link>
-        </PostsBlock>
-      </Container>
+        </section>
+      </div>
     )
   }
 }

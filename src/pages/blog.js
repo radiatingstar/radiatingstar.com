@@ -1,43 +1,36 @@
 import React from 'react'
-import { Link, graphql } from 'gatsby'
-
+import { graphql, Link } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 import SEO from '../components/seo'
-import { rhythm } from '../utils/typography'
 
-class BlogIndex extends React.Component {
-  render() {
-    const { data } = this.props
-    const siteTitle = data.site.siteMetadata.title
-    const posts = data.allMarkdownRemark.edges
+function BlogIndex (props) {
+  const { data } = props
+  const siteTitle = data.site.siteMetadata.title
+  const posts = data.allMarkdownRemark.edges
 
-    return (
-      <BlogLayout location={this.props.location} title={siteTitle} style={{paddingBottom: '5rem'}}>
-        <SEO
-          title="All posts"
-          keywords={[`blog`, `gatsby`, `javascript`, `react`]}
-        />
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h2
-                style={{
-                  marginBottom: rhythm(1 / 4),
-                }}
-              >
-                <Link style={{ boxShadow: `none` }} to={'/blog' + node.fields.slug}>
-                  {title}
-                </Link>
-              </h2>
-              <small>{node.frontmatter.date}</small>
-              <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
-            </div>
-          )
-        })}
-      </BlogLayout>
-    )
-  }
+  return (
+    <BlogLayout location={props.location} title={siteTitle}
+                style={{ paddingBottom: '5rem' }}>
+      <SEO
+        title="All posts"
+        keywords={[`blog`, `gatsby`, `javascript`, `react`]}
+      />
+      {posts.map(({ node }) => {
+        const title = node.frontmatter.title || node.fields.slug
+        return (
+          <div key={node.fields.slug}>
+            <h2 className="mb-2">
+              <Link className="shadow-none" to={'/blog' + node.fields.slug}>
+                {title}
+              </Link>
+            </h2>
+            <small>{node.frontmatter.date}</small>
+            <p dangerouslySetInnerHTML={{ __html: node.excerpt }}/>
+          </div>
+        )
+      })}
+    </BlogLayout>
+  )
 }
 
 export default BlogIndex

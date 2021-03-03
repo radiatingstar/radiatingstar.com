@@ -1,54 +1,32 @@
 import React from 'react'
-import styled from 'styled-components'
-import { rhythm } from '../utils/typography'
 import Navigation from '../components/Navigation'
 import Header from './Header'
 
-const Page = styled.div`
-  background-color: silver;
-  background-image: linear-gradient(
-    0deg,
-    rgba(255, 255, 255, 0.2) 50%,
-    transparent 50%,
-    transparent
-  );
-  background-size: 50px 50px;
-  overflow: hidden;
-`
+// TODO
 
-const Content = styled.main`
-  margin: 0 auto;
-  padding: ${rhythm(1.5)} ${rhythm(1)} ${rhythm(.5)};
-  max-width: ${rhythm(32)};
-  background: white;
-  
-  @media screen and (min-width: 40rem) {
-    padding-left: ${rhythm(3)};
-    padding-right: ${rhythm(3)};
-  }
-`
+// - main div
+//    background-color: silver;
+//    background-image: linear-gradient(
+//      0deg,
+//      rgba(255, 255, 255, 0.2) 50%,
+//      transparent 50%,
+//      transparent
+//    );
+//    background-size: 50px 50px;
 
-const Footer = styled.footer`
-  margin: 0 auto ${rhythm(1.5)};
-  padding: ${rhythm(1.5)};
-  max-width: ${rhythm(32)};
-  text-align: center;
-  background: #f9f9f9;
-  border-top: 1px solid #ddd;
-  color: #666;
-`
+// - footer's styles
+//   background: #f9f9f9;
+//   border-top: 1px solid #ddd;
+//   color: #666;
 
-export default class BlogLayout extends React.Component {
-  render() {
-    const { children } = this.props
 
-    return (
-      <Page>
-        <Header />
-        <Navigation />
-        <Content>{children}</Content>
-        <Footer>★</Footer>
-      </Page>
-    )
-  }
+export default function BlogLayout({ children }) {
+  return (
+    <div className="overflow-hidden">
+      <Header />
+      <Navigation />
+      <main className="mx-auto my-0 pt-1.5 px-1 pb-0.5 max-w-lg">{children}</main>
+      <footer className="mt-0 mx-auto mb-1.5 p-1.5 max-w-lg text-center">★</footer>
+    </div>
+  )
 }

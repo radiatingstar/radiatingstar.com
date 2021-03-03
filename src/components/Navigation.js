@@ -1,33 +1,16 @@
 import React from 'react'
-import styled from 'styled-components'
 import { Link } from 'gatsby'
-import { rhythm } from '../utils/typography'
 
-const Nav = styled.nav`
-  padding: 1rem ${rhythm(3.5)};
-  background: orange;
-  margin: 0 auto;
-  max-width: ${rhythm(32)};
-`
+// TODO: link color hsla(0,0%,0%,0.9)
 
-const LinksList = styled.ul`
-  list-style: none;
-  display: flex;
-  margin: 0;
-  li {margin: 0}
-  a {color: hsla(0,0%,0%,0.9)}
-`
-
-export default class Navigation extends React.Component {
-  render() {
-    return (
-      <Nav>
-        <LinksList>
-          <li>
-            <Link to="/blog">Blog</Link>
-          </li>
-        </LinksList>
-      </Nav>
-    )
-  }
+export default function Navigation () {
+  return (
+    <nav className="py-4 px-3.5">
+      <ul className="list-none flex m-0">
+        <li className="m-0">
+          <Link to="/blog" className="text-black">Blog</Link>
+        </li>
+      </ul>
+    </nav>
+  )
 }
