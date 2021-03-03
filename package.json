@@ -36,6 +36,7 @@
     "typography-breakpoint-constants": "^0.16.19"
   },
   "devDependencies": {
+    "@netlify/plugin-lighthouse": "^2.0.0",
     "eslint": "^7.21.0",
     "eslint-plugin-react": "^7.22.0",
     "prettier": "^2.2.1"
