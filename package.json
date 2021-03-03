@@ -50,7 +50,7 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "TODO:git+https://github.com/gatsbyjs/gatsby-starter-blog.git"
+    "url": "git+https://github.com/radiatingstar/website.git"
   },
   "scripts": {
     "develop": "gatsby develop",
