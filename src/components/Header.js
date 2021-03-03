@@ -11,12 +11,16 @@ export default function Header() {
   } = useStaticQuery(headerQuery)
 
   return (
-    <header className="m-2 p-2 max-w-lg bg-white">
+    <header className="m-2 p-2 max-w-lg">
       <Link to={`/`} className="flex items-center">
         <Image fixed={logo.childImageSharp.fixed} />
-        <div className="ml-1">
-          <h1 className="m-0">{title}</h1>
-          <h2 className="">{description}</h2>
+        <div className="ml-4">
+          <h1 className="m-0 font-bold text-4xl">
+            {title}
+          </h1>
+          <h2 className="font-bold">
+            {description}
+          </h2>
         </div>
       </Link>
     </header>

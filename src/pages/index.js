@@ -13,14 +13,19 @@ class Index extends React.Component {
         <SEO title={siteTitle} />
         <Header />
         <section className="m-2 bg-white max-w-lg p-2">
-          <h3>Recent Posts</h3>
+          <h3 className="font-bold text-2xl">Recent Posts</h3>
           {posts.map(({ node }) => {
             const title = node.frontmatter.title || node.fields.slug
             return (
               <div key={node.fields.slug}>
-                <h3>
-                  <Link to={'/blog' + node.fields.slug}>{title}</Link>
-                </h3>
+                <h4 className="my-4">
+                  <Link
+                    to={'/blog' + node.fields.slug}
+                    className="text-2xl text-yellow-500"
+                  >
+                    {title}
+                  </Link>
+                </h4>
               </div>
             )
           })}

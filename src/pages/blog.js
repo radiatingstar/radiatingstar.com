@@ -3,14 +3,17 @@ import { graphql, Link } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 import SEO from '../components/seo'
 
-function BlogIndex (props) {
+function BlogIndex(props) {
   const { data } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
-    <BlogLayout location={props.location} title={siteTitle}
-                style={{ paddingBottom: '5rem' }}>
+    <BlogLayout
+      location={props.location}
+      title={siteTitle}
+      style={{ paddingBottom: '5rem' }}
+    >
       <SEO
         title="All posts"
         keywords={[`blog`, `gatsby`, `javascript`, `react`]}
@@ -25,7 +28,7 @@ function BlogIndex (props) {
               </Link>
             </h2>
             <small>{node.frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: node.excerpt }}/>
+            <p dangerouslySetInnerHTML={{ __html: node.excerpt }} />
           </div>
         )
       })}
