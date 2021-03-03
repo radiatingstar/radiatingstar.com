@@ -5,7 +5,7 @@ import { Link } from 'gatsby'
 
 export default function Navigation () {
   return (
-    <nav className="py-4 px-3.5">
+    <nav className="py-4 px-3.5 bg-yellow-500">
       <ul className="list-none flex m-0">
         <li className="m-0">
           <Link to="/blog" className="text-black">Blog</Link>

@@ -9,3 +9,15 @@ body {
 h1, h2 {
   font-family: 'Ubuntu', sans-serif;
 }
+
+p {
+  @apply leading-relaxed mb-7;
+}
+
+ol {
+  @apply list-decimal mb-7;
+}
+
+a {
+  @apply text-yellow-500;
+}

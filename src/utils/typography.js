@@ -1,3 +1,11 @@
+/**
+ * This file is a remaining from the previously used Typography.js.
+ * It's left to use the styles defined here in case they'll be needed
+ * during the redesign.
+ *
+ * TODO: when you're done, remove it.
+ */
+
 import Typography from 'typography'
 import gray from 'gray-percentage'
 import { MOBILE_MEDIA_QUERY } from 'typography-breakpoint-constants'

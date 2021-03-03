@@ -3,7 +3,7 @@ import { graphql, Link } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 import SEO from '../components/seo'
 
-function BlogIndex(props) {
+export default function BlogIndex(props) {
   const { data } = props
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
@@ -21,8 +21,8 @@ function BlogIndex(props) {
       {posts.map(({ node }) => {
         const title = node.frontmatter.title || node.fields.slug
         return (
-          <div key={node.fields.slug}>
-            <h2 className="mb-2">
+          <div key={node.fields.slug} className="mt-6">
+            <h2 className="mb-2 text-2xl text-yellow-500 font-bold">
               <Link className="shadow-none" to={'/blog' + node.fields.slug}>
                 {title}
               </Link>
@@ -35,8 +35,6 @@ function BlogIndex(props) {
     </BlogLayout>
   )
 }
-
-export default BlogIndex
 
 export const pageQuery = graphql`
   query {

@@ -19,14 +19,17 @@ import Header from './Header'
 //   border-top: 1px solid #ddd;
 //   color: #666;
 
-
 export default function BlogLayout({ children }) {
   return (
     <div className="overflow-hidden">
       <Header />
       <Navigation />
-      <main className="mx-auto my-0 pt-1.5 px-1 pb-0.5 max-w-lg">{children}</main>
-      <footer className="mt-0 mx-auto mb-1.5 p-1.5 max-w-lg text-center">★</footer>
+      <main className="mx-auto my-0 pt-1.5 px-1 pb-0.5 max-w-lg">
+        {children}
+      </main>
+      <footer className="mt-0 mx-auto mb-1.5 p-1.5 max-w-lg text-center">
+        ★
+      </footer>
     </div>
   )
 }
