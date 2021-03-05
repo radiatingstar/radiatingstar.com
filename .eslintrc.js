@@ -1,7 +1,9 @@
 module.exports = {
   "extends": [
     "eslint:recommended",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    // This one needs to be last.
+    "prettier"
   ],
   "env": {
     "browser": true,
