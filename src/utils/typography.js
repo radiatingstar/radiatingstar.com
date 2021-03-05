@@ -22,7 +22,7 @@ const typography = new Typography({
   bodyWeight: 400,
   boldWeight: 700,
   overrideStyles: ({ adjustFontSizeTo, scale, rhythm }, options) => {
-    return ({
+    return {
       h2: {
         fontFamily: ['Ubuntu', 'sans-serif'].join(','),
       },
@@ -63,7 +63,7 @@ const typography = new Typography({
       },
       a: {
         textDecoration: 'none',
-        color: '#ffa500'
+        color: '#ffa500',
       },
       'mark,ins': {
         background: '#007acc',
@@ -72,9 +72,9 @@ const typography = new Typography({
         textDecoration: 'none',
       },
       'pre[class*="language-"]': {
-        margin: `${rhythm(1)} 0 !important`
-      }
-    });
+        margin: `${rhythm(1)} 0 !important`,
+      },
+    }
   },
 })
 

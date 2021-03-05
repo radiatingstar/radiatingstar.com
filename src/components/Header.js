@@ -15,12 +15,8 @@ export default function Header() {
       <Link to={`/`} className="flex items-center">
         <Image fixed={logo.childImageSharp.fixed} />
         <div className="ml-4">
-          <h1 className="m-0 font-bold text-4xl">
-            {title}
-          </h1>
-          <h2 className="font-bold">
-            {description}
-          </h2>
+          <h1 className="m-0 font-bold text-4xl">{title}</h1>
+          <h2 className="font-bold">{description}</h2>
         </div>
       </Link>
     </header>

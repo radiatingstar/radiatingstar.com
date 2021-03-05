@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-export default function PreviousNextNav ({ next, previous }) {
+export default function PreviousNextNav({ next, previous }) {
   return (
     <>
-      <hr/>
+      <hr />
       <ul className="flex flex-wrap justify-between list-none p-0 m-0">
         <li>
           {previous && (

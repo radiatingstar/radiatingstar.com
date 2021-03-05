@@ -16,7 +16,10 @@ export default function BlogPostTemplate(properties) {
       <p className="mb-2 mt-2 mb-6">
         {post.frontmatter.date}, by {author}
       </p>
-      <div dangerouslySetInnerHTML={{ __html: post.html }} className="leading-normal"/>
+      <div
+        dangerouslySetInnerHTML={{ __html: post.html }}
+        className="leading-normal"
+      />
       <PrevNextNav {...properties.pageContext} />
     </BlogLayout>
   )
