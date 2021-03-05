@@ -8,7 +8,15 @@ Fires up the live reloading dev server. Just what you need to develop the app.
 
 ### lint
 
-Make sure the code is consistend and free of any issues (opinionated).
+Make sure the code is consistent and free of any issues (opinionated).
+
+#### :type-check
+
+Validate there are no type errors in the code.
+
+#### :code
+
+Validate there are no code, accessibility, style and similar issues in the code.
 
 ### format
 

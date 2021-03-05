@@ -63,7 +63,9 @@
   },
   "scripts": {
     "develop": "gatsby develop",
-    "lint": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "lint": "npm run lint:code && npm run lint:type-check",
+    "lint:code": "eslint --ext .js,.jsx --ignore-pattern public .",
+    "lint:type-check": "tsc --noEmit",
     "format": "prettier --write 'src/**/*.js' 'src/**/*.md'",
     "build": "gatsby build",
     "serve": "gatsby serve"
