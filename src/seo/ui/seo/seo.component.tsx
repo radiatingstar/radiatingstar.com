@@ -1,7 +1,7 @@
 import { graphql, useStaticQuery } from "gatsby"
 import React, { FunctionComponent } from "react"
 import Helmet, { HelmetProps } from "react-helmet"
-import { generateMeta } from "../../meta/meta-generator"
+import { generateMeta } from "../../meta/generate-meta"
 
 interface Properties {
   /**
@@ -11,7 +11,7 @@ interface Properties {
   /**
    * Page description. About 150 characters.
    */
-  description: string
+  description?: string
   /**
    * Language, but useless.
    */
@@ -39,7 +39,7 @@ export const SEO: FunctionComponent<Readonly<Properties>> = ({
     title,
     description: metaDescription,
     keywords,
-    meta,
+    otherMeta: meta,
     author: data.site.siteMetadata.author
   })
   return (

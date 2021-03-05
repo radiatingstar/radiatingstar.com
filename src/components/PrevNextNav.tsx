@@ -1,7 +1,7 @@
-import React from 'react'
+import React, { FunctionComponent } from 'react'
 import { Link } from 'gatsby'
 
-export default function PreviousNextNav({ next, previous }) {
+export const PreviousNextNav: FunctionComponent = ({ next, previous }) => {
   return (
     <>
       <hr />

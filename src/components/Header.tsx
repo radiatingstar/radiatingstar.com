@@ -1,8 +1,26 @@
-import React from 'react'
-import { graphql, Link, useStaticQuery } from 'gatsby'
-import Image from 'gatsby-image'
+import React, { FunctionComponent } from "react"
+import { graphql, Link, useStaticQuery } from "gatsby"
+import Image from "gatsby-image"
 
-export default function Header() {
+const headerQuery = graphql`
+  query HeaderQuery {
+    logo: file(absolutePath: { regex: "/radiating-star.logo.png/" }) {
+      childImageSharp {
+        fixed(width: 55, height: 55) {
+          ...GatsbyImageSharpFixed
+        }
+      }
+    }
+    site {
+      siteMetadata {
+        title
+        description
+      }
+    }
+  }
+`
+
+export const Header: FunctionComponent = () => {
   const {
     logo,
     site: {
@@ -22,21 +40,3 @@ export default function Header() {
     </header>
   )
 }
-
-const headerQuery = graphql`
-  query HeaderQuery {
-    logo: file(absolutePath: { regex: "/radiating-star.logo.png/" }) {
-      childImageSharp {
-        fixed(width: 55, height: 55) {
-          ...GatsbyImageSharpFixed
-        }
-      }
-    }
-    site {
-      siteMetadata {
-        title
-        description
-      }
-    }
-  }
-`

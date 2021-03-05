@@ -1,9 +1,9 @@
 import React from 'react'
 import { graphql, Link } from 'gatsby'
-import BlogLayout from '../components/BlogLayout'
-import SEO from '../components/seo'
+import { BlogLayout } from '../components/BlogLayout'
+import { SEO } from '../seo'
 
-export default function BlogIndex(properties) {
+const BlogIndexPage = properties => {
   const { data } = properties
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
@@ -35,6 +35,7 @@ export default function BlogIndex(properties) {
     </BlogLayout>
   )
 }
+export default BlogIndexPage
 
 export const pageQuery = graphql`
   query {

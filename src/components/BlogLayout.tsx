@@ -1,6 +1,6 @@
-import React from 'react'
-import Navigation from '../components/Navigation'
-import Header from './Header'
+import React, { FunctionComponent } from "react"
+import { Navigation } from "./Navigation"
+import { Header } from "./Header"
 
 // TODO
 
@@ -19,7 +19,7 @@ import Header from './Header'
 //   border-top: 1px solid #ddd;
 //   color: #666;
 
-export const BlogLayout = ({ children }) => {
+export const BlogLayout: FunctionComponent = ({ children }) => {
   return (
     <div className="overflow-hidden">
       <Header />

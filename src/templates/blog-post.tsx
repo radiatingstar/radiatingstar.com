@@ -1,10 +1,10 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import BlogLayout from '../components/BlogLayout'
-import PreviousNextNav from '../components/PrevNextNav'
-import { SEO } from '../seo/ui/seo/seo.component'
+import { BlogLayout } from '../components/BlogLayout'
+import { PreviousNextNav } from '../components/PrevNextNav'
+import { SEO } from '../seo'
 
-export default function BlogPostTemplate(properties) {
+const BlogPostTemplate = properties => {
   const post = properties.data.markdownRemark
   const siteTitle = properties.data.site.siteMetadata.title
   const author = properties.data.site.siteMetadata.author
@@ -24,6 +24,8 @@ export default function BlogPostTemplate(properties) {
     </BlogLayout>
   )
 }
+
+export default BlogPostTemplate
 
 export const pageQuery = graphql`
   query BlogPostBySlug($slug: String!) {
