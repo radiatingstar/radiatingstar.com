@@ -12,10 +12,6 @@ module.exports = {
     "browser": true,
     "es6": true,
   },
-  "plugins": [
-    "react",
-    "jsx-a11y",
-  ],
   "globals": {
     "graphql": false,
   },
