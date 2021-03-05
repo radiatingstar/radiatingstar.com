@@ -6,9 +6,11 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
     "plugin:testing-library/recommended",
+    'plugin:@typescript-eslint/recommended',
     // This one needs to be last.
     "prettier"
   ],
+  parser: '@typescript-eslint/parser',
   "env": {
     "browser": true,
     "es6": true,
