@@ -5,6 +5,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
+    "plugin:testing-library/recommended",
     // This one needs to be last.
     "prettier"
   ],
