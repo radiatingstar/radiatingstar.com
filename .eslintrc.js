@@ -2,6 +2,7 @@ module.exports = {
   "extends": [
     "eslint:recommended",
     "plugin:react/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:unicorn/recommended",
     // This one needs to be last.
     "prettier"
@@ -12,6 +13,7 @@ module.exports = {
   },
   "plugins": [
     "react",
+    "jsx-a11y",
   ],
   "globals": {
     "graphql": false,
