@@ -10,6 +10,7 @@ module.exports = {
     // This one needs to be last.
     "prettier"
   ],
+  plugins: ["react"],
   parser: '@typescript-eslint/parser',
   "env": {
     "browser": true,
@@ -24,5 +25,9 @@ module.exports = {
       "experimentalObjectRestSpread": true,
       "jsx": true,
     },
+  },
+  "rules": {
+    // TS makes this rule unnecessary.
+    "react/prop-types": "off"
   }
 }
