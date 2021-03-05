@@ -1,33 +1,33 @@
 module.exports = {
-  "extends": [
+  extends: [
     "eslint:recommended",
     "plugin:react/recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
     "plugin:testing-library/recommended",
-    'plugin:@typescript-eslint/recommended',
+    "plugin:@typescript-eslint/recommended",
     // This one needs to be last.
-    "prettier"
+    "prettier",
   ],
   plugins: ["react"],
-  parser: '@typescript-eslint/parser',
-  "env": {
-    "browser": true,
-    "es6": true,
+  parser: "@typescript-eslint/parser",
+  env: {
+    browser: true,
+    es6: true,
   },
-  "globals": {
-    "graphql": false,
+  globals: {
+    graphql: false,
   },
-  "parserOptions": {
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "experimentalObjectRestSpread": true,
-      "jsx": true,
+  parserOptions: {
+    sourceType: "module",
+    ecmaFeatures: {
+      experimentalObjectRestSpread: true,
+      jsx: true,
     },
   },
-  "rules": {
+  rules: {
     // TS makes this rule unnecessary.
-    "react/prop-types": "off"
-  }
+    "react/prop-types": "off",
+  },
 }
