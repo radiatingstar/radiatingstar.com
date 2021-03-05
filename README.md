@@ -30,7 +30,9 @@ Creates the production bundle of the app. Required to then `serve` the app. Used
 
 Fires up a local server with the built app. Take a look how the app will behave in production.
 
+### test
 
+Runs the unit tests.
 
 ## Tooling
 
