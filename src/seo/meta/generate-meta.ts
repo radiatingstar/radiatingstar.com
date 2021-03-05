@@ -36,42 +36,42 @@ export function generateMeta({
 }: MetaProperties): HelmetProps["meta"] {
   return [
     {
-      name: `description`,
+      name: "description",
       content: description,
     },
     {
-      property: `og:title`,
+      property: "og:title",
       content: title,
     },
     {
-      property: `og:description`,
+      property: "og:description",
       content: description,
     },
     {
-      property: `og:type`,
-      content: `website`,
+      property: "og:type",
+      content: "website",
     },
     {
-      name: `twitter:card`,
-      content: `summary`,
+      name: "twitter:card",
+      content: "summary",
     },
     {
-      name: `twitter:creator`,
+      name: "twitter:creator",
       content: author,
     },
     {
-      name: `twitter:title`,
+      name: "twitter:title",
       content: title,
     },
     {
-      name: `twitter:description`,
+      name: "twitter:description",
       content: description,
     },
     ...(keywords.length > 0
       ? [
           {
-            name: `keywords`,
-            content: keywords.join(`, `),
+            name: "keywords",
+            content: keywords.join(", "),
           },
         ]
       : []),
