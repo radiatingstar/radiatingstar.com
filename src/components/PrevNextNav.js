@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
 
-export default function PrevNextNav ({ next, previous }) {
+export default function PreviousNextNav ({ next, previous }) {
   return (
     <>
       <hr/>

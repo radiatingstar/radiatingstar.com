@@ -3,14 +3,14 @@ import { graphql, Link } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
 import SEO from '../components/seo'
 
-export default function BlogIndex(props) {
-  const { data } = props
+export default function BlogIndex(properties) {
+  const { data } = properties
   const siteTitle = data.site.siteMetadata.title
   const posts = data.allMarkdownRemark.edges
 
   return (
     <BlogLayout
-      location={props.location}
+      location={properties.location}
       title={siteTitle}
       style={{ paddingBottom: '5rem' }}
     >
