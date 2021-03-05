@@ -19,7 +19,7 @@ import Header from './Header'
 //   border-top: 1px solid #ddd;
 //   color: #666;
 
-export default function BlogLayout({ children }) {
+export const BlogLayout = ({ children }) => {
   return (
     <div className="overflow-hidden">
       <Header />

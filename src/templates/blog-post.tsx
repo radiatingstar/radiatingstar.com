@@ -1,8 +1,8 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import BlogLayout from '../components/BlogLayout'
-import SEO from '../components/seo'
 import PreviousNextNav from '../components/PrevNextNav'
+import { SEO } from '../seo/ui/seo/seo.component'
 
 export default function BlogPostTemplate(properties) {
   const post = properties.data.markdownRemark
@@ -20,7 +20,7 @@ export default function BlogPostTemplate(properties) {
         dangerouslySetInnerHTML={{ __html: post.html }}
         className="leading-normal"
       />
-      <PrevNextNav {...properties.pageContext} />
+      <PreviousNextNav {...properties.pageContext} />
     </BlogLayout>
   )
 }
