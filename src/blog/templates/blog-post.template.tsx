@@ -2,14 +2,14 @@ import { graphql } from "gatsby"
 import { BlogPostPage } from "../ui/blog-post-page/blog-post-page.component"
 
 export const pageQuery = graphql`
-  query BlogPostBySlug($slug: String!) {
+  query BlogPost ($slug: String!) {
     site {
       siteMetadata {
         title
         author
       }
     }
-    markdownRemark(fields: { slug: { eq: $slug } }) {
+    post: markdownRemark(fields: { slug: { eq: $slug } }) {
       id
       excerpt(pruneLength: 160)
       html

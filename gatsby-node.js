@@ -8,7 +8,7 @@ exports.createPages = ({ graphql, actions }) => {
   const blogPost = path.resolve(`./src/blog/templates/blog-post.template.tsx`)
   return graphql(
     `
-      {
+      query AllBlogPosts {
         allMarkdownRemark(
           sort: { fields: [frontmatter___date], order: DESC }
           limit: 1000
