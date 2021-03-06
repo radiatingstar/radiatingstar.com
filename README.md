@@ -5,37 +5,16 @@
 
 ## Scripts
 
-### develop
-
-Fires up the live reloading dev server. Just what you need to develop the app.
-
-### lint
-
-Make sure the code is consistent and free of any issues (opinionated).
-
-#### :type-check
-
-Validate there are no type errors in the code.
-
-#### :code
-
-Validate there are no code, accessibility, style and similar issues in the code.
-
-### format
-
-Prettify the code according to the law.
-
-### build
-
-Creates the production bundle of the app. Required to then `serve` the app. Used on Netlify.
-
-### serve
-
-Fires up a local server with the built app. Take a look how the app will behave in production.
-
-### test
-
-Runs the unit tests.
+| Command | Description |
+| --- | --- |
+| develop | Fires up the live reloading dev server. Just what you need to develop the app. |
+| lint | Make sure the code is consistent and free of any issues (opinionated). |
+| lint:type-check | Validate there are no type errors in the code. |
+| lint:code | Validate there are no code, accessibility, style and similar issues in the code. |
+| format | Prettify the code according to the law. |
+| build | Creates the production bundle of the app. Required to then `serve` the app. Used on Netlify. |
+| serve | Fires up a local server with the built app. Take a look how the app will behave in production. |
+| test |  Runs the unit tests.
 
 ## Tooling
 
