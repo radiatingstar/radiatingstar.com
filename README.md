@@ -1,5 +1,8 @@
 # Radiating Star Website
 
+[![Maintainability](https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/maintainability)](https://codeclimate.com/github/radiatingstar/radiatingstar.com/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/test_coverage)](https://codeclimate.com/github/radiatingstar/radiatingstar.com/test_coverage)
+
 ## Scripts
 
 ### develop
