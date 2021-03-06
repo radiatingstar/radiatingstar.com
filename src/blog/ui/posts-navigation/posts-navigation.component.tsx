@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from 'react'
 import { Link } from 'gatsby'
 
-export const PreviousNextNav: FunctionComponent = ({ next, previous }) => {
+export const PostsNavigation: FunctionComponent = ({ next, previous }) => {
   return (
     <>
       <hr />

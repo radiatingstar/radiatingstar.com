@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react"
-import { Navigation } from "./Navigation"
-import { Header } from "./Header"
+import { BlogHeaderComponent } from "../blog-header/blog-header.component"
+import { BlogNavigation } from "../blog-navigation/blog-navigation.component"
 
 // TODO
 
@@ -22,8 +22,8 @@ import { Header } from "./Header"
 export const BlogLayout: FunctionComponent = ({ children }) => {
   return (
     <div className="overflow-hidden">
-      <Header />
-      <Navigation />
+      <BlogHeaderComponent />
+      <BlogNavigation />
       <main className="mx-auto my-0 pt-1.5 px-1 pb-0.5 max-w-lg">
         {children}
       </main>

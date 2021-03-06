@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 
 // TODO: link color hsla(0,0%,0%,0.9)
 
-export const Navigation: FunctionComponent = () => {
+export const BlogNavigation: FunctionComponent = () => {
   return (
     <nav className="py-4 px-3.5 bg-yellow-500">
       <ul className="list-none flex m-0">

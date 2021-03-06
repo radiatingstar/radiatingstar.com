@@ -1,43 +1,8 @@
-import { graphql, Link } from 'gatsby'
-import React from 'react'
-import { Header } from '../components/Header'
-import { SEO } from '../seo'
+import { graphql } from "gatsby"
+import { HomePage } from "../home"
 
-const IndexPage = props => {
-  const { data } = props
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
-  return (
-    <div>
-      <SEO title={siteTitle}/>
-      <Header/>
-      <section className="m-2 bg-white max-w-lg p-2">
-        <h3 className="font-bold text-2xl">Recent Posts</h3>
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
-          return (
-            <div key={node.fields.slug}>
-              <h4 className="my-4">
-                <Link
-                  to={'/blog' + node.fields.slug}
-                  className="text-2xl text-yellow-500"
-                >
-                  {title}
-                </Link>
-              </h4>
-            </div>
-          )
-        })}
-        <Link to="/blog">Go to the blog</Link>
-      </section>
-    </div>
-  )
-}
-
-export default IndexPage
-
-export const pageQuery = graphql`
-  query {
+export const query = graphql`
+  query HomePageQuery {
     site {
       siteMetadata {
         title
@@ -60,3 +25,5 @@ export const pageQuery = graphql`
     }
   }
 `
+
+export default HomePage

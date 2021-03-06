@@ -2,6 +2,7 @@ import React from 'react'
 import { graphql } from 'gatsby'
 import { SEO } from '../seo'
 
+// TODO: Create this page.
 const NotFoundPage = () => (
   <div>
     <SEO title="404: Not Found"/>
