@@ -1,26 +1,39 @@
 import { Link } from "gatsby"
-import React from "react"
+import React, { FunctionComponent } from "react"
+import { HomePageQueryQuery } from "../../../../graphql-types"
+import { assertDefined } from "../../../assertions"
 import { BlogHeaderComponent } from "../../../blog/ui/blog-header/blog-header.component"
 import { SEO } from "../../../seo"
 
-// FIXME: add props type
-export const HomePage = (properties: any) => {
-  const data = properties.data
-  const siteTitle = data.site.siteMetadata.title
-  const posts = data.allMarkdownRemark.edges
+interface Properties {
+  data: HomePageQueryQuery
+}
+
+export const HomePage: FunctionComponent<Readonly<Properties>> = ({
+  data: {
+    allMarkdownRemark: { edges: posts },
+    site,
+  },
+}) => {
+  assertDefined(site)
+  assertDefined(site.siteMetadata)
+  assertDefined(site.siteMetadata.title)
+  const siteTitle = site.siteMetadata.title
   return (
     <div>
       <SEO title={siteTitle} />
       <BlogHeaderComponent />
       <section className="m-2 bg-white max-w-lg p-2">
         <h3 className="font-bold text-2xl">Recent Posts</h3>
-        {posts.map(({ node }) => {
-          const title = node.frontmatter.title || node.fields.slug
+        {posts.map(({ node: { fields, frontmatter } }) => {
+          assertDefined(frontmatter)
+          assertDefined(fields)
+          const title = frontmatter.title || fields.slug
           return (
-            <div key={node.fields.slug}>
+            <div key={fields.slug}>
               <h4 className="my-4">
                 <Link
-                  to={"/blog" + node.fields.slug}
+                  to={"/blog" + fields.slug}
                   className="text-2xl text-yellow-500"
                 >
                   {title}
@@ -30,6 +43,16 @@ export const HomePage = (properties: any) => {
           )
         })}
         <Link to="/blog">Go to the blog</Link>
+        <p>
+          This website is open source.{" "}
+          <a
+            href="https://github.com/radiatingstar/radiatingstar.com"
+            rel="noopener noreferrer"
+          >
+            See the code on GitHub
+          </a>
+          .
+        </p>
       </section>
     </div>
   )
