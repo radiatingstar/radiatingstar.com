@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const path = require(`path`)
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // TODO: extract all those functions to separate modules.
@@ -26,7 +28,7 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then(result => {
+  ).then((result) => {
     if (result.errors) {
       throw result.errors
     }
@@ -35,11 +37,12 @@ exports.createPages = ({ graphql, actions }) => {
     const posts = result.data.allMarkdownRemark.edges
 
     for (const [index, post] of posts.entries()) {
-      const previous = index === posts.length - 1 ? null : posts[index + 1].node
-      const next = index === 0 ? null : posts[index - 1].node
+      const previous =
+        index === posts.length - 1 ? undefined : posts[index + 1].node
+      const next = index === 0 ? undefined : posts[index - 1].node
 
       createPage({
-        path: '/blog' + post.node.fields.slug,
+        path: "/blog" + post.node.fields.slug,
         component: blogPost,
         context: {
           slug: post.node.fields.slug,
