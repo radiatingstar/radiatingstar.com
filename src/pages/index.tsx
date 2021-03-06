@@ -2,13 +2,13 @@ import { graphql } from "gatsby"
 import { HomePage } from "../home"
 
 export const query = graphql`
-  query HomePageQuery {
+  query HomePage {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(
+    recentPosts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
       limit: 3
     ) {

@@ -2,13 +2,13 @@ import { graphql } from "gatsby"
 import { BlogIndexPage } from "../blog"
 
 export const query = graphql`
-  query BlogIndexQuery {
+  query BlogIndex {
     site {
       siteMetadata {
         title
       }
     }
-    allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allPosts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
       edges {
         node {
           excerpt

@@ -3046,18 +3046,18 @@ export type Unnamed_1_QueryVariables = Exact<{ [key: string]: never; }>;
 
 export type Unnamed_1_Query = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }> };
 
-export type BlogIndexQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type BlogIndexQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type BlogIndexQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allMarkdownRemark: { edges: Array<{ node: (
+export type BlogIndexQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allPosts: { edges: Array<{ node: (
         Pick<MarkdownRemark, 'excerpt'>
         & { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'date' | 'title'>> }
       ) }> } };
 
-export type HomePageQueryQueryVariables = Exact<{ [key: string]: never; }>;
+export type HomePageQueryVariables = Exact<{ [key: string]: never; }>;
 
 
-export type HomePageQueryQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, allMarkdownRemark: { edges: Array<{ node: { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> } }> } };
+export type HomePageQuery = { site?: Maybe<{ siteMetadata?: Maybe<Pick<SiteSiteMetadata, 'title'>> }>, recentPosts: { edges: Array<{ node: { fields?: Maybe<Pick<MarkdownRemarkFields, 'slug'>>, frontmatter?: Maybe<Pick<MarkdownRemarkFrontmatter, 'title'>> } }> } };
 
 export type DefaultSeoQueryQueryVariables = Exact<{ [key: string]: never; }>;
 

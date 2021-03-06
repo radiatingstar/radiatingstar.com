@@ -1,17 +1,14 @@
-import { Link } from "gatsby"
+import { Link, PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
-import { HomePageQueryQuery } from "../../../../graphql-types"
+import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { BlogHeaderComponent } from "../../../blog/ui/blog-header/blog-header.component"
 import { SEO } from "../../../seo"
 
-interface Properties {
-  data: HomePageQueryQuery
-}
 
-export const HomePage: FunctionComponent<Readonly<Properties>> = ({
+export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   data: {
-    allMarkdownRemark: { edges: posts },
+    recentPosts: { edges: posts },
     site,
   },
 }) => {
