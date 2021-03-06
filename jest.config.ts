@@ -20,7 +20,7 @@ export default {
   // collectCoverage: false,
 
   // An array of glob patterns indicating a set of files for which coverage information should be collected
-  // collectCoverageFrom: undefined,
+  collectCoverageFrom: ["./src/**"],
 
   // The directory where Jest should output its coverage files
   coverageDirectory: "coverage",
@@ -128,9 +128,7 @@ export default {
   // setupFiles: [],
 
   // A list of paths to modules that run some code to configure or set up the testing framework before each test
-  setupFilesAfterEnv: [
-    "./src/testing/index.ts"
-  ],
+  setupFilesAfterEnv: ["./src/testing/index.ts"],
 
   // The number of seconds after which a test is considered as slow and reported as such in the results.
   // slowTestThreshold: 5,
@@ -193,4 +191,4 @@ export default {
 
   // Whether to use watchman for file crawling
   // watchman: true,
-};
+}
