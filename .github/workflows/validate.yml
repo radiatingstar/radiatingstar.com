@@ -18,3 +18,9 @@ jobs:
           coverageCommand: npm run test -- --coverage
           coverageLocations: |
             ${{github.workspace}}/coverage/lcov.info:lcov
+      - name: Codecov
+        uses: codecov/codecov-action@v1.2.1
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }} # not required for public repos
+          directory: ./coverage
+          fail_ci_if_error: true
