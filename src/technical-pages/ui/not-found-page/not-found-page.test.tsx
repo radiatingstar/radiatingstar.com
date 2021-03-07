@@ -1,9 +1,10 @@
-import { render, waitFor } from "@testing-library/react"
+import { render } from "@testing-library/react"
 import React from "react"
 import { NotFoundPage } from "./not-found-page.component"
 
 // Avoid SEO's component shenanigans.
 jest.mock("../../../seo", () => ({
+  // eslint-disable-next-line react/display-name
   SEO: ({ title }: { title: string }) => <div data-testid="seo">{title}</div>,
 }))
 

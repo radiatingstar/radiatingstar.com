@@ -27,7 +27,7 @@ module.exports = {
       jsx: true,
     },
   },
-  ignorePatterns: ["graphql-types.ts", "coverage"],
+  ignorePatterns: ["graphql-types.ts", "coverage", "__mocks__"],
   rules: {
     // TS makes this rule unnecessary.
     "react/prop-types": "off",
