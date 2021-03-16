@@ -6,7 +6,7 @@ module.exports = {
     siteUrl: `https://radiatingstar.com/`,
     social: {
       twitter: `mateuszkocz`,
-      github: `mateuszkocz`
+      github: `mateuszkocz`,
     },
   },
   plugins: [
@@ -79,5 +79,6 @@ module.exports = {
       },
     },
     `gatsby-plugin-graphql-codegen`,
+    `gatsby-plugin-styled-components`,
   ],
 }
