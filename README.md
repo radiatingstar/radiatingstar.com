@@ -3,6 +3,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/maintainability)](https://codeclimate.com/github/radiatingstar/radiatingstar.com/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/test_coverage)](https://codeclimate.com/github/radiatingstar/radiatingstar.com/test_coverage)
 [![codecov](https://codecov.io/gh/radiatingstar/radiatingstar.com/branch/master/graph/badge.svg?token=yOUq7lvbnS)](https://codecov.io/gh/radiatingstar/radiatingstar.com)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/630d6ad6-236a-4ed5-a2a7-69bcc3bd6dba/deploy-status)](https://app.netlify.com/sites/radiatingstarcom/deploys)
 
 ## Scripts
 
