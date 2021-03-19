@@ -37,3 +37,9 @@ I have no idea why I installed this tool long time ago. Will have to research so
 
 Initially, the blog was served from the root domain. Old posts had to be redirected to the new `/blog` path, hence
 the hell lot of redirects in the `netlify.toml` file.
+
+### TypeScript definitions codegen
+
+The app's using [`gatsby-plugin-graphql-codegen`](https://github.com/d4rekanguok/gatsby-typescript/blob/master/packages/gatsby-plugin-graphql-codegen/readme.md).
+The types' generation takes too much time during development, so it's only available when running the app with the `CODEGEN` env
+set to `true`.

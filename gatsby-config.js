@@ -78,7 +78,12 @@ module.exports = {
         allExtensions: true,
       },
     },
-    `gatsby-plugin-graphql-codegen`,
+    {
+      resolve: `gatsby-plugin-graphql-codegen`,
+      options: {
+        codegen: Boolean(process.env.CODEGEN),
+      },
+    },
     `gatsby-plugin-styled-components`,
   ],
 }
