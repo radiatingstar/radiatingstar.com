@@ -1,10 +1,23 @@
 import { Link, PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
+import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { BlogHeaderComponent } from "../../../blog/ui/blog-header/blog-header.component"
 import { SEO } from "../../../seo"
+import { StarSwag } from "../star-swag/star-swag.component"
 
+const ContentSection = styled.section`
+  margin: 1rem;
+  padding: 1rem;
+  background: white;
+`
+
+const Header = styled.header`
+  border-bottom: 2px solid orange;
+  height: 100px;
+  margin-bottom: 50px; // TODO: Don't want margin here. Layout should decide.
+`
 
 export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   data: {
@@ -19,8 +32,10 @@ export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   return (
     <div>
       <SEO title={siteTitle} />
+      <Header />
+      <StarSwag />
       <BlogHeaderComponent />
-      <section className="m-2 bg-white max-w-lg p-2">
+      <ContentSection>
         <h3 className="font-bold text-2xl">Recent Posts</h3>
         {posts.map(({ node: { fields, frontmatter } }) => {
           assertDefined(frontmatter)
@@ -50,7 +65,7 @@ export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
           </a>
           .
         </p>
-      </section>
+      </ContentSection>
     </div>
   )
 }
