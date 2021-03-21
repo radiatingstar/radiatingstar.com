@@ -56,6 +56,10 @@ export class NavigationItemName {
     this.#name = name
   }
 
+  get value(): string {
+    return this.#name
+  }
+
   /**
    * Enables names's stringification when used in external world.
    */

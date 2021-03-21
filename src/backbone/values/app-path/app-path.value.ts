@@ -61,6 +61,10 @@ export class AppPath {
     this.#path = path
   }
 
+  get value(): string {
+    return this.#path
+  }
+
   /**
    * Enables path's stringification when used in external world.
    */

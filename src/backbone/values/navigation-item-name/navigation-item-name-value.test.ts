@@ -47,17 +47,25 @@ describe("Navigation item name value object", () => {
   describe("when using", () => {
     describe("as a string", () => {
       it("should be passable to links", () => {
-        const value = toNullable(NavigationItemName.from("name"))
-        expect(`${value}`).toBe("name")
+        const item = toNullable(NavigationItemName.from("name"))
+        expect(`${item}`).toBe("name")
       })
     })
     describe("after passing unnecessary spaces", () => {
       it("should ignore them when printing", () => {
-        const value = toNullable(
+        const item = toNullable(
           NavigationItemName.from(unnecessarySpacesInLimit)
         )
-        expect(`${value}`).toBe("hello world")
+        expect(`${item}`).toBe("hello world")
       })
+    })
+  })
+  describe("when accessing value", () => {
+    const name = "name"
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const item = toNullable(NavigationItemName.from(name))!
+    it("should return the content", () => {
+      expect(item.value).toBe(name)
     })
   })
 })

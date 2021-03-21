@@ -35,4 +35,12 @@ describe("AppPath value object", () => {
       expect(`${path}`).toBe("/valid/path")
     })
   })
+  describe("when accessing value", () => {
+    const path = "/path"
+    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+    const appPath = toNullable(AppPath.from(path))!
+    it("should return the content", () => {
+      expect(appPath.value).toBe(path)
+    })
+  })
 })
