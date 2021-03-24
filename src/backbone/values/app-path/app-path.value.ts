@@ -1,4 +1,12 @@
-import { isNone, none, Option, some, toNullable } from "fp-ts/Option"
+import {
+  fromPredicate,
+  isNone,
+  map,
+  none,
+  Option,
+  toNullable,
+} from "fp-ts/Option"
+import { pipe } from "fp-ts/pipeable"
 
 /**
  * Object serving as a container for any application path. Validates the path
@@ -17,10 +25,11 @@ export class AppPath {
    * @param path Path string with "/" at the beginning.
    */
   static from(path: string): Option<AppPath> {
-    if (!AppPath.isValidPath(path)) {
-      return none
-    }
-    return some(new AppPath(path))
+    return pipe(
+      path,
+      fromPredicate(AppPath.isValidPath),
+      map((validPath) => new AppPath(validPath))
+    )
   }
 
   /**

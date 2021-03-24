@@ -1,4 +1,5 @@
-import { none, Option, some } from "fp-ts/Option"
+import { fromPredicate, map, Option } from "fp-ts/Option"
+import { pipe } from "fp-ts/pipeable"
 
 /**
  * Container object used to store the valid and in bound name string
@@ -22,11 +23,12 @@ export class NavigationItemName {
    * @param name Name to be used as a base for this object.
    */
   static from(name: string): Option<NavigationItemName> {
-    const normalizedName = NavigationItemName.normalizeName(name)
-    if (!NavigationItemName.isValidName(normalizedName)) {
-      return none
-    }
-    return some(new NavigationItemName(normalizedName))
+    return pipe(
+      name,
+      NavigationItemName.normalizeName,
+      fromPredicate(NavigationItemName.isValidName),
+      map((validName) => new NavigationItemName(validName))
+    )
   }
 
   /**
