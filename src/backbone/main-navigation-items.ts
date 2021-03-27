@@ -5,10 +5,6 @@ import { Navigation } from "./values/navigation/navigation.value"
 
 export const mainNavigation = Navigation.create(
   NavigationItem.create({
-    name: NavigationItemName.from("Home"),
-    path: AppPath.from("/"),
-  }),
-  NavigationItem.create({
     name: NavigationItemName.from("Blog"),
     path: AppPath.from("/blog"),
   }),
