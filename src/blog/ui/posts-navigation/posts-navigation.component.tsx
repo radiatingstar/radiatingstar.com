@@ -9,7 +9,7 @@ export const PostsNavigation: FunctionComponent<SitePageContext> = ({
   return (
     <>
       <hr />
-      <ul className="flex flex-wrap justify-between list-none p-0 m-0">
+      <ul>
         <li>
           {previous && previous.fields && previous.frontmatter && (
             <Link to={"/blog" + previous.fields.slug} rel="prev">
