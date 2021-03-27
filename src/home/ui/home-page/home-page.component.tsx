@@ -26,20 +26,15 @@ export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
     <CoreLayout>
       <SEO title={siteTitle} />
       <ContentSection>
-        <h3 className="font-bold text-2xl">Recent Posts</h3>
+        <h3>Recent Posts</h3>
         {posts.map(({ node: { fields, frontmatter } }) => {
           assertDefined(frontmatter)
           assertDefined(fields)
           const title = frontmatter.title || fields.slug
           return (
             <div key={fields.slug}>
-              <h4 className="my-4">
-                <Link
-                  to={"/blog" + fields.slug}
-                  className="text-2xl text-yellow-500"
-                >
-                  {title}
-                </Link>
+              <h4>
+                <Link to={"/blog" + fields.slug}>{title}</Link>
               </h4>
             </div>
           )

@@ -17,7 +17,7 @@ export const BlogIndexPage: FunctionComponent<PageProps<BlogIndexQuery>> = ({
         assertDefined(excerpt)
         const title = frontmatter.title || fields.slug
         return (
-          <div key={fields.slug} className="mt-6">
+          <div key={fields.slug}>
             <h2>
               <Link to={"/blog" + fields.slug}>{title}</Link>
             </h2>

@@ -24,10 +24,7 @@ export const BlogPostPage: FunctionComponent<
       <p>
         {post.frontmatter.date}, by {author}
       </p>
-      <div
-        dangerouslySetInnerHTML={{ __html: post.html }}
-        className="leading-normal"
-      />
+      <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <PostsNavigation {...pageContext} />
     </CoreLayout>
   )
