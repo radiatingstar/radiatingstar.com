@@ -1,3 +1,5 @@
+import { chain } from "fp-ts"
+import { flow } from "fp-ts/function"
 import {
   fromPredicate,
   isNone,
@@ -63,10 +65,10 @@ export class AppPath {
    * @private
    */
   private static isValidPath(path: string): boolean {
-    return /^\/\S+$/.test(path)
+    return /^\/(\S+)?$/.test(path)
   }
 
-  private constructor(path: string) {
+  constructor(path: string) {
     this.#path = path
   }
 
@@ -81,3 +83,17 @@ export class AppPath {
     return this.#path
   }
 }
+
+// const isValidPath = /^\/\S+$/.test
+// const createAppPath = flow(
+//   fromPredicate(isValidPath),
+//   map((validPath) => new AppPath(validPath))
+// )
+// const contactAppPaths: (
+//   paths: Array<Option<AppPath>>
+// ) => Option<AppPath> = flow(
+//   fromPredicate((paths) => !paths.some((element) => isNone(element))),
+//   map((paths) => new AppPath(paths.join("")))
+// )
+//
+// const x = contactAppPaths([createAppPath("/asd"), createAppPath("/asd")])

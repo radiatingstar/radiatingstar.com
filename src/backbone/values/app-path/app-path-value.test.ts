@@ -18,6 +18,11 @@ describe("AppPath value object", () => {
         expect(toNullable(AppPath.from("/valid"))).toBeInstanceOf(AppPath)
       })
     })
+    describe("with index path", () => {
+      it("should return a path object", () => {
+        expect(toNullable(AppPath.from("/"))).toBeInstanceOf(AppPath)
+      })
+    })
   })
   describe("when using", () => {
     describe("as a string", () => {
