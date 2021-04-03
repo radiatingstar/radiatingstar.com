@@ -3,24 +3,20 @@ import { AppPath } from "./app-path.value"
 
 describe("AppPath value object", () => {
   describe("when creating", () => {
-    describe("with missing slash", () => {
+    describe.each([
+      ["missing slash", "missing-slash"],
+      ["white spaces", "/white spaces"],
+    ])("with %s", (_, value) => {
       it("should return none", () => {
-        expect(AppPath.from("missing-slash")).toBeNone()
+        expect(AppPath.from(value)).toBeNone()
       })
     })
-    describe("with white spaces", () => {
-      it("should return none", () => {
-        expect(AppPath.from("/white spaces")).toBeNone()
-      })
-    })
-    describe("with proper path", () => {
+    describe.each([
+      ["proper path", "/valid"],
+      ["index path", "/"],
+    ])("with %s", (_, path) => {
       it("should return a path object", () => {
-        expect(toNullable(AppPath.from("/valid"))).toBeInstanceOf(AppPath)
-      })
-    })
-    describe("with index path", () => {
-      it("should return a path object", () => {
-        expect(toNullable(AppPath.from("/"))).toBeInstanceOf(AppPath)
+        expect(toNullable(AppPath.from(path))).toBeInstanceOf(AppPath)
       })
     })
   })
