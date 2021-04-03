@@ -49,6 +49,10 @@ const Swag = styled.div`
 
 const SecondarySlot = styled.div`
   grid-area: SecondarySlot;
+  margin-top: 2rem;
+  @media (min-width: 32rem) {
+    margin-top: 0;
+  }
 `
 
 const TertiarySlot = styled.div`
