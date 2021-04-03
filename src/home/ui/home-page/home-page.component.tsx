@@ -1,9 +1,10 @@
-import { Link, PageProps } from "gatsby"
+import { PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
+import { RecentPosts, toBlogPostPreview } from "../../../blog"
 import { SEO } from "../../../seo"
 
 const ContentSection = styled.section`
@@ -14,7 +15,7 @@ const ContentSection = styled.section`
 
 export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   data: {
-    recentPosts: { edges: posts },
+    recentPosts: { edges: postsEdges },
     site,
   },
 }) => {
@@ -22,34 +23,12 @@ export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   assertDefined(site.siteMetadata)
   assertDefined(site.siteMetadata.title)
   const siteTitle = site.siteMetadata.title
+  const posts = postsEdges.map(({ node }) => toBlogPostPreview(node))
   return (
     <CoreLayout>
       <SEO title={siteTitle} />
       <ContentSection>
-        <h3>Recent Posts</h3>
-        {posts.map(({ node: { fields, frontmatter } }) => {
-          assertDefined(frontmatter)
-          assertDefined(fields)
-          const title = frontmatter.title || fields.slug
-          return (
-            <div key={fields.slug}>
-              <h4>
-                <Link to={"/blog" + fields.slug}>{title}</Link>
-              </h4>
-            </div>
-          )
-        })}
-        <Link to="/blog">Go to the blog</Link>
-        <p>
-          This website is open source.{" "}
-          <a
-            href="https://github.com/radiatingstar/radiatingstar.com"
-            rel="noopener noreferrer"
-          >
-            See the code on GitHub
-          </a>
-          .
-        </p>
+        <RecentPosts posts={posts} />
       </ContentSection>
     </CoreLayout>
   )
