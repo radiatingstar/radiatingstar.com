@@ -19,4 +19,26 @@ describe("Core Layout component", () => {
       expect(getByText("nav")).toBeInTheDocument()
     })
   })
+  describe("in the footer area", () => {
+    it("should display a current year's copyright notice", () => {
+      const { getByText } = render(<CoreLayout />)
+      expect(
+        getByText(new RegExp(`${new Date().getFullYear()}`))
+      ).toBeInTheDocument()
+    })
+    it("should link to the GitHub repo", () => {
+      const { container } = render(<CoreLayout />)
+      expect(
+        container.querySelector(
+          "[href='https://github.com/radiatingstar/radiatingstar.com']"
+        )
+      ).toBeInTheDocument()
+    })
+    it("should display a Twitter contact link", () => {
+      const { container } = render(<CoreLayout />)
+      expect(
+        container.querySelector("[href='https://twitter.com/radiatingstar']")
+      ).toBeInTheDocument()
+    })
+  })
 })
