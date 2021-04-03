@@ -4,9 +4,10 @@ import styled from "styled-components"
 const ContentContainer = styled.div`
   display: flex;
   justify-content: center;
-  gap: 1rem;
+  gap: 0.5rem;
   @media (min-width: 32rem) {
-    justify-content: flex-end;
+    align-items: flex-end;
+    flex-direction: column;
   }
 `
 

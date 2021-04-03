@@ -4,6 +4,7 @@ import { Logo } from "../../../branding"
 import { mainNavigation } from "../../main-navigation-items"
 import { Header } from "../header/header.component"
 import { MainNavigation } from "../main-navigation/main-navigation.component"
+import { FooterExternalLink } from "../site-footer/footer-external-link/footer-external-link.component"
 import { SiteFooter } from "../site-footer/site-footer.component"
 import { Badge } from "./elements/badge/badge.component"
 import { PrimaryFooterContent } from "./elements/primary-footer-content/primary-footer-content.component"
@@ -13,6 +14,7 @@ import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertia
 const GlobalStyle = createGlobalStyle`
   body {
     font-family: 'Lato', sans-serif;
+    color: rgb(30, 30, 30);
   }
 
   h1,
@@ -37,30 +39,29 @@ export const CoreLayout: FunctionComponent<Properties> = ({
       <SiteFooter
         primarySlot={
           <PrimaryFooterContent>
-            © Radiating Star {new Date().getFullYear()}
+            <span>© Radiating Star {new Date().getFullYear()}</span>
+            <FooterExternalLink href="https://github.com/radiatingstar/radiatingstar.com">
+              Site&apos;s code available on GitHub
+            </FooterExternalLink>
           </PrimaryFooterContent>
         }
         secondarySlot={
           <SecondaryFooterContent>
-            <span>
-              Code available on{" "}
-              <a
-                href="https://github.com/radiatingstar/radiatingstar.com"
-                rel="noopener noreferrer"
-              >
-                GitHub
-              </a>
-            </span>
-            <a
-              href="https://twitter.com/radiatingstar"
-              rel="noopener noreferrer"
-            >
+            <FooterExternalLink href="https://github.com/radiatingstar/">
+              GitHub
+            </FooterExternalLink>
+            <FooterExternalLink href="https://twitter.com/radiatingstar">
               Twitter
-            </a>
+            </FooterExternalLink>
           </SecondaryFooterContent>
         }
         tertiarySlot={
           <TertiaryFooterContent>
+            <Badge
+              href="https://codeclimate.com/github/radiatingstar/radiatingstar.com/test_coverage"
+              src="https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/test_coverage"
+              label="Code Climate Test Coverage"
+            />
             <Badge
               href="https://codecov.io/gh/radiatingstar/radiatingstar.com"
               src="https://codecov.io/gh/radiatingstar/radiatingstar.com/branch/master/graph/badge.svg?token=yOUq7lvbnS"
@@ -70,11 +71,6 @@ export const CoreLayout: FunctionComponent<Properties> = ({
               href="https://codeclimate.com/github/radiatingstar/radiatingstar.com/maintainability"
               src="https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/maintainability"
               label="Code Climate Maintainability"
-            />
-            <Badge
-              href="https://codeclimate.com/github/radiatingstar/radiatingstar.com/test_coverage"
-              src="https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/test_coverage"
-              label="Code Climate Test Coverage"
             />
             <Badge
               href="https://app.netlify.com/sites/radiatingstarcom/deploys"

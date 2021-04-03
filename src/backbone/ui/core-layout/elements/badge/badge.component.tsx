@@ -1,4 +1,5 @@
 import React, { VoidFunctionComponent } from "react"
+import { ExternalLink } from "../../../external-link/external-link.component"
 
 interface Properties {
   href: string
@@ -12,8 +13,8 @@ export const Badge: VoidFunctionComponent<Properties> = ({
   label,
 }) => {
   return (
-    <a href={href} rel="noopener nofollow noreferrer">
+    <ExternalLink href={href} nofollow>
       <img alt={`${label} Badge`} src={src} />
-    </a>
+    </ExternalLink>
   )
 }
