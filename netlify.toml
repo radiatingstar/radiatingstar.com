@@ -10,7 +10,7 @@ package = "@netlify/plugin-lighthouse"
   accessibility = 0.9
   best-practices = 0.9
   seo = 0.9
-  pwa = 0.9
+  pwa = 0.8
 
 [[redirects]]
   from = "/3l-the-grat-collection-of-mixins-for-less-introduction"
