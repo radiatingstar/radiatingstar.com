@@ -2,16 +2,24 @@ import React, { ReactNode, VoidFunctionComponent } from "react"
 import styled from "styled-components"
 
 const FooterContainer = styled.footer`
-  margin-top: 2rem;
-  border-top: 1px solid darkgray;
+  margin-top: auto;
+  border-top: 1px solid black;
   padding-bottom: 1rem;
 
   display: grid;
   grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot";
   gap: 1rem;
 
-  background-color: rgb(20, 20, 20);
-  color: rgb(240, 240, 240);
+  background: repeating-linear-gradient(
+    // Matches the angle of the star.
+    36deg,
+    black,
+    black 10px,
+    rgb(20, 20, 20) 10px,
+    rgb(20, 20, 20) 20px
+  );
+
+  color: #ffa500;
 
   @media (min-width: 32rem) {
     grid-template-areas: "PrimarySlot Swag SecondarySlot" "TertiarySlot TertiarySlot TertiarySlot";
@@ -45,6 +53,15 @@ const SecondarySlot = styled.div`
 
 const TertiarySlot = styled.div`
   grid-area: TertiarySlot;
+  margin: 0 1rem;
+
+  // Hide the overflow on really small devices
+  overflow: hidden;
+
+  @media (min-width: 32rem) {
+    margin: initial;
+    width: min-content;
+  }
 `
 
 interface Properties {

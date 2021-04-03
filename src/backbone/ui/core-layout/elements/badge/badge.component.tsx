@@ -1,4 +1,5 @@
 import React, { VoidFunctionComponent } from "react"
+import styled from "styled-components"
 import { ExternalLink } from "../../../external-link/external-link.component"
 
 interface Properties {
@@ -7,14 +8,19 @@ interface Properties {
   label: string
 }
 
+const BadgeLink = styled(ExternalLink)`
+  // This centres the links vertically.
+  line-height: 0;
+`
+
 export const Badge: VoidFunctionComponent<Properties> = ({
   href,
   src,
   label,
 }) => {
   return (
-    <ExternalLink href={href} nofollow>
+    <BadgeLink href={href} nofollow>
       <img alt={`${label} Badge`} src={src} />
-    </ExternalLink>
+    </BadgeLink>
   )
 }

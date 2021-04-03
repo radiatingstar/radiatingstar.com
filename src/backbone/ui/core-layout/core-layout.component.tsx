@@ -1,10 +1,11 @@
 import React, { FunctionComponent, ReactElement } from "react"
-import { createGlobalStyle } from "styled-components"
+import styled, { createGlobalStyle } from "styled-components"
 import { Logo } from "../../../branding"
 import { mainNavigation } from "../../main-navigation-items"
 import { Header } from "../header/header.component"
 import { MainNavigation } from "../main-navigation/main-navigation.component"
-import { FooterExternalLink } from "../site-footer/footer-external-link/footer-external-link.component"
+import { FooterExternalLinkPill } from "../site-footer/elements/footer-external-link-pill/footer-external-link-pill.component"
+import { FooterExternalLink } from "../site-footer/elements/footer-external-link/footer-external-link.component"
 import { SiteFooter } from "../site-footer/site-footer.component"
 import { Badge } from "./elements/badge/badge.component"
 import { PrimaryFooterContent } from "./elements/primary-footer-content/primary-footer-content.component"
@@ -23,6 +24,12 @@ const GlobalStyle = createGlobalStyle`
   }
 `
 
+const PageContainer = styled.div`
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`
+
 interface Properties {
   navigation?: ReactElement
 }
@@ -32,7 +39,7 @@ export const CoreLayout: FunctionComponent<Properties> = ({
   navigation = <MainNavigation navigation={mainNavigation} />,
 }) => {
   return (
-    <div>
+    <PageContainer>
       <GlobalStyle />
       <Header logoSlot={<Logo />} navigationSlot={navigation} />
       <main>{children}</main>
@@ -47,12 +54,12 @@ export const CoreLayout: FunctionComponent<Properties> = ({
         }
         secondarySlot={
           <SecondaryFooterContent>
-            <FooterExternalLink href="https://github.com/radiatingstar/">
+            <FooterExternalLinkPill href="https://github.com/radiatingstar/">
               GitHub
-            </FooterExternalLink>
-            <FooterExternalLink href="https://twitter.com/radiatingstar">
+            </FooterExternalLinkPill>
+            <FooterExternalLinkPill href="https://twitter.com/radiatingstar">
               Twitter
-            </FooterExternalLink>
+            </FooterExternalLinkPill>
           </SecondaryFooterContent>
         }
         tertiarySlot={
@@ -80,6 +87,6 @@ export const CoreLayout: FunctionComponent<Properties> = ({
           </TertiaryFooterContent>
         }
       />
-    </div>
+    </PageContainer>
   )
 }
