@@ -7,14 +7,12 @@ describe("Navigation item name value object", () => {
     .padEnd(40, " ")
 
   describe("when creating", () => {
-    describe("with less than 3 characters", () => {
+    describe.each([
+      ["less than 3", "12"],
+      ["more than 20", "1".repeat(21)],
+    ])("with %s characters", (_, value) => {
       it("should return none", () => {
-        expect(NavigationItemName.from("12")).toBeNone()
-      })
-    })
-    describe("with more than 20 characters", () => {
-      it("should return none", () => {
-        expect(NavigationItemName.from("1".repeat(21))).toBeNone()
+        expect(NavigationItemName.from(value)).toBeNone()
       })
     })
     // prettier-ignore
