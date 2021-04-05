@@ -1,7 +1,10 @@
 import React, { ReactNode, VoidFunctionComponent } from "react"
 import styled from "styled-components"
+import footerBcg from "./assets/footer-background.svg"
 
 const FooterContainer = styled.footer`
+  position: relative;
+
   margin-top: auto;
   border-top: 1px solid black;
   padding-bottom: 1rem;
@@ -10,21 +13,19 @@ const FooterContainer = styled.footer`
   grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot";
   gap: 1rem;
 
-  background: repeating-linear-gradient(
-    // Matches the angle of the star.
-    36deg,
-    black,
-    black 10px,
-    rgb(20, 20, 20) 10px,
-    rgb(20, 20, 20) 20px
-  );
+  background-color: black;
+  background-image: url(${footerBcg});
+  background-position: 50% calc(100%);
+  background-repeat: repeat-x;
 
   color: #ffa500;
 
   @media (min-width: 32rem) {
+    padding: 2rem;
     grid-template-areas: "PrimarySlot Swag SecondarySlot" "TertiarySlot TertiarySlot TertiarySlot";
     grid-template-columns: 3fr 1fr 3fr;
-    padding: 2rem;
+    row-gap: 8rem;
+    background-position: 50% calc(100% + 40px);
   }
 `
 
