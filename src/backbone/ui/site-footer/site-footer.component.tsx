@@ -10,7 +10,7 @@ const FooterContainer = styled.footer`
   padding-bottom: 1rem;
 
   display: grid;
-  grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot";
+  grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot" "QuaternarySlot";
   gap: 1rem;
 
   background-color: black;
@@ -22,7 +22,7 @@ const FooterContainer = styled.footer`
 
   @media (min-width: 32rem) {
     padding: 2rem;
-    grid-template-areas: "PrimarySlot Swag SecondarySlot" "TertiarySlot TertiarySlot TertiarySlot";
+    grid-template-areas: "PrimarySlot Swag SecondarySlot" "TertiarySlot TertiarySlot QuaternarySlot";
     grid-template-columns: 3fr 1fr 3fr;
     row-gap: 8rem;
     background-position: 50% calc(100% + 40px);
@@ -69,16 +69,23 @@ const TertiarySlot = styled.div`
   }
 `
 
+const QuaternarySlot = styled.div`
+  grid-area: QuaternarySlot;
+  align-self: end;
+`
+
 interface Properties {
   primarySlot?: ReactNode
   secondarySlot?: ReactNode
   tertiarySlot?: ReactNode
+  quaternarySlot?: ReactNode
 }
 
 export const SiteFooter: VoidFunctionComponent<Properties> = ({
   primarySlot,
   secondarySlot,
   tertiarySlot,
+  quaternarySlot,
 }) => {
   return (
     <FooterContainer>
@@ -86,6 +93,7 @@ export const SiteFooter: VoidFunctionComponent<Properties> = ({
       <PrimarySlot>{primarySlot}</PrimarySlot>
       <SecondarySlot>{secondarySlot}</SecondarySlot>
       <TertiarySlot>{tertiarySlot}</TertiarySlot>
+      <QuaternarySlot>{quaternarySlot}</QuaternarySlot>
     </FooterContainer>
   )
 }

@@ -9,6 +9,7 @@ import { FooterExternalLink } from "../site-footer/elements/footer-external-link
 import { SiteFooter } from "../site-footer/site-footer.component"
 import { Badge } from "./elements/badge/badge.component"
 import { PrimaryFooterContent } from "./elements/primary-footer-content/primary-footer-content.component"
+import { QuaternaryFooterContent } from "./elements/quaternary-footer-content/quaternary-footer-content.component"
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
 
@@ -86,6 +87,7 @@ export const CoreLayout: FunctionComponent<Properties> = ({
             />
           </TertiaryFooterContent>
         }
+        quaternarySlot={<QuaternaryFooterContent />}
       />
     </PageContainer>
   )
