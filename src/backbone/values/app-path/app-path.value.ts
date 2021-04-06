@@ -1,5 +1,3 @@
-import { chain } from "fp-ts"
-import { flow } from "fp-ts/function"
 import {
   fromPredicate,
   isNone,

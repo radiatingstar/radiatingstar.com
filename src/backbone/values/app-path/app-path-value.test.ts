@@ -35,6 +35,15 @@ describe("AppPath value object", () => {
       )
       expect(`${path}`).toBe("/valid/path")
     })
+    describe("with invalid paths", () => {
+      it("should be none", () => {
+        const path = AppPath.concat(
+          AppPath.from("/valid"),
+          AppPath.from("/in valid")
+        )
+        expect(path).toBeNone()
+      })
+    })
   })
   describe("when accessing value", () => {
     const path = "/path"
