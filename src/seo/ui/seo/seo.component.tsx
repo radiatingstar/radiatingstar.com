@@ -40,7 +40,7 @@ export const SEO: FunctionComponent<Readonly<Properties>> = ({
     description: metaDescription,
     keywords,
     otherMeta: meta,
-    author: data.site.siteMetadata.author
+    author: data.site.siteMetadata.author,
   })
   return (
     <Helmet
