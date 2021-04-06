@@ -1,4 +1,4 @@
-import { render, RenderResult } from "@testing-library/react"
+import { render, RenderResult, within } from "@testing-library/react"
 import React from "react"
 import { CoreLayout } from "./core-layout.component"
 
@@ -17,6 +17,13 @@ describe("Core Layout component", () => {
     it("should render it", () => {
       const { getByText } = render(<CoreLayout navigation={<div>nav</div>} />)
       expect(getByText("nav")).toBeInTheDocument()
+    })
+  })
+  describe("in the header area", () => {
+    it("should display a link to the home page", () => {
+      const { getByRole, container } = render(<CoreLayout />)
+      const homeLink = container.querySelector("[href='/']")
+      expect(getByRole("banner")).toContainElement(homeLink as HTMLElement)
     })
   })
   describe("in the footer area", () => {

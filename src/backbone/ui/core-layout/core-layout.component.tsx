@@ -1,3 +1,4 @@
+import { Link } from "gatsby"
 import React, { FunctionComponent, ReactElement } from "react"
 import styled, { createGlobalStyle } from "styled-components"
 import { Logo } from "../../../branding"
@@ -31,6 +32,10 @@ const PageContainer = styled.div`
   flex-direction: column;
 `
 
+const HomeLink = styled(Link)`
+  text-decoration: none;
+`
+
 interface Properties {
   navigation?: ReactElement
 }
@@ -42,7 +47,14 @@ export const CoreLayout: FunctionComponent<Properties> = ({
   return (
     <PageContainer>
       <GlobalStyle />
-      <Header logoSlot={<Logo />} navigationSlot={navigation} />
+      <Header
+        logoSlot={
+          <HomeLink to="/">
+            <Logo />
+          </HomeLink>
+        }
+        navigationSlot={navigation}
+      />
       <main>{children}</main>
       <SiteFooter
         primarySlot={
