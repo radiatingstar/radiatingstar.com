@@ -43,3 +43,8 @@ the hell lot of redirects in the `netlify.toml` file.
 The app's using [`gatsby-plugin-graphql-codegen`](https://github.com/d4rekanguok/gatsby-typescript/blob/master/packages/gatsby-plugin-graphql-codegen/readme.md).
 The types' generation takes too much time during development, so it's only available when running the app with the `CODEGEN` env
 set to `true`.
+
+### Pages
+
+The pages components in the pages' directory are meant to query the required data and pass
+it to the UI component. That's why they're only re-exporting those components. Don't put anything else in there.
