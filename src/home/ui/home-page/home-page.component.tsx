@@ -1,5 +1,10 @@
 import { PageProps } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React, {
+  FunctionComponent,
+  JSXElementConstructor,
+  PropsWithChildren,
+  ReactElement,
+} from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
@@ -13,11 +18,16 @@ const ContentSection = styled.section`
   background: white;
 `
 
-export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
+type Properties = Pick<PageProps<HomePageQuery>, "data"> & {
+  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
+}
+
+export const HomePage: FunctionComponent<Properties> = ({
   data: {
     recentPosts: { edges: postsEdges },
     site,
   },
+  layout: Layout = CoreLayout,
 }) => {
   assertDefined(site)
   assertDefined(site.siteMetadata)
@@ -25,11 +35,11 @@ export const HomePage: FunctionComponent<PageProps<HomePageQuery>> = ({
   const siteTitle = site.siteMetadata.title
   const posts = postsEdges.map(({ node }) => toBlogPostPreview(node))
   return (
-    <CoreLayout>
+    <Layout>
       <SEO title={siteTitle} />
       <ContentSection>
         <RecentPosts posts={posts} />
       </ContentSection>
-    </CoreLayout>
+    </Layout>
   )
 }
