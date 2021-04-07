@@ -41,10 +41,10 @@ const Swag = styled.div`
 
   font-size: 7rem;
   color: #ffa500;
-  -webkit-text-stroke: 10px white;
+  -webkit-text-stroke: 10px black;
 
   @media (min-width: 32rem) {
-    margin-top: -5.5rem;
+    margin-top: -4.8rem;
   }
 `
 

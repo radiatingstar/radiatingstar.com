@@ -13,11 +13,26 @@ import { PrimaryFooterContent } from "./elements/primary-footer-content/primary-
 import { QuaternaryFooterContent } from "./elements/quaternary-footer-content/quaternary-footer-content.component"
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
+import bodyBackground from "./assets/body-background.svg"
 
 const GlobalStyle = createGlobalStyle`
+  :root {
+    // TODO: definitely need to organise it better.
+    --red-100: #BA1726;
+    --red-200: #51161e;
+    --red-300: #a31b2d;
+    --yellow-400: #c98036;
+    --yellow-500: #ebb74b;
+    --yellow-600: #d7b769;
+    --black-300: rgb(30, 30, 30);
+  }
+
   body {
     font-family: 'Lato', sans-serif;
-    color: rgb(30, 30, 30);
+    color: var(--black-300);
+    background-color: var(--red-100);
+    background-image: url(${bodyBackground});
+    background-position: center;
   }
 
   h1,
