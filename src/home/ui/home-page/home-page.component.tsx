@@ -3,7 +3,6 @@ import React, {
   FunctionComponent,
   JSXElementConstructor,
   PropsWithChildren,
-  ReactElement,
 } from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
@@ -15,7 +14,6 @@ import { SEO } from "../../../seo"
 const ContentSection = styled.section`
   margin: 1rem;
   padding: 1rem;
-  background: white;
 `
 
 type Properties = Pick<PageProps<HomePageQuery>, "data"> & {

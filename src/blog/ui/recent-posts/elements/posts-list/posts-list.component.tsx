@@ -1,5 +1,13 @@
 import React, { ReactNode, VoidFunctionComponent } from "react"
+import styled from "styled-components"
 import { BlogPostPreview } from "../../../../types/blog-post-preview"
+
+const List = styled.ul`
+  // TODO: create a common reset. Remember about Safari's BS with non style.
+  margin-bottom: 0;
+  list-style: none;
+  padding-left: 0;
+`
 
 interface Properties {
   posts: BlogPostPreview[]
@@ -17,10 +25,10 @@ export const PostsList: VoidFunctionComponent<Properties> = ({
     return <>{fallback}</>
   }
   return (
-    <ul>
+    <List>
       {posts.map((post, index) => {
         return <li key={index}>{renderPost(post)}</li>
       })}
-    </ul>
+    </List>
   )
 }
