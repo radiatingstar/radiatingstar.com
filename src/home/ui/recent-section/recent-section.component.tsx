@@ -3,14 +3,20 @@ import styled from "styled-components"
 
 const Section = styled.section`
   border-bottom: 2px solid var(--red-200);
-  padding: 2rem;
+  padding: 2rem calc(60px + 2rem) 2rem 2rem;
 
-  // FIXME: Doesn't look well.
-  background-color: white;
-  background-image: radial-gradient(var(--yellow-400) 10px, transparent 0),
-    radial-gradient(var(--yellow-400) 10px, transparent 0);
-  background-size: 60px 60px;
-  background-position: 0 0, 30px 30px;
+  background-color: var(--yellow-500);
+  background-image: linear-gradient(
+    to left,
+    transparent 10px,
+    var(--black-300) 10px,
+    var(--black-300) 30px,
+    transparent 30px,
+    transparent 40px,
+    var(--black-300) 40px,
+    var(--black-300) 60px,
+    transparent 60px
+  );
   border-radius: 4px;
 
   color: var(--black-300);

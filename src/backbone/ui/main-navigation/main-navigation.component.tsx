@@ -33,8 +33,7 @@ const NavigationLink = styled(Link)`
   // Reset.
   text-decoration: none;
 
-  //color: rgb(30, 30, 30);
-  color: #268bd2;
+  color: var(--black-300);
 
   &:hover,
   &:active,
