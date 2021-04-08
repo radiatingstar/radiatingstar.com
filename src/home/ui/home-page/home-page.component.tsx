@@ -38,6 +38,17 @@ const ContentSection = styled.section`
   padding: 1rem;
 `
 
+const Recents = styled.div`
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 2rem;
+
+  @media (min-width: 32rem) {
+    grid-template-columns: repeat(2, 1fr);
+    flex-direction: row;
+  }
+`
+
 type Properties = Pick<PageProps<HomePageQuery>, "data"> & {
   layout?: JSXElementConstructor<PropsWithChildren<unknown>>
 } & {
@@ -61,14 +72,18 @@ export const HomePage: FunctionComponent<Properties> = ({
     <Layout>
       <SEO title={siteTitle} />
       <ContentSection>
-        <RecentSection>
-          <RecentSectionHeading as={"h2"}>Recent posts</RecentSectionHeading>
-          <RecentPosts posts={posts} />
-        </RecentSection>
-        <RecentSection>
-          <RecentSectionHeading as={"h2"}>Recent Projects</RecentSectionHeading>
-          <RecentProjects projects={projects} />
-        </RecentSection>
+        <Recents>
+          <RecentSection>
+            <RecentSectionHeading as={"h2"}>Recent posts</RecentSectionHeading>
+            <RecentPosts posts={posts} />
+          </RecentSection>
+          <RecentSection>
+            <RecentSectionHeading as={"h2"}>
+              Recent Projects
+            </RecentSectionHeading>
+            <RecentProjects projects={projects} />
+          </RecentSection>
+        </Recents>
       </ContentSection>
     </Layout>
   )
