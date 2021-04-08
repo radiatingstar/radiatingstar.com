@@ -25,7 +25,6 @@ const NavigationList = styled.ul`
 
   @media (min-width: 25rem) {
     gap: 2rem;
-    margin: 0 2rem;
   }
 `
 
@@ -38,7 +37,7 @@ const NavigationLink = styled(Link)`
   &:hover,
   &:active,
   &:focus {
-    color: #ffa500;
+    color: var(--yellow-700);
   }
 
   &:focus {

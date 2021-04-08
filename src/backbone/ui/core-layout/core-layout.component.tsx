@@ -25,6 +25,7 @@ const GlobalStyle = createGlobalStyle`
     --yellow-400: #c98036;
     --yellow-500: #ebb74b;
     --yellow-600: #d7b769;
+    --yellow-700: #ffa500;
     --black-300: rgb(30, 30, 30);
     --blue-300: #268bd2;
   }

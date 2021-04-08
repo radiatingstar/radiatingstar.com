@@ -10,9 +10,7 @@ export const HeaderContainer = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
-  padding: 1rem;
+  padding: 2rem;
 `
 
 export const Header: VoidFunctionComponent<Properties> = ({
