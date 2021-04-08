@@ -27,9 +27,11 @@ describe("Posts List component", () => {
         <PostsList
           posts={posts}
           fallback={<div>fallback</div>}
-          renderPost={(post) =>
-            `${post.fields?.slug} ${post.frontmatter?.title}`
-          }
+          renderPost={(post) => (
+            <>
+              {post.fields?.slug} {post.frontmatter?.title}
+            </>
+          )}
         />
       )
     })
