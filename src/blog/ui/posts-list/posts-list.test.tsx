@@ -26,23 +26,23 @@ const posts = [
 ]
 
 describe("Posts List component", () => {
-  beforeEach(() => render(<PostsList posts={posts} />))
-  it("should display all excerpts", () => {
-    expect(screen.getByText("Rover is rolling.")).toBeInTheDocument()
-    expect(screen.getByText("Straight into Saturn.")).toBeInTheDocument()
-  })
-  it("should display all dates", () => {
-    expect(screen.getByText("2020")).toBeInTheDocument()
-    expect(screen.getByText("2018")).toBeInTheDocument()
-  })
-  it("should display all links", () => {
-    expect(screen.getByRole("link", { name: "Curiosity" })).toHaveAttribute(
-      "href",
-      "/blog/curiosity"
-    )
-    expect(screen.getByRole("link", { name: "Cassini" })).toHaveAttribute(
-      "href",
-      "/blog/cassini"
-    )
+  describe("when passed post", () => {
+    describe.each([
+      ["#1", posts[0]],
+      ["#2", posts[1]],
+    ])("%s", (_, post) => {
+      beforeEach(() => render(<PostsList posts={posts} />))
+      it("should display the excerpt", () => {
+        expect(screen.getByText(post.excerpt)).toBeInTheDocument()
+      })
+      it("should display date", () => {
+        expect(screen.getByText(post.frontmatter.date)).toBeInTheDocument()
+      })
+      it("should display the post link", () => {
+        expect(
+          screen.getByRole("link", { name: post.frontmatter.title })
+        ).toHaveAttribute("href", "/blog" + post.fields.slug)
+      })
+    })
   })
 })
