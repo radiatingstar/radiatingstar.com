@@ -23,18 +23,6 @@ const dataWithPosts = {
           },
         },
       },
-      {
-        node: {
-          excerpt: "Straight into Saturn.",
-          fields: {
-            slug: "/cassini",
-          },
-          frontmatter: {
-            date: "2018",
-            title: "Cassini",
-          },
-        },
-      },
     ],
   },
 }
@@ -51,23 +39,40 @@ describe("Blog Index Page component", () => {
     beforeEach(() =>
       render(<BlogIndexPage data={dataWithPosts} layout={TestLayout} />)
     )
-    it("should display all excerpts", () => {
-      expect(screen.getByText("Rover is rolling.")).toBeInTheDocument()
-      expect(screen.getByText("Straight into Saturn.")).toBeInTheDocument()
-    })
-    it("should display all dates", () => {
-      expect(screen.getByText("2020")).toBeInTheDocument()
-      expect(screen.getByText("2018")).toBeInTheDocument()
-    })
     it("should display all links", () => {
       expect(screen.getByRole("link", { name: "Curiosity" })).toHaveAttribute(
         "href",
         "/blog/curiosity"
       )
-      expect(screen.getByRole("link", { name: "Cassini" })).toHaveAttribute(
-        "href",
-        "/blog/cassini"
-      )
+    })
+  })
+
+  describe("with missing post value of", () => {
+    const excerpt = ""
+    const fields = { slug: "" }
+    const frontmatter = { date: "", title: "" }
+    describe.each([
+      ["frontmatter" as const, { excerpt, fields }],
+      ["excerpt" as const, { fields, frontmatter }],
+      ["fields" as const, { excerpt, frontmatter }],
+    ])("%s", (missingKey, node) => {
+      // Just avoiding unnecessary log in the console of the uncaught exception.
+      let error: typeof console.error
+      beforeAll(() => {
+        error = console.error
+        console.error = jest.fn()
+      })
+      afterAll(() => (console.error = error))
+      it("should throw", () => {
+        const data = {
+          allPosts: {
+            edges: [{ node }],
+          },
+        }
+        expect(() =>
+          render(<BlogIndexPage data={data} layout={TestLayout} />)
+        ).toThrow()
+      })
     })
   })
 })

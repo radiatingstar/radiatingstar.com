@@ -1,4 +1,4 @@
-import { Link, PageProps } from "gatsby"
+import { PageProps } from "gatsby"
 import React, {
   FunctionComponent,
   JSXElementConstructor,
@@ -8,6 +8,8 @@ import { BlogIndexQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
+import { BlogPostInfo } from "../../types/blog-post-info"
+import { PostsList } from "../posts-list/posts-list.component"
 
 type Properties = Pick<PageProps<BlogIndexQuery>, "data"> & {
   layout?: JSXElementConstructor<PropsWithChildren<unknown>>
@@ -17,24 +19,16 @@ export const BlogIndexPage: FunctionComponent<Properties> = ({
   data: { allPosts },
   layout: Layout = CoreLayout,
 }) => {
+  const posts = allPosts.edges.map(({ node }) => {
+    assertDefined(node.frontmatter)
+    assertDefined(node.fields)
+    assertDefined(node.excerpt)
+    return node as BlogPostInfo
+  })
   return (
     <Layout>
       <SEO title="All posts" />
-      {allPosts.edges.map(({ node: { excerpt, fields, frontmatter } }) => {
-        assertDefined(frontmatter)
-        assertDefined(fields)
-        assertDefined(excerpt)
-        const title = frontmatter.title || fields.slug
-        return (
-          <div key={fields.slug}>
-            <h2>
-              <Link to={"/blog" + fields.slug}>{title}</Link>
-            </h2>
-            <small>{frontmatter.date}</small>
-            <p dangerouslySetInnerHTML={{ __html: excerpt }} />
-          </div>
-        )
-      })}
+      <PostsList posts={posts} />
     </Layout>
   )
 }
