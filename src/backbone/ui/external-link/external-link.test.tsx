@@ -27,7 +27,7 @@ describe("External Link component", () => {
       expect(relation).toMatch("noopener")
       expect(relation).toMatch("noreferrer")
     })
-    it("should be styllable", () => {
+    it("should be stylable", () => {
       expect(link).toHaveClass("space-agency")
     })
   })

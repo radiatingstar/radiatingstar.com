@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react"
-import { Styllable } from "../../types/styllable.type"
+import { Stylable } from "../../types/stylable.type"
 
 interface Properties {
   nofollow?: boolean
@@ -8,7 +8,7 @@ interface Properties {
   href: string
 }
 
-export const ExternalLink: FunctionComponent<Styllable<Properties>> = ({
+export const ExternalLink: FunctionComponent<Stylable<Properties>> = ({
   href,
   children,
   noopener = true,

@@ -1,6 +1,6 @@
 import React, { ReactElement, VoidFunctionComponent } from "react"
 import styled from "styled-components"
-import { Styllable } from "../../types/styllable.type"
+import { Stylable } from "../../types/stylable.type"
 
 interface Properties<Item> {
   items?: Array<Item>
@@ -8,7 +8,7 @@ interface Properties<Item> {
   fallback?: ReactElement
 }
 
-type StylableProperties<Item> = Styllable<Properties<Item>>
+type StylableProperties<Item> = Stylable<Properties<Item>>
 
 /**
  * Use this type as a generic argument whenever you need to create a stylable list.
