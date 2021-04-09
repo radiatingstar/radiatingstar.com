@@ -1,15 +1,24 @@
 import { Link, PageProps } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React, {
+  FunctionComponent,
+  JSXElementConstructor,
+  PropsWithChildren,
+} from "react"
 import { BlogIndexQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 
-export const BlogIndexPage: FunctionComponent<PageProps<BlogIndexQuery>> = ({
+type Properties = Pick<PageProps<BlogIndexQuery>, "data"> & {
+  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
+}
+
+export const BlogIndexPage: FunctionComponent<Properties> = ({
   data: { allPosts },
+  layout: Layout = CoreLayout,
 }) => {
   return (
-    <CoreLayout>
+    <Layout>
       <SEO title="All posts" />
       {allPosts.edges.map(({ node: { excerpt, fields, frontmatter } }) => {
         assertDefined(frontmatter)
@@ -26,6 +35,6 @@ export const BlogIndexPage: FunctionComponent<PageProps<BlogIndexQuery>> = ({
           </div>
         )
       })}
-    </CoreLayout>
+    </Layout>
   )
 }
