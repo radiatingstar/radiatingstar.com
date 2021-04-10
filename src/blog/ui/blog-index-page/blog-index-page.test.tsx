@@ -3,11 +3,6 @@ import React from "react"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogIndexPage } from "./blog-index-page.component"
 
-jest.mock("../../../seo", () => ({
-  // eslint-disable-next-line react/display-name
-  SEO: ({ title }: { title: string }) => <div data-testid="seo">{title}</div>,
-}))
-
 const dataWithPosts = {
   allPosts: {
     edges: [
@@ -33,7 +28,7 @@ describe("Blog Index Page component", () => {
       allPosts: { edges: [] },
     }
     render(<BlogIndexPage data={data} />)
-    expect(screen.getByText("All posts")).toBeInTheDocument()
+    expect(screen.getByText("[title] All posts")).toBeInTheDocument()
   })
   describe("with posts", () => {
     beforeEach(() =>

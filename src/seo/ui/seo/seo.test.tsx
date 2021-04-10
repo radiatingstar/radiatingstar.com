@@ -3,6 +3,9 @@ import { useStaticQuery } from "gatsby"
 import React from "react"
 import { SEO } from "./seo.component"
 
+// The module is globally mocked, so need to clear it for this tests to work.
+jest.unmock("./seo.component")
+
 const getMeta = (metaName: string) => {
   const metaElements = document.querySelectorAll("meta")
   for (const meta of metaElements) {

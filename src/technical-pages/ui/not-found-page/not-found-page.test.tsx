@@ -1,28 +1,13 @@
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import React from "react"
 import { NotFoundPage } from "./not-found-page.component"
-
-// Avoid SEO's component shenanigans.
-jest.mock("../../../seo", () => ({
-  // eslint-disable-next-line react/display-name
-  SEO: ({ title }: { title: string }) => <div data-testid="seo">{title}</div>,
-}))
-
-const renderNotFoundPate = () => {
-  const result = render(<NotFoundPage />)
-  return {
-    get title() {
-      return result.getByTestId("seo")
-    },
-  }
-}
 
 describe("Not Found page", () => {
   describe("given a user lands on the Not Found Page", () => {
     describe("when he looks at the browser's title bar", () => {
       it("shows him the 404 title", async () => {
-        const { title } = renderNotFoundPate()
-        expect(title).toHaveTextContent(/404/)
+        render(<NotFoundPage />)
+        expect(screen.getByText("[title] 404: Not Found")).toBeInTheDocument()
       })
     })
   })

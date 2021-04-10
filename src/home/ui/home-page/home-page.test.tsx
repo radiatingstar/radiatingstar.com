@@ -3,11 +3,6 @@ import React from "react"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { HomePage } from "./home-page.component"
 
-jest.mock("../../../seo", () => ({
-  // eslint-disable-next-line react/display-name
-  SEO: ({ title }: { title: string }) => <div data-testid="seo">{title}</div>,
-}))
-
 const homePageData = {
   site: {
     siteMetadata: {
@@ -42,8 +37,8 @@ describe("Home Page component", () => {
           },
           recentPosts: { edges: [] },
         }
-        const { getByText } = render(<HomePage data={data} />)
-        expect(getByText("Home Page")).toBeInTheDocument()
+        render(<HomePage data={data} />)
+        expect(screen.getByText("[title] Home Page")).toBeInTheDocument()
       })
     })
     describe("that is invalid", () => {

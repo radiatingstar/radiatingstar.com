@@ -1,16 +1,7 @@
 import React from "react"
-import { getByRole, render, screen } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
+import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogPostPage } from "./blog-post-page.component"
-
-jest.mock("../../../seo", () => ({
-  // eslint-disable-next-line react/display-name
-  SEO: ({ title, description }: { title: string; description: string }) => (
-    <>
-      <div data-testid="seo-title">{title}</div>
-      <div data-testid="seo-description">{description}</div>
-    </>
-  ),
-}))
 
 const postData = {
   post: {
@@ -50,14 +41,16 @@ const pageContext = {
 
 describe("Blog Post Page component", () => {
   describe("with post data", () => {
-    beforeEach(() => render(<BlogPostPage data={postData} pageContext={{}} />))
+    beforeEach(() =>
+      render(
+        <BlogPostPage data={postData} pageContext={{}} layout={TestLayout} />
+      )
+    )
     it("should set the page's title", () => {
-      expect(screen.getByTestId("seo-title")).toHaveTextContent("Post Title")
+      expect(screen.getByText("[title] Post Title")).toBeInTheDocument()
     })
     it("should set the page's description to excerpt", () => {
-      expect(screen.getByTestId("seo-description")).toHaveTextContent(
-        "Post Excerpt"
-      )
+      expect(screen.getByText("[description] Post Excerpt")).toBeInTheDocument()
     })
     it("should set the post title", () => {
       expect(

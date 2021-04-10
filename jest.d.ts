@@ -4,8 +4,8 @@
 declare global {
   namespace jest {
     interface Matchers<R> {
-      arrayToContainObject(input: unknown): R
-      toLinkTo(input: unknown): R
+      arrayToContainObject(array: unknown): R
+      toLinkTo(target: string): R
     }
   }
 }
