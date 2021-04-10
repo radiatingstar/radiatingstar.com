@@ -4,20 +4,13 @@ expect.extend({
       received,
       expect.arrayContaining([expect.objectContaining(object)])
     )
-    return pass
-      ? {
-          message: () =>
-            `expected ${this.utils.printReceived(
-              received
-            )} not to contain object ${this.utils.printExpected(object)}`,
-          pass: true,
-        }
-      : {
-          message: () =>
-            `expected ${this.utils.printReceived(
-              received
-            )} to contain object ${this.utils.printExpected(object)}`,
-          pass: false,
-        }
+    const message = () =>
+      `expected ${this.utils.printReceived(received)} ${
+        pass ? "not " : ""
+      }to contain object ${this.utils.printExpected(object)}`
+    return {
+      message,
+      pass,
+    }
   },
 })
