@@ -13,14 +13,14 @@ export const PostsNavigation: FunctionComponent<SitePageContext> = ({
         <li>
           {previous && previous.fields && previous.frontmatter && (
             <Link to={"/blog" + previous.fields.slug} rel="prev">
-              ← {previous.frontmatter.title}
+              {previous.frontmatter.title}
             </Link>
           )}
         </li>
         <li>
           {next && next.fields && next.frontmatter && (
             <Link to={"/blog" + next.fields.slug} rel="next">
-              {next.frontmatter.title} →
+              {next.frontmatter.title}
             </Link>
           )}
         </li>

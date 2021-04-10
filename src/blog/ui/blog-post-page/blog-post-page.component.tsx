@@ -1,14 +1,27 @@
 import { PageProps } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React, {
+  FunctionComponent,
+  JSXElementConstructor,
+  PropsWithChildren,
+} from "react"
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
 
-export const BlogPostPage: FunctionComponent<
-  PageProps<BlogPostQuery, SitePageContext>
-> = ({ data: { post, site }, pageContext }) => {
+type Properties = Pick<
+  PageProps<BlogPostQuery, SitePageContext>,
+  "data" | "pageContext"
+> & {
+  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
+}
+
+export const BlogPostPage: FunctionComponent<Properties> = ({
+  data: { post, site },
+  pageContext,
+  layout: Layout = CoreLayout,
+}) => {
   assertDefined(site)
   assertDefined(site.siteMetadata)
   assertDefined(post)
@@ -18,14 +31,14 @@ export const BlogPostPage: FunctionComponent<
   assertDefined(post.html)
   const author = site.siteMetadata.author
   return (
-    <CoreLayout>
+    <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <h1>{post.frontmatter.title}</h1>
       <p>
-        {post.frontmatter.date}, by {author}
+        <span>{post.frontmatter.date}</span>, by <span>{author}</span>
       </p>
       <div dangerouslySetInnerHTML={{ __html: post.html }} />
       <PostsNavigation {...pageContext} />
-    </CoreLayout>
+    </Layout>
   )
 }
