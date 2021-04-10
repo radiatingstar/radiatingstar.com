@@ -11,6 +11,6 @@ describe("Recent Post Item component", () => {
     expect(result.getByText("post title")).toBeInTheDocument()
   })
   it("should render the post's slug", () => {
-    expect(result.getByRole("link")).toHaveAttribute("href", "/slug")
+    expect(result.getByRole("link")).toLinkTo("/slug")
   })
 })

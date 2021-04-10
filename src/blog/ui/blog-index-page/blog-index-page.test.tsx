@@ -40,8 +40,7 @@ describe("Blog Index Page component", () => {
       render(<BlogIndexPage data={dataWithPosts} layout={TestLayout} />)
     )
     it("should display all links", () => {
-      expect(screen.getByRole("link", { name: "Curiosity" })).toHaveAttribute(
-        "href",
+      expect(screen.getByRole("link", { name: "Curiosity" })).toLinkTo(
         "/blog/curiosity"
       )
     })

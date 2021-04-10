@@ -12,9 +12,6 @@ describe("Recent Project Item component", () => {
     expect(screen.getByText("Project #9")).toBeInTheDocument()
   })
   it("should render the proper link", () => {
-    expect(screen.getByRole("link")).toHaveAttribute(
-      "href",
-      "https://radiatingstar.com"
-    )
+    expect(screen.getByRole("link")).toLinkTo("https://radiatingstar.com")
   })
 })

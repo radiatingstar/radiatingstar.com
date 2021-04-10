@@ -11,7 +11,7 @@ describe("Badge component", () => {
   describe("when href is passed", () => {
     it("should render the link with proper href value", () => {
       const { getByRole } = renderBadge()
-      expect(getByRole("link")).toHaveAttribute("href", href)
+      expect(getByRole("link")).toLinkTo(href)
     })
   })
   describe("when source is passed", () => {

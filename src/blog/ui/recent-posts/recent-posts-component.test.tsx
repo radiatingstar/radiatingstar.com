@@ -24,8 +24,8 @@ describe("Recent Posts component", () => {
     })
     it("should link all of them to blog", () => {
       const [first, second] = result.getAllByRole("link")
-      expect(first).toHaveAttribute("href", "/blog/slug-1")
-      expect(second).toHaveAttribute("href", "/blog/slug-2")
+      expect(first).toLinkTo("/blog/slug-1")
+      expect(second).toLinkTo("/blog/slug-2")
     })
   })
 })

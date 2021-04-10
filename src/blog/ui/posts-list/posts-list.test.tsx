@@ -41,7 +41,7 @@ describe("Posts List component", () => {
       it("should display the post link", () => {
         expect(
           screen.getByRole("link", { name: post.frontmatter.title })
-        ).toHaveAttribute("href", "/blog" + post.fields.slug)
+        ).toLinkTo("/blog" + post.fields.slug)
       })
     })
   })

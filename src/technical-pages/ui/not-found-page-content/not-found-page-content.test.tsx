@@ -32,7 +32,7 @@ describe("Content of the Not Found page", () => {
     describe("when he wants to go back to safety", () => {
       it("allows him to navigate to the home page", () => {
         const { link } = renderNotFountContent()
-        expect(link).toHaveAttribute("href", "/")
+        expect(link).toLinkTo("/")
       })
     })
   })

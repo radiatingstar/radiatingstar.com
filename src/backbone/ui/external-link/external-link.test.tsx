@@ -17,7 +17,7 @@ describe("External Link component", () => {
       expect(link).toBeInTheDocument()
     })
     it("should have a href", () => {
-      expect(link).toHaveAttribute("href", "https://nasa.gov")
+      expect(link).toLinkTo("https://nasa.gov")
     })
     it("should display the content", () => {
       expect(link).toHaveTextContent("NASA")

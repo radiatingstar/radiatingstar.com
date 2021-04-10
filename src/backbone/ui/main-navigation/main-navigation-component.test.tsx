@@ -29,8 +29,8 @@ describe("Main Navigation component", () => {
       const { getByText } = render(
         <MainNavigation navigation={navigationWithContent} />
       )
-      expect(getByText("nav")).toHaveAttribute("href", "/nav")
-      expect(getByText("nav-2")).toHaveAttribute("href", "/nav-2")
+      expect(getByText("nav")).toLinkTo("/nav")
+      expect(getByText("nav-2")).toLinkTo("/nav-2")
     })
   })
   describe("when provided with empty navigation", function () {

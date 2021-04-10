@@ -69,7 +69,7 @@ describe("Home Page component", () => {
     it("should display them", () => {
       render(<HomePage data={homePageData} layout={TestLayout} />)
       const link = screen.getByRole("link", { name: /Post/ })
-      expect(link).toHaveAttribute("href", "/blog/post")
+      expect(link).toLinkTo("/blog/post")
       expect(link).toHaveTextContent("Post title")
     })
   })
@@ -91,13 +91,11 @@ describe("Home Page component", () => {
       )
       const link1 = screen.getByRole("link", { name: /Project #1/ })
       const link2 = screen.getByRole("link", { name: /Project #2/ })
-      expect(link1).toHaveAttribute(
-        "href",
+      expect(link1).toLinkTo(
         "https://github.com/radiatingstar/radiatingstar.com"
       )
       expect(link1).toHaveTextContent("Project #1")
-      expect(link2).toHaveAttribute(
-        "href",
+      expect(link2).toLinkTo(
         "https://github.com/radiatingstar/radiatingstar-2.com"
       )
       expect(link2).toHaveTextContent("Project #2")
