@@ -6,6 +6,8 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
     "plugin:testing-library/recommended",
+    "plugin:testing-library/react",
+    "plugin:jest-dom/recommended",
     "plugin:@typescript-eslint/recommended",
     // This one needs to be last.
     "prettier",
@@ -31,5 +33,10 @@ module.exports = {
   rules: {
     // TS makes this rule unnecessary.
     "react/prop-types": "off",
+    "testing-library/await-async-query": "error",
+    "testing-library/no-debug": "error",
+    "testing-library/prefer-screen-queries": "error",
+    "testing-library/prefer-wait-for": "error",
+    "testing-library/await-fire-event": "error",
   },
 }
