@@ -22,10 +22,10 @@ export const Image = styled.div`
 `
 
 export const Glyph = styled.span.attrs({ role: "img" })`
+  opacity: 0.8;
   color: white;
   font-size: calc(var(--logo-size) - 1.5rem);
   text-shadow: 0 0 10px rgb(255 255 255), 0 0 10px rgb(255 255 255);
-  opacity: 0.8;
 `
 
 export const Logo: VoidFunctionComponent = () => {
