@@ -8,47 +8,58 @@ const basicMetaProperties = {
 
 describe("Meta properties generator", () => {
   describe("when passing basic properties", () => {
-    it("generates the description meta info", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        name: "description",
-        content: basicMetaProperties.description,
-      })
-    })
-    it("generates the og:title meta property", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        property: "og:title",
-        content: basicMetaProperties.title,
-      })
-    })
-    it("generates the og:type meta property", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        property: "og:type",
-        content: "website",
-      })
-    })
-    it("generates the og:description meta property", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        property: "og:description",
-        content: basicMetaProperties.description,
-      })
-    })
-    it("generates the twitter:card meta info", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        name: "twitter:card",
-        content: "summary",
-      })
-    })
-    it("generates the twitter:creator meta info", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        name: "twitter:creator",
-        content: basicMetaProperties.author,
-      })
-    })
-    it("generates the twitter:description meta property", () => {
-      expect(generateMeta(basicMetaProperties)).arrayToContainObject({
-        name: "twitter:description",
-        content: basicMetaProperties.description,
-      })
+    it.each([
+      [
+        "generates the description meta info",
+        {
+          name: "description",
+          content: basicMetaProperties.description,
+        },
+      ],
+      [
+        "generates the og:title meta property",
+        {
+          property: "og:title",
+          content: basicMetaProperties.title,
+        },
+      ],
+      [
+        "generates the og:type meta property",
+        {
+          property: "og:type",
+          content: "website",
+        },
+      ],
+      [
+        "generates the og:description meta property",
+        {
+          property: "og:description",
+          content: basicMetaProperties.description,
+        },
+      ],
+      [
+        "generates the twitter:card meta info",
+        {
+          name: "twitter:card",
+          content: "summary",
+        },
+      ],
+      [
+        "generates the twitter:creator meta info",
+        {
+          name: "twitter:creator",
+          content: basicMetaProperties.author,
+        },
+      ],
+      [
+        "generates the twitter:description meta property",
+        {
+          name: "twitter:description",
+          content: basicMetaProperties.description,
+        },
+      ],
+    ])("%s", (_, content) => {
+      expect(generateMeta(basicMetaProperties)).arrayToContainObject(content)
     })
     it("doesn't generate any keywords", () => {
       expect(generateMeta(basicMetaProperties)).not.arrayToContainObject({
