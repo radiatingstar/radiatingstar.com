@@ -1,30 +1,27 @@
 import { Link } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React, { VoidFunctionComponent } from "react"
 import { SitePageContext } from "../../../../graphql-types"
 
-export const PostsNavigation: FunctionComponent<SitePageContext> = ({
+export const PostsNavigation: VoidFunctionComponent<SitePageContext> = ({
   next,
   previous,
 }) => {
   return (
-    <>
-      <hr />
-      <ul>
-        <li>
-          {previous && previous.fields && previous.frontmatter && (
-            <Link to={"/blog" + previous.fields.slug} rel="prev">
-              {previous.frontmatter.title}
+    <nav>
+      {([
+        [next, "next"],
+        [previous, "prev"],
+      ] as const)
+        .filter(([relation]) =>
+          Boolean(relation?.fields && relation?.frontmatter)
+        )
+        .map(([relation, kind]) => {
+          return (
+            <Link to={"/blog" + relation?.fields?.slug} rel={kind} key={kind}>
+              {relation?.frontmatter?.title}
             </Link>
-          )}
-        </li>
-        <li>
-          {next && next.fields && next.frontmatter && (
-            <Link to={"/blog" + next.fields.slug} rel="next">
-              {next.frontmatter.title}
-            </Link>
-          )}
-        </li>
-      </ul>
-    </>
+          )
+        })}
+    </nav>
   )
 }
