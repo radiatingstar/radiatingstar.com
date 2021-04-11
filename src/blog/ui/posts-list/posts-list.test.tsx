@@ -28,20 +28,27 @@ const posts = [
 describe("Posts List component", () => {
   describe("when passed post", () => {
     describe.each([
-      ["#1", posts[0]],
-      ["#2", posts[1]],
-    ])("%s", (_, post) => {
+      ["#1", 0 as const],
+      ["#2", 1 as const],
+    ])("%s", (_, index: number) => {
       beforeEach(() => render(<PostsList posts={posts} />))
       it("should display the excerpt", () => {
-        expect(screen.getByText(post.excerpt)).toBeInTheDocument()
+        expect(screen.getByText(posts[index].excerpt)).toBeInTheDocument()
       })
       it("should display date", () => {
-        expect(screen.getByText(post.frontmatter.date)).toBeInTheDocument()
+        expect(
+          screen.getByText(posts[index].frontmatter.date)
+        ).toBeInTheDocument()
       })
       it("should display the post link", () => {
         expect(
-          screen.getByRole("link", { name: post.frontmatter.title })
-        ).toLinkTo("/blog" + post.fields.slug)
+          screen.getByRole("link", { name: posts[index].frontmatter.title })
+        ).toLinkTo("/blog" + posts[index].fields.slug)
+      })
+      it("should display the post link as a read more button", () => {
+        expect(
+          screen.getAllByRole("link", { name: /read more/i })[index]
+        ).toLinkTo("/blog" + posts[index].fields.slug)
       })
     })
   })
