@@ -67,7 +67,7 @@ const Header = styled.header`
 const Title = styled.h1`
   margin: 0;
   padding: 0 2rem;
-  font-size: 3rem;
+  font-size: 2rem;
 
   @media (min-width: 32rem) {
     font-size: 4rem;
@@ -78,13 +78,18 @@ const Info = styled.aside``
 
 const Content = styled.section`
   padding: 2rem;
+
   background: white;
 
   font-size: 1.2rem;
-  line-height: 1.7;
+  line-height: 1.8;
 
   @media (min-width: 32rem) {
     padding: 4rem;
+  }
+
+  p {
+    margin: 2rem 0;
   }
 
   p:first-child {
