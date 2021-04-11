@@ -35,16 +35,12 @@ describe("Navigation value object", () => {
         expect(toNullable(Navigation.create(item1))).toBeInstanceOf(Navigation)
       })
     })
-    describe("with some values missing", () => {
-      it("should still work", () => {
-        expect(toNullable(Navigation.create(item1, none))).toBeInstanceOf(
-          Navigation
-        )
-      })
-    })
-    describe("with proper multiple values", () => {
+    describe.each([
+      ["with some values missing", none],
+      ["with proper multiple values", item2],
+    ])("%s", (_, secondItem) => {
       it("should create the object", () => {
-        expect(toNullable(Navigation.create(item1, item2))).toBeInstanceOf(
+        expect(toNullable(Navigation.create(item1, secondItem))).toBeInstanceOf(
           Navigation
         )
       })
