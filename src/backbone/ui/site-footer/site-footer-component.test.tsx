@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import React from "react"
 import { SiteFooter } from "./site-footer.component"
 
@@ -10,8 +10,8 @@ describe("Site Footer component", () => {
     ["quaternary", () => <SiteFooter quaternarySlot={<div>quaternary</div>} />],
   ])("when provided with %s content", (label, Content) => {
     it("should render it", () => {
-      const { getByText } = render(<Content />)
-      expect(getByText(label)).toBeInTheDocument()
+      render(<Content />)
+      expect(screen.getByText(label)).toBeInTheDocument()
     })
   })
 })

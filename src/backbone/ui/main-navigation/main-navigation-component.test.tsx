@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { AppPath } from "../../values/app-path/app-path.value"
 import { NavigationItemName } from "../../values/navigation-item-name/navigation-item-name.value"
 import { NavigationItem } from "../../values/navigation-item/navigation-item.value"
@@ -18,19 +18,16 @@ describe("Main Navigation component", () => {
         path: AppPath.from("/nav-2"),
       })
     )
+    beforeEach(() =>
+      render(<MainNavigation navigation={navigationWithContent} />)
+    )
     it("should display all content", () => {
-      const { getByText } = render(
-        <MainNavigation navigation={navigationWithContent} />
-      )
-      expect(getByText("nav")).toBeInTheDocument()
-      expect(getByText("nav-2")).toBeInTheDocument()
+      expect(screen.getByText("nav")).toBeInTheDocument()
+      expect(screen.getByText("nav-2")).toBeInTheDocument()
     })
     it("should display all links", () => {
-      const { getByText } = render(
-        <MainNavigation navigation={navigationWithContent} />
-      )
-      expect(getByText("nav")).toLinkTo("/nav")
-      expect(getByText("nav-2")).toLinkTo("/nav-2")
+      expect(screen.getByText("nav")).toLinkTo("/nav")
+      expect(screen.getByText("nav-2")).toLinkTo("/nav-2")
     })
   })
   describe("when provided with empty navigation", function () {

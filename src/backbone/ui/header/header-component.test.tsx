@@ -1,5 +1,5 @@
 import React from "react"
-import { render } from "@testing-library/react"
+import { render, screen } from "@testing-library/react"
 import { Header } from "./header.component"
 
 describe("Header component", () => {
@@ -8,8 +8,8 @@ describe("Header component", () => {
     (itemName) => {
       it("should render it", () => {
         const properties = { [itemName + "Slot"]: <div>{itemName}</div> }
-        const { getByText } = render(<Header {...properties} />)
-        expect(getByText(itemName)).toBeInTheDocument()
+        render(<Header {...properties} />)
+        expect(screen.getByText(itemName)).toBeInTheDocument()
       })
     }
   )

@@ -1,7 +1,7 @@
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 
-export const Image = styled.div`
+export const Image = styled.div.attrs({ role: "img" })`
   --logo-size: 4rem;
   width: var(--logo-size);
   height: var(--logo-size);
@@ -21,7 +21,7 @@ export const Image = styled.div`
   );
 `
 
-export const Glyph = styled.span.attrs({ role: "img" })`
+export const Glyph = styled.span`
   opacity: 0.8;
   color: white;
   font-size: calc(var(--logo-size) - 1.5rem);
