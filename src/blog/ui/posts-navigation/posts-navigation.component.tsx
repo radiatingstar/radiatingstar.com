@@ -32,42 +32,45 @@ export const PostsNavigation: VoidFunctionComponent<SitePageContext> = ({
 }
 
 const Navigation = styled.nav`
-  margin-bottom: 4rem;
-  padding: 2rem;
   display: flex;
   flex-direction: column;
+  padding: 2rem;
+  margin-bottom: 4rem;
   gap: 1rem;
 
   @media (min-width: 32rem) {
-    margin-bottom: 8rem;
-    padding: 2rem 4rem;
     flex-direction: row;
     justify-content: space-between;
+    padding: 2rem 4rem;
+    margin-bottom: 8rem;
   }
 `
 
 const PostLink = styled(Link)`
   position: relative;
   padding: 1rem;
+
   background: var(--yellow-500);
   border-radius: 4px;
+
   color: var(--black-300);
   font-size: 1.2rem;
   text-decoration: none;
 
   &::before {
-    content: "";
     position: absolute;
     top: 50%;
-    left: ${({ rel }) => (rel === "next" ? "-12px" : "auto")};
     right: ${({ rel }) => (rel === "prev" ? "-12px" : "auto")};
-    margin-top: -12px;
+    left: ${({ rel }) => (rel === "next" ? "-12px" : "auto")};
 
     display: block;
     width: 24px;
     height: 24px;
+    margin-top: -12px;
 
-    border-radius: 100%;
     background: var(--yellow-500);
+    border-radius: 100%;
+
+    content: "";
   }
 `

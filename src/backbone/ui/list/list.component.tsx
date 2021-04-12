@@ -61,7 +61,7 @@ export const List: <Item>(
 }
 
 const ListContainer = styled.ul`
-  margin-bottom: 0;
   padding-left: 0;
-  list-style: none; // TODO: Safari BS
+  margin-bottom: 0;
+  list-style: none; /* TODO: Safari BS. */
 `

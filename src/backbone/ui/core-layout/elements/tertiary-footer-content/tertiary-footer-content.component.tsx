@@ -2,16 +2,16 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const TertiaryFooterContainer = styled.aside`
-  margin-top: 3rem;
-  padding: 0.5rem;
-
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0.5rem;
+  padding: 0.5rem;
+  margin-top: 3rem;
 
   background: black;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+
+  gap: 0.5rem;
+  grid-template-columns: repeat(2, 1fr);
 
   @media (min-width: 32rem) {
     display: flex;

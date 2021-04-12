@@ -5,13 +5,11 @@ const BlockQuote = styled.blockquote`
   color: rgba(255, 255, 255, 0.9);
 
   @media (min-width: 32rem) {
-    margin: 0 0 0 auto;
-    max-width: 80%;
-
-    text-align: right;
-
-    // Doesn't fit on some screens due to the badges count, so just hide it there.
+    /* Doesn't fit on some screens due to the badges count, so just hide it there. */
     display: none;
+    max-width: 80%;
+    margin: 0 0 0 auto;
+    text-align: right;
   }
 
   @media (min-width: 64rem) {

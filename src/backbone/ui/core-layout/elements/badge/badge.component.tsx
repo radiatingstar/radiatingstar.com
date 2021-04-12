@@ -9,7 +9,7 @@ interface Properties {
 }
 
 const BadgeLink = styled(ExternalLink)`
-  // This centres the links vertically.
+  /* This centres the links vertically. */
   line-height: 0;
 `
 

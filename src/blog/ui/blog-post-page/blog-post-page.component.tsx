@@ -49,14 +49,14 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
 }
 
 const Header = styled.header`
-  padding: 1rem 1rem 2rem;
-
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  padding: 1rem 1rem 2rem;
 
-  text-align: center;
   color: var(--yellow-500);
+
+  gap: 2rem;
+  text-align: center;
 
   @media (min-width: 32rem) {
     padding: 4rem;
@@ -65,8 +65,8 @@ const Header = styled.header`
 `
 
 const Title = styled.h1`
-  margin: 0;
   padding: 0 2rem;
+  margin: 0;
   font-size: 2rem;
 
   @media (min-width: 32rem) {
@@ -90,9 +90,6 @@ const Content = styled.section`
 
   p {
     margin: 2rem 0;
-  }
-
-  p {
     &:first-child {
       margin-top: 0;
     }
@@ -102,7 +99,7 @@ const Content = styled.section`
   }
 
   a {
-    text-decoration: none;
     color: var(--yellow-400);
+    text-decoration: none;
   }
 `

@@ -3,12 +3,12 @@ import styled from "styled-components"
 
 const PrimaryFooterContainer = styled.div`
   display: flex;
+  justify-content: center;
   gap: 0.5rem;
   text-align: center;
-  justify-content: center;
   @media (min-width: 32rem) {
-    text-align: left;
     flex-direction: column;
+    text-align: left;
   }
 `
 

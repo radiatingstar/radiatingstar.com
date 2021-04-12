@@ -30,17 +30,17 @@ export const PostsList: VoidFunctionComponent<Properties> = ({ posts }) => {
 }
 
 const Item = styled.article`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
   padding-bottom: 2rem;
   border-bottom: 2px solid var(--yellow-500);
-  height: 100%;
-  display: flex;
-  flex-direction: column;
 `
 
 const ListContainer = styled(List)`
-  margin-bottom: 4rem;
-  padding: 0 2rem;
   display: grid;
+  padding: 0 2rem;
+  margin-bottom: 4rem;
   gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   justify-items: stretch;
@@ -53,24 +53,26 @@ const PostHeading = styled.h1`
 `
 
 const PostLink = styled(Link)`
-  text-decoration: none;
   color: var(--yellow-500);
+  text-decoration: none;
 `
 
 const Excerpt = styled.p`
   margin-bottom: 2rem;
-  line-height: 1.5;
   font-size: 1.5rem;
+  line-height: 1.5;
 `
 
 const SecondaryPostLink = styled(Link)`
-  margin-top: auto;
-  padding: 1rem;
   display: block;
+  padding: 1rem;
+  margin-top: auto;
+
   background: var(--yellow-500);
   border-radius: 4px;
+
   color: var(--black-300);
   font-size: 1.2rem;
-  text-decoration: none;
   text-align: center;
+  text-decoration: none;
 `

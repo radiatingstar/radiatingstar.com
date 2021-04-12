@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const Section = styled.section`
-  border-bottom: 2px solid var(--red-200);
   padding: 2rem calc(60px + 2rem) 2rem 2rem;
+  border-bottom: 2px solid var(--red-200);
 
   background-color: var(--yellow-500);
   background-image: linear-gradient(

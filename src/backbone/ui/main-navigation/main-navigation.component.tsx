@@ -11,40 +11,6 @@ interface Properties {
   navigation: Option<Navigation>
 }
 
-const NavigationList = styled.ul`
-  // Reset.
-  list-style: none;
-  padding-left: 0;
-
-  margin: 0;
-
-  display: flex;
-  gap: 0.5rem;
-
-  font-size: 1.3rem;
-
-  @media (min-width: 25rem) {
-    gap: 2rem;
-  }
-`
-
-const NavigationLink = styled(Link)`
-  // Reset.
-  text-decoration: none;
-
-  color: var(--black-300);
-
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--yellow-700);
-  }
-
-  &:focus {
-    outline: none;
-  }
-`
-
 export const MainNavigation: VoidFunctionComponent<Properties> = ({
   navigation,
 }) => {
@@ -77,3 +43,31 @@ export const MainNavigation: VoidFunctionComponent<Properties> = ({
     )
   )
 }
+
+const NavigationList = styled.ul`
+  display: flex;
+  padding-left: 0;
+  margin: 0;
+  font-size: 1.3rem;
+  gap: 0.5rem;
+  list-style: none;
+
+  @media (min-width: 25rem) {
+    gap: 2rem;
+  }
+`
+
+const NavigationLink = styled(Link)`
+  color: var(--black-300);
+  text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--yellow-700);
+  }
+
+  &:focus {
+    outline: none;
+  }
+`

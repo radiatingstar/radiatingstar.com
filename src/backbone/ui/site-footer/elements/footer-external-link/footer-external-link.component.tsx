@@ -11,11 +11,11 @@ export const FooterExternalLink = styled(ExternalLink)`
     color: #ffa500;
   }
 
-  // TODO: Likely move it to some global style.
+  /* TODO: Likely move it to some global style. */
   &:focus,
   &:active {
-    outline: none;
     border-radius: 3px;
     box-shadow: 0 0 0 3px #ffa500;
+    outline: none;
   }
 `

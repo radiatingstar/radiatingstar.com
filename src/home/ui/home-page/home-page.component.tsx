@@ -29,26 +29,6 @@ const projectsList: Array<ProjectPreview> = [
   },
 ]
 
-const RecentSectionHeading = styled.h1`
-  margin-top: 0;
-`
-
-const ContentSection = styled.section`
-  margin: 1rem;
-  padding: 1rem;
-`
-
-const Recents = styled.div`
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 2rem;
-
-  @media (min-width: 32rem) {
-    grid-template-columns: repeat(2, 1fr);
-    flex-direction: row;
-  }
-`
-
 type Properties = Pick<PageProps<HomePageQuery>, "data"> & {
   layout?: JSXElementConstructor<PropsWithChildren<unknown>>
 } & {
@@ -88,3 +68,23 @@ export const HomePage: FunctionComponent<Properties> = ({
     </Layout>
   )
 }
+
+const RecentSectionHeading = styled.h1`
+  margin-top: 0;
+`
+
+const ContentSection = styled.section`
+  padding: 1rem;
+  margin: 1rem;
+`
+
+const Recents = styled.div`
+  display: grid;
+  gap: 2rem;
+  grid-template-rows: repeat(2, 1fr);
+
+  @media (min-width: 32rem) {
+    flex-direction: row;
+    grid-template-columns: repeat(2, 1fr);
+  }
+`
