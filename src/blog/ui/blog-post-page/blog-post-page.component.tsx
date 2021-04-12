@@ -92,8 +92,13 @@ const Content = styled.section`
     margin: 2rem 0;
   }
 
-  p:first-child {
-    margin-top: 0;
+  p {
+    &:first-child {
+      margin-top: 0;
+    }
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
 
   a {
