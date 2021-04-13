@@ -1,5 +1,6 @@
 import { render, screen } from "@testing-library/react"
 import React from "react"
+import { mocked } from "ts-jest/utils"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogIndexPage } from "./blog-index-page.component"
 
@@ -40,7 +41,6 @@ describe("Blog Index Page component", () => {
       )
     })
   })
-
   describe("with missing post value of", () => {
     const excerpt = ""
     const fields = { slug: "" }
@@ -50,13 +50,8 @@ describe("Blog Index Page component", () => {
       ["excerpt" as const, { fields, frontmatter }],
       ["fields" as const, { excerpt, frontmatter }],
     ])("%s", (missingKey, node) => {
-      // Just avoiding unnecessary log in the console of the uncaught exception.
-      let error: typeof console.error
-      beforeAll(() => {
-        error = console.error
-        console.error = jest.fn()
-      })
-      afterAll(() => (console.error = error))
+      beforeAll(() => jest.spyOn(console, "error").mockImplementation(() => {}))
+      afterAll(() => mocked(console.error).mockRestore())
       it("should throw", () => {
         const data = {
           allPosts: {
