@@ -6,17 +6,20 @@ import React, {
 import styled from "styled-components"
 import { CoreLayout, ExternalLink, List } from "../../../backbone"
 import { SEO } from "../../../seo"
+import { StaticImage } from "gatsby-plugin-image"
 
 const projects = [
   {
     name: "Lots of Love for Less",
     projectLink: "http://mateuszkocz.github.io/3l/",
     repoLink: "https://github.com/mateuszkocz/3l",
+    image: <StaticImage src="../../assets/lots-of-love-for-less.png" alt="" />,
   },
   {
     name: "Mail Generator",
     projectLink: "https://mateuszkocz.github.io/mail-generator/",
     repoLink: "https://github.com/mateuszkocz/mail-generator",
+    image: <StaticImage src="../../assets/mail-generator.png" alt="" />,
   },
 ]
 
@@ -35,6 +38,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
         renderItem={(project) => {
           return (
             <Project>
+              {project.image}
               <ProjectTitle as="h2">{project.name}</ProjectTitle>
               <ProjectExternalLink href={project.projectLink}>
                 Visit the project
