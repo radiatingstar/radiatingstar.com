@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
-const TertiaryFooterContainer = styled.aside`
+const TertiaryFooterContainer = styled.div`
   display: grid;
   padding: 0.5rem;
   margin-top: 3rem;

@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { mocked } from "ts-jest/utils"
 import { TestLayout } from "../../../testing/components/test-layout.component"
@@ -26,23 +27,32 @@ const homePageData = {
   },
 }
 
+const data = {
+  site: {
+    siteMetadata: {
+      title: "Home Page",
+    },
+  },
+  recentPosts: { edges: [] },
+}
+
 describe("Home Page component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(<HomePage data={data} />)
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("when passed site metadata", () => {
     describe("that is valid", () => {
       it("should set the page title", async () => {
-        const data = {
-          site: {
-            siteMetadata: {
-              title: "Home Page",
-            },
-          },
-          recentPosts: { edges: [] },
-        }
         render(<HomePage data={data} />)
         expect(screen.getByText("[title] Home Page")).toBeInTheDocument()
       })
     })
     describe("that is invalid", () => {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       beforeAll(() => jest.spyOn(console, "error").mockImplementation(() => {}))
       afterAll(() => mocked(console.error).mockRestore())
       it("should throw an error", async () => {

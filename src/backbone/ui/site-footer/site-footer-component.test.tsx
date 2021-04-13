@@ -1,8 +1,16 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { SiteFooter } from "./site-footer.component"
 
 describe("Site Footer component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(<SiteFooter />)
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe.each([
     ["primary", () => <SiteFooter primarySlot={<div>primary</div>} />],
     ["secondary", () => <SiteFooter secondarySlot={<div>secondary</div>} />],

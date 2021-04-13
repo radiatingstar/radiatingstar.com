@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { mocked } from "ts-jest/utils"
 import { TestLayout } from "../../../testing/components/test-layout.component"
@@ -23,13 +24,23 @@ const dataWithPosts = {
   },
 }
 
+const emptyData = {
+  allPosts: { edges: [] },
+}
+
 describe("Blog Index Page component", () => {
-  it("should set the page title", () => {
-    const data = {
-      allPosts: { edges: [] },
-    }
-    render(<BlogIndexPage data={data} />)
-    expect(screen.getByText("[title] All posts")).toBeInTheDocument()
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(<BlogIndexPage data={emptyData} />)
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
+  describe("seo", () => {
+    it("should set the page title", () => {
+      render(<BlogIndexPage data={emptyData} />)
+      expect(screen.getByText("[title] All posts")).toBeInTheDocument()
+    })
   })
   describe("with posts", () => {
     beforeEach(() =>
@@ -50,6 +61,7 @@ describe("Blog Index Page component", () => {
       ["excerpt" as const, { fields, frontmatter }],
       ["fields" as const, { excerpt, frontmatter }],
     ])("%s", (missingKey, node) => {
+      // eslint-disable-next-line @typescript-eslint/no-empty-function
       beforeAll(() => jest.spyOn(console, "error").mockImplementation(() => {}))
       afterAll(() => mocked(console.error).mockRestore())
       it("should throw", () => {

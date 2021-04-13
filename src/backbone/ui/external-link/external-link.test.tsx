@@ -1,8 +1,20 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { ExternalLink } from "./external-link.component"
 
 describe("External Link component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(
+        <ExternalLink href={"https://nasa.gov"} className="space-agency">
+          NASA
+        </ExternalLink>
+      )
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("when rendered", () => {
     beforeEach(() => {
       render(

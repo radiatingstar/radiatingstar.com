@@ -1,9 +1,22 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { BlogPostPreview } from "../../types/blog-post-preview"
 import { RecentPosts } from "./recent-posts.component"
 
+const posts: BlogPostPreview[] = [
+  { fields: { slug: "/slug-1" }, frontmatter: { title: "title 1" } },
+  { fields: { slug: "/slug-2" }, frontmatter: { title: "title 2" } },
+]
+
 describe("Recent Posts component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(<RecentPosts posts={posts} />)
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("when provided with no posts", () => {
     it("should render info about there being no content", () => {
       render(<RecentPosts posts={[]} />)
@@ -11,10 +24,6 @@ describe("Recent Posts component", () => {
     })
   })
   describe("when provided with posts", () => {
-    const posts: BlogPostPreview[] = [
-      { fields: { slug: "/slug-1" }, frontmatter: { title: "title 1" } },
-      { fields: { slug: "/slug-2" }, frontmatter: { title: "title 2" } },
-    ]
     beforeEach(() => {
       render(<RecentPosts posts={posts} />)
     })

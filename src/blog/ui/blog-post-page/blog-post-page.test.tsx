@@ -1,3 +1,4 @@
+import { axe } from "jest-axe"
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import { TestLayout } from "../../../testing/components/test-layout.component"
@@ -40,6 +41,15 @@ const pageContext = {
 }
 
 describe("Blog Post Page component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(
+        <BlogPostPage data={postData} pageContext={{}} layout={TestLayout} />
+      )
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("with post data", () => {
     beforeEach(() =>
       render(

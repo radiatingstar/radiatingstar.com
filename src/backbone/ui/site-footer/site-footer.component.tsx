@@ -17,7 +17,9 @@ export const SiteFooter: VoidFunctionComponent<Properties> = ({
 }) => {
   return (
     <FooterContainer>
-      <Swag role={"img"}>★</Swag>
+      <Swag role="img" aria-hidden>
+        ★
+      </Swag>
       <PrimarySlot>{primarySlot}</PrimarySlot>
       <SecondarySlot>{secondarySlot}</SecondarySlot>
       <TertiarySlot>{tertiarySlot}</TertiarySlot>

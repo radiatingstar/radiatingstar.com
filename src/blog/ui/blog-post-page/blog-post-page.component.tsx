@@ -74,7 +74,7 @@ const Title = styled.h1`
   }
 `
 
-const Info = styled.aside``
+const Info = styled.div``
 
 const Content = styled.section`
   padding: 2rem;

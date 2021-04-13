@@ -1,8 +1,16 @@
 import { render, screen, within } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { CoreLayout } from "./core-layout.component"
 
 describe("Core Layout component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(<CoreLayout />)
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("when passed content", () => {
     it("should render it", () => {
       render(
@@ -23,7 +31,7 @@ describe("Core Layout component", () => {
     it("should display a link to the home page", () => {
       render(<CoreLayout />)
       const banner = screen.getByRole("banner")
-      const logo = within(banner).getByRole("img")
+      const logo = within(banner).getByRole("img", { hidden: true })
       const homeLink = logo.parentNode
       expect(homeLink).toLinkTo("/")
     })

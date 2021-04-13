@@ -1,7 +1,7 @@
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 
-export const Image = styled.div.attrs({ role: "img" })`
+export const Image = styled.div.attrs({ role: "img", "aria-hidden": true })`
   --logo-size: 4rem;
 
   display: flex;

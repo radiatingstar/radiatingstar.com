@@ -1,8 +1,18 @@
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
 import React from "react"
 import { List } from "./list.component"
 
 describe("List component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(
+        <List items={[{ name: "Aldebaran" }]} renderItem={() => <span />} />
+      )
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe.each([
     ["no items", []],
     ["nothing", undefined],

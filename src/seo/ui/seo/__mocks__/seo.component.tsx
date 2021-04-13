@@ -6,9 +6,9 @@ export const SEO: VoidFunctionComponent<ComponentProps<typeof OriginalSEO>> = ({
   description,
 }) => {
   return (
-    <aside>
+    <div>
       <div>[title] {title}</div>
       <div>[description] {description}</div>
-    </aside>
+    </div>
   )
 }

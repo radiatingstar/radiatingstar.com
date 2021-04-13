@@ -1,5 +1,6 @@
-import React from "react"
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
+import React from "react"
 import { PostsNavigation } from "./posts-navigation.component"
 
 const next = "next" as const
@@ -15,6 +16,18 @@ const createRelation = (kind: typeof next | typeof previous) => ({
 })
 
 describe("Post Navigation component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(
+        <PostsNavigation
+          previous={createRelation("prev")}
+          next={createRelation("next")}
+        />
+      )
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe.each([
     [next, next],
     [previous, "previous" as const],

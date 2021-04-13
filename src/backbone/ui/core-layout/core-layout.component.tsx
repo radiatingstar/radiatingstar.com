@@ -28,7 +28,7 @@ export const CoreLayout: FunctionComponent<Properties> = ({
       <GlobalStyle />
       <Header
         logoSlot={
-          <HomeLink to="/">
+          <HomeLink to="/" aria-label="Go back to the home page">
             <Logo />
           </HomeLink>
         }

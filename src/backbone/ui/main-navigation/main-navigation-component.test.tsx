@@ -1,23 +1,34 @@
-import React from "react"
 import { render, screen } from "@testing-library/react"
+import { axe } from "jest-axe"
+import React from "react"
 import { AppPath } from "../../values/app-path/app-path.value"
 import { NavigationItemName } from "../../values/navigation-item-name/navigation-item-name.value"
 import { NavigationItem } from "../../values/navigation-item/navigation-item.value"
 import { Navigation } from "../../values/navigation/navigation.value"
 import { MainNavigation } from "./main-navigation.component"
 
+const navigationWithContent = Navigation.create(
+  NavigationItem.create({
+    name: NavigationItemName.from("nav"),
+    path: AppPath.from("/nav"),
+  }),
+  NavigationItem.create({
+    name: NavigationItemName.from("nav-2"),
+    path: AppPath.from("/nav-2"),
+  })
+)
+
 describe("Main Navigation component", () => {
+  describe("accessibility", () => {
+    it("should be top notch", async () => {
+      const { container } = render(
+        <MainNavigation navigation={navigationWithContent} />
+      )
+      const result = await axe(container)
+      expect(result).toHaveNoViolations()
+    })
+  })
   describe("when provided with navigation with content", () => {
-    const navigationWithContent = Navigation.create(
-      NavigationItem.create({
-        name: NavigationItemName.from("nav"),
-        path: AppPath.from("/nav"),
-      }),
-      NavigationItem.create({
-        name: NavigationItemName.from("nav-2"),
-        path: AppPath.from("/nav-2"),
-      })
-    )
     beforeEach(() =>
       render(<MainNavigation navigation={navigationWithContent} />)
     )
