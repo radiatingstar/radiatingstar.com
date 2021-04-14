@@ -1,16 +1,10 @@
 import { render, screen, within } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { CoreLayout } from "./core-layout.component"
 
 describe("Core Layout component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<CoreLayout />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<CoreLayout />)
   describe("when passed content", () => {
     it("should render it", () => {
       render(

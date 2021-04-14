@@ -1,20 +1,14 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { ExternalLink } from "./external-link.component"
 
 describe("External Link component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(
-        <ExternalLink href={"https://nasa.gov"} className="space-agency">
-          NASA
-        </ExternalLink>
-      )
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(
+    <ExternalLink href={"https://nasa.gov"} className="space-agency">
+      NASA
+    </ExternalLink>
+  )
   describe("when rendered", () => {
     beforeEach(() => {
       render(

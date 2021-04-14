@@ -1,17 +1,11 @@
 import { render, screen, within } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { ProjectsPage } from "./projects-page"
 
 describe("Projects Page component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<ProjectsPage layout={TestLayout} />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<ProjectsPage layout={TestLayout} />)
   beforeEach(() => render(<ProjectsPage layout={TestLayout} />))
   it("should set the page title", () => {
     expect(screen.getByText("[title] Projects")).toBeInTheDocument()

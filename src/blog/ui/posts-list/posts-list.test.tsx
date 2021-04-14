@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { PostsList } from "./posts-list.component"
 
 const posts = [
@@ -27,13 +27,7 @@ const posts = [
 ]
 
 describe("Posts List component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<PostsList posts={posts} />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<PostsList posts={posts} />)
   describe("when passed post", () => {
     describe.each([
       ["#1", 0 as const],

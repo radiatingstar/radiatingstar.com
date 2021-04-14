@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { BlogPostPreview } from "../../types/blog-post-preview"
 import { RecentPosts } from "./recent-posts.component"
 
@@ -10,13 +10,7 @@ const posts: BlogPostPreview[] = [
 ]
 
 describe("Recent Posts component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<RecentPosts posts={posts} />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<RecentPosts posts={posts} />)
   describe("when provided with no posts", () => {
     it("should render info about there being no content", () => {
       render(<RecentPosts posts={[]} />)

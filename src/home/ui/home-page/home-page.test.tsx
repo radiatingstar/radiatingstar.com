@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
 import { mocked } from "ts-jest/utils"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { HomePage } from "./home-page.component"
 
@@ -37,13 +37,7 @@ const data = {
 }
 
 describe("Home Page component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<HomePage data={data} />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<HomePage data={data} />)
   describe("when passed site metadata", () => {
     describe("that is valid", () => {
       it("should set the page title", async () => {

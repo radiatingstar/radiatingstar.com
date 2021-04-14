@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
 import { mocked } from "ts-jest/utils"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogIndexPage } from "./blog-index-page.component"
 
@@ -29,13 +29,7 @@ const emptyData = {
 }
 
 describe("Blog Index Page component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(<BlogIndexPage data={emptyData} />)
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<BlogIndexPage data={emptyData} />)
   describe("seo", () => {
     it("should set the page title", () => {
       render(<BlogIndexPage data={emptyData} />)

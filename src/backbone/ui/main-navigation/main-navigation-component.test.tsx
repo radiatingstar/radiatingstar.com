@@ -1,6 +1,6 @@
 import { render, screen } from "@testing-library/react"
-import { axe } from "jest-axe"
 import React from "react"
+import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { AppPath } from "../../values/app-path/app-path.value"
 import { NavigationItemName } from "../../values/navigation-item-name/navigation-item-name.value"
 import { NavigationItem } from "../../values/navigation-item/navigation-item.value"
@@ -19,15 +19,7 @@ const navigationWithContent = Navigation.create(
 )
 
 describe("Main Navigation component", () => {
-  describe("accessibility", () => {
-    it("should be top notch", async () => {
-      const { container } = render(
-        <MainNavigation navigation={navigationWithContent} />
-      )
-      const result = await axe(container)
-      expect(result).toHaveNoViolations()
-    })
-  })
+  checkAccessibility(<MainNavigation navigation={navigationWithContent} />)
   describe("when provided with navigation with content", () => {
     beforeEach(() =>
       render(<MainNavigation navigation={navigationWithContent} />)
