@@ -1,6 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import React from "react"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
+import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogPostPage } from "./blog-post-page.component"
 
@@ -50,6 +51,7 @@ describe("Blog Post Page component", () => {
         <BlogPostPage data={postData} pageContext={{}} layout={TestLayout} />
       )
     )
+    ensureSeoTitle("Post Title")
     it("should set the page's title", () => {
       expect(screen.getByText("[title] Post Title")).toBeInTheDocument()
     })

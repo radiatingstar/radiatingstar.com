@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react"
 import React from "react"
 import { mocked } from "ts-jest/utils"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
+import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { HomePage } from "./home-page.component"
 
@@ -40,10 +41,7 @@ describe("Home Page component", () => {
   checkAccessibility(<HomePage data={data} />)
   describe("when passed site metadata", () => {
     describe("that is valid", () => {
-      it("should set the page title", async () => {
-        render(<HomePage data={data} />)
-        expect(screen.getByText("[title] Home Page")).toBeInTheDocument()
-      })
+      ensureSeoTitle(<HomePage data={data} />, "Home Page")
     })
     describe("that is invalid", () => {
       // eslint-disable-next-line @typescript-eslint/no-empty-function

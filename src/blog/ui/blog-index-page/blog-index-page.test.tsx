@@ -2,6 +2,7 @@ import { render, screen } from "@testing-library/react"
 import React from "react"
 import { mocked } from "ts-jest/utils"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
+import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogIndexPage } from "./blog-index-page.component"
 
@@ -31,10 +32,7 @@ const emptyData = {
 describe("Blog Index Page component", () => {
   checkAccessibility(<BlogIndexPage data={emptyData} />)
   describe("seo", () => {
-    it("should set the page title", () => {
-      render(<BlogIndexPage data={emptyData} />)
-      expect(screen.getByText("[title] All posts")).toBeInTheDocument()
-    })
+    ensureSeoTitle(<BlogIndexPage data={emptyData} />, "All posts")
   })
   describe("with posts", () => {
     beforeEach(() =>
