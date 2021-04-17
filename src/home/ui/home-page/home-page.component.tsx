@@ -49,16 +49,20 @@ export const HomePage: FunctionComponent<Properties> = ({
       <SEO title={siteTitle} />
       <ContentSection>
         <Recents>
-          <RecentSection>
-            <RecentSectionHeading as={"h2"}>Recent posts</RecentSectionHeading>
-            <RecentPosts posts={posts} />
-          </RecentSection>
-          <RecentSection>
-            <RecentSectionHeading as={"h2"}>
-              Recent Projects
-            </RecentSectionHeading>
-            <RecentProjects projects={projects} />
-          </RecentSection>
+          {([
+            ["Recent Posts", <RecentPosts posts={posts} key="posts" />],
+            [
+              "Recent Projects",
+              <RecentProjects projects={projects} key="projects" />,
+            ],
+          ] as const).map(([title, content]) => {
+            return (
+              <RecentSection key={title}>
+                <RecentSectionHeading as={"h2"}>{title}</RecentSectionHeading>
+                {content}
+              </RecentSection>
+            )
+          })}
         </Recents>
       </ContentSection>
     </Layout>
