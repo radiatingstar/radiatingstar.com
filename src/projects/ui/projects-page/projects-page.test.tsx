@@ -11,12 +11,14 @@ const projects = [
     projectLink: "https://radiatingstar.com/project-1",
     repoLink: "https://github.com/project-1",
     description: "Project #1 Description",
+    tags: ["Acupuncture"],
   },
   {
     name: "Project Name #2",
     projectLink: "https://radiatingstar.com/project-2",
     repoLink: "https://github.com/project-2",
     description: "Project #2 Description",
+    tags: ["Magic", "Alchemy"],
   },
 ]
 
@@ -45,6 +47,9 @@ describe("Projects Page component", () => {
     })
     it("should display the project's description", () => {
       expect(screen.getByText(projects[index].description)).toBeInTheDocument()
+    })
+    it.each(projects[index].tags)("should display the %s tag", (tag) => {
+      expect(screen.getByText(tag)).toBeInTheDocument()
     })
   })
 })

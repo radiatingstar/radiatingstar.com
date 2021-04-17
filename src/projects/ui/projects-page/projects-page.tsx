@@ -14,6 +14,7 @@ interface ProjectInfo {
   projectLink: string
   repoLink: string
   description: string
+  tags: string[]
 }
 
 const projectsList: ProjectInfo[] = [
@@ -21,6 +22,7 @@ const projectsList: ProjectInfo[] = [
     name: "Lots of Love for Less",
     projectLink: "https://mateuszkocz.github.io/3l/",
     repoLink: "https://github.com/mateuszkocz/3l",
+    tags: ["LESS", "CSS"],
     description:
       "3L was made for you to help you create awesome websites " +
       "and fill the Internet with excessive amount of Love! Get this set of mixins" +
@@ -30,6 +32,7 @@ const projectsList: ProjectInfo[] = [
     name: "Mail Generator",
     projectLink: "https://mateuszkocz.github.io/mail-generator/",
     repoLink: "https://github.com/mateuszkocz/mail-generator",
+    tags: ["Elm"],
     description:
       "Generate and keep track of email addresses you're using to " +
       "test your app with different users accounts. Add notes and easily manage " +
@@ -54,6 +57,11 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
             <Project>
               <ProjectTitle as="h2">{project.name}</ProjectTitle>
               <Description>{project.description}</Description>
+              <Tags>
+                {project.tags.map((tag) => (
+                  <Tag key={tag}>{tag}</Tag>
+                ))}
+              </Tags>
               <Footer>
                 <ProjectExternalLink
                   href={project.projectLink}
@@ -65,7 +73,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
                   href={project.repoLink}
                   label={`Visit the ${project.name} repository`}
                 >
-                  Repository
+                  GitHub
                 </ProjectExternalLink>
               </Footer>
             </Project>
@@ -112,12 +120,26 @@ const Project = styled.section`
     color: var(--gray-100);
     content: "★";
     font-size: 13rem;
+    transform: rotate(-25deg);
   }
 `
 
 const Description = styled.p`
-  margin: 0 0 2rem;
+  margin: 0;
   line-height: 1.6;
+`
+
+const Tags = styled.div`
+  display: flex;
+  margin: 2rem 0 2rem;
+  gap: 0.3rem;
+`
+
+const Tag = styled.span`
+  display: inline-block;
+  padding: 0.5rem;
+  border: 1px solid var(--yellow-700);
+  border-radius: 3px;
 `
 
 const Footer = styled.footer`
