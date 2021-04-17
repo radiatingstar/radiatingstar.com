@@ -58,13 +58,16 @@ const NavigationList = styled.ul`
 `
 
 const NavigationLink = styled(Link)`
-  color: var(--black-300);
+  color: var(--yellow-700);
+  font-weight: 900;
+  letter-spacing: 0.2rem;
   text-decoration: none;
+  text-transform: uppercase;
 
   &:hover,
   &:active,
   &:focus {
-    color: var(--yellow-700);
+    color: var(--yellow-400);
   }
 
   &:focus {
