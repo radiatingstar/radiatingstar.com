@@ -1,10 +1,6 @@
-import { render, screen } from "@testing-library/react"
-import React from "react"
+import { ensureChildren } from "../../../testing/checks/children.check"
 import { RecentSection } from "./recent-section.component"
 
-describe("Recent Section component", function () {
-  it("should render children", () => {
-    render(<RecentSection>child</RecentSection>)
-    expect(screen.getByText("child")).toBeInTheDocument()
-  })
+describe("Recent Section component", () => {
+  ensureChildren(RecentSection)
 })
