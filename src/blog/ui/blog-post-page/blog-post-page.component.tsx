@@ -1,23 +1,16 @@
 import { PageProps } from "gatsby"
-import React, {
-  FunctionComponent,
-  JSXElementConstructor,
-  PropsWithChildren,
-} from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
+import { WithLayout } from "../../../backbone/types/with-layout.type"
 import { SEO } from "../../../seo"
 import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
 
-type Properties = Pick<
-  PageProps<BlogPostQuery, SitePageContext>,
-  "data" | "pageContext"
-> & {
-  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
-}
-
+type Properties = WithLayout<
+  Pick<PageProps<BlogPostQuery, SitePageContext>, "data" | "pageContext">
+>
 export const BlogPostPage: FunctionComponent<Properties> = ({
   data: { post, site },
   pageContext,

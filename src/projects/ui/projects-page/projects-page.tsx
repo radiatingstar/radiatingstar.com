@@ -1,8 +1,4 @@
-import React, {
-  JSXElementConstructor,
-  PropsWithChildren,
-  VoidFunctionComponent,
-} from "react"
+import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 import {
   CoreLayout,
@@ -10,6 +6,7 @@ import {
   List,
   ListComponentProperties,
 } from "../../../backbone"
+import { WithLayout } from "../../../backbone/types/with-layout.type"
 import { SEO } from "../../../seo"
 
 interface ProjectInfo {
@@ -41,9 +38,7 @@ const projectsList: ProjectInfo[] = [
   },
 ]
 
-type Properties = { projects: ProjectInfo[] } & {
-  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
-}
+type Properties = WithLayout<{ projects: ProjectInfo[] }>
 
 export const ProjectsPage: VoidFunctionComponent<Properties> = ({
   projects = projectsList,

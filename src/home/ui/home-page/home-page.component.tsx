@@ -1,13 +1,10 @@
 import { PageProps } from "gatsby"
-import React, {
-  FunctionComponent,
-  JSXElementConstructor,
-  PropsWithChildren,
-} from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout } from "../../../backbone"
+import { WithLayout } from "../../../backbone/types/with-layout.type"
 import { RecentPosts, toBlogPostPreview } from "../../../blog"
 import { ProjectPreview, RecentProjects } from "../../../projects"
 import { SEO } from "../../../seo"
@@ -29,12 +26,11 @@ const projectsList: Array<ProjectPreview> = [
   },
 ]
 
-type Properties = Pick<PageProps<HomePageQuery>, "data"> & {
-  layout?: JSXElementConstructor<PropsWithChildren<unknown>>
-} & {
-  projects?: Array<ProjectPreview>
-}
-
+type Properties = WithLayout<
+  Pick<PageProps<HomePageQuery>, "data"> & {
+    projects?: Array<ProjectPreview>
+  }
+>
 export const HomePage: FunctionComponent<Properties> = ({
   data: {
     recentPosts: { edges: postsEdges },
