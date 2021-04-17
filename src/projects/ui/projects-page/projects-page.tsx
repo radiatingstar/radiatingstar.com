@@ -5,8 +5,8 @@ import {
   ExternalLink,
   List,
   ListComponentProperties,
+  WithLayout,
 } from "../../../backbone"
-import { WithLayout } from "../../../backbone/types/with-layout.type"
 import { SEO } from "../../../seo"
 
 interface ProjectInfo {
