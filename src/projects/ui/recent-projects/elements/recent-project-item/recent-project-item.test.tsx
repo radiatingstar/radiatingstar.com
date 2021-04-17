@@ -14,4 +14,7 @@ describe("Recent Project Item component", () => {
   it("should render the proper link", () => {
     expect(screen.getByRole("link")).toLinkTo("https://radiatingstar.com")
   })
+  it("should pass the juices", () => {
+    expect(screen.getByRole("link")).toHaveAttribute("rel", "")
+  })
 })

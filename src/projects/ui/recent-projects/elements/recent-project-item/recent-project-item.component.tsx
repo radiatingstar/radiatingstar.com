@@ -1,6 +1,6 @@
-import { Link } from "gatsby"
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
+import { ExternalLink } from "../../../../../backbone"
 
 const ProjectTitle = styled.h1`
   margin-bottom: 0;
@@ -16,8 +16,13 @@ export const RecentProjectItem: VoidFunctionComponent<Properties> = ({
   title,
 }) => {
   return (
-    <Link to={link}>
+    <ExternalLink
+      href={link}
+      nofollow={false}
+      noopener={false}
+      noreferrer={false}
+    >
       <ProjectTitle as={"h3"}>{title}</ProjectTitle>
-    </Link>
+    </ExternalLink>
   )
 }
