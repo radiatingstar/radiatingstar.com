@@ -1,4 +1,3 @@
-import { StaticImage } from "gatsby-plugin-image"
 import React, {
   JSXElementConstructor,
   PropsWithChildren,
@@ -23,25 +22,22 @@ interface ProjectInfo {
 const projectsList: ProjectInfo[] = [
   {
     name: "Lots of Love for Less",
-    projectLink: "http://mateuszkocz.github.io/3l/",
+    projectLink: "https://mateuszkocz.github.io/3l/",
     repoLink: "https://github.com/mateuszkocz/3l",
-    description: `
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Animi commodi dolorum minus nobis. At dicta exercitationem
-                  itaque perferendis quam, sapiente sequi soluta veniam.
-                  Adipisci deserunt error itaque modi necessitatibus voluptas.
-                `,
+    description:
+      "3L was made for you to help you create awesome websites " +
+      "and fill the Internet with excessive amount of Love! Get this set of mixins" +
+      "for LESS CSS compiler with a twist.",
   },
   {
     name: "Mail Generator",
     projectLink: "https://mateuszkocz.github.io/mail-generator/",
     repoLink: "https://github.com/mateuszkocz/mail-generator",
-    description: `
-                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-                  Animi commodi dolorum minus nobis. At dicta exercitationem
-                  itaque perferendis quam, sapiente sequi soluta veniam.
-                  Adipisci deserunt error itaque modi necessitatibus voluptas.
-                `,
+    description:
+      "Generate and keep track of email addresses you're using to " +
+      "test your app with different users accounts. Add notes and easily manage " +
+      "the generated emails to make your QA job easy. Works with Gmail, custom " +
+      "domains and anything that can handle a + suffix.",
   },
 ]
 
@@ -59,41 +55,24 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
       <PageTitle>Projects</PageTitle>
       <ProjectsList<ListComponentProperties<ProjectInfo>>
         renderItem={(project) => {
-          const image =
-            project.name === "Lots of Love for Less" ? (
-              <StaticImage
-                src="../../assets/lots-of-love-for-less.png"
-                alt=""
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
-            ) : (
-              <StaticImage
-                src="../../assets/mail-generator.png"
-                alt=""
-                style={{
-                  height: "100%",
-                  width: "100%",
-                }}
-              />
-            )
           return (
             <Project>
-              <Image>{image}</Image>
-              <ProjectContent>
-                <ProjectTitle as="h2">{project.name}</ProjectTitle>
-                <Description>{project.description}</Description>
-                <Footer>
-                  <ProjectExternalLink href={project.projectLink}>
-                    Visit the project
-                  </ProjectExternalLink>
-                  <ProjectExternalLink href={project.repoLink}>
-                    Repository
-                  </ProjectExternalLink>
-                </Footer>
-              </ProjectContent>
+              <ProjectTitle as="h2">{project.name}</ProjectTitle>
+              <Description>{project.description}</Description>
+              <Footer>
+                <ProjectExternalLink
+                  href={project.projectLink}
+                  label={`Visit ${project.name}`}
+                >
+                  Visit the project
+                </ProjectExternalLink>
+                <ProjectExternalLink
+                  href={project.repoLink}
+                  label={`Visit the ${project.name} repository`}
+                >
+                  Repository
+                </ProjectExternalLink>
+              </Footer>
             </Project>
           )
         }}
@@ -121,31 +100,24 @@ const ProjectsList = styled(List)`
 `
 
 const Project = styled.section`
+  position: relative;
   display: flex;
   overflow: hidden;
   height: 100%;
   flex-direction: column;
+  padding: 2rem;
   background: white;
   border-radius: 4px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
-  @media (min-width: 48rem) {
-    flex-direction: row;
-
-    & > * {
-      width: 50%;
-    }
+  &:after {
+    position: absolute;
+    right: -3rem;
+    bottom: -3rem;
+    color: var(--gray-100);
+    content: "★";
+    font-size: 13rem;
   }
-`
-
-const Image = styled.div`
-  height: 100%;
-  line-height: 0;
-`
-
-const ProjectContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
 `
 
 const Description = styled.p`
