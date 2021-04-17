@@ -34,7 +34,7 @@ export const CoreLayout: FunctionComponent<Properties> = ({
         }
         navigationSlot={navigation}
       />
-      <main>{children}</main>
+      <Main>{children}</Main>
       <SiteFooter
         primarySlot={
           <PrimaryFooterContent>
@@ -92,4 +92,8 @@ const PageContainer = styled.div`
 
 const HomeLink = styled(Link)`
   text-decoration: none;
+`
+
+const Main = styled.main`
+  margin-top: 4rem;
 `

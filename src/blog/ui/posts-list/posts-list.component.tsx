@@ -29,14 +29,6 @@ export const PostsList: VoidFunctionComponent<Properties> = ({ posts }) => {
   )
 }
 
-const Item = styled.article`
-  display: flex;
-  height: 100%;
-  flex-direction: column;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid var(--yellow-500);
-`
-
 const ListContainer = styled(List)`
   display: grid;
   padding: 0 2rem;
@@ -46,6 +38,13 @@ const ListContainer = styled(List)`
   justify-items: stretch;
 `
 
+const Item = styled.article`
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--yellow-500);
+`
 const PostHeading = styled.h1`
   margin-top: 0;
   font-size: 2rem;
