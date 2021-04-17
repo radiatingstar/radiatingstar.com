@@ -38,15 +38,11 @@ describe("Projects Page component", () => {
         screen.getByRole("heading", { name: projects[index].name, level: 2 })
       ).toBeInTheDocument()
     })
-    it("should display the link to the project", () => {
-      expect(
-        screen.queryByLabelText(`Visit ${projects[index].name}`)
-      ).toBeInTheDocument()
-    })
-    it("should display the link to the project's repo", () => {
-      expect(
-        screen.queryByLabelText(`Visit the ${projects[index].name} repository`)
-      ).toBeInTheDocument()
+    it.each([
+      ["project", `Visit ${projects[index].name}`],
+      ["project's repo", `Visit the ${projects[index].name} repository`],
+    ])("should display the link to the %s", (_, text) => {
+      expect(screen.queryByLabelText(text)).toBeInTheDocument()
     })
     it("should display the project's description", () => {
       expect(screen.getByText(projects[index].description)).toBeInTheDocument()
