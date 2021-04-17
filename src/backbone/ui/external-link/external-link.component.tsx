@@ -5,6 +5,7 @@ interface Properties {
   nofollow?: boolean
   noopener?: boolean
   noreferrer?: boolean
+  label?: string
   href: string
 }
 
@@ -18,6 +19,7 @@ interface Properties {
  * <ExternalLink href="https://nasa.gov" nofollow>Go to space!</ExternalLink>
  *
  * @param href The target of the link.
+ * @param label USed as aria-label attribute.
  * @param children Link's content.
  * @param noopener Should the link be noopener? Yes by default.
  * @param noreferrer Should the link be noreferrer? Yes by default.
@@ -30,13 +32,19 @@ export const ExternalLink: FunctionComponent<Stylable<Properties>> = ({
   nofollow = false,
   noreferrer = true,
   className,
+  label,
 }) => {
   const relationValues = Object.entries({ noopener, noreferrer, nofollow })
     .filter(([, value]) => value)
     .map(([key]) => key)
     .join(" ")
   return (
-    <a href={href} rel={relationValues} className={className}>
+    <a
+      href={href}
+      rel={relationValues}
+      className={className}
+      aria-label={label}
+    >
       {children}
     </a>
   )

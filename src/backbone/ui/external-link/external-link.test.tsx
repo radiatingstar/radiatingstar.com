@@ -3,19 +3,21 @@ import React from "react"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
 import { ExternalLink } from "./external-link.component"
 
+const component = (
+  <ExternalLink
+    href={"https://nasa.gov"}
+    className="space-agency"
+    label="Go to the NASA page"
+  >
+    NASA
+  </ExternalLink>
+)
+
 describe("External Link component", () => {
-  checkAccessibility(
-    <ExternalLink href={"https://nasa.gov"} className="space-agency">
-      NASA
-    </ExternalLink>
-  )
+  checkAccessibility(component)
   describe("when rendered", () => {
     beforeEach(() => {
-      render(
-        <ExternalLink href={"https://nasa.gov"} className="space-agency">
-          NASA
-        </ExternalLink>
-      )
+      render(component)
     })
     it("should be a link", () => {
       expect(screen.getByRole("link")).toBeInTheDocument()
@@ -25,6 +27,9 @@ describe("External Link component", () => {
     })
     it("should display the content", () => {
       expect(screen.getByRole("link")).toHaveTextContent("NASA")
+    })
+    it("should add a label", () => {
+      expect(screen.getByLabelText("Go to the NASA page")).toBeInTheDocument()
     })
     it("should be noreferrer and noopener by default", () => {
       const relation = screen.getByRole("link").getAttribute("rel")
