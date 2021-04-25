@@ -31,7 +31,11 @@ export const PostsList: VoidFunctionComponent<Properties> = ({ posts }) => {
 
 const ListContainer = styled(List)`
   display: grid;
-  padding: 0 2rem;
+  /* 
+    TODO: Research why the List's styles have priority over
+      this styles (that's why !important is required). 
+   */
+  padding: 0 2rem !important;
   margin-bottom: 4rem;
   gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
