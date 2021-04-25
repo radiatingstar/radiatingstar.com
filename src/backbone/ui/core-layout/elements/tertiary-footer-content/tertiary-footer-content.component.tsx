@@ -6,9 +6,8 @@ const TertiaryFooterContainer = styled.div`
   padding: 0.5rem;
   margin-top: 3rem;
 
-  background: black;
+  background: var(--black-300);
   border-radius: 4px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 
   gap: 0.5rem;
   grid-template-columns: repeat(2, 1fr);

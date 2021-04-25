@@ -33,10 +33,9 @@ const FooterContainer = styled.footer`
 
   display: grid;
   padding-bottom: 1rem;
-  border-top: 1px solid black;
   margin-top: auto;
 
-  background-color: black;
+  background-color: var(--black-300);
   background-image: url(${footerBcg});
   background-position: 50% calc(100%);
   background-repeat: repeat-x;
@@ -65,10 +64,9 @@ const Swag = styled.div`
   font-size: 7rem;
   grid-area: Swag;
   text-align: center;
-  -webkit-text-stroke: 10px black;
 
   @media (min-width: 32rem) {
-    margin-top: -4.8rem;
+    margin-top: -6.8rem;
   }
 `
 
