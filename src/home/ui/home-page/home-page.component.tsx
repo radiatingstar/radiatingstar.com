@@ -58,7 +58,7 @@ export const HomePage: FunctionComponent<Properties> = ({
             return (
               <RecentSection key={title}>
                 <RecentSectionHeading as={"h2"}>{title}</RecentSectionHeading>
-                {content}
+                <RecentContent>{content}</RecentContent>
               </RecentSection>
             )
           })}
@@ -69,7 +69,14 @@ export const HomePage: FunctionComponent<Properties> = ({
 }
 
 const RecentSectionHeading = styled.h1`
-  margin-top: 0;
+  padding: 2rem;
+  margin: 0;
+  background: var(--yellow-400);
+  color: var(--red-200);
+`
+
+const RecentContent = styled.div`
+  padding: 2rem;
 `
 
 const ContentSection = styled.section`

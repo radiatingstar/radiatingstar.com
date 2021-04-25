@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 
 const PostTitle = styled.h1`
-  margin-bottom: 0;
+  margin: 0;
 `
 
 interface Properties {

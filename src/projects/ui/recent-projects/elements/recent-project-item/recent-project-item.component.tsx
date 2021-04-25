@@ -3,7 +3,7 @@ import styled from "styled-components"
 import { ExternalLink } from "../../../../../backbone"
 
 const ProjectTitle = styled.h1`
-  margin-bottom: 0;
+  margin: 0;
 `
 
 interface Properties {
