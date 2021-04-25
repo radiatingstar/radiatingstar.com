@@ -4,7 +4,7 @@ import { RecentPostItem } from "./recent-post-item.component"
 
 describe("Recent Post Item component", () => {
   beforeEach(() => {
-    render(<RecentPostItem title="post title" slug="/slug" />)
+    render(<RecentPostItem title="post title" slug="/slug" last={false} />)
   })
   it("should display the post's title", () => {
     expect(screen.getByText("post title")).toBeInTheDocument()

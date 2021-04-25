@@ -13,8 +13,12 @@ export const RecentProjects: VoidFunctionComponent<Properties> = ({
   return (
     <List
       items={projects}
-      renderItem={(project) => (
-        <RecentProjectItem title={project.title} link={project.link} />
+      renderItem={(project, { last }) => (
+        <RecentProjectItem
+          title={project.title}
+          link={project.link}
+          last={last}
+        />
       )}
     />
   )
