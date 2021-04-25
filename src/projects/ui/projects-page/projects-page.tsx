@@ -1,5 +1,5 @@
 import React, { VoidFunctionComponent } from "react"
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 import {
   CoreLayout,
   ExternalLink,
@@ -15,6 +15,7 @@ interface ProjectInfo {
   repoLink: string
   description: string
   tags: string[]
+  type: string
 }
 
 const projectsList: ProjectInfo[] = [
@@ -23,6 +24,7 @@ const projectsList: ProjectInfo[] = [
     projectLink: "https://mateuszkocz.github.io/3l/",
     repoLink: "https://github.com/mateuszkocz/3l",
     tags: ["LESS", "CSS"],
+    type: "Library",
     description:
       "3L was made for you to help you create awesome websites " +
       "and fill the Internet with excessive amount of Love! Get this set of mixins" +
@@ -33,6 +35,7 @@ const projectsList: ProjectInfo[] = [
     projectLink: "https://mateuszkocz.github.io/mail-generator/",
     repoLink: "https://github.com/mateuszkocz/mail-generator",
     tags: ["Elm"],
+    type: "Application",
     description:
       "Generate and keep track of email addresses you're using to " +
       "test your app with different users accounts. Add notes and easily manage " +
@@ -55,6 +58,9 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
         renderItem={(project) => {
           return (
             <Project>
+              <ProjectType type={project.type}>
+                <span>{project.type}</span>
+              </ProjectType>
               <ProjectTitle as="h2">{project.name}</ProjectTitle>
               <Description>{project.description}</Description>
               <Tags>
@@ -108,7 +114,7 @@ const Project = styled.section`
   overflow: hidden;
   height: 100%;
   flex-direction: column;
-  padding: 2rem;
+  padding: 2rem 2rem 2rem 5rem;
   background: white;
   border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
@@ -121,6 +127,28 @@ const Project = styled.section`
     content: "★";
     font-size: 13rem;
     transform: rotate(-25deg);
+  }
+`
+
+const ProjectType = styled.div<{ type: string }>`
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  width: 3rem;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  background: ${({ type }) =>
+    type === "Application" ? `var(--yellow-700)` : `var(--red-200)`};
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 900;
+  letter-spacing: 0.15rem;
+  text-transform: uppercase;
+
+  span {
+    transform: rotate(270deg);
   }
 `
 

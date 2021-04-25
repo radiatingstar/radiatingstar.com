@@ -12,6 +12,7 @@ const projects = [
     repoLink: "https://github.com/project-1",
     description: "Project #1 Description",
     tags: ["Acupuncture"],
+    type: "Application",
   },
   {
     name: "Project Name #2",
@@ -19,6 +20,7 @@ const projects = [
     repoLink: "https://github.com/project-2",
     description: "Project #2 Description",
     tags: ["Magic", "Alchemy"],
+    type: "Library",
   },
 ]
 
@@ -50,6 +52,9 @@ describe("Projects Page component", () => {
     })
     it.each(projects[index].tags)("should display the %s tag", (tag) => {
       expect(screen.getByText(tag)).toBeInTheDocument()
+    })
+    it("should display the project's type", () => {
+      expect(screen.getByText(projects[index].type)).toBeInTheDocument()
     })
   })
 })
