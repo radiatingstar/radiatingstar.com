@@ -29,16 +29,26 @@ describe("List component", () => {
     })
   })
   describe("when items were passed", () => {
-    it("should render them", () => {
+    beforeEach(() => {
       render(
         <List
           items={[{ name: "Betelgeuse" }, { name: "Antares A" }]}
-          renderItem={(item) => <span>{item.name}</span>}
+          renderItem={(item, { last }) => (
+            <span>
+              {item.name}
+              {last ? "-last" : ""}
+            </span>
+          )}
         />
       )
+    })
+    it("should render them", () => {
       expect(screen.getAllByRole("listitem")).toHaveLength(2)
-      expect(screen.getByText("Betelgeuse")).toBeInTheDocument()
-      expect(screen.getByText("Antares A")).toBeInTheDocument()
+      expect(screen.getByText(/Betelgeuse/)).toBeInTheDocument()
+      expect(screen.getByText(/Antares A/)).toBeInTheDocument()
+    })
+    it("should pass the last info", () => {
+      expect(screen.getByText("Antares A-last")).toBeInTheDocument()
     })
   })
 })

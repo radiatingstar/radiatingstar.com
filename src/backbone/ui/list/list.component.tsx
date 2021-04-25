@@ -4,7 +4,7 @@ import { Stylable } from "../../types/stylable.type"
 
 interface Properties<Item> {
   items?: Array<Item>
-  renderItem: (item: Item) => ReactElement
+  renderItem: (item: Item, itemProperties: { last: boolean }) => ReactElement
   fallback?: ReactElement
 }
 
@@ -54,7 +54,9 @@ export const List: <Item>(
   return (
     <ListContainer className={className}>
       {items.map((item, index) => (
-        <li key={index}>{renderItem(item)}</li>
+        <li key={index}>
+          {renderItem(item, { last: index === items?.length - 1 })}
+        </li>
       ))}
     </ListContainer>
   )
