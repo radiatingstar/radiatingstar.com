@@ -35,7 +35,7 @@ const ListContainer = styled(List)`
     TODO: Research why the List's styles have priority over
       this styles (that's why !important is required). 
    */
-  padding: 0 2rem !important;
+  padding: 0 4rem !important;
   margin-bottom: 4rem;
   gap: 4rem;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
