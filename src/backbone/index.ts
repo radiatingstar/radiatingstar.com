@@ -1,5 +1,6 @@
 export { CoreLayout } from "./ui/core-layout/core-layout.component"
 export { ExternalLink } from "./ui/external-link/external-link.component"
+export { Tags } from "./ui/tags/tags.component"
 export type { Stylable } from "./types/stylable.type"
 export type { WithLayout } from "./types/with-layout.type"
 export { List } from "./ui/list/list.component"

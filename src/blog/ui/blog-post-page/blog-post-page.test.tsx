@@ -11,6 +11,7 @@ const postData = {
     frontmatter: {
       title: "Post Title",
       date: "Post Date",
+      tags: ["tag 1", "tag 2"],
     },
     excerpt: "Post Excerpt",
     html: "Post Content",
@@ -62,6 +63,10 @@ describe("Blog Post Page component", () => {
       expect(
         screen.getByRole("heading", { name: "Post Title", level: 1 })
       ).toBeInTheDocument()
+    })
+    it("should display names", () => {
+      expect(screen.getByText("tag 1")).toBeInTheDocument()
+      expect(screen.getByText("tag 2")).toBeInTheDocument()
     })
     it("should display the date", () => {
       expect(screen.getByText("Post Date")).toBeInTheDocument()

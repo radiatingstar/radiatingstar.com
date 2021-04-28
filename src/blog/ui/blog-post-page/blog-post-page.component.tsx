@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { CoreLayout, WithLayout } from "../../../backbone"
+import { CoreLayout, Tags, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
 
@@ -28,6 +28,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <Header>
         <Title>{post.frontmatter.title}</Title>
+        <PostTags names={post.frontmatter.tags as string[] | undefined} />
         <Info>
           <span>{post.frontmatter.date}</span>, by <span>{author}</span>
         </Info>
@@ -64,6 +65,10 @@ const Title = styled.h1`
   @media (min-width: 32rem) {
     font-size: 4rem;
   }
+`
+
+const PostTags = styled(Tags)`
+  justify-content: center;
 `
 
 const Info = styled.div``

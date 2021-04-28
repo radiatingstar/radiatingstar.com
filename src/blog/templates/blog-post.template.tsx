@@ -2,7 +2,7 @@ import { graphql } from "gatsby"
 import { BlogPostPage } from "../ui/blog-post-page/blog-post-page.component"
 
 export const pageQuery = graphql`
-  query BlogPost ($slug: String!) {
+  query BlogPost($slug: String!) {
     site {
       siteMetadata {
         title
@@ -16,6 +16,7 @@ export const pageQuery = graphql`
       frontmatter {
         title
         date(formatString: "MMMM DD, YYYY")
+        tags
       }
     }
   }

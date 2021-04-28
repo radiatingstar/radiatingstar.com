@@ -1,6 +1,7 @@
 ---
 title: 3L - the Great Collection of Mixins for LESS - Introduction
 date: '2012-03-22T15:00:00.000Z'
+tags: [CSS, LESS, Project]
 ---
 
 I've made an awesome collection of mixins for LESS – Lots of Love for LESS. I might be boasting a bit too much but I do really believe I did something great! Before you [get 3L](http://mateuszkocz.github.com/3l/) or see the project [on GitHub](https://github.com/mateuszkocz/3l), read why it will help you making your website awesome! If you know what LESS and mixins are, [skip the first part](#skip).

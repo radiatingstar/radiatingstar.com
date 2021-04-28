@@ -5,6 +5,7 @@ import {
   ExternalLink,
   List,
   ListComponentProperties,
+  Tags,
   WithLayout,
 } from "../../../backbone"
 import { SEO } from "../../../seo"
@@ -63,11 +64,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
               </ProjectType>
               <ProjectTitle as="h2">{project.name}</ProjectTitle>
               <Description>{project.description}</Description>
-              <Tags>
-                {project.tags.map((tag) => (
-                  <Tag key={tag}>{tag}</Tag>
-                ))}
-              </Tags>
+              <ProjectTags names={project.tags} />
               <Footer>
                 <ProjectExternalLink
                   href={project.projectLink}
@@ -157,17 +154,9 @@ const Description = styled.p`
   line-height: 1.6;
 `
 
-const Tags = styled.div`
-  display: flex;
+const ProjectTags = styled(Tags)`
   margin: 2rem 0 2rem;
   gap: 0.3rem;
-`
-
-const Tag = styled.span`
-  display: inline-block;
-  padding: 0.5rem;
-  border: 1px solid var(--yellow-700);
-  border-radius: 3px;
 `
 
 const Footer = styled.footer`
