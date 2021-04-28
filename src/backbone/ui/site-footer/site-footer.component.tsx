@@ -63,8 +63,9 @@ const Swag = styled.div`
   color: #ffa500;
   font-size: 7rem;
   grid-area: Swag;
+  pointer-events: none;
   text-align: center;
-
+  user-select: none;
   @media (min-width: 32rem) {
     margin-top: -6.8rem;
   }
