@@ -37,11 +37,6 @@ describe("Posts List component", () => {
       it("should display the excerpt", () => {
         expect(screen.getByText(posts[index].excerpt)).toBeInTheDocument()
       })
-      it("should display date", () => {
-        expect(
-          screen.getByText(posts[index].frontmatter.date)
-        ).toBeInTheDocument()
-      })
       it("should display the post link", () => {
         expect(
           screen.getByRole("link", { name: posts[index].frontmatter.title })

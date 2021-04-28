@@ -19,7 +19,6 @@ export const PostsList: VoidFunctionComponent<Properties> = ({ posts }) => {
             <PostHeading as="h2">
               <PostLink to={link}>{frontmatter.title}</PostLink>
             </PostHeading>
-            <small>{frontmatter.date}</small>
             <Excerpt dangerouslySetInnerHTML={{ __html: excerpt }} />
             <SecondaryPostLink to={link}>Read More</SecondaryPostLink>
           </Item>
@@ -38,7 +37,7 @@ const ListContainer = styled(List)`
   padding: 0 4rem !important;
   margin-bottom: 4rem;
   gap: 4rem;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: stretch;
 `
 
@@ -46,11 +45,13 @@ const Item = styled.article`
   display: flex;
   height: 100%;
   flex-direction: column;
-  padding-bottom: 2rem;
-  border-bottom: 2px solid var(--yellow-500);
+  padding: 2rem;
+  border: 2px solid var(--yellow-500);
+  background: var(--red-100);
+  border-radius: 4px;
 `
 const PostHeading = styled.h1`
-  margin-top: 0;
+  margin: 0;
   font-size: 2rem;
   line-height: 1.5;
 `
@@ -62,7 +63,8 @@ const PostLink = styled(Link)`
 
 const Excerpt = styled.p`
   margin-bottom: 2rem;
-  font-size: 1.5rem;
+  color: var(--black-300);
+  font-size: 1rem;
   line-height: 1.5;
 `
 
