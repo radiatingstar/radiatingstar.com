@@ -11,9 +11,5 @@ export const mainNavigation = Navigation.create(
   NavigationItem.create({
     name: NavigationItemName.from("Projects"),
     path: AppPath.from("/projects"),
-  }),
-  NavigationItem.create({
-    name: NavigationItemName.from("Contact"),
-    path: AppPath.from("/contact"),
   })
 )
