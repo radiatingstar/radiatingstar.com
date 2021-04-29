@@ -1,6 +1,7 @@
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+/* eslint-disable unicorn/prefer-module */
+// eslint-disable-next-line @typescript-eslint/no-var-requires,unicorn/prefer-module
 const path = require(`path`)
-// eslint-disable-next-line @typescript-eslint/no-var-requires
+// eslint-disable-next-line @typescript-eslint/no-var-requires,unicorn/prefer-module
 const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // TODO: extract all those functions to separate modules.

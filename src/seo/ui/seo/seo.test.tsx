@@ -7,6 +7,7 @@ import { SEO } from "./seo.component"
 jest.unmock("./seo.component")
 
 const getMeta = (metaName: string) => {
+  // eslint-disable-next-line testing-library/no-node-access
   const metaElements = document.querySelectorAll("meta")
   for (const meta of metaElements) {
     if (meta.getAttribute("name") === metaName) {
@@ -54,6 +55,7 @@ describe("SEO component", () => {
     it("should set a default english value", async () => {
       render(<SEO title="Page Title" />)
       await waitFor(() => {
+        // eslint-disable-next-line testing-library/no-node-access
         expect(document.querySelector("html")).toHaveAttribute("language", "en")
       })
     })
@@ -62,6 +64,7 @@ describe("SEO component", () => {
     it("should set it on the document", async () => {
       render(<SEO title="Page Title" language="pl" />)
       await waitFor(() => {
+        // eslint-disable-next-line testing-library/no-node-access
         expect(document.querySelector("html")).toHaveAttribute("language", "pl")
       })
     })

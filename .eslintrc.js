@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 module.exports = {
   extends: [
     "eslint:recommended",
@@ -5,7 +6,7 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
-    "plugin:testing-library/recommended",
+    "plugin:testing-library/dom",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
     "plugin:@typescript-eslint/recommended",

@@ -1,3 +1,4 @@
+/* eslint-disable unicorn/prefer-module */
 module.exports = {
   siteMetadata: {
     title: `Radiating Star`,
@@ -13,6 +14,7 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
+        // eslint-disable-next-line unicorn/prefer-module
         path: `${__dirname}/content/blog`,
         name: `blog`,
       },

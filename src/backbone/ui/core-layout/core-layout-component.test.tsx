@@ -26,6 +26,7 @@ describe("Core Layout component", () => {
       render(<CoreLayout />)
       const banner = screen.getByRole("banner")
       const logo = within(banner).getByRole("img", { hidden: true })
+      // eslint-disable-next-line testing-library/no-node-access
       const homeLink = logo.parentNode
       expect(homeLink).toLinkTo("/")
     })
