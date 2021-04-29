@@ -3,7 +3,13 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { ContentBlock, CoreLayout, Tags, WithLayout } from "../../../backbone"
+import {
+  ContentBlock,
+  CoreLayout,
+  PageTitle,
+  Tags,
+  WithLayout,
+} from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
 
@@ -46,7 +52,7 @@ const Header = styled.header`
   flex-direction: column;
   padding: 1rem 1rem 2rem;
 
-  color: var(--yellow-500);
+  color: var(--yellow-700);
 
   gap: 2rem;
   text-align: center;
@@ -57,14 +63,9 @@ const Header = styled.header`
   }
 `
 
-const Title = styled.h1`
+const Title = styled(PageTitle)`
   padding: 0 2rem;
   margin: 0;
-  font-size: 2rem;
-
-  @media (min-width: 32rem) {
-    font-size: 4rem;
-  }
 `
 
 const PostTags = styled(Tags)`

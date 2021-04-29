@@ -6,6 +6,7 @@ import {
   ExternalLink,
   List,
   ListComponentProperties,
+  PageTitle,
   Tags,
   WithLayout,
 } from "../../../backbone"
@@ -55,7 +56,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
   return (
     <Layout>
       <SEO title="Projects" />
-      <PageTitle>Projects</PageTitle>
+      <Title>Projects</Title>
       <ProjectsList<ListComponentProperties<ProjectInfo>>
         renderItem={(project) => {
           return (
@@ -89,7 +90,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
   )
 }
 
-const PageTitle = styled.h1`
+const Title = styled(PageTitle)`
   margin: 0 auto 4rem;
   color: var(--yellow-700);
   font-size: 4rem;
