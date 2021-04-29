@@ -1,6 +1,7 @@
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 import {
+  ContentBlock,
   CoreLayout,
   ExternalLink,
   List,
@@ -105,26 +106,11 @@ const ProjectsList = styled(List)`
   justify-items: stretch;
 `
 
-const Project = styled.section`
-  position: relative;
+const Project = styled(ContentBlock)`
   display: flex;
-  overflow: hidden;
   height: 100%;
   flex-direction: column;
-  padding: 2rem 2rem 2rem 5rem;
-  background: white;
-  border-radius: 4px;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  &:after {
-    position: absolute;
-    right: -3rem;
-    bottom: -3rem;
-    color: var(--gray-100);
-    content: "★";
-    font-size: 13rem;
-    transform: rotate(-25deg);
-  }
+  padding-right: 5rem;
 `
 
 const ProjectType = styled.div<{ type: string }>`

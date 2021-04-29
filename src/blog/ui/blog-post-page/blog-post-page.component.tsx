@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { CoreLayout, Tags, WithLayout } from "../../../backbone"
+import { ContentBlock, CoreLayout, Tags, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
 
@@ -73,11 +73,7 @@ const PostTags = styled(Tags)`
 
 const Info = styled.div``
 
-const Content = styled.section`
-  padding: 2rem;
-
-  background: white;
-
+const Content = styled(ContentBlock)`
   font-size: 1.2rem;
   line-height: 1.8;
 
