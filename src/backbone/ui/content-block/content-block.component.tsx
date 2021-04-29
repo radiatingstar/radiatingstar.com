@@ -8,6 +8,11 @@ export const ContentBlock = styled.section`
   border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
 
+  @media (prefers-color-scheme: dark) {
+    background: var(--black-300);
+    color: rgb(200, 200, 200);
+  }
+
   &:after {
     position: absolute;
     top: calc(100% - 4rem);

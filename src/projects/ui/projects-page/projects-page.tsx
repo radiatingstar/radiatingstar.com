@@ -91,7 +91,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
 
 const PageTitle = styled.h1`
   margin: 0 auto 4rem;
-  color: var(--yellow-500);
+  color: var(--yellow-700);
   font-size: 4rem;
   text-align: center;
 `
@@ -110,7 +110,7 @@ const Project = styled(ContentBlock)`
   display: flex;
   height: 100%;
   flex-direction: column;
-  padding-right: 5rem;
+  padding-left: 5rem !important;
 `
 
 const ProjectType = styled.div<{ type: string }>`
@@ -165,4 +165,8 @@ const ProjectExternalLink = styled(ExternalLink)`
 const ProjectTitle = styled.h1`
   margin: 0 0 2rem;
   color: var(--black-300);
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--yellow-700);
+  }
 `
