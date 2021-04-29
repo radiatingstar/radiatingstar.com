@@ -11,7 +11,7 @@ describe("Tags component", () => {
     (tags) => {
       it("should render nothing", () => {
         const { container } = render(<Tags names={tags} />)
-        expect(container).toBeEmpty()
+        expect(container).toBeEmptyDOMElement()
       })
     }
   )
