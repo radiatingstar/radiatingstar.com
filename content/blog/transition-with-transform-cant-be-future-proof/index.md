@@ -1,6 +1,7 @@
 ---
 title: Transition With Transform Can't Be Future Proof
 date: '2012-03-22T13:00:00.000Z'
+tags: [CSS]
 ---
 
 **Update:** since July the browsers are dropping support for both prefixed transitions and transformations so this blog post is now obsolete. We know the answer for the discussed question of how to make sure that combining transitions and transformations will be future-proof. The answer is to write both properties unprefixed after prefixed versions.

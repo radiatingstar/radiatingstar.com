@@ -1,6 +1,7 @@
 ---
 title: The Curtain Effect With CSS
 date: '2012-05-24T13:00:00.000Z'
+tags: [CSS]
 ---
 
 Recently I've discovered how cool the curtain effect is. I wanted to try making it myself thinking it might be quite challenging, but no such luck. Coding this great feature is so easy it hurts. You only need some simple CSS (not even CSS3!).

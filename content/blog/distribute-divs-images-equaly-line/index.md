@@ -1,6 +1,7 @@
 ---
 title: Distribute Divs or Images Equaly in Line
 date: '2012-06-26T13:00:00.000Z'
+tags: [CSS]
 ---
 
 While working on a layout with grids, a certain problem may arise. Let's say we want to put some block elements equally in a line, with margins between them but without left margin of the first and right margin of the last element. The picture below illustrates what we want to achieve.

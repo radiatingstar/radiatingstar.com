@@ -1,6 +1,7 @@
 ---
 title: The fastest way to get time stamps in JavaScript
 date: '2014-03-15T13:00:00.000Z'
+tags: [JavaScript]
 ---
 
 Did you know you can convert a Date object to a number using the unary + operator? The operator tries to convert its operand to a number, so using `+new Date()` will output the current time in milliseconds. This might not be the best piece of code readability-wise, but more important — what is the best performance-wise way to count the time in JavaScript?

@@ -1,6 +1,7 @@
 ---
 title: Improve Click Rate of Links With :visited Pseudo Class
 date: '2012-04-06T13:00:00.000Z'
+tags: [CSS]
 ---
 
 :link, :visited, :hover and :active pseudo classes are probably one of the first things everyone learn when learning HTML. For now let's focus on :visited. The purpose of this pseudo class is to indicate if the website behind the link (anchor) was previously visited and if it was, then it applies some style to the anchor according to rules declared in CSS. Most often you can see them on Wikipedia and Google. The visited links change their colour from blue to violet. It's a useful technique. It helps visitors distinguish between the content they read and let them focus on the new one. So let's find out how it can also improve a click rate of some links.

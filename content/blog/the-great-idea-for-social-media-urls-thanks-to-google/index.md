@@ -1,6 +1,7 @@
 ---
 title: The Great Idea for Social Media URLs – Thanks To Google
 date: '2012-03-31T15:00:00.000Z'
+tags: [SEO]
 ---
 
 Some people (me included) was waiting for shorter URL to our Google+ profiles as we can have them on Facebook. It seems we won't get them any time soon, though. At least not officially. We can use services like [gplus.to](http://gplus.to/), but there's a much better solution. Guys from Android Developers (the Google's official Android team) [introduced](https://plus.google.com/u/0/108967384991768947849/posts/fY47e78z1mP) a clever way to redirect people to their G+ profile without using those hard to remember digits – just type [developer.android.com/+](http://developer.android.com/+). Why is it so good that we should use it also with other social media services?
@@ -35,6 +36,6 @@ I don't know! It might work in ten yeas, but it also can stop working tomorrow. 
 
 We don't know who and where links to our profiles or fanpages while using a facebook.com/brand address. Using some kind of redirection from our own domain makes it possible now.
 
-Let's put ourself in a marketer shoes. We couldn't find what campaign pulled more fans to our fanpages. Was it outdoor? Or was it this TV commercial? But now using the redirection we can just slightly modify the URL used in advertisements and get those data. We can also find places in the internet where people link to the fanpage the most and get some valuable insight or maybe even find a great, new communication channel. If it isn't lovely?
+Let's put ourselves in a marketer shoes. We couldn't find what campaign pulled more fans to our fanpages. Was it outdoor? Or was it this TV commercial? But now using the redirection we can just slightly modify the URL used in advertisements and get those data. We can also find places in the internet where people link to the fanpage the most and get some valuable insight or maybe even find a great, new communication channel. If it isn't lovely?
 
-I'm going to change my social URLs right now. Thanks Android team for this great idea!
+I'm going to change my social URLs right now. Thanks to Android team for this great idea!
