@@ -95,5 +95,8 @@ const HomeLink = styled(Link)`
 `
 
 const Main = styled.main`
+  max-width: 88rem;
   margin-top: 4rem;
+  margin-right: auto;
+  margin-left: auto;
 `
