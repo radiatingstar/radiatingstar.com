@@ -27,6 +27,9 @@ package = "netlify-plugin-gatsby-cache"
     [plugins.inputs.audits.thresholds]
       pwa = 0.3
 
+[[plugins]]
+  package = "netlify-plugin-checklinks"
+
 [[redirects]]
   from = "/3l-the-grat-collection-of-mixins-for-less-introduction"
   to = "/blog/3l-the-grat-collection-of-mixins-for-less-introduction"
