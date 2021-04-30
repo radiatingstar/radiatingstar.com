@@ -95,5 +95,9 @@ const Content = styled(ContentBlock)`
   a {
     color: var(--yellow-400);
     text-decoration: none;
+
+    &:hover {
+      color: var(--yellow-700);
+    }
   }
 `

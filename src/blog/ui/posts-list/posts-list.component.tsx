@@ -52,12 +52,19 @@ const Item = styled.article`
 `
 const PostHeading = styled.h1`
   margin: 0;
+  color: var(--yellow-500);
   font-size: 2rem;
   line-height: 1.5;
+
+  &:hover,
+  &:active {
+    color: var(--yellow-700);
+  }
 `
 
 const PostLink = styled(Link)`
-  color: var(--yellow-500);
+  display: block;
+  color: inherit;
   text-decoration: none;
 `
 
@@ -80,4 +87,10 @@ const SecondaryPostLink = styled(Link)`
   font-size: 1.2rem;
   text-align: center;
   text-decoration: none;
+
+  &:hover,
+  &:active {
+    background: var(--red-200);
+    color: white;
+  }
 `

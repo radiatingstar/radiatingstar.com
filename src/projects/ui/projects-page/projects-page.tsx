@@ -91,19 +91,22 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
 }
 
 const Title = styled(PageTitle)`
-  margin: 0 auto 4rem;
+  padding-bottom: 2rem;
+  border-bottom: 4px solid currentColor;
+  margin: 0 2rem 4rem;
   color: var(--yellow-700);
   font-size: 4rem;
-  text-align: center;
+  text-align: left;
 `
 
 const ProjectsList = styled(List)`
   display: grid;
   align-items: stretch;
-  margin: 0 2rem 6rem;
-  gap: 4rem;
+  padding: 0 2rem;
+  margin-bottom: 6rem;
+  gap: 2rem;
   grid-auto-rows: 1fr;
-  grid-template-columns: 1fr;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: stretch;
 `
 
@@ -124,7 +127,7 @@ const ProjectType = styled.div<{ type: string }>`
   align-items: center;
   justify-content: center;
   background: ${({ type }) =>
-    type === "Application" ? `var(--yellow-700)` : `var(--red-200)`};
+    type === "Application" ? `var(--yellow-700)` : `var(--red-100)`};
   color: white;
   font-size: 1.2rem;
   font-weight: 900;
@@ -155,8 +158,14 @@ const ProjectExternalLink = styled(ExternalLink)`
   padding: 1rem;
   background: var(--yellow-700);
   border-radius: 4px;
-  color: white;
+  color: var(--black-300);
   text-decoration: none;
+
+  &:hover,
+  &:active,
+  &:focus {
+    background: var(--red-100);
+  }
 
   & + & {
     margin-left: 1rem;

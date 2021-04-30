@@ -88,7 +88,9 @@ describe("Blog Post Page component", () => {
     ])("when " + "%s page info is provided", (direction) => {
       it(`should display the ${direction} link`, () => {
         expect(
-          screen.getByRole("link", { name: `${direction} post title` })
+          screen.getByRole("link", {
+            name: new RegExp(`${direction} post title`),
+          })
         ).toLinkTo(`/blog/${direction}-slug`)
       })
     })

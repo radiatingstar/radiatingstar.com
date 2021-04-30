@@ -23,6 +23,9 @@ export const PostsNavigation: VoidFunctionComponent<SitePageContext> = ({
               rel={kind}
               key={kind}
             >
+              <RelationLabel>
+                {kind === "next" ? "Next: " : "Previous: "}
+              </RelationLabel>
               {relation?.frontmatter?.title}
             </PostLink>
           )
@@ -57,20 +60,13 @@ const PostLink = styled(Link)`
   font-size: 1.2rem;
   text-decoration: none;
 
-  &::before {
-    position: absolute;
-    top: 50%;
-    right: ${({ rel }) => (rel === "prev" ? "-12px" : "auto")};
-    left: ${({ rel }) => (rel === "next" ? "-12px" : "auto")};
-
-    display: block;
-    width: 24px;
-    height: 24px;
-    margin-top: -12px;
-
-    background: var(--yellow-500);
-    border-radius: 100%;
-
-    content: "";
+  &:hover,
+  &:active,
+  &:focus {
+    background: var(--yellow-700);
   }
+`
+
+const RelationLabel = styled.span`
+  color: var(--red-300);
 `

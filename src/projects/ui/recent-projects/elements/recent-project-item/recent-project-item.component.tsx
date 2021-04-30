@@ -2,14 +2,6 @@ import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 import { ExternalLink } from "../../../../../backbone"
 
-const Item = styled.div<{ last?: boolean }>`
-  margin-bottom: ${({ last }) => !last && "1rem"};
-`
-
-const ProjectTitle = styled.h1`
-  margin: 0;
-`
-
 interface Properties {
   title: string
   link: string
@@ -23,14 +15,28 @@ export const RecentProjectItem: VoidFunctionComponent<Properties> = ({
 }) => {
   return (
     <Item last={last}>
-      <ExternalLink
+      <ItemLink
         href={link}
         nofollow={false}
         noopener={false}
         noreferrer={false}
       >
         <ProjectTitle as={"h3"}>{title}</ProjectTitle>
-      </ExternalLink>
+      </ItemLink>
     </Item>
   )
 }
+
+const Item = styled.div<{ last?: boolean }>`
+  margin-bottom: ${({ last }) => !last && "1rem"};
+`
+
+const ProjectTitle = styled.h1`
+  margin: 0;
+`
+
+const ItemLink = styled(ExternalLink)`
+  &:hover {
+    color: var(--red-100);
+  }
+`
