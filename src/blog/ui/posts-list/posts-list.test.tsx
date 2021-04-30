@@ -34,6 +34,12 @@ describe("Posts List component", () => {
       ["#2", 1 as const],
     ])("%s", (_, index: number) => {
       beforeEach(() => render(<PostsList posts={posts} />))
+      it("should display the title as a link", () => {
+        const link = screen.getByRole("link", {
+          name: posts[index].frontmatter.title,
+        })
+        expect(link).toLinkTo("/blog" + posts[index].fields.slug)
+      })
       it("should display the excerpt", () => {
         expect(screen.getByText(posts[index].excerpt)).toBeInTheDocument()
       })
@@ -43,9 +49,10 @@ describe("Posts List component", () => {
         ).toLinkTo("/blog" + posts[index].fields.slug)
       })
       it("should display the post link as a read more button", () => {
-        expect(
-          screen.getAllByRole("link", { name: /read more/i })[index]
-        ).toLinkTo("/blog" + posts[index].fields.slug)
+        const link = screen.getByRole("link", {
+          name: `Read ${posts[index].frontmatter.title} post`,
+        })
+        expect(link).toLinkTo("/blog" + posts[index].fields.slug)
       })
     })
   })

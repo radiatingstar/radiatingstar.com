@@ -20,7 +20,12 @@ export const PostsList: VoidFunctionComponent<Properties> = ({ posts }) => {
               <PostLink to={link}>{frontmatter.title}</PostLink>
             </PostHeading>
             <Excerpt dangerouslySetInnerHTML={{ __html: excerpt }} />
-            <SecondaryPostLink to={link}>Read More</SecondaryPostLink>
+            <SecondaryPostLink
+              to={link}
+              aria-label={`Read ${frontmatter.title} post`}
+            >
+              Read More
+            </SecondaryPostLink>
           </Item>
         )
       }}
