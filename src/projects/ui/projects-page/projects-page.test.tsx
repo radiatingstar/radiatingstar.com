@@ -12,7 +12,7 @@ const projects = [
     repoLink: "https://github.com/project-1",
     description: "Project #1 Description",
     tags: ["Acupuncture"],
-    type: "Application",
+    type: "Application" as const,
   },
   {
     name: "Project Name #2",
@@ -20,7 +20,7 @@ const projects = [
     repoLink: "https://github.com/project-2",
     description: "Project #2 Description",
     tags: ["Magic", "Alchemy"],
-    type: "Library",
+    type: "Library" as const,
   },
 ]
 
@@ -55,6 +55,16 @@ describe("Projects Page component", () => {
     })
     it("should display the project's type", () => {
       expect(screen.getByText(projects[index].type)).toBeInTheDocument()
+    })
+  })
+  describe("when project is missing project link", () => {
+    it("should not render the link", () => {
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      const { projectLink, ...project } = projects[0]
+      render(<ProjectsPage projects={[project]} />)
+      expect(
+        screen.queryByText(`Visit ${project.name}`)
+      ).not.toBeInTheDocument()
     })
   })
 })

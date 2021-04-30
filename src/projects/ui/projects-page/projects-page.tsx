@@ -14,11 +14,11 @@ import { SEO } from "../../../seo"
 
 interface ProjectInfo {
   name: string
-  projectLink: string
+  projectLink?: string
   repoLink: string
   description: string
   tags: string[]
-  type: string
+  type: "Application" | "Library"
 }
 
 const projectsList: ProjectInfo[] = [
@@ -45,6 +45,37 @@ const projectsList: ProjectInfo[] = [
       "the generated emails to make your QA job easy. Works with Gmail, custom " +
       "domains and anything that can handle a + suffix.",
   },
+  {
+    name: "Color Utilities",
+    repoLink: "https://github.com/mateuszkocz/color-utilities",
+    description:
+      "Collection of useful methods for colors parsing, validation, " +
+      "transformations and calculations. Exposed as a class, so can be used as a " +
+      "stand-alone, or inside Angular apps.",
+    tags: ["JavaScript", "TypeScript", "Angular"],
+    type: "Library",
+  },
+  {
+    name: "Angular Coordinates",
+    repoLink: "https://github.com/mateuszkocz/angular-coordinates",
+    description:
+      "Angular library to parse and display geographical coordinates.",
+    tags: ["TypeScript", "Angular"],
+    type: "Library",
+  },
+  {
+    name: "Angular Match Style to Background",
+    repoLink:
+      "https://github.com/mateuszkocz/angular-match-style-to-background",
+    tags: ["TypeScript", "Angular"],
+    type: "Library",
+    description:
+      "The directive makes sure the color of texts and other " +
+      "elements inside the parent with dynamically changed background color " +
+      "will stay readable and visible. The new style is chosen from optionally " +
+      "provided styles declarations by calculating it's contrast ratio with the " +
+      "current value of the background color.",
+  },
 ]
 
 type Properties = WithLayout<{ projects: ProjectInfo[] }>
@@ -68,12 +99,14 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
               <Description>{project.description}</Description>
               <ProjectTags names={project.tags} />
               <Footer>
-                <ProjectExternalLink
-                  href={project.projectLink}
-                  label={`Visit ${project.name}`}
-                >
-                  Visit the project
-                </ProjectExternalLink>
+                {project.projectLink && (
+                  <ProjectExternalLink
+                    href={project.projectLink}
+                    label={`Visit ${project.name}`}
+                  >
+                    Visit the project
+                  </ProjectExternalLink>
+                )}
                 <ProjectExternalLink
                   href={project.repoLink}
                   label={`Visit the ${project.name} repository`}
