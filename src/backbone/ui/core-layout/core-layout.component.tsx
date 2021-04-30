@@ -6,12 +6,10 @@ import { mainNavigation } from "../../main-navigation-items"
 import { GlobalStyle } from "../global-style/global-style.component"
 import { Header } from "../header/header.component"
 import { MainNavigation } from "../main-navigation/main-navigation.component"
-import { FooterExternalLinkPill } from "../site-footer/elements/footer-external-link-pill/footer-external-link-pill.component"
 import { FooterExternalLink } from "../site-footer/elements/footer-external-link/footer-external-link.component"
 import { SiteFooter } from "../site-footer/site-footer.component"
 import { Badge } from "./elements/badge/badge.component"
-import { PrimaryFooterContent } from "./elements/primary-footer-content/primary-footer-content.component"
-import { QuaternaryFooterContent } from "./elements/quaternary-footer-content/quaternary-footer-content.component"
+import { BasicFooterContent } from "./elements/basic-footer-content/basic-footer-content.component"
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
 
@@ -37,21 +35,20 @@ export const CoreLayout: FunctionComponent<Properties> = ({
       <Main>{children}</Main>
       <SiteFooter
         primarySlot={
-          <PrimaryFooterContent>
-            <span>© Radiating Star {new Date().getFullYear()}</span>
+          <BasicFooterContent>
             <FooterExternalLink href="https://github.com/radiatingstar/radiatingstar.com">
               Site&apos;s code available on GitHub
             </FooterExternalLink>
-          </PrimaryFooterContent>
+          </BasicFooterContent>
         }
         secondarySlot={
           <SecondaryFooterContent>
-            <FooterExternalLinkPill href="https://github.com/radiatingstar/">
+            <FooterExternalLink href="https://github.com/radiatingstar/">
               GitHub
-            </FooterExternalLinkPill>
-            <FooterExternalLinkPill href="https://twitter.com/radiatingstar">
+            </FooterExternalLink>
+            <FooterExternalLink href="https://twitter.com/radiatingstar">
               Twitter
-            </FooterExternalLinkPill>
+            </FooterExternalLink>
           </SecondaryFooterContent>
         }
         tertiarySlot={
@@ -78,7 +75,11 @@ export const CoreLayout: FunctionComponent<Properties> = ({
             />
           </TertiaryFooterContent>
         }
-        quaternarySlot={<QuaternaryFooterContent />}
+        quaternarySlot={
+          <BasicFooterContent toRight>
+            © Radiating Star {new Date().getFullYear()}
+          </BasicFooterContent>
+        }
       />
     </PageContainer>
   )

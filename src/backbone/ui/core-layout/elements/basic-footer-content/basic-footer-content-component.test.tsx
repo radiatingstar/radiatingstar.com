@@ -1,6 +1,6 @@
 import { ensureChildren } from "../../../../../testing/checks/children.check"
-import { PrimaryFooterContent } from "./primary-footer-content.component"
+import { BasicFooterContent } from "./basic-footer-content.component"
 
 describe("Primary Footer Content component", () => {
-  ensureChildren(PrimaryFooterContent)
+  ensureChildren(BasicFooterContent)
 })

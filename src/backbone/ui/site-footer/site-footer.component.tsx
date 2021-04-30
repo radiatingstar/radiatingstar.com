@@ -39,7 +39,7 @@ const FooterContainer = styled.footer`
   background-image: url(${footerBcg});
   background-position: 50% calc(100%);
   background-repeat: repeat-x;
-  color: #ffa500;
+  color: white;
 
   gap: 1rem;
   grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot" "QuaternarySlot";
@@ -60,7 +60,7 @@ const PrimarySlot = styled.div`
 const Swag = styled.div`
   margin-top: -3.5rem;
   margin-bottom: 2rem;
-  color: #ffa500;
+  color: var(--yellow-700);
   font-size: 7rem;
   grid-area: Swag;
   pointer-events: none;

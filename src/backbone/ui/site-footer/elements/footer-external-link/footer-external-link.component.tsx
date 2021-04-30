@@ -2,13 +2,12 @@ import styled from "styled-components"
 import { ExternalLink } from "../../../external-link/external-link.component"
 
 export const FooterExternalLink = styled(ExternalLink)`
-  padding: 2px;
   margin: -2px;
-  color: white;
+  color: var(--yellow-700);
   text-decoration: none;
 
   &:hover {
-    color: #ffa500;
+    color: white;
   }
 
   /* TODO: Likely move it to some global style. */
