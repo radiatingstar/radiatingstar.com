@@ -21,6 +21,7 @@ export const ContentBlock = styled.section`
     content: "★";
     font-size: 13rem;
     line-height: 0;
+    pointer-events: none;
     transform: rotate(-25deg);
   }
 `
