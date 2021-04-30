@@ -82,6 +82,12 @@ describe("Blog Post Page component", () => {
     it("should display the author", () => {
       expect(screen.getByText("Post Author")).toBeInTheDocument()
     })
+    it("should link to the author's twitter", () => {
+      // TODO: this will have to take the link from the post's beta in the future.
+      expect(
+        screen.getByRole("link", { name: postData.site.siteMetadata.author })
+      ).toLinkTo("https://twitter.com/mateuszkocz")
+    })
     it("should display the content", () => {
       expect(screen.getByText("Post Content")).toBeInTheDocument()
     })

@@ -30,7 +30,9 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
   assertDefined(post.excerpt)
   assertDefined(post.html)
   const author = site.siteMetadata.author
-  const suggestionLink = `https://github.com/radiatingstar/radiatingstar.com/blob/master/content/blog${pageContext.slug}index.md`
+  const suggestionLink =
+    `https://github.com/radiatingstar/radiatingstar.com` +
+    `/blob/master/content/blog${pageContext.slug}index.md`
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
@@ -41,10 +43,11 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
       <Content>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <Info>
-          <SuggestionLink href={suggestionLink}>Suggest change</SuggestionLink>
+          <InfoLink href={suggestionLink}>Suggest change</InfoLink>
           <span>{post.frontmatter.date}</span>
           <span>
-            written by <span>{author}</span>
+            written by{" "}
+            <InfoLink href="https://twitter.com/mateuszkocz">{author}</InfoLink>
           </span>
         </Info>
       </Content>
@@ -82,7 +85,7 @@ const Info = styled.footer`
   padding-top: 2rem;
   border-top: 1px solid currentColor;
   margin-top: 2rem;
-  color: gray;
+  color: var(--gray-200);
   font-size: 80%;
   text-align: right;
 `
@@ -115,10 +118,10 @@ const Content = styled(ContentBlock)`
   }
 `
 
-const SuggestionLink = styled(ExternalLink)`
+const InfoLink = styled(ExternalLink)`
   /* FIXME: For some reason, setting color here won't overwrite the parent
       styles, hence !important. */
-  color: gray !important;
+  color: var(--gray-200) !important;
   &:hover,
   &:active,
   &:focus {

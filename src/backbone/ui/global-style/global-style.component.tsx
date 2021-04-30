@@ -15,6 +15,7 @@ export const GlobalStyle = createGlobalStyle`
     --black-300: rgb(30, 30, 30);
     --blue-300: #268bd2;
     --gray-100: rgba(0, 0, 0, 0.05);
+    --gray-200: gray;
   }
 
   body {
