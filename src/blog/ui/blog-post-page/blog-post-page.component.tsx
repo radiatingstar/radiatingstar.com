@@ -35,14 +35,19 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
       <Header>
         <Title>{post.frontmatter.title}</Title>
         <PostTags names={post.frontmatter.tags as string[] | undefined} />
-        <Info>
-          <span>{post.frontmatter.date}</span>, by <span>{author}</span>
-        </Info>
       </Header>
-      <Content dangerouslySetInnerHTML={{ __html: post.html }} />
-      <footer>
+      <Content>
+        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Info>
+          <span>{post.frontmatter.date}</span>
+          <span>
+            written by <span>{author}</span>
+          </span>
+        </Info>
+      </Content>
+      <aside>
         <PostsNavigation {...pageContext} />
-      </footer>
+      </aside>
     </Layout>
   )
 }
@@ -68,7 +73,16 @@ const PostTags = styled(Tags)`
   justify-content: flex-start;
 `
 
-const Info = styled.div``
+const Info = styled.footer`
+  display: flex;
+  justify-content: space-between;
+  padding-top: 2rem;
+  border-top: 1px solid currentColor;
+  margin-top: 2rem;
+  color: gray;
+  font-size: 80%;
+  text-align: right;
+`
 
 const Content = styled(ContentBlock)`
   font-size: 1.2rem;
