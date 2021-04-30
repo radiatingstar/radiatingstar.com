@@ -6,6 +6,7 @@ import { assertDefined } from "../../../assertions"
 import {
   ContentBlock,
   CoreLayout,
+  ExternalLink,
   PageTitle,
   Tags,
   WithLayout,
@@ -29,6 +30,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
   assertDefined(post.excerpt)
   assertDefined(post.html)
   const author = site.siteMetadata.author
+  const suggestionLink = `https://github.com/radiatingstar/radiatingstar.com/blob/master/content/blog${pageContext.slug}index.md`
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
@@ -39,6 +41,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
       <Content>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
         <Info>
+          <SuggestionLink href={suggestionLink}>Suggest change</SuggestionLink>
           <span>{post.frontmatter.date}</span>
           <span>
             written by <span>{author}</span>
@@ -109,5 +112,16 @@ const Content = styled(ContentBlock)`
     &:hover {
       color: var(--yellow-700);
     }
+  }
+`
+
+const SuggestionLink = styled(ExternalLink)`
+  /* FIXME: For some reason, setting color here won't overwrite the parent
+      styles, hence !important. */
+  color: gray !important;
+  &:hover,
+  &:active,
+  &:focus {
+    color: var(--yellow-700) !important;
   }
 `

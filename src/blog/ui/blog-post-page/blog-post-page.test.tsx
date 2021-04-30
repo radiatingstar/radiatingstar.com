@@ -44,12 +44,20 @@ const pageContext = {
 
 describe("Blog Post Page component", () => {
   checkAccessibility(
-    <BlogPostPage data={postData} pageContext={{}} layout={TestLayout} />
+    <BlogPostPage
+      data={postData}
+      pageContext={{ slug: "/slug/" }}
+      layout={TestLayout}
+    />
   )
   describe("with post data", () => {
     beforeEach(() =>
       render(
-        <BlogPostPage data={postData} pageContext={{}} layout={TestLayout} />
+        <BlogPostPage
+          data={postData}
+          pageContext={{ slug: "/slug/" }}
+          layout={TestLayout}
+        />
       )
     )
     ensureSeoTitle("Post Title")
@@ -76,6 +84,11 @@ describe("Blog Post Page component", () => {
     })
     it("should display the content", () => {
       expect(screen.getByText("Post Content")).toBeInTheDocument()
+    })
+    it("should display the suggestion link", () => {
+      expect(screen.getByRole("link", { name: /suggest change/i })).toLinkTo(
+        "https://github.com/radiatingstar/radiatingstar.com/blob/master/content/blog/slug/index.md"
+      )
     })
   })
   describe("with page context", () => {
