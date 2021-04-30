@@ -56,7 +56,7 @@ describe("SEO component", () => {
       render(<SEO title="Page Title" />)
       await waitFor(() => {
         // eslint-disable-next-line testing-library/no-node-access
-        expect(document.querySelector("html")).toHaveAttribute("language", "en")
+        expect(document.querySelector("html")).toHaveAttribute("lang", "en")
       })
     })
   })
@@ -65,7 +65,7 @@ describe("SEO component", () => {
       render(<SEO title="Page Title" language="pl" />)
       await waitFor(() => {
         // eslint-disable-next-line testing-library/no-node-access
-        expect(document.querySelector("html")).toHaveAttribute("language", "pl")
+        expect(document.querySelector("html")).toHaveAttribute("lang", "pl")
       })
     })
   })

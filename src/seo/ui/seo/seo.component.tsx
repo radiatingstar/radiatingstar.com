@@ -45,7 +45,7 @@ export const SEO: FunctionComponent<Readonly<Properties>> = ({
   return (
     <Helmet
       htmlAttributes={{
-        language,
+        lang: language,
       }}
       title={title}
       titleTemplate={`%s | ${data.site.siteMetadata.title}`}
