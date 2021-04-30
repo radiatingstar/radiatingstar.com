@@ -2,15 +2,24 @@
 package = "netlify-plugin-gatsby-cache"
 
 [[plugins]]
-package = "@netlify/plugin-lighthouse"
+  package = "@netlify/plugin-lighthouse"
 
   # Fails build when a category is below a threshold
   [plugins.inputs.thresholds]
-  performance = 0.8
-  accessibility = 0.8
-  best-practices = 0.8
-  seo = 0.8
-  pwa = 0.8
+    performance = 0.8
+    accessibility = 0.8
+    best-practices = 0.8
+    seo = 0.8
+    pwa = 0.8
+
+  [[plugins.inputs.audits]]
+    path="blog"
+  [[plugins.inputs.audits]]
+    path="projects"
+  [[plugins.inputs.audits]]
+    path="/blog/the-fastest-way-to-get-time-stamps-in-javascript"
+  [[plugins.inputs.audits]]
+    path=""
 
 [[redirects]]
   from = "/3l-the-grat-collection-of-mixins-for-less-introduction"
