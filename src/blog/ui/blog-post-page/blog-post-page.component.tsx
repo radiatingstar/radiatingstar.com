@@ -51,11 +51,8 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   padding: 1rem 1rem 2rem;
-
   color: var(--yellow-700);
-
   gap: 2rem;
-  text-align: center;
 
   @media (min-width: 32rem) {
     padding: 4rem;
@@ -64,12 +61,11 @@ const Header = styled.header`
 `
 
 const Title = styled(PageTitle)`
-  padding: 0 2rem;
   margin: 0;
 `
 
 const PostTags = styled(Tags)`
-  justify-content: center;
+  justify-content: flex-start;
 `
 
 const Info = styled.div``
