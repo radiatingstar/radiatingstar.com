@@ -1,5 +1,8 @@
 /* eslint-disable unicorn/prefer-module */
 module.exports = {
+  flags: {
+    FAST_DEV: true,
+  },
   siteMetadata: {
     title: `Radiating Star`,
     author: `Mateusz Kocz`,
