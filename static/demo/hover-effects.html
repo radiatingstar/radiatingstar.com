@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <title>Unorthodox Ideas For a:hover Effects - demos | Radiating Star</title>
+    <meta
+      name="description"
+      content="Demonstrations for Unorthodox Ideas For a:hover Effects"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <link
+      href="http://fonts.googleapis.com/css?family=Dosis:300"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <style>
+      /* Styles only for this demo page. */
+      body {
+        line-height: 2;
+        padding: 50px 100px;
+        font-size: 20px;
+        color: black;
+        font-family: "Dosis", "Helvetica", "Arial", sans-serif;
+        font-weight: 300;
+      }
+      footer {
+        color: #b1b1b1;
+        text-align: right;
+        padding-right: 20px;
+      }
+      div {
+        padding: 20px;
+      }
+      div:target {
+        background-color: #fafafa;
+      }
+      img {
+        position: fixed;
+        top: 25px;
+        left: 25px;
+      }
+      .lorem {
+        color: #b1b1b1;
+      }
+      a {
+        color: #222222;
+      }
+
+      /* Links styles. */
+      a {
+        text-decoration: none;
+        position: relative;
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+      a:after,
+      a:before {
+        -webkit-transition: all 0.3s;
+        -moz-transition: all 0.3s;
+        -o-transition: all 0.3s;
+        transition: all 0.3s;
+      }
+
+      /* Curly Brackets */
+      .brackets:before,
+      .brackets:after {
+        position: absolute;
+        top: -7px;
+        color: transparent;
+      }
+      .brackets:hover:before,
+      .brackets:hover:after {
+        color: black;
+      }
+      .brackets:before {
+        content: "{";
+        left: -20px;
+      }
+      .brackets:hover:before {
+        left: -15px;
+      }
+      .brackets:after {
+        content: "}";
+        right: -20px;
+      }
+      .brackets:hover:after {
+        right: -15px;
+      }
+
+      /* Rotating Star */
+      .rotating-star:after {
+        content: "\2605";
+        position: absolute;
+        top: -3px;
+        right: 0;
+        color: transparent;
+
+        /* Only for this demo page. */
+        line-height: 1;
+      }
+      .rotating-star:hover:after {
+        right: -25px;
+        color: black;
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -ms-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+
+        /* A small fix. Read in the post why it's needed. */
+        padding: 5px;
+      }
+
+      /* Underline */
+      .underline {
+        overflow: hidden;
+        display: inline-block;
+        margin-bottom: -12px;
+      }
+      .underline:before {
+        content: "";
+        position: absolute;
+        left: -100%;
+        bottom: 0;
+        display: block;
+        width: 100%;
+        height: 1px;
+        background-color: black;
+      }
+      .underline:hover:before {
+        left: 0;
+      }
+
+      /* Clone */
+      .clone:hover {
+        text-shadow: 4px 10px black, -20px 23px black, -3px -18px black,
+          50px 2px black;
+      }
+
+      /* Pattern */
+      .pattern:hover {
+        color: #fff;
+        background-color: #ffa500;
+        background-image: -webkit-linear-gradient(
+            0,
+            rgba(255, 255, 255, 0.07) 50%,
+            transparent 50%
+          ),
+          -webkit-linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent
+                50%),
+          -webkit-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.17)
+                50%),
+          -webkit-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.19)
+                50%);
+        background-image: -moz-linear-gradient(
+            0,
+            rgba(255, 255, 255, 0.07) 50%,
+            transparent 50%
+          ),
+          -moz-linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
+          -moz-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.17) 50%),
+          -moz-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.19) 50%);
+        background-image: -o-linear-gradient(
+            0,
+            rgba(255, 255, 255, 0.07) 50%,
+            transparent 50%
+          ),
+          -o-linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
+          -o-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.17) 50%),
+          -o-linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.19) 50%);
+        background-image: linear-gradient(
+            0,
+            rgba(255, 255, 255, 0.07) 50%,
+            transparent 50%
+          ),
+          linear-gradient(0, rgba(255, 255, 255, 0.13) 50%, transparent 50%),
+          linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.17) 50%),
+          linear-gradient(0, transparent 50%, rgba(255, 255, 255, 0.19) 50%);
+        background-size: 13px, 29px, 37px, 53px;
+      }
+
+      /* Blur */
+      .blur:hover {
+        color: transparent;
+        text-shadow: 0 0 3px black;
+      }
+
+      /* Robocop */
+      .blink {
+        display: inline-block;
+        overflow: hidden;
+        margin-bottom: -12px;
+      }
+      .blink:before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 0;
+        display: block;
+        height: 20px;
+        width: 10px;
+        -webkit-transition: left 0.3s;
+        -moz-transition: left 0.3s;
+        -o-transition: left 0.3s;
+        transition: left 0.3s;
+      }
+      .blink:hover:before {
+        background-color: #ffa500;
+        left: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <p>
+      <a
+        href="https://radiatingstar.com/blog/unorthodox-ideas-for-ahover-effects/"
+        >Back to the article</a
+      >
+    </p>
+    <div id="brackets">
+      <p><a href="" class="brackets">Curly Brackets</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="brackets">Curly Brackets</a> laboris nisi ut aliquip
+        ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+        voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
+        sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+
+    <div id="rotating-star">
+      <p><a href="" class="rotating-star">Rotating Star</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="rotating-star">Rotating Star</a> laboris nisi ut
+        aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
+        in voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
+        officia deserunt mollit anim id est laborum.
+      </p>
+    </div>
+
+    <div id="underline">
+      <p><a href="" class="underline">Underline</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="underline">Underline</a> laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+
+    <div id="clone">
+      <p><a href="" class="clone">Clone</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="clone">Clone</a> laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+        id est laborum.
+      </p>
+    </div>
+
+    <div id="pattern">
+      <p><a href="" class="pattern">Pattern</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="pattern">Pattern</a> laboris nisi ut aliquip ex ea
+        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+        velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint
+        occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+        mollit anim id est laborum.
+      </p>
+    </div>
+
+    <div id="blur">
+      <p><a href="" class="blur">Blur</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="blur">Blur</a> laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+        id est laborum.
+      </p>
+    </div>
+
+    <div id="blink">
+      <p><a href="" class="blink">Blink</a></p>
+      <p class="lorem">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+        veniam, quis nostrud exercitation ullamco
+        <a href="" class="blink">Blink</a> laboris nisi ut aliquip ex ea commodo
+        consequat. Duis aute irure dolor in reprehenderit in voluptate velit
+        esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+        cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
+        id est laborum.
+      </p>
+    </div>
+
+    <footer>
+      <p>
+        Font:
+        <a
+          href="http://www.impallari.com/dosis"
+          >Dosis</a
+        >
+      </p>
+    </footer>
+  </body>
+</html>

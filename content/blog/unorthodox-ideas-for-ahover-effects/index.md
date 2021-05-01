@@ -32,13 +32,13 @@ a:after, a:before {
 }
 ```
 
-We don't want the default links underline, hence the rule `text-decoration: none`. In some cases we will use an absolutely positioned elements that will be relative to links, so the `position: relative` rule. And at last we want to smoothly transition all state changes with `transition` property. Also remember that I don't use vendor prefixes in the code examples to make this examples shorter. You have to include them when writing your own code. They are included in the [demo page](/demo/hover-effects) with all examples, though.
+We don't want the default links underline, hence the rule `text-decoration: none`. In some cases we will use an absolutely positioned elements that will be relative to links, so the `position: relative` rule. And at last we want to smoothly transition all state changes with `transition` property. Also remember that I don't use vendor prefixes in the code examples to make this examples shorter. You have to include them when writing your own code. They are included in the [demo page](/demo/hover-effects.html) with all examples, though.
 
 Now let's get to the actual ideas.
 
 ## Curly Brackets or Other Punctuation Elements
 
-[Curly brackets demo](/demo/hover-effects/#brackets).
+[Curly brackets demo](/demo/hover-effects.html#brackets).
 
 On hover, a link will be surrounded by curly brackets. The effect is quite elegant. You can easily implement it in navigations, links lists or any other places where anchors will have enough space on the left and right sides. On the other hand, it doesn't look so good when used in text unless you increase the `word-spacing` so the brackets won't appear on neighbour words. You can also decrease the `left` and `right` value of both pseudo elements, but it won't look as good, as it does when anchor is alone.
 
@@ -75,7 +75,7 @@ If you don't want curly brackets to move you can simply declare the `content` va
 
 ## Rotating Star
 
-[Rotating star demo](/demo/hover-effects/#rotating-star).
+[Rotating star demo](/demo/hover-effects.html#rotating-star).
 
 It is a quite interesting effect that might looks really nice in some circumstances. The idea behind is similar to the previous example but now we'll use only one pseudo element. After a user hovers over the element, the rotating star will pop out. For rotation I obviously use the `transform` property together with the `transition` property (you might be interested in some thoughts on [future-friendliness of combining transitions with transforms](/transition-with-transform-cant-be-future-proof)).
 
@@ -104,7 +104,7 @@ The Rotating Star method is meant to be used only when links are alone (navigati
 
 ## Underline
 
-Underline is a default style of links in all browsers. Let's redesign it so it will look nice. See the [underline demo](/demo/hover-effects/#underline).
+Underline is a default style of links in all browsers. Let's redesign it so it will look nice. See the [underline demo](/demo/hover-effects.html#underline).
 
 On hover, a link will become underlined. But we won't use the `text-decoration` property since we can't do much styling with that. Instead we will use once again a pseudo element. With cursor hovering on the link, the line (pseudo element) will be gently transitioned from left creating a pleasing effect.
 
@@ -133,7 +133,7 @@ The `:before` pseudo element serves as a line. It's just a simple styling, not w
 
 ## Clone
 
-[Clone demo](/demo/hover-effects/#clone)
+[Clone demo](/demo/hover-effects.html#clone)
 
 It's a simple yet interesting effect. We use the `text-shadow` to copy an anchor text and create some clones.
 
@@ -148,7 +148,7 @@ Multiple shadows create interesting effect multiplying an anchor's text. It migh
 
 ## Pattern
 
-[Pattern demo](/demo/hover-effects/#pattern)
+[Pattern demo](/demo/hover-effects.html#pattern)
 
 Not much to say. Just a simple idea of using CSS generated patterns instead of solid background colour or image. Browse the [pattern gallery](http://lea.verou.me/css3patterns/) and find something nice for your design.
 
@@ -169,7 +169,7 @@ As a side note, if you want to use this pattern, just copy the code from the dem
 
 ## Blur
 
-[Demo of the blur effect](/demo/hover-effects/#blur).
+[Demo of the blur effect](/demo/hover-effects.html#blur).
 
 It's a simple effect of blurring an anchor's text. We don't need any magical CSS properties or SVGs. Just a `text-shadow`. This is an interesting, yet not usually practical effect, since it makes the text unreadable. You should use it with consideration.
 
@@ -182,7 +182,7 @@ It's a simple effect of blurring an anchor's text. We don't need any magical CSS
 
 ## Orange moving box
 
-[Red moving box demo](/demo/hover-effects/#blink).
+[Red moving box demo](/demo/hover-effects.html#blink).
 
 When user hovers over a link, an orange box will blink. I don't find it too appealing, but the mechanism behind can be used to create some more interesting effects.
 
