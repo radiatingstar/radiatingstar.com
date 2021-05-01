@@ -6,7 +6,7 @@ package = "netlify-plugin-gatsby-cache"
 
   # Fails build when a category is below a threshold
   [plugins.inputs.thresholds]
-    performance = 0.95
+    performance = 0.9
     accessibility = 0.95
     best-practices = 0.9
     seo = 0.9
