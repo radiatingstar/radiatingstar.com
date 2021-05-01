@@ -133,11 +133,11 @@ There is also a class that helps to create a transition effect on transformed el
 }
 ```
 
-You might want to read why [doing transitions on transforms isn't a good idea](/transition-with-transform-cant-be-future-proof) actually. For short: you can't guarantee this will work in the future.
+You might want to read why [doing transitions on transforms isn't a good idea](/blog/transition-with-transform-cant-be-future-proof/) actually. For short: you can't guarantee this will work in the future.
 
 ## <a name="animations"></a>Animations and @keyframes
 
-Due to the vendor prefixes, setting up animations is bothersome. For the same reason, [setting up @keyframes is even more bothersome](/css-keyframes-animations-with-less). But not with 3L! You just need to type this:
+Due to the vendor prefixes, setting up animations is bothersome. For the same reason, [setting up @keyframes is even more bothersome](/blog/css-keyframes-animations-with-less/). But not with 3L! You just need to type this:
 
 ```less
 @import 'animation1';
@@ -153,15 +153,15 @@ And you get fully working animation supported by the all browsers that use this 
 
 ## <a name="flex-box"></a>Flex-box
 
-There is this nice [article about flex-box](hacks.mozilla.org/2010/04/the-css-3-flexible-box-model/) on Mozilla's blog. All properties described in that article are supported by 3L!
+There is this nice [article about flex-box](https://hacks.mozilla.org/2010/04/the-css-3-flexible-box-model/) on Mozilla's blog. All properties described in that article are supported by 3L!
 
 ## <a name="seo"></a>SEO with CSS
 
-3L will help you fix some SEO issues on your website. Read how you can [use CSS to improve SEO of your website](/how-to-improve-seo-with-css).
+3L will help you fix some SEO issues on your website. Read how you can [use CSS to improve SEO of your website](/blog/how-to-improve-seo-with-css/).
 
 ## <a name="supporting"></a>HTML5 Boilerplate supporting classes
 
-[HTML5 Boilerplate](http://html5boilerplate.com/) introduces some nice supporting classes that will help you with creating a great user experience on your website. I've implemented them in The LESS Way so they can be used easily and effectively.
+[HTML5 Boilerplate](http://html5boilerplate.com/) introduces some nice supporting classes that will help you with creating a great user experience on your website. I've implemented them in The LESS Way, so they can be used easily and effectively.
 
 ## <a name="clearfix"></a>Clearfix
 

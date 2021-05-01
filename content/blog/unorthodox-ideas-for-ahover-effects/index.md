@@ -77,7 +77,7 @@ If you don't want curly brackets to move you can simply declare the `content` va
 
 [Rotating star demo](/demo/hover-effects.html#rotating-star).
 
-It is a quite interesting effect that might looks really nice in some circumstances. The idea behind is similar to the previous example but now we'll use only one pseudo element. After a user hovers over the element, the rotating star will pop out. For rotation I obviously use the `transform` property together with the `transition` property (you might be interested in some thoughts on [future-friendliness of combining transitions with transforms](/transition-with-transform-cant-be-future-proof)).
+It is a quite interesting effect that might looks really nice in some circumstances. The idea behind is similar to the previous example but now we'll use only one pseudo element. After a user hovers over the element, the rotating star will pop out. For rotation I obviously use the `transform` property together with the `transition` property (you might be interested in some thoughts on [future-friendliness of combining transitions with transforms](/blog/transition-with-transform-cant-be-future-proof/)).
 
 Of course star shape is just my personal preference. Some other characters might also look nice. Refer to the [list of Unicode characters](http://en.wikipedia.org/wiki/List_of_Unicode_characters) for ideas.
 

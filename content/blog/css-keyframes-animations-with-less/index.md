@@ -111,8 +111,8 @@ If you're the LESS fan-boy or fan-girl you might want to use [Lots of Love for L
 
 And you have your animation on .some-class object with all prefixes and unprefixed included!
 
-3L lets you do even more awesome thing like [help your SEO with CSS](/how-to-improve-seo-with-css), integrate with Twitter's Bootstrap, use multiple shadows and [more](3l-the-grat-collection-of-mixins-for-less-introduction). So what are you waiting for? Do something awesome with [3L](http://mateuszkocz.github.com/3l/)!
+3L lets you do even more awesome thing like [help your SEO with CSS](/blog/how-to-improve-seo-with-css/), integrate with Twitter's Bootstrap, use multiple shadows and [more](/blog/3l-the-grat-collection-of-mixins-for-less-introduction/). So what are you waiting for? Do something awesome with [3L](http://mateuszkocz.github.com/3l/)!
 
 ## Post Scriptum
 
-Animations are still a beta feature. You have to be careful if you wish to use other prefixed properties inside of @keyframes. It's the same kind of problem as with [transitions with transformations](/transition-with-transform-cant-be-future-proof).
+Animations are still a beta feature. You have to be careful if you wish to use other prefixed properties inside of @keyframes. It's the same kind of problem as with [transitions with transformations](/blog/transition-with-transform-cant-be-future-proof/).

@@ -6,7 +6,7 @@ tags: [LESS]
 
 About a month ago LESS was updated to version 1.3.0. This update brought an important change to the mixins matching system depending on the quantity of arguments. Now some of the mixins you wrote before using previous versions on LESS might now not work with the 1.3 and since probably not everyone of us read change logs before downloading and using LESS I found it might be useful to let you know.
 
-The set of mixins I created – 3L – was also affected by this change. I somehow missed that and up to this point 3L might be buggy when using some of the mixins included. It is now working well so you can [download 3L](http://mateuszkocz.github.com/3l/) and have fun with developing your website using LESS. Or you can [read why 3L is awesome](/3l-the-grat-collection-of-mixins-for-less-introduction").
+The set of mixins I created – 3L – was also affected by this change. I somehow missed that and up to this point 3L might be buggy when using some of the mixins included. It is now working well so you can [download 3L](http://mateuszkocz.github.com/3l/) and have fun with developing your website using LESS. Or you can [read why 3L is awesome](/blog/3l-the-grat-collection-of-mixins-for-less-introduction/).
 
 ## What's new in LESS 1.3.0?
 
