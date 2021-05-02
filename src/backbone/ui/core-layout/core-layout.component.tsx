@@ -13,6 +13,9 @@ import { BasicFooterContent } from "./elements/basic-footer-content/basic-footer
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
 
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+
 interface Properties {
   navigation?: ReactElement
 }
@@ -43,11 +46,17 @@ export const CoreLayout: FunctionComponent<Properties> = ({
         }
         secondarySlot={
           <SecondaryFooterContent>
-            <FooterExternalLink href="https://github.com/radiatingstar/">
-              GitHub
+            <FooterExternalLink
+              href="https://github.com/radiatingstar/"
+              label="GitHub"
+            >
+              <Icon as={FaGithub} />
             </FooterExternalLink>
-            <FooterExternalLink href="https://twitter.com/radiatingstar">
-              Twitter
+            <FooterExternalLink
+              href="https://twitter.com/radiatingstar"
+              label="Twitter"
+            >
+              <Icon as={FaTwitter} />
             </FooterExternalLink>
           </SecondaryFooterContent>
         }
@@ -101,4 +110,8 @@ const Main = styled.main`
   margin-top: 4rem;
   margin-right: auto;
   margin-left: auto;
+`
+
+const Icon = styled.i`
+  font-size: 150%;
 `
