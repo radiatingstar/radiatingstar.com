@@ -14,7 +14,7 @@ It's possible, it's easy and it can help every web developer to avoid some mista
 *   forgotten `<title>`,
 *   no description.
 
-[Check out the demo page.](/demo/seo-helper/index.html)
+[Check out the demo page.](/demo/seo-helper.html)
 
 Without further ado, lets get to the point. First the CSS code itself, later explanations.
 
@@ -151,4 +151,4 @@ meta[name="description"]:not([content=""]):before {
 
 to display a site's description and title on every page! I don't find it too useful, though.
 
-This technique is implemented in [Lots of Love for LESS](http://mateuszkocz.github.com/3l/) – a collection of mixins I've made. Find out more [about 3L](/3l-the-grat-collection-of-mixins-for-less-introduction).
+This technique is implemented in [Lots of Love for LESS](http://mateuszkocz.github.com/3l/) – a collection of mixins I've made. Find out more [about 3L](/blog/3l-the-grat-collection-of-mixins-for-less-introduction).
