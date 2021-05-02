@@ -94,4 +94,17 @@ describe("Home Page component", () => {
       expect(link2).toHaveTextContent("Project #2")
     })
   })
+  describe("internet presence", () => {
+    beforeEach(() => render(<HomePage data={data} />))
+    it.each([
+      [
+        "github",
+        "github.com/radiatingstar",
+        "https://github.com/radiatingstar",
+      ],
+      ["twitter", "@radiatingstar", "https://twitter.com/radiatingstar"],
+    ])("should link to %s", (_, name, url) => {
+      expect(screen.getByRole("link", { name })).toLinkTo(url)
+    })
+  })
 })

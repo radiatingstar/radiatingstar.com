@@ -3,7 +3,12 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
+import {
+  CoreLayout,
+  ExternalLink,
+  PageTitle,
+  WithLayout,
+} from "../../../backbone"
 import { RecentPosts, toBlogPostPreview } from "../../../blog"
 import { ProjectPreview, RecentProjects } from "../../../projects"
 import { SEO } from "../../../seo"
@@ -66,6 +71,15 @@ export const HomePage: FunctionComponent<Properties> = ({
             )
           })}
         </Recents>
+        <SocialLinks>
+          <h2>Keep in touch</h2>
+          <SocialLink href="https://github.com/radiatingstar">
+            github.com/radiatingstar
+          </SocialLink>
+          <SocialLink href="https://twitter.com/radiatingstar">
+            @radiatingstar
+          </SocialLink>
+        </SocialLinks>
       </ContentSection>
     </Layout>
   )
@@ -87,8 +101,8 @@ const Star = styled.span`
 `
 
 const RecentContent = styled.div`
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
 `
 
 const ContentSection = styled.section`
@@ -98,10 +112,44 @@ const ContentSection = styled.section`
 const Recents = styled.div`
   display: grid;
   gap: 2rem;
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+`
 
-  @media (min-width: 32rem) {
+const SocialLinks = styled.section`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  background: var(--yellow-700);
+  border-radius: 5px;
+  gap: 2rem;
+  text-align: center;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  @media (min-width: 48rem) {
     flex-direction: row;
-    grid-template-columns: repeat(2, 1fr);
+
+    h2 {
+      margin-right: auto;
+    }
+  }
+`
+
+const SocialLink = styled(ExternalLink)`
+  display: inline-block;
+  color: var(--red-300);
+  font-weight: bold;
+  text-decoration: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    color: var(--black-300);
   }
 `
