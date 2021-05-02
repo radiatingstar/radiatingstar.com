@@ -1,6 +1,7 @@
 import { Link } from "gatsby"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
+import { ItemLink } from "../../../../../backbone"
 
 interface Properties {
   title: string
@@ -15,8 +16,8 @@ export const RecentPostItem: FunctionComponent<Properties> = ({
 }) => {
   return (
     <Item last={last}>
-      <ItemLink to={slug}>
-        <PostTitle as={"h3"}>{title}</PostTitle>
+      <ItemLink as={Link} to={slug}>
+        {title}
       </ItemLink>
     </Item>
   )
@@ -24,14 +25,4 @@ export const RecentPostItem: FunctionComponent<Properties> = ({
 
 const Item = styled.div<{ last?: boolean }>`
   margin-bottom: ${({ last }) => !last && "1rem"};
-`
-
-const PostTitle = styled.h1`
-  margin: 0;
-`
-
-const ItemLink = styled(Link)`
-  &:hover {
-    color: var(--red-100);
-  }
 `

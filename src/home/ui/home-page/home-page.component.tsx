@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { CoreLayout, WithLayout } from "../../../backbone"
+import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { RecentPosts, toBlogPostPreview } from "../../../blog"
 import { ProjectPreview, RecentProjects } from "../../../projects"
 import { SEO } from "../../../seo"
@@ -47,6 +47,9 @@ export const HomePage: FunctionComponent<Properties> = ({
     <Layout>
       <SEO title={siteTitle} />
       <ContentSection>
+        <Title>
+          Radiating <Star>★</Star> Star
+        </Title>
         <Recents>
           {([
             ["Recent Posts", <RecentPosts posts={posts} key="posts" />],
@@ -69,19 +72,27 @@ export const HomePage: FunctionComponent<Properties> = ({
 }
 
 const RecentSectionHeading = styled.h1`
-  padding: 2rem;
   margin: 0;
-  background: var(--yellow-400);
-  color: var(--red-200);
+  color: var(--yellow-700);
+`
+
+const Title = styled(PageTitle)`
+  margin-top: 0;
+`
+
+const Star = styled.span`
+  color: white;
+  opacity: 0.9;
+  text-shadow: 0 0 10px rgb(255 255 255), 0 0 10px rgb(255 255 255);
 `
 
 const RecentContent = styled.div`
-  padding: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
 `
 
 const ContentSection = styled.section`
-  padding: 1rem;
-  margin: 1rem;
+  padding: 0 2rem 2rem;
 `
 
 const Recents = styled.div`
