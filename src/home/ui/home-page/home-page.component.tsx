@@ -4,6 +4,7 @@ import styled from "styled-components"
 import { HomePageQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import {
+  ContentBlock,
   CoreLayout,
   ExternalLink,
   PageTitle,
@@ -119,17 +120,14 @@ const Recents = styled.div`
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 `
 
-const SocialLinks = styled.section`
+const SocialLinks = styled(ContentBlock)`
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 2rem;
   margin-top: 4rem;
   background: var(--yellow-700);
-  border-radius: 5px;
   gap: 2rem;
-  text-align: center;
 
   h2 {
     margin-top: 0;
