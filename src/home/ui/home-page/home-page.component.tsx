@@ -125,8 +125,10 @@ const SocialLinks = styled(ContentBlock)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 4rem 2rem;
   margin-top: 4rem;
   background: var(--yellow-700);
+  color: var(--black-300);
   gap: 2rem;
 
   h2 {
