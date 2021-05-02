@@ -30,6 +30,9 @@ package = "netlify-plugin-gatsby-cache"
 [[plugins]]
   package = "netlify-plugin-checklinks"
 
+  [plugins.inputs]
+    skipPatterns = ["https://www.google-analytics.com"]
+
 [[redirects]]
   from = "/3l-the-grat-collection-of-mixins-for-less-introduction"
   to = "/blog/3l-the-grat-collection-of-mixins-for-less-introduction"
