@@ -96,7 +96,7 @@ const RecentSectionHeading = styled.h1`
 `
 
 const Title = styled(PageTitle)`
-  margin-top: 0;
+  margin: 0;
 `
 
 const Star = styled.span`
@@ -107,11 +107,13 @@ const Star = styled.span`
 
 const RecentContent = styled.div`
   margin-top: 2rem;
-  margin-bottom: 2rem;
 `
 
 const ContentSection = styled.section`
-  padding: 0 2rem 2rem;
+  display: flex;
+  flex-direction: column;
+  padding: 0 2rem 6rem;
+  gap: 6rem;
 `
 
 const Recents = styled.div`
@@ -126,7 +128,6 @@ const SocialLinks = styled(ContentBlock)`
   align-items: center;
   justify-content: center;
   padding: 4rem 2rem;
-  margin-top: 4rem;
   background: var(--yellow-700);
   color: var(--black-300);
   gap: 2rem;
