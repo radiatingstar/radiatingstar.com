@@ -12,9 +12,8 @@ import { Badge } from "./elements/badge/badge.component"
 import { BasicFooterContent } from "./elements/basic-footer-content/basic-footer-content.component"
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
-
-import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
-import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
+import { FaGithubSquare } from "@react-icons/all-files/fa/FaGithubSquare"
+import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare"
 
 interface Properties {
   navigation?: ReactElement
@@ -50,13 +49,13 @@ export const CoreLayout: FunctionComponent<Properties> = ({
               href="https://github.com/radiatingstar/"
               label="GitHub"
             >
-              <Icon as={FaGithub} />
+              <Icon as={FaGithubSquare} />
             </FooterExternalLink>
             <FooterExternalLink
               href="https://twitter.com/radiatingstar"
               label="Twitter"
             >
-              <Icon as={FaTwitter} />
+              <Icon as={FaTwitterSquare} />
             </FooterExternalLink>
           </SecondaryFooterContent>
         }
@@ -113,5 +112,5 @@ const Main = styled.main`
 `
 
 const Icon = styled.i`
-  font-size: 150%;
+  font-size: 200%;
 `

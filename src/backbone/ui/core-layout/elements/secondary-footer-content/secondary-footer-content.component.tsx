@@ -7,7 +7,7 @@ const ContentContainer = styled.div`
   gap: 2rem;
   @media (min-width: 32rem) {
     justify-content: flex-end;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 `
 
