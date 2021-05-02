@@ -5,6 +5,7 @@
   "version": "0.1.0",
   "author": "Mateusz Kocz <mateusz@radiatingstar.com>",
   "dependencies": {
+    "@react-icons/all-files": "^4.1.0",
     "babel-plugin-styled-components": "^1.12.0",
     "fp-ts": "^2.10.4",
     "gatsby": "^3.4.0",

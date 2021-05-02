@@ -13,6 +13,8 @@ import { RecentPosts, toBlogPostPreview } from "../../../blog"
 import { ProjectPreview, RecentProjects } from "../../../projects"
 import { SEO } from "../../../seo"
 import { RecentSection } from "../recent-section/recent-section.component"
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub"
+import { FaTwitter } from "@react-icons/all-files/fa/FaTwitter"
 
 // TODO: move this somewhere else.
 const projectsList: Array<ProjectPreview> = [
@@ -74,9 +76,11 @@ export const HomePage: FunctionComponent<Properties> = ({
         <SocialLinks>
           <h2>Keep in touch</h2>
           <SocialLink href="https://github.com/radiatingstar">
+            <Icon as={FaGithub} />
             github.com/radiatingstar
           </SocialLink>
           <SocialLink href="https://twitter.com/radiatingstar">
+            <Icon as={FaTwitter} />
             @radiatingstar
           </SocialLink>
         </SocialLinks>
@@ -146,10 +150,15 @@ const SocialLink = styled(ExternalLink)`
   color: var(--red-300);
   font-weight: bold;
   text-decoration: none;
-
   &:hover,
   &:focus,
   &:active {
     color: var(--black-300);
   }
+`
+
+const Icon = styled.i`
+  margin-right: 0.5rem;
+  margin-bottom: -0.4rem;
+  font-size: 150%;
 `
