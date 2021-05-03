@@ -19,7 +19,7 @@ export const Badge: VoidFunctionComponent<Properties> = ({
   label,
 }) => {
   return (
-    <BadgeLink href={href} nofollow>
+    <BadgeLink href={href} nofollow label={label}>
       <img alt={`${label} Badge`} src={src} />
     </BadgeLink>
   )

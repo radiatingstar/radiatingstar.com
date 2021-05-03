@@ -21,5 +21,8 @@ describe("Badge component", () => {
     it("should set the image's alt", () => {
       expect(screen.getByRole("img")).toHaveAttribute("alt", `${label} Badge`)
     })
+    it("should be set on the link", () => {
+      expect(screen.getByRole("link", { name: label })).toBeInTheDocument()
+    })
   })
 })
