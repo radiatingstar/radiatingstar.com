@@ -55,7 +55,7 @@ const technologies = [
   },
 ]
 
-export const TechPage: VoidFunctionComponent<WithLayout<void>> = ({
+export const TechPage: VoidFunctionComponent<WithLayout<unknown>> = ({
   layout: Layout = CoreLayout,
 }) => {
   return (
@@ -90,20 +90,20 @@ export const TechPage: VoidFunctionComponent<WithLayout<void>> = ({
             <ContentBlock key={name}>
               <BlockHeading as="h2">{name}</BlockHeading>
               <p>{description}</p>
-              <ExternalLink href={url}>{linkName}</ExternalLink>
+              <TechnologyLink href={url}>{linkName}</TechnologyLink>
             </ContentBlock>
           )
         })}
-        <ContentBlock>
-          <p>
+        <MetaBlock>
+          <span>
             Explore more technologies and tools used in this project by visiting
             the project&apos;s{" "}
-            <ExternalLink href="https://github.com/radiatingstar/radiatingstar.com/blob/master/package.json">
+            <TechnologyLink href="https://github.com/radiatingstar/radiatingstar.com/blob/master/package.json">
               package.json
-            </ExternalLink>{" "}
+            </TechnologyLink>{" "}
             file.
-          </p>
-        </ContentBlock>
+          </span>
+        </MetaBlock>
       </TechList>
     </Layout>
   )
@@ -124,17 +124,33 @@ const BadgesBlock = styled(ContentBlock)`
   gap: 0.5rem;
 `
 
+const MetaBlock = styled(ContentBlock)`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
 const TechList = styled.div`
   display: grid;
   margin: 0 2rem 6rem;
+  color: var(--black-300);
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--gray-200);
+  }
 `
 
 const BlockHeading = styled.h1`
   margin-top: 0;
-  color: var(--black-300);
+  font-size: 1.2rem;
+`
+
+const TechnologyLink = styled(ExternalLink)`
+  color: var(--red-100);
+  text-decoration: none;
   @media (prefers-color-scheme: dark) {
-    color: white;
+    color: var(--yellow-700);
   }
 `
