@@ -1,6 +1,6 @@
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
-import { ExternalLink } from "../../../external-link/external-link.component"
+import { ExternalLink } from "../../../backbone"
 
 interface Properties {
   href: string

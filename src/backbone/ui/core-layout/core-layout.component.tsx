@@ -1,19 +1,18 @@
+import { FaGithubSquare } from "@react-icons/all-files/fa/FaGithubSquare"
+import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare"
 import { Link } from "gatsby"
 import React, { FunctionComponent, ReactElement } from "react"
 import styled from "styled-components"
 import { Logo } from "../../../branding"
 import { mainNavigation } from "../../main-navigation-items"
+import { ExternalLink } from "../external-link/external-link.component"
 import { GlobalStyle } from "../global-style/global-style.component"
 import { Header } from "../header/header.component"
 import { MainNavigation } from "../main-navigation/main-navigation.component"
-import { FooterExternalLink } from "../site-footer/elements/footer-external-link/footer-external-link.component"
+import { FooterLink } from "../site-footer/elements/footer-link/footer-link.component"
 import { SiteFooter } from "../site-footer/site-footer.component"
-import { Badge } from "./elements/badge/badge.component"
 import { BasicFooterContent } from "./elements/basic-footer-content/basic-footer-content.component"
 import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
-import { TertiaryFooterContent } from "./elements/tertiary-footer-content/tertiary-footer-content.component"
-import { FaGithubSquare } from "@react-icons/all-files/fa/FaGithubSquare"
-import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare"
 
 interface Properties {
   navigation?: ReactElement
@@ -38,50 +37,34 @@ export const CoreLayout: FunctionComponent<Properties> = ({
       <SiteFooter
         primarySlot={
           <BasicFooterContent>
-            <FooterExternalLink href="https://github.com/radiatingstar/radiatingstar.com">
+            <FooterLink
+              as={ExternalLink}
+              href="https://github.com/radiatingstar/radiatingstar.com"
+            >
               Site&apos;s code available on GitHub
-            </FooterExternalLink>
+            </FooterLink>
+            <FooterLink as={Link} to="/tech">
+              Tech stack
+            </FooterLink>
           </BasicFooterContent>
         }
         secondarySlot={
           <SecondaryFooterContent>
-            <FooterExternalLink
+            <FooterLink
+              as={ExternalLink}
               href="https://github.com/radiatingstar/"
               label="GitHub"
             >
               <Icon as={FaGithubSquare} />
-            </FooterExternalLink>
-            <FooterExternalLink
+            </FooterLink>
+            <FooterLink
+              as={ExternalLink}
               href="https://twitter.com/radiatingstar"
               label="Twitter"
             >
               <Icon as={FaTwitterSquare} />
-            </FooterExternalLink>
+            </FooterLink>
           </SecondaryFooterContent>
-        }
-        tertiarySlot={
-          <TertiaryFooterContent>
-            <Badge
-              href="https://codeclimate.com/github/radiatingstar/radiatingstar.com/test_coverage"
-              src="https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/test_coverage"
-              label="Code Climate Test Coverage"
-            />
-            <Badge
-              href="https://codecov.io/gh/radiatingstar/radiatingstar.com"
-              src="https://codecov.io/gh/radiatingstar/radiatingstar.com/branch/master/graph/badge.svg?token=yOUq7lvbnS"
-              label="Codecov"
-            />
-            <Badge
-              href="https://codeclimate.com/github/radiatingstar/radiatingstar.com/maintainability"
-              src="https://api.codeclimate.com/v1/badges/6580a1828697d56fe712/maintainability"
-              label="Code Climate Maintainability"
-            />
-            <Badge
-              href="https://app.netlify.com/sites/radiatingstarcom/deploys"
-              src="https://api.netlify.com/api/v1/badges/630d6ad6-236a-4ed5-a2a7-69bcc3bd6dba/deploy-status"
-              label="Netlify Build Status"
-            />
-          </TertiaryFooterContent>
         }
         quaternarySlot={
           <BasicFooterContent toRight>

@@ -1,7 +1,6 @@
 import styled from "styled-components"
-import { ExternalLink } from "../../../external-link/external-link.component"
 
-export const FooterExternalLink = styled(ExternalLink)`
+export const FooterLink = styled.a`
   color: var(--yellow-700);
   text-decoration: none;
 

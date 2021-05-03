@@ -13,6 +13,8 @@ export const BasicFooterContent: FunctionComponent<Properties> = ({
 }
 
 const ContentContainer = styled.div<Properties>`
+  display: flex;
+  gap: 2rem;
   text-align: center;
   @media (min-width: 32rem) {
     text-align: ${({ toRight }) => (toRight ? "right" : "left")};

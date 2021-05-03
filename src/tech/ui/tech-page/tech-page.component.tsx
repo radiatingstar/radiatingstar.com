@@ -7,7 +7,7 @@ import {
   PageTitle,
   WithLayout,
 } from "../../../backbone"
-import { Badge } from "../../../backbone/ui/core-layout/elements/badge/badge.component"
+import { Badge } from "../badge/badge.component"
 import { SEO } from "../../../seo"
 
 const technologies = [
@@ -126,7 +126,7 @@ const BadgesBlock = styled(ContentBlock)`
 
 const TechList = styled.div`
   display: grid;
-  margin: 0 2rem;
+  margin: 0 2rem 6rem;
   gap: 2rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 `

@@ -43,6 +43,9 @@ describe("Core Layout component", () => {
         screen.getByRole("link", { name: /code available on GitHub/ })
       ).toLinkTo("https://github.com/radiatingstar/radiatingstar.com")
     })
+    it("should link to the tech page", () => {
+      expect(screen.getByRole("link", { name: "Tech stack" })).toLinkTo("/tech")
+    })
     it("should display the GitHub link", () => {
       expect(screen.getByRole("link", { name: "GitHub" })).toLinkTo(
         "https://github.com/radiatingstar/"
