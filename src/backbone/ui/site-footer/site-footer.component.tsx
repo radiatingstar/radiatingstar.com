@@ -80,15 +80,8 @@ const SecondarySlot = styled.div`
 `
 
 const TertiarySlot = styled.div`
-  /* Hide the overflow on really small devices. */
-  overflow: hidden;
   margin: 0 1rem;
   grid-area: TertiarySlot;
-
-  @media (min-width: 32rem) {
-    width: min-content;
-    margin: initial;
-  }
 `
 
 const QuaternarySlot = styled.div`

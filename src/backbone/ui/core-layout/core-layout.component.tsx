@@ -35,7 +35,7 @@ export const CoreLayout: FunctionComponent<Properties> = ({
       />
       <Main>{children}</Main>
       <SiteFooter
-        primarySlot={
+        tertiarySlot={
           <BasicFooterContent>
             <FooterLink
               as={ExternalLink}
