@@ -14,9 +14,9 @@ export const BasicFooterContent: FunctionComponent<Properties> = ({
 
 const ContentContainer = styled.div<Properties>`
   display: flex;
+  justify-content: center;
   gap: 2rem;
-  text-align: center;
   @media (min-width: 32rem) {
-    text-align: ${({ toRight }) => (toRight ? "right" : "left")};
+    justify-content: ${({ toRight }) => (toRight ? "flex-end" : "flex-start")};
   }
 `
