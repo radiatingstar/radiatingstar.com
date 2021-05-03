@@ -148,9 +148,18 @@ const BlockHeading = styled.h1`
 `
 
 const TechnologyLink = styled(ExternalLink)`
+  border-bottom: 1px solid currentColor;
   color: var(--red-100);
   text-decoration: none;
+
+  &:hover {
+    color: var(--yellow-700);
+  }
+
   @media (prefers-color-scheme: dark) {
     color: var(--yellow-700);
+    &:hover {
+      color: var(--red-100);
+    }
   }
 `

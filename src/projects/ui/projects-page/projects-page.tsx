@@ -187,21 +187,28 @@ const Footer = styled.footer`
 `
 
 const ProjectExternalLink = styled(ExternalLink)`
-  display: inline-block;
-  padding: 1rem;
-  background: var(--yellow-700);
-  border-radius: 4px;
-  color: var(--black-300);
+  border-bottom: 1px solid currentColor;
+  color: var(--red-100);
   text-decoration: none;
 
   &:hover,
   &:active,
   &:focus {
-    background: var(--red-100);
+    color: var(--yellow-700);
   }
 
   & + & {
     margin-left: 1rem;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    color: var(--yellow-700);
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: var(--red-100);
+    }
   }
 `
 

@@ -109,11 +109,19 @@ const Content = styled(ContentBlock)`
   }
 
   a {
-    color: var(--yellow-400);
+    border-bottom: 1px solid currentColor;
+    color: var(--red-100);
     text-decoration: none;
 
     &:hover {
       color: var(--yellow-700);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--yellow-700);
+      &:hover {
+        color: var(--red-100);
+      }
     }
   }
 `
