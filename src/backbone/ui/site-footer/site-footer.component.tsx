@@ -80,7 +80,6 @@ const SecondarySlot = styled.div`
 `
 
 const TertiarySlot = styled.div`
-  margin: 0 1rem;
   grid-area: TertiarySlot;
 `
 
