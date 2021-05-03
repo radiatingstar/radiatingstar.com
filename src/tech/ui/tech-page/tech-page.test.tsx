@@ -52,6 +52,14 @@ describe("Tech Page component", () => {
         "styled-components.com",
         "https://styled-components.com/",
       ],
+      ["axe", "deque.com/axe", "https://www.deque.com/axe/"],
+      [
+        "Lighthouse",
+        "developers.google.com/lighthouse",
+        "https://developers.google.com/web/tools/lighthouse",
+      ],
+      ["ESLint", "eslint.org", "https://eslint.org/"],
+      ["stylelint", "stylelint.io", "https://stylelint.io/"],
     ])("should display info about %s", (techName, techLinkName, techLink) => {
       expect(
         screen.getByRole("heading", { level: 2, name: techName })

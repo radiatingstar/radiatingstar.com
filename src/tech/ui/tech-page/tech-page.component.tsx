@@ -15,43 +15,76 @@ const technologies = [
     name: "Gatsby",
     url: "https://www.gatsbyjs.com/",
     linkName: "gatsbyjs.com",
-    description: "JAM Stack...",
+    description:
+      "The framework behind this app. Generates the static pages and optimizes " +
+      "data management making this page fast and fun to work with.",
   },
   {
     name: "React",
     url: "https://reactjs.org/",
     linkName: "reactjs.org",
-    description: "UI lib...",
+    description:
+      "UI library and the backbone of Gatsby. Pretty standard stuff.",
   },
   {
     name: "TypeScript",
     url: "https://www.typescriptlang.org/",
     linkName: "typescriptlang.org",
-    description: "Language…",
+    description:
+      "The language of choice the app is using. Makes the data model " +
+      "more explicit and enhances the IDE experience.",
   },
   {
     name: "Netlify",
     url: "https://www.netlify.com/",
     linkName: "netlify.com",
-    description: "Hosting…",
+    description: "Hosting and deployment platform dedicated to JAM stack apps.",
   },
   {
     name: "React Testing Library",
     url: "https://testing-library.com/",
     linkName: "testing-library.com",
-    description: "Tests…",
+    description: "Simple and fun to work with testing library for React apps.",
   },
   {
     name: "Jest",
     linkName: "jestjs.io",
     url: "https://jestjs.io/",
-    description: "Tests…",
+    description: "Default test runner for React applications.",
   },
   {
     name: "Styled Components",
     linkName: "styled-components.com",
     url: "https://styled-components.com/",
-    description: "Styling…",
+    description: "One of the best tool for writing CSS-in-JS styles.",
+  },
+  {
+    name: "axe",
+    linkName: "deque.com/axe",
+    url: "https://www.deque.com/axe/",
+    description:
+      "Accessibility validator used to make sure the page is" +
+      "accessible (or—at least—not inaccessible).",
+  },
+  {
+    name: "Lighthouse",
+    linkName: "developers.google.com/lighthouse",
+    url: "https://developers.google.com/web/tools/lighthouse",
+    description:
+      "Overall health validator for web apps. In this project it" +
+      "is used as a Netlify plugin to ensure no issue will pass.",
+  },
+  {
+    name: "ESLint",
+    linkName: "eslint.org",
+    url: "https://eslint.org/",
+    description: "Code validator ensuring the code quality will be top notch.",
+  },
+  {
+    name: "stylelint",
+    linkName: "stylelint.io",
+    url: "https://stylelint.io/",
+    description: "Validator ensuring the good quality of CSS code.",
   },
 ]
 
