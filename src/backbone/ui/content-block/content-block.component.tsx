@@ -1,6 +1,6 @@
 import styled from "styled-components"
 
-export const ContentBlock = styled.section`
+export const ContentBlock = styled.section<{ attentionGrabbing?: boolean }>`
   position: relative;
   overflow: hidden;
   padding: 2rem;
@@ -17,7 +17,8 @@ export const ContentBlock = styled.section`
     position: absolute;
     top: calc(100% - 4rem);
     right: -3rem;
-    color: var(--gray-100);
+    color: ${({ attentionGrabbing }) =>
+      attentionGrabbing ? `var(--yellow-700)` : `var(--gray-100)`};
     content: "★";
     font-size: 13rem;
     line-height: 0;
