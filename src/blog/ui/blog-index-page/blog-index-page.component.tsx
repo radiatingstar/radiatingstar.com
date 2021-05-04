@@ -21,7 +21,10 @@ export const BlogIndexPage: FunctionComponent<Properties> = ({
   })
   return (
     <Layout>
-      <SEO title="All posts" />
+      <SEO
+        title="All posts"
+        description="Read and learn about programming, web development, React, CSS and other great tools."
+      />
       <PostsList posts={posts} />
     </Layout>
   )

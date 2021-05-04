@@ -1,7 +1,10 @@
 import { render, screen } from "@testing-library/react"
 import React from "react"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
-import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
+import {
+  ensureSeoDescription,
+  ensureSeoTitle,
+} from "../../../testing/checks/seoe.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { ProjectsPage } from "./projects-page"
 
@@ -30,6 +33,10 @@ describe("Projects Page component", () => {
   beforeEach(() => render(component))
   checkAccessibility(component)
   ensureSeoTitle("Projects")
+  ensureSeoDescription(
+    "Projects made by Radiating Star studio. Take a look at " +
+      "those applications and libraries."
+  )
   it("should display the main heading", () => {
     expect(screen.getByRole("heading", { level: 1 })).toHaveTextContent(
       "Projects"

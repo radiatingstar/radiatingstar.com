@@ -6,7 +6,7 @@ module.exports = {
   siteMetadata: {
     title: `Radiating Star`,
     author: `Mateusz Kocz`,
-    description: `Every website is a star that radiates awesomeness`,
+    description: `Every website is a star that radiates awesomeness. Learn how to create great web apps.`,
     siteUrl: `https://radiatingstar.com/`,
     social: {
       twitter: `mateuszkocz`,

@@ -1,7 +1,10 @@
 import React from "react"
 import { render, screen } from "@testing-library/react"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
-import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
+import {
+  ensureSeoDescription,
+  ensureSeoTitle,
+} from "../../../testing/checks/seoe.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { TechPage } from "./tech-page.component"
 
@@ -11,6 +14,9 @@ describe("Tech Page component", () => {
   beforeEach(() => render(component))
   checkAccessibility(component)
   ensureSeoTitle("Tech")
+  ensureSeoDescription(
+    "Take a look at what tools were used to build this page."
+  )
   it("should display the main heading", () => {
     expect(
       screen.getByRole("heading", { level: 1, name: "Technologies" })

@@ -93,7 +93,10 @@ export const TechPage: VoidFunctionComponent<WithLayout<unknown>> = ({
 }) => {
   return (
     <Layout>
-      <SEO title="Tech" />
+      <SEO
+        title="Tech"
+        description="Take a look at what tools were used to build this page."
+      />
       <Title>Technologies</Title>
       <TechList>
         <BadgesBlock>

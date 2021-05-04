@@ -86,7 +86,10 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
 }) => {
   return (
     <Layout>
-      <SEO title="Projects" />
+      <SEO
+        title="Projects"
+        description="Projects made by Radiating Star studio. Take a look at those applications and libraries."
+      />
       <Title>Projects</Title>
       <ProjectsList<ListComponentProperties<ProjectInfo>>
         renderItem={(project) => {

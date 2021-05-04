@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react"
 import React from "react"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
-import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
+import { ensureSeoTitle } from "../../../testing/checks/seoe.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogPostPage } from "./blog-post-page.component"
 

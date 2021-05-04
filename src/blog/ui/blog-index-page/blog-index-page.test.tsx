@@ -2,7 +2,10 @@ import { render, screen } from "@testing-library/react"
 import React from "react"
 import { mocked } from "ts-jest/utils"
 import { checkAccessibility } from "../../../testing/checks/accessibility.check"
-import { ensureSeoTitle } from "../../../testing/checks/seo-title.check"
+import {
+  ensureSeoDescription,
+  ensureSeoTitle,
+} from "../../../testing/checks/seoe.check"
 import { TestLayout } from "../../../testing/components/test-layout.component"
 import { BlogIndexPage } from "./blog-index-page.component"
 
@@ -32,7 +35,12 @@ const emptyData = {
 describe("Blog Index Page component", () => {
   checkAccessibility(<BlogIndexPage data={emptyData} />)
   describe("seo", () => {
-    ensureSeoTitle(<BlogIndexPage data={emptyData} />, "All posts")
+    beforeEach(() => render(<BlogIndexPage data={emptyData} />))
+    ensureSeoTitle("All posts")
+    ensureSeoDescription(
+      "Read and learn about programming, web development, " +
+        "React, CSS and other great tools."
+    )
   })
   describe("with posts", () => {
     beforeEach(() =>
