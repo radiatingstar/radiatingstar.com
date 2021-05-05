@@ -6,14 +6,13 @@ module.exports = {
     "plugin:jsx-a11y/recommended",
     "plugin:react-hooks/recommended",
     "plugin:unicorn/recommended",
-    "plugin:testing-library/dom",
     "plugin:testing-library/react",
     "plugin:jest-dom/recommended",
     "plugin:@typescript-eslint/recommended",
     // This one needs to be last.
     "prettier",
   ],
-  plugins: ["react"],
+  plugins: ["react", "testing-library"],
   parser: "@typescript-eslint/parser",
   env: {
     browser: true,
