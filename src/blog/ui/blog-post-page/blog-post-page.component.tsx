@@ -41,7 +41,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
         <PostTags names={post.frontmatter.tags as string[] | undefined} />
       </Header>
       <Content>
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Post dangerouslySetInnerHTML={{ __html: post.html }} />
         <Info>
           <InfoLink href={suggestionLink}>Suggest change</InfoLink>
           <span>{post.frontmatter.date}</span>
@@ -97,6 +97,12 @@ const Content = styled(ContentBlock)`
   @media (min-width: 32rem) {
     padding: 4rem;
   }
+`
+
+const Post = styled.article`
+  max-width: 40rem;
+  margin: 0 auto;
+  line-height: calc(1.5em + 0.2vw);
 
   p {
     margin: 2rem 0;
