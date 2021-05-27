@@ -35,7 +35,6 @@ const FooterContainer = styled.footer`
   padding-bottom: 1rem;
   margin-top: auto;
 
-  background-color: var(--black-300);
   background-image: url(${footerBcg});
   background-position: 50% calc(100%);
   background-repeat: repeat-x;

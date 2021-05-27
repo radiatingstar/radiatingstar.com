@@ -26,6 +26,12 @@ export const GlobalStyle = createGlobalStyle`
     font-family: 'Lato', sans-serif;
   }
 
+  @media (prefers-color-scheme: dark) {
+    body {
+      background-color: var(--black-300);
+    }
+  }
+
   h1,
   h2 {
     font-family: 'Ubuntu', sans-serif;
