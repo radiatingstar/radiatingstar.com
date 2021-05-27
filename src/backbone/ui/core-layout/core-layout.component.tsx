@@ -68,7 +68,9 @@ export const CoreLayout: FunctionComponent<Properties> = ({
         }
         quaternarySlot={
           <BasicFooterContent toRight>
-            © Radiating Star {new Date().getFullYear()}
+            <span translate="no">
+              © Radiating Star {new Date().getFullYear()}
+            </span>
           </BasicFooterContent>
         }
       />
