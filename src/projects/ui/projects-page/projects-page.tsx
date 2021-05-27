@@ -95,9 +95,7 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
         renderItem={(project) => {
           return (
             <Project>
-              <ProjectType type={project.type}>
-                <span>{project.type}</span>
-              </ProjectType>
+              <ProjectType type={project.type}>{project.type}</ProjectType>
               <ProjectTitle as="h2">{project.name}</ProjectTitle>
               <Description>{project.description}</Description>
               <ProjectTags names={project.tags} />
@@ -169,10 +167,7 @@ const ProjectType = styled.div<{ type: string }>`
   font-weight: 900;
   letter-spacing: 0.15rem;
   text-transform: uppercase;
-
-  span {
-    transform: rotate(270deg);
-  }
+  writing-mode: vertical-rl;
 `
 
 const Description = styled.p`
