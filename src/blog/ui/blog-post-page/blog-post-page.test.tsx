@@ -11,54 +11,29 @@ const postData = {
     frontmatter: {
       title: "Post Title",
       date: "Post Date",
+      formattedDate: "formatted date",
       tags: ["tag 1", "tag 2"],
     },
+    timeToRead: 10,
     excerpt: "Post Excerpt",
     html: "Post Content",
+    headings: [],
   },
   site: {
     siteMetadata: {
       author: "Post Author",
     },
   },
-}
-
-const pageContext = {
-  next: {
-    frontmatter: {
-      title: "next post title",
-    },
-    fields: {
-      slug: "/next-slug",
-    },
-  },
-  previous: {
-    frontmatter: {
-      title: "previous post title",
-    },
-    fields: {
-      slug: "/previous-slug",
-    },
+  readMorePosts: {
+    edges: [],
   },
 }
 
 describe("Blog Post Page component", () => {
-  checkAccessibility(
-    <BlogPostPage
-      data={postData}
-      pageContext={{ slug: "/slug/" }}
-      layout={TestLayout}
-    />
-  )
+  checkAccessibility(<BlogPostPage data={postData} layout={TestLayout} />)
   describe("with post data", () => {
     beforeEach(() =>
-      render(
-        <BlogPostPage
-          data={postData}
-          pageContext={{ slug: "/slug/" }}
-          layout={TestLayout}
-        />
-      )
+      render(<BlogPostPage data={postData} layout={TestLayout} />)
     )
     ensureSeoTitle("Post Title")
     it("should set the page's title", () => {
@@ -76,42 +51,8 @@ describe("Blog Post Page component", () => {
       expect(screen.getByText("tag 1")).toBeInTheDocument()
       expect(screen.getByText("tag 2")).toBeInTheDocument()
     })
-    it("should display the date", () => {
-      expect(screen.getByText("Post Date")).toBeInTheDocument()
-    })
-    it("should display the author", () => {
-      expect(screen.getByText("Post Author")).toBeInTheDocument()
-    })
-    it("should link to the author's twitter", () => {
-      // TODO: this will have to take the link from the post's beta in the future.
-      expect(
-        screen.getByRole("link", { name: postData.site.siteMetadata.author })
-      ).toLinkTo("https://twitter.com/mateuszkocz")
-    })
     it("should display the content", () => {
       expect(screen.getByText("Post Content")).toBeInTheDocument()
-    })
-    it("should display the suggestion link", () => {
-      expect(screen.getByRole("link", { name: /suggest change/i })).toLinkTo(
-        "https://github.com/radiatingstar/radiatingstar.com/blob/master/content/blog/slug/index.md"
-      )
-    })
-  })
-  describe("with page context", () => {
-    beforeEach(() =>
-      render(<BlogPostPage data={postData} pageContext={pageContext} />)
-    )
-    describe.each([
-      ["next", "Next"],
-      ["previous", "Previous"],
-    ])("when " + "%s page info is provided", (direction) => {
-      it(`should display the ${direction} link`, () => {
-        expect(
-          screen.getByRole("link", {
-            name: new RegExp(`${direction} post title`),
-          })
-        ).toLinkTo(`/blog/${direction}-slug`)
-      })
     })
   })
 })

@@ -1,19 +1,13 @@
 import React, { ReactNode, VoidFunctionComponent } from "react"
 import styled from "styled-components"
-import footerBcg from "./assets/footer-background.svg"
-
 interface Properties {
   primarySlot?: ReactNode
   secondarySlot?: ReactNode
-  tertiarySlot?: ReactNode
-  quaternarySlot?: ReactNode
 }
 
 export const SiteFooter: VoidFunctionComponent<Properties> = ({
   primarySlot,
   secondarySlot,
-  tertiarySlot,
-  quaternarySlot,
 }) => {
   return (
     <FooterContainer>
@@ -22,33 +16,23 @@ export const SiteFooter: VoidFunctionComponent<Properties> = ({
       </Swag>
       <PrimarySlot>{primarySlot}</PrimarySlot>
       <SecondarySlot>{secondarySlot}</SecondarySlot>
-      <TertiarySlot>{tertiarySlot}</TertiarySlot>
-      <QuaternarySlot>{quaternarySlot}</QuaternarySlot>
     </FooterContainer>
   )
 }
 
 const FooterContainer = styled.footer`
-  position: relative;
-
   display: grid;
-  padding-bottom: 1rem;
   margin-top: auto;
-
-  background-image: url(${footerBcg});
-  background-position: 50% calc(100%);
-  background-repeat: repeat-x;
-  color: white;
+  padding-block: 4rem;
 
   gap: 1rem;
-  grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot" "TertiarySlot" "QuaternarySlot";
+  grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot";
 
   @media (min-width: 32rem) {
-    padding: 2rem;
-    background-position: 50% calc(100% + 40px);
-    grid-template-areas: "PrimarySlot Swag SecondarySlot" "TertiarySlot TertiarySlot QuaternarySlot";
+    grid-template-areas: "PrimarySlot Swag SecondarySlot";
     grid-template-columns: 3fr 1fr 3fr;
     row-gap: 8rem;
+    align-items: center;
   }
 `
 
@@ -57,32 +41,13 @@ const PrimarySlot = styled.div`
 `
 
 const Swag = styled.div`
-  margin-top: -3.5rem;
-  margin-bottom: 2rem;
-  color: var(--yellow-700);
-  font-size: 7rem;
   grid-area: Swag;
   pointer-events: none;
   text-align: center;
   user-select: none;
-  @media (min-width: 32rem) {
-    margin-top: -6.8rem;
-  }
+  font-size: 1.2rem;
 `
 
 const SecondarySlot = styled.div`
-  margin-top: 2rem;
   grid-area: SecondarySlot;
-  @media (min-width: 32rem) {
-    margin-top: 0;
-  }
-`
-
-const TertiarySlot = styled.div`
-  grid-area: TertiarySlot;
-`
-
-const QuaternarySlot = styled.div`
-  align-self: end;
-  grid-area: QuaternarySlot;
 `

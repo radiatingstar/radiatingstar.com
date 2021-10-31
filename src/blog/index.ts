@@ -1,3 +1,3 @@
 export { BlogIndexPage } from "./ui/blog-index-page/blog-index-page.component"
-export { RecentPosts } from "./ui/recent-posts/recent-posts.component"
+export { PostsList as RecentPosts } from "./ui/posts-list/posts-list.component"
 export { toBlogPostPreview } from "./transformers/to-blog-post-preview"

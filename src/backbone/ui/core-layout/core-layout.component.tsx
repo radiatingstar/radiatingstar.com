@@ -1,27 +1,15 @@
-import { FaGithubSquare } from "@react-icons/all-files/fa/FaGithubSquare"
-import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare"
 import { Link } from "gatsby"
-import React, { FunctionComponent, ReactElement } from "react"
+import React, { FunctionComponent } from "react"
 import styled from "styled-components"
 import { Logo } from "../../../branding"
-import { mainNavigation } from "../../main-navigation-items"
 import { ExternalLink } from "../external-link/external-link.component"
 import { GlobalStyle } from "../global-style/global-style.component"
 import { Header } from "../header/header.component"
-import { MainNavigation } from "../main-navigation/main-navigation.component"
 import { FooterLink } from "../site-footer/elements/footer-link/footer-link.component"
 import { SiteFooter } from "../site-footer/site-footer.component"
 import { BasicFooterContent } from "./elements/basic-footer-content/basic-footer-content.component"
-import { SecondaryFooterContent } from "./elements/secondary-footer-content/secondary-footer-content.component"
 
-interface Properties {
-  navigation?: ReactElement
-}
-
-export const CoreLayout: FunctionComponent<Properties> = ({
-  children,
-  navigation = <MainNavigation navigation={mainNavigation} />,
-}) => {
+export const CoreLayout: FunctionComponent = ({ children }) => {
   return (
     <PageContainer>
       <GlobalStyle />
@@ -31,17 +19,17 @@ export const CoreLayout: FunctionComponent<Properties> = ({
             <Logo />
           </HomeLink>
         }
-        navigationSlot={navigation}
+        navigationSlot={
+          <Navigation tags={["css", "aws", "typescript", "javascript"]} />
+        }
+        contactLinksSlot={<ContactLinks />}
       />
       <Main>{children}</Main>
       <SiteFooter
-        tertiarySlot={
+        primarySlot={
           <BasicFooterContent>
-            <FooterLink
-              as={ExternalLink}
-              href="https://github.com/radiatingstar/radiatingstar.com"
-            >
-              Site&apos;s code available on GitHub
+            <FooterLink as={Link} to="/projects">
+              Projects
             </FooterLink>
             <FooterLink as={Link} to="/tech">
               Tech stack
@@ -49,24 +37,6 @@ export const CoreLayout: FunctionComponent<Properties> = ({
           </BasicFooterContent>
         }
         secondarySlot={
-          <SecondaryFooterContent>
-            <FooterLink
-              as={ExternalLink}
-              href="https://github.com/radiatingstar/"
-              label="GitHub"
-            >
-              <Icon as={FaGithubSquare} />
-            </FooterLink>
-            <FooterLink
-              as={ExternalLink}
-              href="https://twitter.com/radiatingstar"
-              label="Twitter"
-            >
-              <Icon as={FaTwitterSquare} />
-            </FooterLink>
-          </SecondaryFooterContent>
-        }
-        quaternarySlot={
           <BasicFooterContent toRight>
             <span translate="no">
               © Radiating Star {new Date().getFullYear()}
@@ -81,6 +51,9 @@ export const CoreLayout: FunctionComponent<Properties> = ({
 const PageContainer = styled.div`
   display: flex;
   min-height: 100vh;
+  max-width: 1200px;
+  margin-inline: auto;
+  padding-inline: 1rem;
   flex-direction: column;
 `
 
@@ -90,12 +63,66 @@ const HomeLink = styled(Link)`
 
 const Main = styled.main`
   width: 100%;
-  max-width: 88rem;
-  margin-top: 4rem;
-  margin-right: auto;
-  margin-left: auto;
 `
 
-const Icon = styled.i`
-  font-size: 200%;
+const HeaderList = styled.ul`
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin: 0;
+  gap: 10px;
+`
+
+const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
+  <nav>
+    <HeaderList>
+      {tags.map((tag) => (
+        <li key={tag}>
+          <NavigationLink
+            to={`/tag/${tag}`}
+            aria-label={`Go to posts tagged ${tag}`}
+          >
+            #{tag}
+          </NavigationLink>
+        </li>
+      ))}
+    </HeaderList>
+  </nav>
+)
+
+const NavigationLink = styled(Link)`
+  text-decoration: none;
+  color: var(--font-color);
+  &:hover {
+    color: var(--attention-color);
+  }
+`
+
+const ContactLinks = () => (
+  <HeaderList>
+    <li>
+      <ContactLink
+        href="https://github.com/radiatingstar"
+        label="RadiatingStar's GitHub"
+      >
+        github.com/radiatingstar
+      </ContactLink>
+    </li>
+    <li>
+      <ContactLink
+        href="https://twitter.com/radiatingstar"
+        label="RadiatingStar's Twitter"
+      >
+        @radiatingstar
+      </ContactLink>
+    </li>
+  </HeaderList>
+)
+
+const ContactLink = styled(ExternalLink)`
+  text-decoration: none;
+  color: var(--font-color);
+  &:hover {
+    color: var(--attention-color);
+  }
 `
