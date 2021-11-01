@@ -50,10 +50,6 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
 
 const PageContainer = styled.div`
   display: flex;
-  min-height: 100vh;
-  max-width: 1200px;
-  margin-inline: auto;
-  padding-inline: 1rem;
   flex-direction: column;
 `
 
@@ -62,7 +58,10 @@ const HomeLink = styled(Link)`
 `
 
 const Main = styled.main`
+  min-height: 100vh;
   width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
 `
 
 const HeaderList = styled.ul`
@@ -78,12 +77,13 @@ const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
     <HeaderList>
       {tags.map((tag) => (
         <li key={tag}>
-          <NavigationLink
+          {/* TODO */}
+          {/* <NavigationLink
             to={`/tag/${tag}`}
             aria-label={`Go to posts tagged ${tag}`}
-          >
-            #{tag}
-          </NavigationLink>
+          > */}
+          #{tag}
+          {/* </NavigationLink> */}
         </li>
       ))}
     </HeaderList>
@@ -123,6 +123,6 @@ const ContactLink = styled(ExternalLink)`
   text-decoration: none;
   color: var(--font-color);
   &:hover {
-    color: var(--attention-color);
+    color: white;
   }
 `

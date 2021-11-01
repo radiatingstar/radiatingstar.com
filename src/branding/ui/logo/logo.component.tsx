@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 export const Image = styled.div.attrs({ role: "img", "aria-hidden": true })`
   color: transparent;
-  -webkit-text-stroke: 1px var(--attention-color);
+  -webkit-text-stroke: 3px white;
   font-size: 3rem;
 `
 

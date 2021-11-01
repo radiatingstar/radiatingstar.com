@@ -85,10 +85,12 @@ const Title = styled(PageTitle)`
 `
 
 const Content = styled.section`
-  display: grid;
-  grid-template-areas: "header ." "post sidebar";
-  grid-template-columns: 4fr 1fr;
-  column-gap: 40px;
+  @media (min-width: 50rem) {
+    display: grid;
+    grid-template-areas: "header ." "post sidebar";
+    grid-template-columns: 4fr 1fr;
+    column-gap: 40px;
+  }
 `
 
 const Post = styled.article`

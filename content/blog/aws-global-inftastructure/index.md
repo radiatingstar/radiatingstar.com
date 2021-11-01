@@ -4,7 +4,6 @@ date: '2021-07-20T20:00:00.000Z'
 tags: [AWS]
 ---
 
-## YOLO
 AWS being the biggest global cloud provider, by necessity needs to organize its infrastructure into multiple types or
 organisational units. Amazon uses the geographical localisation of its data centres as a base for this division. While
 understanding how this affects you as a developer is a relatively simple task, there are some hidden details worth
@@ -13,8 +12,6 @@ knowing.
 At the top of the hierarchy AWS places the notion of Regions. Those are groups of data centres located close to each
 other (close on the global scale). You meet this regional separation right in the AWS Management Console (among other
 places) where you're expected to pick the region you're going to be operating in with your infrastructure.
-
-## SWAG EMO
 
 Most AWS services are scoped to regions—with IAM being the notable exception—and not all regions are functionally
 similar. You might find out some services you wanted to use are not available if you don't pick the right region. The
@@ -52,8 +49,6 @@ few others.
 When a company needs their data to be kept on-premise, AWS offers the Outposts service. It's simply a physical
 infrastructure that's placed on location and is managed by Amazon. Other than latency and compliance, Outposts gives
 developers the ability to use the same API of AWS when creating the internal tooling to handle the local data.
-
-## ELO
 
 The advent of 5G network brought AWS Wavelength service. It's a new type of zone that's placed inside the network
 providers' infrastructure that allow low latency features for mobile and IoT devices. This service is only available in

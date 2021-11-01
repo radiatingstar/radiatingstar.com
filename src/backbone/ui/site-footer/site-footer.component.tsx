@@ -23,6 +23,9 @@ export const SiteFooter: VoidFunctionComponent<Properties> = ({
 const FooterContainer = styled.footer`
   display: grid;
   margin-top: auto;
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-width);
   padding-block: 4rem;
 
   gap: 1rem;
@@ -33,6 +36,7 @@ const FooterContainer = styled.footer`
     grid-template-columns: 3fr 1fr 3fr;
     row-gap: 8rem;
     align-items: center;
+    justify-content: space-between;
   }
 `
 

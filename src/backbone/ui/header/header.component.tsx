@@ -8,11 +8,16 @@ interface Properties {
 }
 
 export const HeaderContainer = styled.header`
+  background: var(--attention-color);
+`
+
+const HeaderContent = styled.div`
+  margin-inline: auto;
+  max-width: var(--container-width);
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 2rem;
-  border-bottom: 1px solid var(--attention-color);
   padding-block: 2rem;
 `
 
@@ -29,11 +34,13 @@ export const Header: VoidFunctionComponent<Properties> = ({
 }) => {
   return (
     <HeaderContainer>
-      <MainPart>
-        {logo}
-        {navigation}
-      </MainPart>
-      {contactLinks}
+      <HeaderContent>
+        <MainPart>
+          {logo}
+          {navigation}
+        </MainPart>
+        {contactLinks}
+      </HeaderContent>
     </HeaderContainer>
   )
 }
