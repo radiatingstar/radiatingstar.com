@@ -1,7 +1,7 @@
 ---
 title: How to Improve SEO With CSS
 date: '2012-03-22T12:00:00.000Z'
-tags: [CSS, SEO]
+tags: [css, seo]
 ---
 
 Before you start reading. This post is **not** about putting your styles in CSS style sheet to make your website more crawlable, using semantic tags or making your website lighter. It's about how to make CSS inform you about some SEO issues on your website.

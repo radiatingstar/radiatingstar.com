@@ -1,16 +1,18 @@
 import React, { ReactNode, VoidFunctionComponent } from "react"
 import styled from "styled-components"
+import { Stylable } from "../.."
 interface Properties {
   primarySlot?: ReactNode
   secondarySlot?: ReactNode
 }
 
-export const SiteFooter: VoidFunctionComponent<Properties> = ({
+export const SiteFooter: VoidFunctionComponent<Stylable<Properties>> = ({
   primarySlot,
   secondarySlot,
+  className,
 }) => {
   return (
-    <FooterContainer>
+    <FooterContainer className={className}>
       <Swag role="img" aria-hidden>
         ★
       </Swag>
@@ -22,12 +24,7 @@ export const SiteFooter: VoidFunctionComponent<Properties> = ({
 
 const FooterContainer = styled.footer`
   display: grid;
-  margin-top: auto;
-  margin-inline: auto;
-  width: 100%;
-  max-width: var(--container-width);
   padding-block: 4rem;
-
   gap: 1rem;
   grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot";
 

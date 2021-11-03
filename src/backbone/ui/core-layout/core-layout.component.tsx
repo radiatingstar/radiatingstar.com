@@ -25,7 +25,7 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
         contactLinksSlot={<ContactLinks />}
       />
       <Main>{children}</Main>
-      <SiteFooter
+      <Footer
         primarySlot={
           <BasicFooterContent>
             <FooterLink as={Link} to="/projects">
@@ -49,19 +49,28 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
 }
 
 const PageContainer = styled.div`
+  --container-width: 1200px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: flex-start;
+`
+
+const Main = styled.main`
+  width: 100%;
+  max-width: var(--container-width);
+  margin-inline: auto;
+`
+
+const Footer = styled(SiteFooter)`
+  margin-top: auto;
+  margin-inline: auto;
+  max-width: var(--container-width);
+  width: 100%;
 `
 
 const HomeLink = styled(Link)`
   text-decoration: none;
-`
-
-const Main = styled.main`
-  min-height: 100vh;
-  width: 100%;
-  max-width: var(--container-width);
-  margin-inline: auto;
 `
 
 const HeaderList = styled.ul`

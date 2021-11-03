@@ -1,7 +1,7 @@
 ---
 title: New Mixins Matching Behaviour in LESS 1.3.0
 date: '2012-04-05T15:00:00.000Z'
-tags: [LESS]
+tags: [less]
 ---
 
 About a month ago LESS was updated to version 1.3.0. This update brought an important change to the mixins matching system depending on the quantity of arguments. Now some of the mixins you wrote before using previous versions on LESS might now not work with the 1.3 and since probably not everyone of us read change logs before downloading and using LESS I found it might be useful to let you know.

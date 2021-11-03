@@ -5,19 +5,22 @@ import { BLOG_PATH } from "../../constants"
 import { BlogPostPreview } from "../../types/blog-post-preview"
 import { PostItem } from "./elements/post-item/post-item.component"
 import { ListComponentProperties } from "../../../backbone/ui/list/list.component"
+import { Stylable } from "../../../backbone/types/stylable.type"
 
 interface Properties {
   posts: BlogPostPreview[]
   withPreview?: boolean
 }
 
-export const PostsList: VoidFunctionComponent<Properties> = ({
+export const PostsList: VoidFunctionComponent<Stylable<Properties>> = ({
   posts,
   withPreview = true,
+  className,
 }) => {
   return (
     <Posts<ListComponentProperties<BlogPostPreview>>
       items={posts}
+      className={className}
       fallback={<p>No recent posts available.</p>}
       renderItem={({ frontmatter, fields, excerpt, timeToRead }) => {
         return (

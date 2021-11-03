@@ -5,8 +5,6 @@ export const GlobalStyle = createGlobalStyle`
     --background-color: white;
     --attention-color: red;
     --font-color: black;
-
-    --container-width: 1200px;
   }
 
   @media (prefers-color-scheme: dark) {
