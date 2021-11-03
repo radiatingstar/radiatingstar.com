@@ -16,7 +16,7 @@ export const PostInfo: FunctionComponent<Properties> = ({
   formattedDate,
 }) => {
   return (
-    <div>
+    <Container>
       <TagsList>
         {tags.map((tag) => (
           <PostTag key={tag}>{tag}</PostTag>
@@ -24,9 +24,13 @@ export const PostInfo: FunctionComponent<Properties> = ({
       </TagsList>
       <TimeToRead time={timeToRead} />
       <time dateTime={date}>{formattedDate}</time>
-    </div>
+    </Container>
   )
 }
+
+const Container = styled.div`
+  line-height: 1.5;
+`
 
 const PostTag = styled.span`
   color: var(--attention-color);

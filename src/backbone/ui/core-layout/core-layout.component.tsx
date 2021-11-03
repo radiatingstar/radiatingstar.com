@@ -49,7 +49,8 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
 }
 
 const PageContainer = styled.div`
-  --container-width: 1200px;
+  --container-max-width: 1200px;
+  --block-inline-padding: 2rem;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -57,16 +58,18 @@ const PageContainer = styled.div`
 `
 
 const Main = styled.main`
-  width: 100%;
-  max-width: var(--container-width);
   margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-max-width);
+  padding-inline: var(--block-inline-padding);
 `
 
 const Footer = styled(SiteFooter)`
   margin-top: auto;
   margin-inline: auto;
-  max-width: var(--container-width);
+  max-width: var(--container-max-width);
   width: 100%;
+  padding-inline: var(--block-inline-padding);
 `
 
 const HomeLink = styled(Link)`
@@ -114,7 +117,7 @@ const ContactLinks = () => (
         href="https://github.com/radiatingstar"
         label="RadiatingStar's GitHub"
       >
-        github.com/radiatingstar
+        github/radiatingstar
       </ContactLink>
     </li>
     <li>

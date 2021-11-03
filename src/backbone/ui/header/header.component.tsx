@@ -13,18 +13,29 @@ export const HeaderContainer = styled.header`
 
 const HeaderContent = styled.div`
   margin-inline: auto;
-  max-width: var(--container-width);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  max-width: var(--container-max-width);
+  padding-inline: var(--block-inline-padding);
   padding-block: 2rem;
-`
-
-const MainPart = styled.div`
-  display: flex;
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: 1fr 100fr;
   align-items: center;
-  gap: 2rem;
+
+  > :first-child {
+    grid-row: 1 / 3;
+  }
+
+  @media (min-width: 25rem) {
+    gap: 2rem;
+  }
+
+  @media (min-width: 48rem) {
+    grid-template-columns: 1fr 100fr 1fr;
+
+    > :first-child {
+      grid-row: 1 / 1;
+    }
+  }
 `
 
 export const Header: VoidFunctionComponent<Properties> = ({
@@ -35,10 +46,8 @@ export const Header: VoidFunctionComponent<Properties> = ({
   return (
     <HeaderContainer>
       <HeaderContent>
-        <MainPart>
-          {logo}
-          {navigation}
-        </MainPart>
+        {logo}
+        {navigation}
         {contactLinks}
       </HeaderContent>
     </HeaderContainer>

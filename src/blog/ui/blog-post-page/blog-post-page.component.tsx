@@ -79,9 +79,13 @@ const Header = styled.header`
 `
 
 const Title = styled(PageTitle)`
-  font-size: 3rem;
+  font-size: 2rem;
   margin: 0;
   color: var(--attention-color);
+
+  @media (min-width: 48rem) {
+    font-size: 3rem;
+  }
 `
 
 const Content = styled.section`
@@ -151,10 +155,15 @@ const SidebarHeading = styled.h2`
 `
 
 const ToCList = styled.ol`
-  margin: 0;
+  margin-block-start: 0;
+  margin-block-end: 2rem;
   padding-left: 0;
   line-height: 1.5;
   list-style-position: inside;
+
+  li {
+    margin-block: 0.5rem;
+  }
 `
 
 const ToCLink = styled.a`
