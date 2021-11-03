@@ -1,7 +1,7 @@
 ---
 title: How To Get Individual Dates and Days of Week in Google Analytics
 date: '2012-08-15T13:00:00.000Z'
-tags: [JavaScript, Google Analytics]
+tags: [javascript, googleanalytics]
 ---
 
 I had this practical problem in Google Analytics — I wanted to get a nice table showing me the pageviews, unique visitors, bounces rates and other statistical data broken down by days (both day of the week and a date). Standard GA functionality lets us only see the aggregated data from a time range or compare two individual ranges. Of course we could check all dates by changing the time range to the individual date but it's not really an optimal solution.

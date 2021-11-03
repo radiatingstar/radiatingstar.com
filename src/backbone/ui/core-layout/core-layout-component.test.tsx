@@ -15,20 +15,30 @@ describe("Core Layout component", () => {
       expect(screen.getByText("content")).toBeInTheDocument()
     })
   })
-  describe("when passed a navigation", () => {
-    it("should render it", () => {
-      render(<CoreLayout navigation={<div>nav</div>} />)
-      expect(screen.getByText("nav")).toBeInTheDocument()
-    })
-  })
   describe("in the header area", () => {
-    it("should display a link to the home page", () => {
+    beforeEach(() => {
       render(<CoreLayout />)
+    })
+    it("should display a link to the home page", () => {
       const banner = screen.getByRole("banner")
       const logo = within(banner).getByRole("img", { hidden: true })
       // eslint-disable-next-line testing-library/no-node-access
       const homeLink = logo.parentNode
       expect(homeLink).toLinkTo("/")
+    })
+    it("should display the GitHub link", () => {
+      expect(
+        within(screen.getByRole("banner")).getByRole("link", {
+          name: "RadiatingStar's GitHub",
+        })
+      ).toLinkTo("https://github.com/radiatingstar")
+    })
+    it("should display a Twitter contact link", () => {
+      expect(
+        within(screen.getByRole("banner")).getByRole("link", {
+          name: "RadiatingStar's Twitter",
+        })
+      ).toLinkTo("https://twitter.com/radiatingstar")
     })
   })
   describe("in the footer area", () => {
@@ -38,22 +48,12 @@ describe("Core Layout component", () => {
         screen.getByText(new RegExp(`${new Date().getFullYear()}`))
       ).toBeInTheDocument()
     })
-    it("should link to the GitHub repo", () => {
-      expect(
-        screen.getByRole("link", { name: /code available on GitHub/ })
-      ).toLinkTo("https://github.com/radiatingstar/radiatingstar.com")
-    })
     it("should link to the tech page", () => {
       expect(screen.getByRole("link", { name: "Tech stack" })).toLinkTo("/tech")
     })
-    it("should display the GitHub link", () => {
-      expect(screen.getByRole("link", { name: "GitHub" })).toLinkTo(
-        "https://github.com/radiatingstar/"
-      )
-    })
-    it("should display a Twitter contact link", () => {
-      expect(screen.getByRole("link", { name: "Twitter" })).toLinkTo(
-        "https://twitter.com/radiatingstar"
+    it("should link to the projects page", () => {
+      expect(screen.getByRole("link", { name: "Projects" })).toLinkTo(
+        "/projects"
       )
     })
   })

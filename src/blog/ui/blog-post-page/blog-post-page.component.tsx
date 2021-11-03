@@ -1,25 +1,18 @@
 import { PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
+import { toBlogPostPreview } from "../.."
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import {
-  ContentBlock,
-  CoreLayout,
-  ExternalLink,
-  PageTitle,
-  Tags,
-  WithLayout,
-} from "../../../backbone"
+import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
-import { PostsNavigation } from "../posts-navigation/posts-navigation.component"
-
+import { PostInfo } from "../post-info/post-info.component"
+import { PostsList } from "../posts-list/posts-list.component"
 type Properties = WithLayout<
-  Pick<PageProps<BlogPostQuery, SitePageContext>, "data" | "pageContext">
+  Pick<PageProps<BlogPostQuery, SitePageContext>, "data">
 >
 export const BlogPostPage: FunctionComponent<Properties> = ({
-  data: { post, site },
-  pageContext,
+  data: { post, site, readMorePosts },
   layout: Layout = CoreLayout,
 }) => {
   assertDefined(site)
@@ -27,81 +20,85 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
   assertDefined(post)
   assertDefined(post.frontmatter)
   assertDefined(post.frontmatter.title)
+  assertDefined(post.frontmatter.date)
+  assertDefined(post.frontmatter.formattedDate)
+  assertDefined(post.timeToRead)
   assertDefined(post.excerpt)
   assertDefined(post.html)
-  const author = site.siteMetadata.author
-  const suggestionLink =
-    `https://github.com/radiatingstar/radiatingstar.com` +
-    `/blob/master/content/blog${pageContext.slug}index.md`
+  assertDefined(post.headings)
+  const posts = readMorePosts.edges.map(({ node }) => toBlogPostPreview(node))
+
   return (
     <Layout>
       <SEO title={post.frontmatter.title} description={post.excerpt} />
-      <Header>
-        <Title>{post.frontmatter.title}</Title>
-        <PostTags names={post.frontmatter.tags as string[] | undefined} />
-      </Header>
       <Content>
+        <Header>
+          <Title>{post.frontmatter.title}</Title>
+          <PostInfo
+            tags={post.frontmatter.tags as string[]}
+            timeToRead={post.timeToRead}
+            date={post.frontmatter.date}
+            formattedDate={post.frontmatter.formattedDate}
+          />
+        </Header>
+        {post.headings.length > 0 && (
+          <Sidebar>
+            <>
+              <SidebarHeading>Table of contents</SidebarHeading>
+              <nav>
+                <ToCList>
+                  {post.headings.map(({ value }) => (
+                    <li key={value}>
+                      <ToCLink
+                        href={"#" + value.replace(/\s+/g, "-").toLowerCase()}
+                      >
+                        {value}
+                      </ToCLink>
+                    </li>
+                  ))}
+                </ToCList>
+              </nav>
+            </>
+          </Sidebar>
+        )}
         <Post dangerouslySetInnerHTML={{ __html: post.html }} />
-        <Info>
-          <InfoLink href={suggestionLink}>Suggest change</InfoLink>
-          <span>{post.frontmatter.date}</span>
-          <span>
-            written by{" "}
-            <InfoLink href="https://twitter.com/mateuszkocz">{author}</InfoLink>
-          </span>
-        </Info>
       </Content>
-      <aside>
-        <PostsNavigation {...pageContext} />
-      </aside>
+      <ReadMore>
+        <ReadMoreTitle>Read more</ReadMoreTitle>
+        <PostsList posts={posts} withPreview={false} />
+      </ReadMore>
     </Layout>
   )
 }
 
 const Header = styled.header`
+  grid-area: header;
   display: flex;
   flex-direction: column;
-  padding: 1rem 1rem 2rem;
-  color: var(--yellow-700);
-  gap: 2rem;
-
-  @media (min-width: 32rem) {
-    padding: 4rem;
-    gap: 4rem;
-  }
+  margin-block: 4rem;
 `
 
 const Title = styled(PageTitle)`
+  font-size: 2rem;
   margin: 0;
+  color: var(--attention-color);
+
+  @media (min-width: 48rem) {
+    font-size: 3rem;
+  }
 `
 
-const PostTags = styled(Tags)`
-  justify-content: flex-start;
-`
-
-const Info = styled.footer`
-  display: flex;
-  justify-content: space-between;
-  padding-top: 2rem;
-  border-top: 1px solid currentColor;
-  margin-top: 2rem;
-  color: var(--gray-200);
-  font-size: 80%;
-  text-align: right;
-`
-
-const Content = styled(ContentBlock)`
-  font-size: 1.2rem;
-  line-height: 1.8;
-
-  @media (min-width: 32rem) {
-    padding: 4rem;
+const Content = styled.section`
+  @media (min-width: 50rem) {
+    display: grid;
+    grid-template-areas: "header ." "post sidebar";
+    grid-template-columns: 4fr 1fr;
+    column-gap: 40px;
   }
 `
 
 const Post = styled.article`
-  max-width: 40rem;
-  margin: 0 auto;
+  grid-area: post;
   line-height: calc(1.5em + 0.2vw);
 
   p {
@@ -130,15 +127,57 @@ const Post = styled.article`
       }
     }
   }
+
+  h2 {
+    scroll-margin-top: 2rem;
+
+    &:first-of-type {
+      margin-top: 0;
+    }
+  }
+
+  a.anchor {
+    text-decoration: none;
+    border-bottom: none;
+  }
 `
 
-const InfoLink = styled(ExternalLink)`
-  /* FIXME: For some reason, setting color here won't overwrite the parent
-      styles, hence !important. */
-  color: var(--gray-200) !important;
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--yellow-700) !important;
+const Sidebar = styled.aside`
+  grid-area: sidebar;
+  position: sticky;
+  top: 1rem;
+`
+
+const SidebarHeading = styled.h2`
+  margin-block-start: 0;
+  font-weight: normal;
+  font-size: 1.5rem;
+`
+
+const ToCList = styled.ol`
+  margin-block-start: 0;
+  margin-block-end: 2rem;
+  padding-left: 0;
+  line-height: 1.5;
+  list-style-position: inside;
+
+  li {
+    margin-block: 0.5rem;
   }
+`
+
+const ToCLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+  &:hover {
+    color: var(--attention-color);
+  }
+`
+
+const ReadMore = styled.aside`
+  margin-top: 4rem;
+`
+
+const ReadMoreTitle = styled.h2`
+  margin-bottom: 2rem;
 `

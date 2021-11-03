@@ -1,35 +1,24 @@
 import { createGlobalStyle } from "styled-components"
-import bodyBackground from "../core-layout/assets/body-background.svg"
 
 export const GlobalStyle = createGlobalStyle`
-  /* TODO: definitely need to organise variables better. */
   :root {
-    --red-100: #BA1726;
-    --red-200: #51161e;
-    --red-300: #a31b2d;
-    --yellow-300: #e2d3ae;
-    --yellow-400: #c98036;
-    --yellow-500: #ebb74b;
-    --yellow-600: #d7b769;
-    --yellow-700: #ffa500;
-    --black-300: rgb(30, 30, 30);
-    --blue-300: #268bd2;
-    --gray-100: rgba(0, 0, 0, 0.05);
-    --gray-200: gray;
-  }
-
-  body {
-    background-color: var(--red-100);
-    background-image: url(${bodyBackground});
-    background-position: center;
-    color: var(--black-300);
-    font-family: 'Lato', sans-serif;
+    --background-color: white;
+    --attention-color: red;
+    --font-color: black;
   }
 
   @media (prefers-color-scheme: dark) {
-    body {
-      background-color: var(--black-300);
+    :root {
+      --background-color: rgb(30, 30, 30);
+      --attention-color: rgb(247 53 53);
+      --font-color: rgb(220, 220, 220);
     }
+  }
+
+  body {
+    color: var(--font-color);
+    background-color: var(--background-color);
+    font-family: 'Lato', sans-serif;
   }
 
   h1,

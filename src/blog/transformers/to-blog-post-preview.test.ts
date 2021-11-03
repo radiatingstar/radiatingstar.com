@@ -15,7 +15,14 @@ describe("Blog Post Preview Transformer", () => {
     it("should transform node to post preview", () => {
       const actual = toBlogPostPreview({
         fields: { slug: "/slug" },
-        frontmatter: { title: "title" },
+        frontmatter: {
+          title: "title",
+          tags: ["tag"],
+          date: "2021-07-20T20:00:00.000Z",
+          formattedDate: "July 20th, 2021",
+        },
+        excerpt: "excerpt",
+        timeToRead: 10,
       })
       const expectation = {
         fields: {
@@ -23,7 +30,12 @@ describe("Blog Post Preview Transformer", () => {
         },
         frontmatter: {
           title: "title",
+          tags: ["tag"],
+          date: "2021-07-20T20:00:00.000Z",
+          formattedDate: "July 20th, 2021",
         },
+        excerpt: "excerpt",
+        timeToRead: 10,
       }
       expect(actual).toStrictEqual(expectation)
     })

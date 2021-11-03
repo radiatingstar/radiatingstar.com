@@ -1,7 +1,7 @@
 ---
 title: Unorthodox Ideas For a:hover Effects
 date: '2012-06-19T13:00:00.000Z'
-tags: [CSS, Idea]
+tags: [css, idea]
 ---
 
 <figure>

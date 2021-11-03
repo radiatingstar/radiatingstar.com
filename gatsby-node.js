@@ -36,7 +36,7 @@ exports.createPages = ({ graphql, actions }) => {
 
     // Create blog posts pages.
     const posts = result.data.allMarkdownRemark.edges
-
+ 
     for (const [index, post] of posts.entries()) {
       const previous =
         index === posts.length - 1 ? undefined : posts[index + 1].node

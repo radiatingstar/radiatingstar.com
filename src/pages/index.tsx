@@ -10,15 +10,20 @@ export const query = graphql`
     }
     recentPosts: allMarkdownRemark(
       sort: { fields: [frontmatter___date], order: DESC }
-      limit: 3
+      limit: 4
     ) {
       edges {
         node {
+          excerpt
+          timeToRead
           fields {
             slug
           }
           frontmatter {
             title
+            tags
+            date
+            formattedDate: date(formatString: "MMMM Do, YYYY")
           }
         }
       }

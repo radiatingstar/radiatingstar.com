@@ -1,7 +1,7 @@
 ---
 title: Make a Layout With Fluid and Fixed-size Columns
 date: '2012-05-12T13:00:00.000Z'
-tags: [CSS]
+tags: [css]
 ---
 
 CSS is not at its best when it comes to creating a layout. The [flexible box model](http://www.html5rocks.com/en/tutorials/flexbox/quick/) that is intended for this purpose is not yet ready to use due to the lack of support from Internet Explorer, so designers usually have to use floats or set an element's display property to inline-block to achieve effects they want. This CSS's inability is even more bothersome when you want to make your website responsive.

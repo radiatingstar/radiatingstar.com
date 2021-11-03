@@ -1,3 +1,4 @@
+import styled from "styled-components"
 import { PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
 import { BlogIndexQuery } from "../../../../graphql-types"
@@ -25,7 +26,11 @@ export const BlogIndexPage: FunctionComponent<Properties> = ({
         title="All posts"
         description="Read and learn about programming, web development, React, CSS and other great tools."
       />
-      <PostsList posts={posts} />
+      <List posts={posts} />
     </Layout>
   )
 }
+
+const List = styled(PostsList)`
+  margin-top: 6rem;
+`

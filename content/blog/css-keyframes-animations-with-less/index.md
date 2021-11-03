@@ -1,7 +1,7 @@
 ---
 title: CSS @keyframes Animations With LESS
 date: '2012-03-22T14:00:00.000Z'
-tags: [CSS, LESS]
+tags: [css, less]
 ---
 
 Defining CSS animations is a pain due to the vendor prefixes. We have to not only define animation property five times with four prefixes and one without prefix, but also we have to create five keyframes in the same way. This won't be a real problem when you design your animation for one browser and at the end copy your result into four other @keyframes. But then, what will happen when you will need to change something? Yep – another copypasta. Yet another change? You know where this is going to. But there is a solution.

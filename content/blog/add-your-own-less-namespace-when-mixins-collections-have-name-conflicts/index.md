@@ -1,7 +1,7 @@
 ---
 title: Add your own LESS namespace when mixins collections have name conflicts
 date: '2012-12-07T13:00:00.000Z'
-tags: [CSS, LESS]
+tags: [css, less]
 ---
 
 If you're using [LESS](http://lesscss.org) you're probably also using some mixins collections (like [Lots of Love for LESS](http://mateuszkocz.github.com/3l) for example). It's nice as long, as your own mixins' names don't collide with names in a chosen mixins collection. This collision will make LESS unable to parse your stylesheet. The same may happen when you're using two or more different collections. Most likely they use the same names, like .gradient() or .box-shadow(). What you can do about that?

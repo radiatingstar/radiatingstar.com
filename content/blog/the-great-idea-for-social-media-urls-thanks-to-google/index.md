@@ -1,7 +1,7 @@
 ---
 title: The Great Idea for Social Media URLs – Thanks To Google
 date: '2012-03-31T15:00:00.000Z'
-tags: [SEO]
+tags: [seo]
 ---
 
 Some people (me included) was waiting for shorter URL to our Google+ profiles as we can have them on Facebook. It seems we won't get them any time soon, though. At least not officially. We can use services like [gplus.to](http://gplus.to/), but there's a much better solution. Guys from Android Developers (the Google's official Android team) [introduced](https://plus.google.com/u/0/108967384991768947849/posts/fY47e78z1mP) a clever way to redirect people to their G+ profile without using those hard to remember digits – just type [developer.android.com/+](http://developer.android.com/+). Why is it so good that we should use it also with other social media services?

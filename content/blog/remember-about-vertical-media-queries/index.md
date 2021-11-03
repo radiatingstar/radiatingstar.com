@@ -1,7 +1,7 @@
 ---
 title: Remember About Vertical Media Queries
 date: '2012-05-07T13:00:00.000Z'
-tags: [CSS]
+tags: [css]
 ---
 
 Usually when you read about media queries or write your own CSS you can see or you use the media rules that deal with a device's width: `min-width`, `max-width`, `min-device-width` and `max-device-width`.Their purpose is to make sure a website will work and provide a descent user experience on all possible screen sizes that user might use. Rarely though, you can see in use the media rules that alternate the design of a website depending on the window's height.

@@ -8,16 +8,21 @@ export const query = graphql`
         title
       }
     }
-    allPosts: allMarkdownRemark(sort: { fields: [frontmatter___date], order: DESC }) {
+    allPosts: allMarkdownRemark(
+      sort: { fields: [frontmatter___date], order: DESC }
+    ) {
       edges {
         node {
           excerpt
+          timeToRead
           fields {
             slug
           }
           frontmatter {
-            date(formatString: "MMMM DD, YYYY")
             title
+            tags
+            date
+            formattedDate: date(formatString: "MMMM Do, YYYY")
           }
         }
       }
