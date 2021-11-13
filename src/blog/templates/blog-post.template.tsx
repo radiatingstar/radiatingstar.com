@@ -11,6 +11,7 @@ export const pageQuery = graphql`
     }
     post: markdownRemark(fields: { slug: { eq: $slug } }) {
       headings {
+        id
         value
       }
       id

@@ -8,6 +8,7 @@ import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostInfo } from "../post-info/post-info.component"
 import { PostsList } from "../posts-list/posts-list.component"
+
 type Properties = WithLayout<
   Pick<PageProps<BlogPostQuery, SitePageContext>, "data">
 >
@@ -47,13 +48,9 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
               <SidebarHeading>Table of contents</SidebarHeading>
               <nav>
                 <ToCList>
-                  {post.headings.map(({ value }) => (
-                    <li key={value}>
-                      <ToCLink
-                        href={"#" + value.replace(/\s+/g, "-").toLowerCase()}
-                      >
-                        {value}
-                      </ToCLink>
+                  {post.headings.map(({ id, value }) => (
+                    <li key={id}>
+                      <ToCLink href={`#${id}`}>{value}</ToCLink>
                     </li>
                   ))}
                 </ToCList>
