@@ -42,8 +42,8 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              isIconAfterHeader: true
-            }
+              isIconAfterHeader: true,
+            },
           },
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
@@ -119,8 +119,8 @@ module.exports = {
         name: `Radiating Star`,
         short_name: `Radiating Star`,
         start_url: `/`,
-        background_color: `#ff0000`,
-        theme_color: `#ff0000`,
+        background_color: `#ff002b`,
+        theme_color: `#ff002b`,
         display: `minimal-ui`,
         icon: `content/assets/star-logo.png`,
       },
