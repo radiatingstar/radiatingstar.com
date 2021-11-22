@@ -1,5 +1,5 @@
 import { PageProps } from "gatsby"
-import React, { FunctionComponent } from "react"
+import React, { FunctionComponent, useRef } from "react"
 import styled from "styled-components"
 import { toBlogPostPreview } from "../.."
 import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
@@ -8,6 +8,7 @@ import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { PostInfo } from "../post-info/post-info.component"
 import { PostsList } from "../posts-list/posts-list.component"
+import { ProgressBar } from "../progress-bar/progress-bar.component"
 
 type Properties = WithLayout<
   Pick<PageProps<BlogPostQuery, SitePageContext>, "data">
@@ -28,6 +29,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
   assertDefined(post.html)
   assertDefined(post.headings)
   const posts = readMorePosts.edges.map(({ node }) => toBlogPostPreview(node))
+  const reference = useRef<HTMLDivElement>()
 
   return (
     <Layout>
@@ -46,19 +48,14 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
           <Sidebar>
             <>
               <SidebarHeading>Table of contents</SidebarHeading>
-              <nav>
-                <ToCList>
-                  {post.headings.map(({ id, value }) => (
-                    <li key={id}>
-                      <ToCLink href={`#${id}`}>{value}</ToCLink>
-                    </li>
-                  ))}
-                </ToCList>
-              </nav>
+              <ProgressBar
+                articleReference={reference}
+                headings={post.headings}
+              />
             </>
           </Sidebar>
         )}
-        <Post dangerouslySetInnerHTML={{ __html: post.html }} />
+        <Post ref={reference} dangerouslySetInnerHTML={{ __html: post.html }} />
       </Content>
       <ReadMore>
         <ReadMoreTitle>Read more</ReadMoreTitle>
@@ -69,16 +66,16 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
 }
 
 const Header = styled.header`
-  grid-area: header;
   display: flex;
   flex-direction: column;
+  grid-area: header;
   margin-block: 4rem;
 `
 
 const Title = styled(PageTitle)`
-  font-size: 2rem;
   margin: 0;
   color: var(--attention-color);
+  font-size: 2rem;
 
   @media (min-width: 48rem) {
     font-size: 3rem;
@@ -88,9 +85,9 @@ const Title = styled(PageTitle)`
 const Content = styled.section`
   @media (min-width: 50rem) {
     display: grid;
+    column-gap: 40px;
     grid-template-areas: "header ." "post sidebar";
     grid-template-columns: 4fr 1fr;
-    column-gap: 40px;
   }
 `
 
@@ -134,41 +131,21 @@ const Post = styled.article`
   }
 
   a.anchor {
-    text-decoration: none;
     border-bottom: none;
+    text-decoration: none;
   }
 `
 
 const Sidebar = styled.aside`
-  grid-area: sidebar;
-  position: sticky;
   top: 1rem;
+  grid-area: sidebar;
+  margin-block-end: 2rem;
 `
 
 const SidebarHeading = styled.h2`
-  margin-block-start: 0;
-  font-weight: normal;
   font-size: 1.5rem;
-`
-
-const ToCList = styled.ol`
+  font-weight: normal;
   margin-block-start: 0;
-  margin-block-end: 2rem;
-  padding-left: 0;
-  line-height: 1.5;
-  list-style-position: inside;
-
-  li {
-    margin-block: 0.5rem;
-  }
-`
-
-const ToCLink = styled.a`
-  text-decoration: none;
-  color: inherit;
-  &:hover {
-    color: var(--attention-color);
-  }
 `
 
 const ReadMore = styled.aside`
