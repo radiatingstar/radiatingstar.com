@@ -77,6 +77,10 @@ const Title = styled(PageTitle)`
   color: var(--attention-color);
   font-size: 2rem;
 
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
   @media (min-width: 48rem) {
     font-size: 3rem;
   }
@@ -92,33 +96,37 @@ const Content = styled.section`
 `
 
 const Post = styled.article`
+  font-size: 1.2rem;
   grid-area: post;
-  line-height: calc(1.5em + 0.2vw);
+  line-height: calc(1.6em + 0.2vw);
 
   p {
     margin: 2rem 0;
+
     &:first-child {
       margin-top: 0;
     }
+
     &:last-child {
       margin-bottom: 0;
     }
   }
 
   a {
-    border-bottom: 1px solid currentColor;
-    color: var(--red-100);
+    padding-bottom: 3px;
+    border-bottom: 2px solid;
+    background: var(--font-color);
+    -webkit-background-clip: text;
+    border-image-slice: 1;
+    border-image-source: var(--underline-gradient);
     text-decoration: none;
+    -webkit-text-fill-color: transparent;
+    transition: border-bottom-width 300ms;
 
     &:hover {
-      color: var(--yellow-700);
-    }
-
-    @media (prefers-color-scheme: dark) {
-      color: var(--yellow-700);
-      &:hover {
-        color: var(--red-100);
-      }
+      background: var(--text-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
   }
 
