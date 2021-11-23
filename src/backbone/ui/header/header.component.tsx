@@ -7,19 +7,17 @@ interface Properties {
   contactLinksSlot?: ReactNode
 }
 
-export const HeaderContainer = styled.header`
-  background: var(--attention-color);
-`
+export const HeaderContainer = styled.header``
 
 const HeaderContent = styled.div`
-  margin-inline: auto;
-  max-width: var(--container-max-width);
-  padding-inline: var(--block-inline-padding);
-  padding-block: 2rem;
   display: grid;
+  max-width: var(--container-max-width);
+  align-items: center;
   gap: 1rem;
   grid-template-columns: 1fr 100fr;
-  align-items: center;
+  margin-inline: auto;
+  padding-block: 2rem;
+  padding-inline: var(--block-inline-padding);
 
   > :first-child {
     grid-row: 1 / 3;

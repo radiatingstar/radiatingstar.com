@@ -69,16 +69,16 @@ const Header = styled.header`
   display: flex;
   flex-direction: column;
   grid-area: header;
-  margin-block: 4rem;
+  margin-block-start: 2rem;
+  margin-block-end: 4rem;
 `
 
 const Title = styled(PageTitle)`
   margin: 0;
-  color: var(--attention-color);
-  font-size: 2rem;
-
   background: var(--text-gradient);
   -webkit-background-clip: text;
+  color: var(--attention-color);
+  font-size: 2rem;
   -webkit-text-fill-color: transparent;
 
   @media (min-width: 48rem) {
