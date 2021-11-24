@@ -131,9 +131,10 @@ const Post = styled.article`
   }
 
   h2 {
-    scroll-margin-top: 2rem;
+    margin-top: 6rem;
+    scroll-margin-top: 4rem;
 
-    &:first-of-type {
+    &:first-child {
       margin-top: 0;
     }
   }
@@ -141,6 +142,10 @@ const Post = styled.article`
   a.anchor {
     border-bottom: none;
     text-decoration: none;
+  }
+
+  li ::marker {
+    color: var(--supplementary-attention-color);
   }
 `
 
@@ -157,7 +162,7 @@ const SidebarHeading = styled.h2`
 `
 
 const ReadMore = styled.aside`
-  margin-top: 4rem;
+  margin-top: 8rem;
 `
 
 const ReadMoreTitle = styled.h2`

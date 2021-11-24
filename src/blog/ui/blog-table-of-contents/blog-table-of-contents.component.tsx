@@ -83,14 +83,24 @@ const ToCList = styled.ol`
   li + li {
     margin-block-start: 0.5rem;
   }
+
+  li ::marker {
+    color: var(--supplementary-attention-color);
+  }
 `
 
 const ToCLink = styled.a`
+  background: var(--font-color);
+  -webkit-background-clip: text;
   color: inherit;
+  padding-block: 5px;
   text-decoration: none;
+  -webkit-text-fill-color: transparent;
 
   &:hover {
-    color: var(--attention-color);
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `
 
@@ -99,4 +109,6 @@ const Bar = styled.div`
   left: -20px;
   width: 2px;
   background: var(--line-gradient);
+  transition: height 250ms;
+  will-change: height;
 `

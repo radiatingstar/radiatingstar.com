@@ -42,15 +42,19 @@ export const PostItem: FunctionComponent<Properties> = ({
 }
 
 const PostItemLink = styled(ItemLink)`
-  color: var(--font-color);
+  background: var(--font-color);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   &:hover {
-    color: var(--attention-color);
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `
 
 const PostTitle = styled.h2`
-  margin-block-start: 0;
   font-size: 1rem;
   font-weight: bold;
+  margin-block: 0;
 `

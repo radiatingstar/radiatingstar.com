@@ -1,11 +1,11 @@
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 import { List } from "../../../backbone"
+import { Stylable } from "../../../backbone/types/stylable.type"
+import { ListComponentProperties } from "../../../backbone/ui/list/list.component"
 import { BLOG_PATH } from "../../constants"
 import { BlogPostPreview } from "../../types/blog-post-preview"
 import { PostItem } from "./elements/post-item/post-item.component"
-import { ListComponentProperties } from "../../../backbone/ui/list/list.component"
-import { Stylable } from "../../../backbone/types/stylable.type"
 
 interface Properties {
   posts: BlogPostPreview[]
@@ -42,7 +42,7 @@ export const PostsList: VoidFunctionComponent<Stylable<Properties>> = ({
 
 const Posts = styled(List)`
   display: flex;
+  width: 60%;
   flex-direction: column;
   gap: 2rem;
-  width: 60%;
 `
