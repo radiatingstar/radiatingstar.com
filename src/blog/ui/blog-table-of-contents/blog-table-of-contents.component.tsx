@@ -13,17 +13,6 @@ interface Properties {
   headings: MarkdownHeading[] | null
 }
 
-/*
-Full scroller.
-1. Get the current scroll position. That way we will know the start of the counting.
-2. Measure the whole article length to define the boundaries.
-3. Listen to the scroll event and update the position.
-4. Listen to the resize event to make the measurements again.
-
-With additional headers:
-1.
- */
-
 export const BlogTableOfContents: FunctionComponent<Properties> = ({
   articleReference,
   headings,
