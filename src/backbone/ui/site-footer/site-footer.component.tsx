@@ -1,6 +1,7 @@
 import React, { ReactNode, VoidFunctionComponent } from "react"
 import styled from "styled-components"
 import { Stylable } from "../.."
+
 interface Properties {
   primarySlot?: ReactNode
   secondarySlot?: ReactNode
@@ -24,16 +25,15 @@ export const SiteFooter: VoidFunctionComponent<Stylable<Properties>> = ({
 
 const FooterContainer = styled.footer`
   display: grid;
-  padding-block: 4rem;
   gap: 1rem;
   grid-template-areas: "Swag" "PrimarySlot" "SecondarySlot";
+  padding-block: 4rem;
 
   @media (min-width: 32rem) {
     grid-template-areas: "PrimarySlot Swag SecondarySlot";
     grid-template-columns: 3fr 1fr 3fr;
+    place-items: center stretch;
     row-gap: 8rem;
-    align-items: center;
-    justify-content: space-between;
   }
 `
 
@@ -42,11 +42,11 @@ const PrimarySlot = styled.div`
 `
 
 const Swag = styled.div`
+  font-size: 1.2rem;
   grid-area: Swag;
   pointer-events: none;
   text-align: center;
   user-select: none;
-  font-size: 1.2rem;
 `
 
 const SecondarySlot = styled.div`

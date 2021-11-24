@@ -51,24 +51,24 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
 const PageContainer = styled.div`
   --container-max-width: 1200px;
   --block-inline-padding: 2rem;
-  min-height: 100vh;
   display: flex;
+  min-height: 100vh;
   flex-direction: column;
   justify-content: flex-start;
 `
 
 const Main = styled.main`
-  margin-inline: auto;
   width: 100%;
   max-width: var(--container-max-width);
+  margin-inline: auto;
   padding-inline: var(--block-inline-padding);
 `
 
 const Footer = styled(SiteFooter)`
+  width: 100%;
+  max-width: var(--container-max-width);
   margin-top: auto;
   margin-inline: auto;
-  max-width: var(--container-max-width);
-  width: 100%;
   padding-inline: var(--block-inline-padding);
 `
 
@@ -78,10 +78,10 @@ const HomeLink = styled(Link)`
 
 const HeaderList = styled.ul`
   display: flex;
-  list-style: none;
   padding-left: 0;
   margin: 0;
   gap: 10px;
+  list-style: none;
 `
 
 const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
@@ -103,8 +103,9 @@ const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
 )
 
 const NavigationLink = styled(Link)`
-  text-decoration: none;
   color: var(--font-color);
+  text-decoration: none;
+
   &:hover {
     color: var(--attention-color);
   }
@@ -132,9 +133,37 @@ const ContactLinks = () => (
 )
 
 const ContactLink = styled(ExternalLink)`
+  //background: var(--font-color);
+  //-webkit-background-clip: text;
+  //text-decoration: none;
+  //-webkit-text-fill-color: transparent;
+  //
+  //&:hover {
+  //  background: var(--text-gradient);
+  //  -webkit-background-clip: text;
+  //  -webkit-text-fill-color: transparent;
+  //}
+
   text-decoration: none;
-  color: var(--font-color);
-  &:hover {
-    color: white;
+  color: white;
+
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 0 0 0 0;
+    background: var(--button-gradient);
+    padding: 1rem;
+    border-radius: 10px;
+
+    //clip-path: circle(0% at 50% 50%);
+    transition: clip-path 200ms;
+    transform: translateY(-5px);
+  }
+
+  &:hover::before {
+    clip-path: circle(100% at 50% 50%);
   }
 `
