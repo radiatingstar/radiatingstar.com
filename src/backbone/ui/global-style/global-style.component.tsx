@@ -22,7 +22,7 @@ export const GlobalStyle = createGlobalStyle`
     --supplementary-attention-color: var(--pink-10);
     --font-color: var(--black-10);
 
-    --text-gradient: linear-gradient(var(--gradient-angle, 90deg), var(--red-30), var(--pink-10));
+    --text-gradient: linear-gradient(90deg, var(--red-30), var(--pink-10));
     --line-gradient: linear-gradient(var(--red-30), var(--pink-10));
     --underline-gradient: linear-gradient(var(--purple-10), var(--pink-20));
   }

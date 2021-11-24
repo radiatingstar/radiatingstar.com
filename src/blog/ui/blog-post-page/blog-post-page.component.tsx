@@ -6,9 +6,9 @@ import { BlogPostQuery, SitePageContext } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
 import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
+import { BlogTableOfContents } from "../blog-table-of-contents/blog-table-of-contents.component"
 import { PostInfo } from "../post-info/post-info.component"
 import { PostsList } from "../posts-list/posts-list.component"
-import { ProgressBar } from "../progress-bar/progress-bar.component"
 
 type Properties = WithLayout<
   Pick<PageProps<BlogPostQuery, SitePageContext>, "data">
@@ -47,8 +47,8 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
         {post.headings.length > 0 && (
           <Sidebar>
             <>
-              <SidebarHeading>Table of contents</SidebarHeading>
-              <ProgressBar
+              <SidebarHeading>In this post</SidebarHeading>
+              <BlogTableOfContents
                 articleReference={reference}
                 headings={post.headings}
               />
@@ -151,7 +151,7 @@ const Sidebar = styled.aside`
 `
 
 const SidebarHeading = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   font-weight: normal;
   margin-block-start: 0;
 `

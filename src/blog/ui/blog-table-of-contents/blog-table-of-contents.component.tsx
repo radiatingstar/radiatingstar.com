@@ -24,7 +24,7 @@ With additional headers:
 1.
  */
 
-export const ProgressBar: FunctionComponent<Properties> = ({
+export const BlogTableOfContents: FunctionComponent<Properties> = ({
   articleReference,
   headings,
 }) => {
