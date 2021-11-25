@@ -172,7 +172,7 @@ const Sidebar = styled.aside`
 const SidebarHeading = styled.h2`
   font-size: 1.2rem;
   font-weight: normal;
-  margin-block-start: 0;
+  margin-block-start: 7px; /* Makes it aligned with the content. */
 `
 
 const ReadMore = styled.aside`
