@@ -112,6 +112,13 @@ const Post = styled.article`
     }
   }
 
+  b,
+  strong {
+    background: var(--supplementary-text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
   a {
     padding-bottom: 3px;
     border-bottom: 2px solid;
@@ -146,6 +153,13 @@ const Post = styled.article`
 
   li ::marker {
     color: var(--supplementary-attention-color);
+  }
+
+  hr {
+    width: 100%;
+    height: 2px;
+    border: none;
+    background: var(--supplementary-text-gradient);
   }
 `
 
