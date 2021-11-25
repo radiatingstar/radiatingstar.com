@@ -44,6 +44,11 @@ export const GlobalStyle = createGlobalStyle`
 
   h1,
   h2 {
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Nunito', sans-serif;
+  }
+
+  h1 {
+    font-weight: 900;
+
   }
 `
