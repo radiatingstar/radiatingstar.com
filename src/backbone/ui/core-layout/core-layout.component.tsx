@@ -1,3 +1,5 @@
+import { FaGithubSquare } from "@react-icons/all-files/fa/FaGithubSquare"
+import { FaTwitterSquare } from "@react-icons/all-files/fa/FaTwitterSquare"
 import { Link } from "gatsby"
 import React, { FunctionComponent } from "react"
 import styled from "styled-components"
@@ -118,7 +120,7 @@ const ContactLinks = () => (
         href="https://github.com/radiatingstar"
         label="RadiatingStar's GitHub"
       >
-        github/radiatingstar
+        <FaGithubSquare />
       </ContactLink>
     </li>
     <li>
@@ -126,44 +128,51 @@ const ContactLinks = () => (
         href="https://twitter.com/radiatingstar"
         label="RadiatingStar's Twitter"
       >
-        @radiatingstar
+        <FaTwitterSquare />
       </ContactLink>
     </li>
   </HeaderList>
 )
 
 const ContactLink = styled(ExternalLink)`
-  //background: var(--font-color);
-  //-webkit-background-clip: text;
-  //text-decoration: none;
-  //-webkit-text-fill-color: transparent;
-  //
-  //&:hover {
-  //  background: var(--text-gradient);
-  //  -webkit-background-clip: text;
-  //  -webkit-text-fill-color: transparent;
-  //}
-
-  text-decoration: none;
-  color: white;
-
+  --size: 2rem;
+  --shift: 200px;
   position: relative;
+  display: block;
+  overflow: hidden;
+  width: var(--size);
+  height: var(--size);
+  color: currentColor;
+  font-size: var(--size);
 
   &::before {
-    content: "";
     position: absolute;
-    z-index: -1;
-    inset: 0 0 0 0;
-    background: var(--button-gradient);
-    padding: 1rem;
-    border-radius: 10px;
-
-    //clip-path: circle(0% at 50% 50%);
-    transition: clip-path 200ms;
-    transform: translateY(-5px);
+    content: "";
+    inset: 0 0 0 calc(var(--shift) * -1);
+    transition: transform 1s;
   }
 
-  &:hover::before {
-    clip-path: circle(100% at 50% 50%);
+  &:hover {
+    background: #fff;
+    color: #000;
+    mix-blend-mode: multiply;
+
+    &::before {
+      background: var(--button-gradient);
+      mix-blend-mode: screen;
+      transform: translateX(var(--shift));
+    }
+  }
+
+  @media (prefers-color-scheme: dark) {
+    &:hover {
+      background: #000;
+      color: #fff;
+      mix-blend-mode: lighten;
+
+      &::before {
+        mix-blend-mode: multiply;
+      }
+    }
   }
 `
