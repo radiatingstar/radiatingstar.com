@@ -65,24 +65,45 @@ const Container = styled.div`
 const ToCList = styled.ol`
   padding-left: 0;
   line-height: 1.5;
-  list-style-position: inside;
+  list-style-type: none;
   margin-block-end: 0;
   margin-block-start: 0;
+
+  li {
+    position: relative;
+  }
 
   li + li {
     margin-block-start: 0.5rem;
   }
 
-  li ::marker {
-    color: var(--supplementary-attention-color);
+  li::before {
+    position: absolute;
+    top: 0;
+    left: -20px;
+    width: 2px;
+    height: 100%;
+    padding-right: 20px;
+    border-left: 2px solid var(--font-color);
+    content: "";
+    opacity: 0;
+    transition: opacity 350ms;
+  }
+
+  &:hover li::before {
+    opacity: 0.5;
+  }
+
+  li:hover::before {
+    opacity: 1;
   }
 `
 
 const ToCLink = styled.a`
+  display: block;
   background: var(--font-color);
   -webkit-background-clip: text;
   color: inherit;
-  padding-block: 5px;
   text-decoration: none;
   -webkit-text-fill-color: transparent;
 
@@ -95,6 +116,7 @@ const ToCLink = styled.a`
 
 const Bar = styled.div`
   position: absolute;
+  z-index: 1;
   left: -20px;
   width: 2px;
   background: var(--line-gradient);
