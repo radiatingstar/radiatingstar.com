@@ -44,7 +44,7 @@ transition: transform ...;
 
 And here the problem starts since the code above seems to be perfectly valid and future-proof, but it's not!
 
-## Case 1: unprefixed transition gets supported but unprefixed transform not.
+## Case 1: unprefixed transition gets supported but unprefixed transform not
 
 What will happen when the browsers end support for prefixed transition but not for transform? They will ignore the -pre-transition rule and go straight to transition. But it has the unprefixed transform, not yet supported, as an argument so nothing will happen – transition won't run because the browsers don't know what the unprefixed transform is.
 
@@ -68,7 +68,7 @@ Nope. No such luck. In this case every previous transition property with prefixe
 
 **Conclusion 1:** we can't secure websites in case of browsers dropping support for prefixed transition before prefixed transform.
 
-## Case 2: unprefixed transform supported but unprefixed transition not.
+## Case 2: unprefixed transform supported but unprefixed transition not
 
 This scenario seems to be a bit better. The code has to be like that:
 
@@ -94,7 +94,7 @@ Hey, wait! Something is wrong there. Yup, we are secured for the future but toda
 
 **Conclusion 2:** we can secure our websites for the eventuality the browsers drop support for -pre-transform first, but it breaks transitions today.
 
-## Case 3: both properties start to be supported unprefixed at the same time.
+## Case 3: both properties start to be supported unprefixed at the same time
 
 If betting on that eventuality we could just use the code at the beginning.
 
@@ -110,7 +110,7 @@ Since it's still a possibility we can't really call it a future-proof method. It
 
 **Conclusion 3:** We're still betting, but it seems to be the safest bet so far.
 
-## Case 4: the legacy.
+## Case 4: the legacy
 
 Because the browsers use prefixed properties, they try to support prefixes even after they start to use unprefixed versions. For example we can still write -moz-box-shadow to get a box-shadow in Firefox. If we bet on legacy the CSS will be like that:
 
