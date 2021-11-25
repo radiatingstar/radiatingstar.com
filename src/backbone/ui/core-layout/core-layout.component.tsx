@@ -138,42 +138,42 @@ const ContactLinks = () => (
 const ContactLink = styled(ExternalLink)`
   --size: 2rem;
   --shift: 200px;
+  --transition-time: 500ms;
   position: relative;
   display: block;
   overflow: hidden;
   width: var(--size);
   height: var(--size);
-  color: currentColor;
+  background: var(--background-color);
+  color: var(--font-color);
   font-size: var(--size);
+  mix-blend-mode: multiply;
 
   &::before {
     position: absolute;
+    background-image: linear-gradient(
+      90deg,
+      var(--purple-10),
+      var(--pink-20),
+      var(--font-color) var(--shift),
+      var(--font-color) var(--shift)
+    );
     content: "";
     inset: 0 0 0 calc(var(--shift) * -1);
-    transition: transform 1s;
+    mix-blend-mode: screen;
+    transform: translateX(0);
+    transition: transform var(--transition-time);
   }
 
-  &:hover {
-    background: #fff;
-    color: #000;
-    mix-blend-mode: multiply;
-
-    &::before {
-      background: var(--button-gradient);
-      mix-blend-mode: screen;
-      transform: translateX(var(--shift));
-    }
+  &:hover::before {
+    transform: translateX(var(--shift));
+    transition: transform var(--transition-time);
   }
 
   @media (prefers-color-scheme: dark) {
-    &:hover {
-      background: #000;
-      color: #fff;
-      mix-blend-mode: lighten;
-
-      &::before {
-        mix-blend-mode: multiply;
-      }
+    mix-blend-mode: lighten;
+    &::before {
+      mix-blend-mode: multiply;
     }
   }
 `
