@@ -62,6 +62,7 @@ const PageContainer = styled.div`
 const Main = styled.main`
   width: 100%;
   max-width: var(--container-max-width);
+  margin-block-end: 5rem;
   margin-inline: auto;
   padding-inline: var(--block-inline-padding);
 `

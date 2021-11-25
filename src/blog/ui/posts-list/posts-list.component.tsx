@@ -42,7 +42,10 @@ export const PostsList: VoidFunctionComponent<Stylable<Properties>> = ({
 
 const Posts = styled(List)`
   display: flex;
-  width: 60%;
   flex-direction: column;
   gap: 2rem;
+
+  @media (min-width: 32rem) {
+    width: 60%;
+  }
 `

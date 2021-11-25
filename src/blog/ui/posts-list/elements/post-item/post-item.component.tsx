@@ -26,18 +26,18 @@ export const PostItem: FunctionComponent<Properties> = ({
   withPreview = true,
 }) => {
   return (
-    <div>
+    <article>
       <PostItemLink as={Link} to={slug}>
         <PostTitle>{title}</PostTitle>
       </PostItemLink>
-      {withPreview && <p>{excerpt}</p>}
+      {withPreview && <Excerpt>{excerpt}</Excerpt>}
       <PostInfo
         tags={tags}
         timeToRead={timeToRead}
         date={date}
         formattedDate={formattedDate}
       />
-    </div>
+    </article>
   )
 }
 
@@ -54,7 +54,13 @@ const PostItemLink = styled(ItemLink)`
 `
 
 const PostTitle = styled.h2`
-  font-size: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
   font-weight: bold;
   margin-block: 0;
+`
+
+const Excerpt = styled.p`
+  font-size: 1.1rem;
+  line-height: 1.5;
 `
