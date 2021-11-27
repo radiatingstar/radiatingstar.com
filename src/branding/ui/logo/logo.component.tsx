@@ -1,3 +1,4 @@
+import { FaRegStar } from "@react-icons/all-files/fa/FaRegStar"
 import React, { VoidFunctionComponent } from "react"
 import styled from "styled-components"
 
@@ -22,10 +23,9 @@ const Container = styled.div.attrs({ role: "img", "aria-hidden": true })`
 
 export const Image = styled.div`
   position: absolute;
-  color: transparent;
+  color: var(--white-10);
   font-size: calc(var(--size) / 2);
-  inset: 0.8rem 0 0 1rem;
-  -webkit-text-stroke: 5px var(--white-10);
+  inset: 0.9rem 0 0 1rem;
 `
 
 export const Logo: VoidFunctionComponent = () => {
@@ -48,7 +48,9 @@ export const Logo: VoidFunctionComponent = () => {
           fill="url('#background')"
         />
       </svg>
-      <Image>★</Image>
+      <Image>
+        <FaRegStar />
+      </Image>
     </Container>
   )
 }
