@@ -14,7 +14,8 @@ module.exports = {
     },
   },
   plugins: [
-    `gatsby-plugin-preact`,
+    // TODO: Enable only in production since it makes the development slower.
+    // `gatsby-plugin-preact`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
