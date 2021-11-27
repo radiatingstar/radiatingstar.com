@@ -28,6 +28,10 @@ export const query = graphql`
         }
       }
     }
+    tagMeta: tagsYaml(name: { eq: $tag }) {
+      name
+      description
+    }
   }
 `
 

@@ -12,7 +12,7 @@ import { PostsList } from "../posts-list/posts-list.component"
 type Properties = WithLayout<Pick<PageProps<BlogIndexQuery>, "data">>
 
 export const BlogTagPage: FunctionComponent<Properties> = ({
-  data: { taggedPosts },
+  data: { taggedPosts, tagMeta },
   layout: Layout = CoreLayout,
   pageContext: { tag },
 }) => {
@@ -22,23 +22,15 @@ export const BlogTagPage: FunctionComponent<Properties> = ({
     assertDefined(node.excerpt)
     return node as BlogPostInfo
   })
+  const description =
+    tagMeta.description ??
+    `Read blog posts about ${tag} and learn something new.`
   return (
     <Layout>
-      <SEO
-        title="All posts"
-        description="Read and learn about programming, web development, React, CSS and other great tools."
-      />
+      <SEO title={`Posts tagged with ${tag}`} description={description} />
       <Header>
         <TagTitle>#{tag}</TagTitle>
-        <TagDescription>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab cumque
-          eum hic neque soluta! Accusantium, dignissimos eos facere iusto
-          mollitia nemo nihil optio quas quasi? Dolore dolorem ipsam laboriosam
-          sunt! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque
-          beatae blanditiis, commodi corporis doloribus dolorum eos explicabo
-          harum illo inventore itaque laboriosam libero recusandae repellat, sed
-          sit soluta veniam voluptas!
-        </TagDescription>
+        <TagDescription>{tagMeta.description}</TagDescription>
         <nav>
           <NavigationLink to="/blog">
             <FaArrowLeft />

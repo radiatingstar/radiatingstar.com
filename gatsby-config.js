@@ -25,6 +25,15 @@ module.exports = {
       },
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        // eslint-disable-next-line unicorn/prefer-module
+        path: `${__dirname}/content/config`,
+        name: `config`,
+      },
+    },
+
+    {
       resolve: `gatsby-transformer-remark`,
       options: {
         plugins: [
