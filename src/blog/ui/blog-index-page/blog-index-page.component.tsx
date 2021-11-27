@@ -1,9 +1,9 @@
-import styled from "styled-components"
 import { PageProps } from "gatsby"
 import React, { FunctionComponent } from "react"
+import styled from "styled-components"
 import { BlogIndexQuery } from "../../../../graphql-types"
 import { assertDefined } from "../../../assertions"
-import { CoreLayout, WithLayout } from "../../../backbone"
+import { CoreLayout, PageTitle, WithLayout } from "../../../backbone"
 import { SEO } from "../../../seo"
 import { BlogPostInfo } from "../../types/blog-post-info"
 import { PostsList } from "../posts-list/posts-list.component"
@@ -26,11 +26,12 @@ export const BlogIndexPage: FunctionComponent<Properties> = ({
         title="All posts"
         description="Read and learn about programming, web development, React, CSS and other great tools."
       />
-      <List posts={posts} />
+      <Title>Blog</Title>
+      <PostsList posts={posts} />
     </Layout>
   )
 }
 
-const List = styled(PostsList)`
-  margin-top: 6rem;
+const Title = styled(PageTitle)`
+  margin-block: 2rem 4rem;
 `

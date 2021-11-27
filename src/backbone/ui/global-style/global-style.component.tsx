@@ -26,6 +26,7 @@ export const GlobalStyle = createGlobalStyle`
     --supplementary-text-gradient: linear-gradient(90deg, var(--pink-20), var(--purple-10));
     --line-gradient: linear-gradient(var(--red-30), var(--pink-10));
     --underline-gradient: linear-gradient(var(--purple-10), var(--pink-20));
+    --button-gradient: var(--text-gradient);
   }
 
   @media (prefers-color-scheme: dark) {

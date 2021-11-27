@@ -6,10 +6,13 @@ const { createFilePath } = require(`gatsby-source-filesystem`)
 
 // TODO: extract all those functions to separate modules.
 
-exports.createPages = ({ graphql, actions }) => {
+exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const blogPost = path.resolve(`./src/blog/templates/blog-post.template.tsx`)
-  return graphql(
+  const blogByTagPost = path.resolve(
+    `./src/blog/templates/posts-by-tag.template.tsx`
+  )
+  const postsQueryResult = await graphql(
     `
       query AllBlogPosts {
         allMarkdownRemark(
@@ -29,30 +32,49 @@ exports.createPages = ({ graphql, actions }) => {
         }
       }
     `
-  ).then((result) => {
-    if (result.errors) {
-      throw result.errors
-    }
+  )
 
-    // Create blog posts pages.
-    const posts = result.data.allMarkdownRemark.edges
- 
-    for (const [index, post] of posts.entries()) {
-      const previous =
-        index === posts.length - 1 ? undefined : posts[index + 1].node
-      const next = index === 0 ? undefined : posts[index - 1].node
+  if (postsQueryResult.errors) {
+    throw postsQueryResult.errors
+  }
 
-      createPage({
-        path: "/blog" + post.node.fields.slug,
-        component: blogPost,
-        context: {
-          slug: post.node.fields.slug,
-          previous,
-          next,
-        },
-      })
-    }
-  })
+  // Create blog posts pages.
+  const posts = postsQueryResult.data.allMarkdownRemark.edges
+
+  for (const [index, post] of posts.entries()) {
+    createPage({
+      path: "/blog" + post.node.fields.slug,
+      component: blogPost,
+      context: {
+        slug: post.node.fields.slug,
+      },
+    })
+  }
+
+  const taggedPostsQueryResult = await graphql(
+    `
+      query TaggedPosts {
+        allMarkdownRemark {
+          group(field: frontmatter___tags) {
+            fieldValue
+          }
+        }
+      }
+    `
+  )
+
+  const tags = taggedPostsQueryResult.data.allMarkdownRemark.group
+  console.log(tags)
+
+  for (const [index, tag] of tags.entries()) {
+    createPage({
+      path: "/blog/tag/" + tag.fieldValue,
+      component: blogByTagPost,
+      context: {
+        tag: tag.fieldValue,
+      },
+    })
+  }
 }
 
 exports.onCreateNode = ({ node, actions, getNode }) => {

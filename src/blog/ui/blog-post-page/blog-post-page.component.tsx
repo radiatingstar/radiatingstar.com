@@ -36,7 +36,7 @@ export const BlogPostPage: FunctionComponent<Properties> = ({
       <SEO title={post.frontmatter.title} description={post.excerpt} />
       <Content>
         <Header>
-          <Title>{post.frontmatter.title}</Title>
+          <PageTitle>{post.frontmatter.title}</PageTitle>
           <PostInfo
             tags={post.frontmatter.tags as string[]}
             timeToRead={post.timeToRead}
@@ -71,19 +71,6 @@ const Header = styled.header`
   grid-area: header;
   margin-block-start: 2rem;
   margin-block-end: 4rem;
-`
-
-const Title = styled(PageTitle)`
-  margin: 0;
-  background: var(--text-gradient);
-  -webkit-background-clip: text;
-  color: var(--attention-color);
-  font-size: 2rem;
-  -webkit-text-fill-color: transparent;
-
-  @media (min-width: 48rem) {
-    font-size: 3rem;
-  }
 `
 
 const Content = styled.section`
