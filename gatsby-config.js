@@ -133,7 +133,7 @@ module.exports = {
         background_color: `#ff002b`,
         theme_color: `#ff002b`,
         display: `minimal-ui`,
-        icon: `content/assets/star-logo.png`,
+        icon: `content/assets/star-logo.svg`,
       },
     },
     `gatsby-plugin-offline`,
