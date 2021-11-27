@@ -1,9 +1,21 @@
 - name: css
-  description: a
+  description: |
+    CSS is the driver of everything visual on the web. It's a tool responsible for styling your apps
+    and websites. The best CSS wizards can create unforgettable and unique visual experiences.
+    The task of mastering this language is not free of struggles, as browser support and discrepancies
+    are still plaguing the industry.
 - name: aws
-  description:
+  description: |
+    Amazon Web Services is the leading cloud provider. Spanning thousands of services enables the creation
+    of complex, reliant, and scalable architectures for your apps of any size. Multiple specialisations
+    allow to narrow down the scope required to learn to subset you might be interested in development,
+    systems architecture, developer operations, machine learning, and more.
 - name: javascript
-  description:
+  description: |
+    Programming language of the web. Multiparadigm, flexible, easy to learn, making it one of the most
+    popular languages overall. Due to its popularity, it found other use cases in mobile, server and
+    desktop applications development. Learning and mastering JavaScript will make you a versatile programmer.
+    It will open multiple opportunities for creating great applications and systems.
 - name: less
   description:
 - name: googleanalytics
@@ -13,4 +25,6 @@
 - name: seo
   description:
 - name: project
+  description:
+- name: cloud
   description:

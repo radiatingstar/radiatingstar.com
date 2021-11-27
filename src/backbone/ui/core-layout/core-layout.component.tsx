@@ -21,9 +21,7 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
             <Logo />
           </HomeLink>
         }
-        navigationSlot={
-          <Navigation tags={["css", "javascript", "aws", "cloud"]} />
-        }
+        navigationSlot={<Navigation tags={["css", "javascript", "aws"]} />}
         contactLinksSlot={<ContactLinks />}
       />
       <Main>{children}</Main>
