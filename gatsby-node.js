@@ -64,7 +64,6 @@ exports.createPages = async ({ graphql, actions }) => {
   )
 
   const tags = taggedPostsQueryResult.data.allMarkdownRemark.group
-  console.log(tags)
 
   for (const [index, tag] of tags.entries()) {
     createPage({
