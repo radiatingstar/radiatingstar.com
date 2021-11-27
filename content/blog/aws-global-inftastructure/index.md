@@ -1,7 +1,5 @@
 ---
-title: AWS Global Infrastructure
-date: '2021-07-20T20:00:00.000Z'
-tags: [aws]
+title: AWS Global Infrastructure date: '2021-07-20T20:00:00.000Z' tags: [aws, cloud]
 ---
 
 AWS being the biggest global cloud provider, by necessity needs to organize its infrastructure into multiple types or

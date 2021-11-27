@@ -22,7 +22,7 @@ export const CoreLayout: FunctionComponent = ({ children }) => {
           </HomeLink>
         }
         navigationSlot={
-          <Navigation tags={["css", "aws", "typescript", "javascript"]} />
+          <Navigation tags={["css", "javascript", "aws", "cloud"]} />
         }
         contactLinksSlot={<ContactLinks />}
       />
@@ -92,13 +92,12 @@ const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
     <HeaderList>
       {tags.map((tag) => (
         <li key={tag}>
-          {/* TODO */}
-          {/* <NavigationLink
-            to={`/tag/${tag}`}
+          <NavigationLink
+            to={`/blog/tag/${tag}`}
             aria-label={`Go to posts tagged ${tag}`}
-          > */}
-          #{tag}
-          {/* </NavigationLink> */}
+          >
+            #{tag}
+          </NavigationLink>
         </li>
       ))}
     </HeaderList>
@@ -106,11 +105,17 @@ const Navigation: FunctionComponent<{ tags: string[] }> = ({ tags }) => (
 )
 
 const NavigationLink = styled(Link)`
-  color: var(--font-color);
+  background: var(--font-color);
+  font-family: "Nunito", sans-serif;
+  font-weight: 900;
   text-decoration: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   &:hover {
-    color: var(--attention-color);
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `
 
