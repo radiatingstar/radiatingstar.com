@@ -108,7 +108,8 @@ const Post = styled.article`
 
   a {
     padding-bottom: 3px;
-    border-bottom: 2px solid;
+    border-width: 0 0 2px;
+    border-style: solid;
     background: var(--font-color);
     -webkit-background-clip: text;
     border-image-slice: 1;
@@ -131,11 +132,6 @@ const Post = styled.article`
     &:first-child {
       margin-top: 0;
     }
-  }
-
-  a.anchor {
-    border-bottom: none;
-    text-decoration: none;
   }
 
   li ::marker {

@@ -9,8 +9,8 @@ module.exports = {
     description: `Every website is a star that radiates awesomeness. Learn how to create great web apps.`,
     siteUrl: `https://radiatingstar.com/`,
     social: {
-      twitter: `mateuszkocz`,
-      github: `mateuszkocz`,
+      twitter: `radiatingstar`,
+      github: `radiatingstar`,
     },
   },
   plugins: [
@@ -53,7 +53,7 @@ module.exports = {
           {
             resolve: `gatsby-remark-autolink-headers`,
             options: {
-              isIconAfterHeader: true,
+              icon: false,
             },
           },
           `gatsby-remark-prismjs`,

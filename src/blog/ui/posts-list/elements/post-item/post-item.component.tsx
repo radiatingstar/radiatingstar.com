@@ -28,7 +28,9 @@ export const PostItem: FunctionComponent<Properties> = ({
   return (
     <article>
       <PostItemLink as={Link} to={slug}>
-        <PostTitle>{title}</PostTitle>
+        <PostTitle>
+          <span>{title}</span>
+        </PostTitle>
       </PostItemLink>
       {withPreview && <Excerpt>{excerpt}</Excerpt>}
       <PostInfo
@@ -42,14 +44,18 @@ export const PostItem: FunctionComponent<Properties> = ({
 }
 
 const PostItemLink = styled(ItemLink)`
-  background: var(--font-color);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  /* Safari needs a span to make the gradient work properly. */
 
-  &:hover {
-    background: var(--text-gradient);
+  span {
+    background: var(--font-color);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    &:hover {
+      background: var(--text-gradient);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 `
 
