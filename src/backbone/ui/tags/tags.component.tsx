@@ -13,7 +13,7 @@ export const Tags: VoidFunctionComponent<Stylable<Properties>> = ({
   return names?.length > 0 ? (
     <TagsContainer className={className}>
       {names?.map((tag) => (
-        <Tag key={tag}>{tag}</Tag>
+        <Tag key={tag}>#{tag}</Tag>
       ))}
     </TagsContainer>
   ) : // eslint-disable-next-line unicorn/no-null
@@ -27,7 +27,6 @@ const TagsContainer = styled.div`
 
 const Tag = styled.span`
   display: inline-block;
-  padding: 0.5rem;
   border: 1px solid var(--yellow-700);
   border-radius: 3px;
   text-transform: lowercase;

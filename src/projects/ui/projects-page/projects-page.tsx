@@ -125,20 +125,14 @@ export const ProjectsPage: VoidFunctionComponent<Properties> = ({
 }
 
 const Title = styled(PageTitle)`
-  padding-bottom: 2rem;
-  border-bottom: 4px solid currentColor;
-  margin: 0 2rem 4rem;
-  color: var(--yellow-700);
-  font-size: 4rem;
-  text-align: left;
+  margin-block: 2rem 4rem;
 `
 
 const ProjectsList = styled(List)`
   display: grid;
   align-items: stretch;
-  padding: 0 2rem;
   margin-bottom: 6rem;
-  gap: 2rem;
+  gap: 3rem;
   grid-auto-rows: 1fr;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
   justify-items: stretch;
@@ -148,7 +142,8 @@ const Project = styled(ContentBlock)`
   display: flex;
   height: 100%;
   flex-direction: column;
-  padding-left: 5rem !important;
+  padding-block: 2rem;
+  padding-inline-start: 5rem !important;
 `
 
 const ProjectType = styled.div<{ type: string }>`
@@ -156,13 +151,11 @@ const ProjectType = styled.div<{ type: string }>`
   top: 0;
   left: 0;
   display: flex;
-  width: 3rem;
+  width: 5rem;
   height: 100%;
   align-items: center;
   justify-content: center;
-  background: ${({ type }) =>
-    type === "Application" ? `var(--yellow-700)` : `var(--red-100)`};
-  color: white;
+  color: var(--font-color);
   font-size: 1.2rem;
   font-weight: 900;
   letter-spacing: 0.15rem;
@@ -176,7 +169,8 @@ const Description = styled.p`
 `
 
 const ProjectTags = styled(Tags)`
-  margin: 2rem 0 2rem;
+  color: var(--attention-color);
+  margin: 1rem 0 2rem;
   gap: 0.3rem;
 `
 
@@ -185,34 +179,33 @@ const Footer = styled.footer`
 `
 
 const ProjectExternalLink = styled(ExternalLink)`
-  border-bottom: 1px solid currentColor;
-  color: var(--red-100);
+  padding-bottom: 3px;
+  border-width: 0 0 2px;
+  border-style: solid;
+  background: var(--font-color);
+  -webkit-background-clip: text;
+  border-image-slice: 1;
+  border-image-source: var(--underline-gradient);
   text-decoration: none;
+  -webkit-text-fill-color: transparent;
+  transition: border-bottom-width 300ms;
 
-  &:hover,
-  &:active,
-  &:focus {
-    color: var(--yellow-700);
+  &:hover {
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 
   & + & {
     margin-left: 1rem;
   }
-
-  @media (prefers-color-scheme: dark) {
-    color: var(--yellow-700);
-
-    &:hover,
-    &:active,
-    &:focus {
-      color: var(--red-100);
-    }
-  }
 `
 
 const ProjectTitle = styled.h1`
   margin: 0 0 2rem;
-  color: var(--black-300);
+  background: var(--text-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   @media (prefers-color-scheme: dark) {
     color: var(--yellow-700);

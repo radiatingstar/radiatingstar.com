@@ -7,8 +7,8 @@ import {
   PageTitle,
   WithLayout,
 } from "../../../backbone"
-import { Badge } from "../badge/badge.component"
 import { SEO } from "../../../seo"
+import { Badge } from "../badge/badge.component"
 
 const technologies = [
   {
@@ -146,12 +146,7 @@ export const TechPage: VoidFunctionComponent<WithLayout<unknown>> = ({
 }
 
 const Title = styled(PageTitle)`
-  padding-bottom: 2rem;
-  border-bottom: 4px solid currentColor;
-  margin: 0 2rem 4rem;
-  color: var(--yellow-700);
-  font-size: 4rem;
-  text-align: left;
+  margin-block: 2rem 4rem;
 `
 
 const BadgesBlock = styled(ContentBlock)`
@@ -167,10 +162,10 @@ const MetaBlock = styled(ContentBlock)`
 `
 
 const TechList = styled.div`
-  display: grid;
-  margin: 0 2rem 6rem;
   color: var(--black-300);
-  gap: 2rem;
+  display: grid;
+  margin-block-end: 6rem;
+  gap: 3rem;
   grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
 
   @media (prefers-color-scheme: dark) {
@@ -184,18 +179,20 @@ const BlockHeading = styled.h1`
 `
 
 const TechnologyLink = styled(ExternalLink)`
-  border-bottom: 1px solid currentColor;
-  color: var(--red-100);
+  padding-bottom: 3px;
+  border-width: 0 0 2px;
+  border-style: solid;
+  background: var(--font-color);
+  -webkit-background-clip: text;
+  border-image-slice: 1;
+  border-image-source: var(--underline-gradient);
   text-decoration: none;
+  -webkit-text-fill-color: transparent;
+  transition: border-bottom-width 300ms;
 
   &:hover {
-    color: var(--yellow-700);
-  }
-
-  @media (prefers-color-scheme: dark) {
-    color: var(--yellow-700);
-    &:hover {
-      color: var(--red-100);
-    }
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `

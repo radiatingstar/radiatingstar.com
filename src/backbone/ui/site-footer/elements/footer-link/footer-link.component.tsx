@@ -1,18 +1,15 @@
 import styled from "styled-components"
 
 export const FooterLink = styled.a`
-  color: var(--yellow-700);
+  background: var(--font-color);
+  font-family: "Nunito", sans-serif;
   text-decoration: none;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   &:hover {
-    color: white;
-  }
-
-  /* TODO: Likely move it to some global style. */
-  &:focus,
-  &:active {
-    border-radius: 3px;
-    box-shadow: 0 0 0 3px #ffa500;
-    outline: none;
+    background: var(--text-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 `

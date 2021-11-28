@@ -4,25 +4,7 @@ export const ContentBlock = styled.section<{ attentionGrabbing?: boolean }>`
   position: relative;
   overflow: hidden;
   padding: 2rem;
-  background: white;
+  background: var(--background-color);
   border-radius: 4px;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-
-  @media (prefers-color-scheme: dark) {
-    background: var(--black-300);
-    color: rgb(200, 200, 200);
-  }
-
-  &:after {
-    position: absolute;
-    top: calc(100% - 4rem);
-    right: -3rem;
-    color: ${({ attentionGrabbing }) =>
-      attentionGrabbing ? `var(--yellow-700)` : `var(--gray-100)`};
-    content: "★";
-    font-size: 13rem;
-    line-height: 0;
-    pointer-events: none;
-    transform: rotate(-25deg);
-  }
 `
