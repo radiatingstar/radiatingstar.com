@@ -13,6 +13,10 @@
     "@astrojs/mdx": "^0.19.7",
     "@astrojs/rss": "^2.4.3",
     "@astrojs/sitemap": "^1.4.0",
-    "astro": "^2.8.3"
+    "@astrojs/tailwind": "^4.0.0",
+    "@fontsource-variable/nunito": "^5.0.6",
+    "@fontsource/lato": "^5.0.5",
+    "astro": "^2.8.3",
+    "tailwindcss": "^3.3.3"
   }
 }
