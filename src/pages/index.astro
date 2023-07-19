@@ -15,7 +15,9 @@ const posts = (await getCollection("blog")).sort(
       posts.map((post) => (
         <li>
           <article>
-            <h3>{post.data.title}</h3>
+            <a href={`/blog/${post.slug}`}>
+              <h3>{post.data.title}</h3>
+            </a>
             <p>TODO: Excerpt</p>
             <footer>
               {post.data.tags.map(({ id }) => `#${id}`).join(" ")}

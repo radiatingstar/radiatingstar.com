@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>3L SEO Helper | Radiating Star</title>
+    <meta name="description" content="" />
+    <style type="text/css">
+      img:not([alt]),
+      img[alt=""],
+      img[alt^=" "],
+      a[href=""],
+      a[href^=" "],
+      a[rel*="nofollow"] {
+        outline: 2px solid red !important;
+        outline-offset: 3px !important;
+      }
+      head,
+      title:empty,
+      link,
+      meta {
+        display: block;
+      }
+      title:empty,
+      link {
+        display: block;
+      }
+      title:empty:before {
+        content: "You've left the <title> empty!";
+      }
+      link:before {
+        content: "You don't have a <title>!";
+      }
+      title ~ link {
+        display: none;
+      }
+      meta[name="description"][content=""]:before,
+      meta[name="description"][content=" "]:before {
+        content: "You've left the description empty!";
+      }
+    </style>
+  </head>
+  <body>
+    <p>The title and description of this page are empty, so alert appears.</p>
+    <h3>This image doesn't have an alt attribute.</h3>
+    <p>So it gets a red outline.</p>
+    <img
+      src="no-alt-img.jpeg"
+      alt=""
+    />
+    <h3>Link bellow has rel="nofollow".</h3>
+    <p>It also has a red outline.</p>
+    <a href="https://radiatingstar.com/blog/how-to-improve-seo-with-css/">Go back to the article.</a>
+  </body>
+</html>
