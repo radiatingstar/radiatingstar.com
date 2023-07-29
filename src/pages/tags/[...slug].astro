@@ -1,0 +1,30 @@
+---
+import { CollectionEntry, getCollection, getEntries } from "astro:content";
+import Main from "../../layouts/Main.astro";
+import MainHeading from "../../components/MainHeading.astro";
+import PostsList from "../../components/PostsList.astro";
+import Section from "../../components/Section.astro";
+
+export async function getStaticPaths() {
+  const tags = await getCollection("tags");
+  return tags.map((tag) => ({ params: { slug: tag.id }, props: tag }));
+}
+type Props = CollectionEntry<"tag">;
+
+const tag = Astro.props;
+const posts = await getCollection("blog", ({ data }) =>
+  data.tags.find((postTag) => postTag.id === tag.id)
+);
+---
+
+<Main mainContainerClass="flex flex-col gap-16">
+  <div class="flex flex-col gap-4 ml-4">
+    <MainHeading>
+      #{tag.id}
+    </MainHeading>
+    <p class="text-slate-500 text-md prose">{tag.data.description}</p>
+  </div>
+  <Section title="Blog posts">
+    <PostsList posts={posts} />
+  </Section>
+</Main>

@@ -1,0 +1,31 @@
+---
+import { CollectionEntry, getCollection } from "astro:content";
+import Main from "../../layouts/Main.astro";
+import Section from "../../components/Section.astro";
+import PostsList from "../../components/PostsList.astro";
+
+const tags = await getCollection("tags");
+const posts = await getCollection("blog");
+const tagsWithPosts = tags
+  .map((tag) => {
+    const postsWithTag = posts
+      .filter(({ data }) => data.tags.find((postTag) => postTag.id === tag.id))
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+      .slice(0, 3);
+    return {
+      ...tag,
+      posts: postsWithTag ?? [],
+    };
+  })
+  .sort((a, b) => b.posts.length - a.posts.length);
+---
+
+<Main mainContainerClass="flex flex-col gap-16">
+  {
+    tagsWithPosts.map((tag) => (
+      <Section title={`#${tag.id}`}>
+        <PostsList posts={tag.posts} seeMoreUrl={`/tags/${tag.id}`} />
+      </Section>
+    ))
+  }
+</Main>

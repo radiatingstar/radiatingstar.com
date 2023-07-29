@@ -3,6 +3,7 @@ import { CollectionEntry, getCollection } from "astro:content";
 import Main from "../../layouts/Main.astro";
 import FormattedDate from "../../components/FormattedDate.astro";
 import readingTime from "reading-time";
+import MainHeading from "../../components/MainHeading.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("blog");
@@ -19,15 +20,15 @@ const { Content } = await post.render();
 ---
 
 <Main {...post.data}>
-  <div class="grid gap-24 mt-24">
-    <heder>
-      <h1
-        class="inline-block text-5xl font-nunito font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-red to-primary-pink"
-      >
+  <div
+    class="grid gap-16 mt-8 [grid-template-columns:_minmax(300px,_max-content)_1fr]"
+  >
+    <header>
+      <MainHeading>
         {post.data.title}
-      </h1>
+      </MainHeading>
       <div class="flex gap-2">
-        <ul class="flex gap-2">
+        <ul class="contents">
           {
             post.data.tags.map((tag) => (
               <li class="text-primary-red">#{tag.id}</li>
@@ -39,9 +40,13 @@ const { Content } = await post.render();
         ∙
         <FormattedDate date={post.data.date} />
       </div>
-    </heder>
+    </header>
+    <div></div>
     <div class="prose prose-xl prose-headings:font-nunito">
       <Content />
+    </div>
+    <div>
+      <p>In this post</p>
     </div>
   </div>
 </Main>

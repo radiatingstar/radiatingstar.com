@@ -1,0 +1,73 @@
+---
+import { CollectionEntry } from "astro:content";
+type Props = {
+  posts: CollectionEntry<"blog">[];
+  seeMoreUrl?: string;
+};
+const { posts, seeMoreUrl } = Astro.props;
+function getRandomArbitrary(min, max) {
+  return Math.random() * (max - min) + min;
+}
+---
+
+<ul class="grid grid-cols-4 gap-2">
+  {
+    posts.map((post, index) => (
+      <li class="rounded-2xl bg-slate-50 overflow-hidden group hover:bg-slate-100 transition-colors">
+        <a href={`/blog/${post.slug}`} class="contents">
+          <article class="flex flex-col h-full">
+            <figure class="overflow-hidden rounded-2xl">
+              <img
+                alt=""
+                width="600"
+                height="300"
+                class="rounded-2xl group-hover:scale-105 transition-all"
+                src={`https://generative-placeholders.glitch.me/image?width=600&height=300&style=triangles&gap=100&img=${getRandomArbitrary(
+                  0,
+                  1000
+                )}`}
+              />
+            </figure>
+            <div class="p-4 flex flex-col gap-2 flex-1">
+              <h3 class="text-lg">{post.data.title}</h3>
+              <p class="text-slate-500 text-sm">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                Accusantium.
+              </p>
+              <footer class="text-primary-red text-sm -order-1">
+                {post.data.tags.map(({ id }) => `#${id}`).join(" ")}
+              </footer>
+            </div>
+          </article>
+        </a>
+      </li>
+    ))
+  }
+  {
+    seeMoreUrl && (
+      <li class="rounded-2xl bg-slate-50 overflow-hidden hover:bg-slate-100 transition-colors text-slate-500">
+        <a
+          href={seeMoreUrl}
+          class="items-center justify-center w-full h-full flex flex-col gap-2"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="1"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-right-circle w-12 h-12"
+          >
+            <circle cx="12" cy="12" r="10" />
+            <path d="m10 8 4 4-4 4" />
+          </svg>
+          <span class="text-sm">See more</span>
+        </a>
+      </li>
+    )
+  }
+</ul>
