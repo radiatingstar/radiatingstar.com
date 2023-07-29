@@ -2,9 +2,12 @@
 const today = new Date();
 ---
 
-<footer>
-  <nav>
+<footer class="grid grid-cols-3">
+  <nav class="text-slate-400">
     <a href="/projects">Projects</a>
   </nav>
-  <span>&copy; {today.getFullYear()} Radiating Star</span>
+  <div class="text-primary-red text-center">★</div>
+  <span class="text-slate-400 text-right"
+    >&copy; {today.getFullYear()} Radiating Star</span
+  >
 </footer>
