@@ -8,21 +8,39 @@ const posts = (await getCollection("blog")).sort(
 );
 ---
 
-<Main title={SITE_TITLE} description={SITE_DESCRIPTION}>
-  <h2 class="font-nunito font-black text-2xl">Recent posts</h2>
-  <ul class="flex flex-col gap-4">
+<Main
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  mainContainerClass="flex flex-col gap-8"
+>
+  <h2 class="font-nunito font-light ml-4 text-4xl">Recent posts</h2>
+  <ul class="grid grid-cols-4 gap-2">
     {
-      posts.map((post) => (
-        <li>
-          <article>
-            <a href={`/blog/${post.slug}`}>
-              <h3>{post.data.title}</h3>
-            </a>
-            <p>TODO: Excerpt</p>
-            <footer>
-              {post.data.tags.map(({ id }) => `#${id}`).join(" ")}
-            </footer>
-          </article>
+      posts.map((post, index) => (
+        <li class="rounded-2xl bg-slate-50 overflow-hidden group hover:bg-slate-100 transition-colors">
+          <a href={`/blog/${post.slug}`} class="contents">
+            <article class="flex flex-col h-full">
+              <figure class="overflow-hidden rounded-2xl">
+                <img
+                  alt=""
+                  width="600"
+                  height="300"
+                  class="rounded-2xl group-hover:scale-105 transition-all"
+                  src={`https://generative-placeholders.glitch.me/image?width=600&height=300&style=triangles&gap=100&img=${index}`}
+                />
+              </figure>
+              <div class="p-4 flex flex-col gap-2 flex-1">
+                <h3 class="text-lg">{post.data.title}</h3>
+                <p class="text-slate-500 text-sm">
+                  Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                  Accusantium.
+                </p>
+                <footer class="text-primary-red text-sm -order-1">
+                  {post.data.tags.map(({ id }) => `#${id}`).join(" ")}
+                </footer>
+              </div>
+            </article>
+          </a>
         </li>
       ))
     }
