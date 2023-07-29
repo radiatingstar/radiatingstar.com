@@ -24,6 +24,7 @@ const tags = defineCollection({
   schema: z.object({
     name: z.string(),
     description: z.string().optional(),
+    weight: z.number().min(1).max(4).default(1),
   }),
 });
 

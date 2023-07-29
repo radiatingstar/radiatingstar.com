@@ -4,13 +4,19 @@ import { SITE_TITLE, SITE_DESCRIPTION } from "../consts";
 import { getCollection } from "astro:content";
 import PostsList from "../components/PostsList.astro";
 import Section from "../components/Section.astro";
+import TagsCloud from "../components/TagsCloud.astro";
 
 const posts = (await getCollection("blog"))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
   .slice(0, 7);
 ---
 
-<Main title={SITE_TITLE} description={SITE_DESCRIPTION}>
+<Main
+  title={SITE_TITLE}
+  description={SITE_DESCRIPTION}
+  mainContainerClass="flex flex-col gap-16"
+>
+  <TagsCloud />
   <Section title="Recent posts">
     <PostsList posts={posts} seeMoreUrl="/blog" />
   </Section>

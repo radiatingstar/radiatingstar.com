@@ -1,0 +1,32 @@
+---
+import { getCollection } from "astro:content";
+const weightClasses = {
+  1: "text-2xl",
+  2: "text-4xl",
+  3: "text-6xl",
+  4: "text-8xl",
+};
+const tags = (await getCollection("tags"))
+  .map((tag) => ({
+    ...tag,
+    weightClass: weightClasses[tag.data.weight],
+  }))
+  .sort(() => 0.5 - Math.random());
+---
+
+<ul
+  class="py-16 font-nunito font-black bg-clip-text text-transparent bg-gradient-to-r from-primary-red to-primary-pink flex items-center justify-center gap-4 flex-wrap w-3/4 m-auto"
+>
+  {
+    tags.map((tag) => (
+      <li class="inline-block">
+        <a
+          href={`/tags/${tag.id}`}
+          class={`${tag.weightClass} hover:bg-clip-padding hover:text-white px-4 py-2 block hover:bg-gradient-to-r from-primary-red to-primary-pink rounded-2xl hover:skew-y-2`}
+        >
+          #{tag.id}
+        </a>
+      </li>
+    ))
+  }
+</ul>
