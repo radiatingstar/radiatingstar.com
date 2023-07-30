@@ -12,12 +12,18 @@ export async function getStaticPaths() {
 type Props = CollectionEntry<"tag">;
 
 const tag = Astro.props;
-const posts = await getCollection("blog", ({ data }) =>
-  data.tags.find((postTag) => postTag.id === tag.id)
-);
+const posts = (
+  await getCollection("blog", ({ data }) =>
+    data.tags.find((postTag) => postTag.id === tag.id)
+  )
+).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<Main mainContainerClass="flex flex-col gap-16">
+<Main
+  mainContainerClass="flex flex-col gap-16"
+  title={`#${tag.id}`}
+  description={tag.data.description}
+>
   <div class="flex flex-col gap-4 ml-4">
     <MainHeading>
       #{tag.id}
