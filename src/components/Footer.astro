@@ -11,7 +11,7 @@ const today = new Date();
         <svg
           viewBox="0 0 150 150"
           xmlns="http://www.w3.org/2000/svg"
-          class="text-slate-200"
+          class="text-slate-200 dark:text-slate-700"
         >
           <path
             d="
@@ -23,7 +23,7 @@ const today = new Date();
             fill="currentColor"></path>
         </svg>
         <svg
-          class="absolute inset-3 text-slate-400"
+          class="absolute inset-3 text-slate-400 dark:text-slate-400"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 576 512"
         >
@@ -35,13 +35,13 @@ const today = new Date();
           </path>
         </svg>
       </div>
-      <p class="text-slate-500">Doing the web things with curiosity.</p>
+      <p class="text-slate-400">Doing the web things with curiosity.</p>
       <div class="flex gap-2">
         <a href="https://github.com/radiatingstar">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
-            class="w-8 h-8 text-slate-300"
+            class="w-8 h-8 text-slate-300 dark:text-slate-500"
             ><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
             <path
               fill="currentColor"
@@ -53,7 +53,7 @@ const today = new Date();
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 448 512"
-            class="w-8 h-8 text-slate-300"
+            class="w-8 h-8 text-slate-300 dark:text-slate-500"
           >
             <!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
             <path
@@ -65,37 +65,71 @@ const today = new Date();
       </div>
     </div>
     <nav class="flex flex-col gap-4">
-      <a href="/projects" class="mb-2">Projects</a>
-      <a href="" class="text-slate-500 hover:text-black"
+      <a href="/projects" class="mb-2 text-foreground">Projects</a>
+      <a
+        href=""
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
         >Lots of Love for LESS</a
       >
-      <a href="" class="text-slate-500 hover:text-black">Mail Generator</a>
-      <a href="" class="text-slate-500 hover:text-black">Color Utilities</a>
+      <a
+        href=""
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >Mail Generator</a
+      >
+      <a
+        href=""
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >Color Utilities</a
+      >
     </nav>
     <nav class="flex flex-col gap-4">
-      <a href="/tags" class="mb-2">Tags</a>
-      <a href="/tags/javascript" class="text-slate-500 hover:text-black"
+      <a href="/tags" class="mb-2 text-foreground">Tags</a>
+      <a
+        href="/tags/javascript"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
         >#javascript</a
       >
-      <a href="/tags/css" class="text-slate-500 hover:text-black">#css</a>
-      <a href="/tags/tailwind" class="text-slate-500 hover:text-black"
+      <a
+        href="/tags/css"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >#css</a
+      >
+      <a
+        href="/tags/tailwind"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
         >#tailwind</a
       >
-      <a href="/tags/aws" class="text-slate-500 hover:text-black">#aws</a>
+      <a
+        href="/tags/aws"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >#aws</a
+      >
     </nav>
     <nav class="flex flex-col gap-4">
-      <span class="mb-2">This site</span>
-      <a href="/tags/javascript" class="text-slate-500 hover:text-black"
+      <span class="mb-2 text-foreground">This site</span>
+      <a
+        href="/tags/javascript"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
         >About</a
       >
-      <a href="/tags/css" class="text-slate-500 hover:text-black">Blog</a>
-      <a href="/tags/tailwind" class="text-slate-500 hover:text-black"
+      <a
+        href="/tags/css"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >Blog</a
+      >
+      <a
+        href="/tags/tailwind"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
         >Contact</a
       >
-      <a href="/tags/tailwind" class="text-slate-500 hover:text-black">Tools</a>
+      <a
+        href="/tags/tailwind"
+        class="text-slate-500 dark:text-slate-400 hover:text-black dark:hover:text-foreground"
+        >Tools</a
+      >
     </nav>
   </div>
-  <hr />
+  <hr class="dark:border-slate-600" />
   <div class="text-slate-400 text-sm">
     &copy; {today.getFullYear()} Radiating Star. All rights reserved.
   </div>

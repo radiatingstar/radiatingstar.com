@@ -13,8 +13,8 @@ function getRandomArbitrary(min, max) {
 
 <ul class="grid grid-cols-4 gap-2">
   {
-    posts.map((post, index) => (
-      <li class="rounded-2xl bg-slate-50 overflow-hidden group hover:bg-slate-100 transition-colors">
+    posts.map((post) => (
+      <li class="rounded-2xl bg-slate-50 overflow-hidden group hover:bg-slate-100 transition-colors dark:bg-slate-800 dark:hover:bg-slate-700">
         <a href={`/blog/${post.slug}`} class="contents">
           <article class="flex flex-col h-full">
             <figure class="overflow-hidden rounded-2xl">
@@ -30,13 +30,13 @@ function getRandomArbitrary(min, max) {
               />
             </figure>
             <div class="p-4 flex flex-col gap-2 flex-1">
-              <h3 class="text-lg">{post.data.title}</h3>
-              <p class="text-slate-500 text-sm">
+              <h3 class="text-lg text-foreground">{post.data.title}</h3>
+              <p class="text-slate-500 dark:text-slate-400 text-sm">
                 Lorem ipsum dolor sit amet, consectetur adipisicing elit.
                 Accusantium.
               </p>
               <footer class="text-sm -order-1 flex justify-between">
-                <span class="text-slate-500">
+                <span class="text-slate-500 dark:text-slate-400">
                   <FormattedDate date={post.data.date} />
                 </span>
                 <span class="text-primary-red">
@@ -51,7 +51,7 @@ function getRandomArbitrary(min, max) {
   }
   {
     seeMoreUrl && (
-      <li class="rounded-2xl bg-slate-50 overflow-hidden hover:bg-slate-100 transition-colors text-slate-500">
+      <li class="rounded-2xl bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-900 overflow-hidden hover:bg-slate-100 transition-colors text-slate-500 dark:text-slate-400">
         <a
           href={seeMoreUrl}
           class="items-center justify-center w-full h-full flex flex-col gap-2"

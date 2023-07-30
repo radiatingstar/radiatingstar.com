@@ -11,7 +11,9 @@ const { title, description, mainContainerClass } = Astro.props;
   <head>
     <BaseHead title={title} description={description} />
   </head>
-  <body class="font-lato container grid gap-16 my-8">
+  <body
+    class="font-lato container grid gap-16 my-8 bg-background dark:bg-slate-900"
+  >
     <Header />
     <main class={mainContainerClass}>
       <slot />

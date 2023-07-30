@@ -64,15 +64,19 @@ import { SITE_TITLE } from "../consts";
   </div>
   <nav>
     <ul class="flex gap-8 font-nunito">
-      <li>
-        <a href="/blog" class="hover:text-primary-red">Blog</a>
-      </li>
-      <li>
-        <a href="/projects" class="hover:text-primary-red">Projects</a>
-      </li>
-      <li>
-        <a href="/tools" class="hover:text-primary-red">Tools</a>
-      </li>
+      {
+        [
+          ["/blog", "Blog"],
+          ["/projects", "Projects"],
+          ["/tools", "Tools"],
+        ].map(([url, text]) => (
+          <li>
+            <a href={url} class="text-foreground hover:text-primary-red">
+              {text}
+            </a>
+          </li>
+        ))
+      }
     </ul>
   </nav>
 </div>

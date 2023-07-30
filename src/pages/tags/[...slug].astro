@@ -28,7 +28,9 @@ const posts = (
     <MainHeading>
       #{tag.id}
     </MainHeading>
-    <p class="text-slate-500 text-md prose">{tag.data.description}</p>
+    <p class="text-slate-500 dark:text-slate-300 text-md prose">
+      {tag.data.description}
+    </p>
   </div>
   <Section title="Blog posts">
     <PostsList posts={posts} />

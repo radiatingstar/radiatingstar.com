@@ -48,7 +48,7 @@ const posts = (await getCollection("blog"))
         <MainHeading>
           {post.data.title}
         </MainHeading>
-        <div class="flex gap-2 mt-2">
+        <div class="flex gap-2 mt-2 text-foreground">
           <ul class="contents">
             {
               post.data.tags.map((tag) => (
@@ -63,7 +63,7 @@ const posts = (await getCollection("blog"))
         </div>
       </header>
       <div
-        class="prose prose-xl prose-headings:font-nunito max-w-prose prose-headings:scroll-margin-top-[1.5rem]"
+        class="prose prose-xl dark:prose-invert prose-headings:font-nunito max-w-prose prose-headings:scroll-margin-top-[1.5rem]"
         id="article"
       >
         <Content />
@@ -71,8 +71,8 @@ const posts = (await getCollection("blog"))
       {
         hasHeadings && (
           <aside>
-            <p class="mb-2 text-slate-500">In this post:</p>
-            <div class="sticky top-5">
+            <p class="mb-2 text-slate-200">In this post:</p>
+            <div class="sticky top-5 text-foreground">
               <div
                 id="bar"
                 class="absolute z-10 -left-5 w-[2px] bg-gradient-to-b from-primary-red to-primary-pink h-[1px]"
@@ -86,7 +86,7 @@ const posts = (await getCollection("blog"))
                         class:list={[
                           "relative max-w-max hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary-red hover:to-primary-pink",
                           "before:absolute before:top-0 before:-left-5 before:w-[2px] before:h-full before:pr-5",
-                          "before:border-l-2 before:border-black before:border-solid",
+                          "before:border-l-2 before:border-foreground before:border-solid",
                           "before:opacity-0 before:transition-opacity  group-hover:before:opacity-50 hover:before:!opacity-100",
                         ]}
                       >
