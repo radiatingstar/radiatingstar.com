@@ -16,18 +16,32 @@ type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const readTime = readingTime(post.body);
-const { Content } = await post.render();
+const { Content, headings } = await post.render();
+const hasHeadings = headings.length > 0;
 ---
 
 <Main {...post.data}>
   <div
-    class="grid gap-16 mt-8 [grid-template-columns:_minmax(300px,_max-content)_1fr]"
+    class:list={[
+      "grid gap-y-16 mt-8 cols-1 max-w-max mx-auto",
+      {
+        "gap-x-16 [grid-template-columns:_minmax(300px,_max-content)_1fr]":
+          hasHeadings,
+      },
+    ]}
   >
-    <header>
+    <header
+      class:list={[
+        "col-span-full",
+        {
+          "max-w-prose": !hasHeadings,
+        },
+      ]}
+    >
       <MainHeading>
         {post.data.title}
       </MainHeading>
-      <div class="flex gap-2">
+      <div class="flex gap-2 mt-2">
         <ul class="contents">
           {
             post.data.tags.map((tag) => (
@@ -41,12 +55,66 @@ const { Content } = await post.render();
         <FormattedDate date={post.data.date} />
       </div>
     </header>
-    <div></div>
-    <div class="prose prose-xl prose-headings:font-nunito">
+    <div
+      class="prose prose-xl prose-headings:font-nunito max-w-prose prose-headings:scroll-margin-top-[1.5rem]"
+      id="article"
+    >
       <Content />
     </div>
-    <div>
-      <p>In this post</p>
-    </div>
+    {
+      hasHeadings && (
+        <aside>
+          <p class="mb-2 text-slate-500">In this post:</p>
+          <div class="sticky top-5">
+            <div
+              id="bar"
+              class="absolute z-10 -left-5 w-[2px] bg-gradient-to-b from-primary-red to-primary-pink h-[1px]"
+            />
+            <nav class="flex flex-col gap-2 group">
+              {headings.map(
+                ({ depth, slug, text }) =>
+                  depth === 2 && (
+                    <a
+                      href={`#${slug}`}
+                      class:list={[
+                        "relative max-w-max hover:text-transparent hover:bg-clip-text hover:bg-gradient-to-r hover:from-primary-red hover:to-primary-pink",
+                        "before:absolute before:top-0 before:-left-5 before:w-[2px] before:h-full before:pr-5",
+                        "before:border-l-2 before:border-black before:border-solid",
+                        "before:opacity-0 before:transition-opacity  group-hover:before:opacity-50 hover:before:!opacity-100",
+                      ]}
+                    >
+                      {text}
+                    </a>
+                  )
+              )}
+            </nav>
+          </div>
+        </aside>
+      )
+    }
   </div>
 </Main>
+
+<script>
+  const bar = document.querySelector("#bar");
+  const article = document.querySelector("#article");
+  window.addEventListener(
+    "scroll",
+    () => {
+      const articleRect = article?.getBoundingClientRect();
+      const progress =
+        articleRect.top <= 0
+          ? Math.round(
+              Math.min(
+                100,
+                ((articleRect.height - articleRect.bottom) /
+                  (articleRect.height - window.innerHeight)) *
+                  100
+              )
+            )
+          : 0;
+      bar.style.height = `${progress}%`;
+    },
+    { passive: true }
+  );
+</script>
