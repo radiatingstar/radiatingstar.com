@@ -9,9 +9,10 @@ const { posts, seeMoreUrl } = Astro.props;
 function getRandomArbitrary(min, max) {
   return Math.random() * (max - min) + min;
 }
+const isFullyPacked = posts.length === 3;
 ---
 
-<ul class="grid grid-cols-4 gap-2">
+<ul class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2">
   {
     posts.map((post) => (
       <li class="rounded-2xl bg-slate-50 overflow-hidden group hover:bg-slate-100 transition-colors dark:bg-slate-800 dark:hover:bg-slate-700">
@@ -51,10 +52,18 @@ function getRandomArbitrary(min, max) {
   }
   {
     seeMoreUrl && (
-      <li class="rounded-2xl bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-900 overflow-hidden hover:bg-slate-100 transition-colors text-slate-500 dark:text-slate-400">
+      <li
+        class:list={[
+          "rounded-2xl bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-900 overflow-hidden hover:bg-slate-100 transition-colors text-slate-500 dark:text-slate-400 p-4",
+          isFullyPacked && "md:max-lg:col-span-full",
+        ]}
+      >
         <a
           href={seeMoreUrl}
-          class="items-center justify-center w-full h-full flex flex-col gap-2"
+          class:list={[
+            "items-center justify-center w-full h-full flex flex-col gap-2",
+            isFullyPacked && "md:max-lg:flex-row-reverse",
+          ]}
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,12 +75,15 @@ function getRandomArbitrary(min, max) {
             stroke-width="1"
             stroke-linecap="round"
             stroke-linejoin="round"
-            class="lucide lucide-chevron-right-circle w-12 h-12"
+            class:list={[
+              "lucide lucide-chevron-right-circle w-12 h-12",
+              isFullyPacked && "md:max-lg:w-6 md:max-lg:h-6",
+            ]}
           >
             <circle cx="12" cy="12" r="10" />
             <path d="m10 8 4 4-4 4" />
           </svg>
-          <span class="text-sm">See more</span>
+          <span>See more</span>
         </a>
       </li>
     )

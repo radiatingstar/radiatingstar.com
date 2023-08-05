@@ -31,7 +31,7 @@ const posts = (await getCollection("blog"))
       class:list={[
         "grid gap-y-16 mt-8 cols-1 max-w-max mx-auto",
         {
-          "gap-x-16 [grid-template-columns:_minmax(300px,_max-content)_1fr]":
+          "md:gap-x-16 md:[grid-template-columns:_minmax(auto,_max-content)_200px]":
             hasHeadings,
         },
       ]}
@@ -62,16 +62,10 @@ const posts = (await getCollection("blog"))
           <FormattedDate date={post.data.date} />
         </div>
       </header>
-      <div
-        class="prose prose-xl dark:prose-invert prose-headings:font-nunito max-w-prose prose-headings:scroll-margin-top-[1.5rem]"
-        id="article"
-      >
-        <Content />
-      </div>
       {
         hasHeadings && (
-          <aside>
-            <p class="mb-2 text-slate-200">In this post:</p>
+          <aside class="order-2 hidden md:block">
+            <p class="mb-2 text-slate-400">In this post:</p>
             <div class="sticky top-5 text-foreground">
               <div
                 id="bar"
@@ -99,6 +93,12 @@ const posts = (await getCollection("blog"))
           </aside>
         )
       }
+      <div
+        class="prose prose-xl dark:prose-invert prose-headings:font-nunito max-w-prose prose-headings:scroll-margin-top-[1.5rem] overflow-hidden"
+        id="article"
+      >
+        <Content />
+      </div>
     </div>
     <Section title="Read more">
       <PostsList posts={posts} />
@@ -109,23 +109,25 @@ const posts = (await getCollection("blog"))
 <script>
   const bar = document.querySelector("#bar");
   const article = document.querySelector("#article");
-  window.addEventListener(
-    "scroll",
-    () => {
-      const articleRect = article?.getBoundingClientRect();
-      const progress =
-        articleRect.top <= 0
-          ? Math.round(
-              Math.min(
-                100,
-                ((articleRect.height - articleRect.bottom) /
-                  (articleRect.height - window.innerHeight)) *
-                  100
+  if (bar) {
+    window.addEventListener(
+      "scroll",
+      () => {
+        const articleRect = article?.getBoundingClientRect();
+        const progress =
+          articleRect.top <= 0
+            ? Math.round(
+                Math.min(
+                  100,
+                  ((articleRect.height - articleRect.bottom) /
+                    (articleRect.height - window.innerHeight)) *
+                    100
+                )
               )
-            )
-          : 0;
-      bar.style.height = `${progress}%`;
-    },
-    { passive: true }
-  );
+            : 0;
+        bar.style.height = `${progress}%`;
+      },
+      { passive: true }
+    );
+  }
 </script>
