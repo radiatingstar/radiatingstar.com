@@ -1,6 +1,6 @@
 ---
 title: The fastest way to get time stamps in JavaScript
-description: ""
+description: Performant ways of obtaining the current timestamp
 date: '2014-03-15T13:00:00.000Z'
 tags: 
   - javascript

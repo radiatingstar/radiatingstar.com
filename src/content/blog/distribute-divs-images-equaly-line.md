@@ -1,6 +1,6 @@
 ---
 title: Distribute Divs or Images Equaly in Line
-description: ""
+description: CSS is not always so simple
 date: '2012-06-26T13:00:00.000Z'
 tags:
   - css

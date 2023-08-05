@@ -1,6 +1,6 @@
 ---
 title: How To Get Individual Dates and Days of Week in Google Analytics
-description: ""
+description: Hacking Google Analytics to get clean data
 date: '2012-08-15T13:00:00.000Z'
 tags:
   - javascript

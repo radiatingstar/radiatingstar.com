@@ -1,6 +1,6 @@
 ---
 title: AWS Global Infrastructure
-description: ""
+description: Learn how AWS organizes its infrastructure
 date: "2021-07-20T20:00:00.000Z"
 tags: 
   - aws

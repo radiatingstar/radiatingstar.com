@@ -1,6 +1,6 @@
 ---
 title: Grid Auto-fill Plugin in Tailwind
-description: ""
+description: Extend the Tailwind's grid functionalities with auto-filled columns plugin
 date: '2023-07-09T13:00:00.000Z'
 tags:
   - tailwind
