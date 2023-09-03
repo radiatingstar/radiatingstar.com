@@ -1,0 +1,49 @@
+---
+title: Make sure each line looks good with box-decoration-break
+description: Ensuring that each line of text looks good is now easier than ever with the box-decoration-break property.
+date: '2023-09-03T13:00:00.000Z'
+tags:
+  - css
+---
+
+import Example from '../../components/blog/example.astro'
+
+## Problem
+
+Styling the hero sections' header used to be difficult when the text was supposed to have some form of decoration, like a background with padding or a border. Those properties were not translated well when the amount of content required the introduction of multiple lines. The style was clipped in the wrong places and the overall look was bad. By default, the content is rendered as a continuous strip of style that's cut by scissors and moved to another line. Just take a look at the example below.
+
+<Example>
+    <span class="p-2 bg-yellow-200 text-4xl border-2 border-pink-500 leading-loose">Too much content to fit in one line made the whole experience look bad</span>
+</Example>
+
+## Solution
+
+Thankfully we live in the future, so now this is no longer an issue. We now have the `box-decoration-break` property, making it so easy to treat each line as a separate entity with its own, contained styles. Apply the `clone` value and you're good to go.
+
+<Example>
+    <span class="p-2 bg-yellow-200 text-4xl border-2 border-pink-500 box-decoration-clone leading-loose">With box decoration break set to clone, each line has its styling</span>
+</Example>
+
+## Usage
+
+`box-decoration-break` has two possible values: `slice` and `clone`. The first one is the default. It treats the element broken into separate lines as one, long strip and slices it to fit into multiple lines. `clone`—on the other hand—makes each line separate so all CSS properties apply individually.
+
+```css
+.box-decoration-clone {
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+```
+
+If you're using Tailwind, the classes you're interested in are: `box-decoration-slice` and `box-decoration-clone`.
+
+Decoration cloning applies to backgrounds, borders, border images, box shadows, clip paths, margins, and paddings.
+
+Browser support for this feature is pretty good, although to target Chrome, Safari, Edge, and Opera you need to use the `-webkit-` prefix.
+
+## Resources
+
+- [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/box-decoration-break)
+- [Can I Use](https://caniuse.com/?search=box-decoration-break)
+- [CSS Tricks](https://css-tricks.com/almanac/properties/b/box-decoration-break/)
+- [Decorating lines of text with box-decoration-break](https://css-tricks.com/decorating-lines-of-text-with-box-decoration-break/)
