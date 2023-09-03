@@ -1,0 +1,86 @@
+---
+title: Font-face loading strategies
+description: Loading fonts is harder than it should be. Font display property makes it a bit more manageable.
+date: '2023-09-13T13:00:00.000Z'
+tags:
+  - css
+---
+
+## Problem
+
+Web fonts are commonly known to be hard to implement in a website in a way that will avoid [content shift](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) after the default font is swapped with the custom one. By default, browsers are displaying the content using the system font, before the custom font is downloaded and ready to be displayed. In theory, this is better for the user's perceived loading speed, and it enables users to read the content without unnecessary delays. Sadly, the experience of replacing fonts might be jarring and cause shifts making the reading experience worse and unpolished.
+
+Previously the common patterns to prevent this behavior required hiding the content using JavaScript and showing it back again after the custom font was loaded. Now the code is not necessary, as we can achieve the same effect using the CSS `font-display` property.
+
+## Solution
+
+The `font-display` property is a part of the [CSS Fonts Module Level 4](https://www.w3.org/TR/css-fonts-4/#font-display-desc) specification. It allows developers to control how the browser will handle the font-loading process. It's defined as a part of the `@font-face` directive and enables multiple strategies for the loading experience.
+
+```css
+@font-face {
+  font-family: 'My Font';
+  src: url('my-font.woff2') format('woff2');
+  font-display: auto;
+}
+```
+## Usage
+
+The `font-display` property accepts multiple values that define the loading strategy. Strategies differ between each other based on the behavior of the initial content display, the type of font used, and periods when the custom font can load and replace the default one.
+
+Those strategies are:
+- `auto` - the default value, the browser will decide how to handle the loading process,
+- `block` - the browser will block the rendering of the text until the custom font is loaded for a brief period (around 3 seconds), and if it's not ready, will use the default font while waiting,
+- `swap` - after a very short period the browser will display the text using the default font, and swap it with the custom one when it's ready,
+- `fallback` - the browser will display the text using the default font, and swap it with the custom one when it's ready but will wait at most 3 seconds,
+- `optional` - the browser decides if the custom font can be loaded "immediately", and if not, will use the default font.
+
+In brief, it looks something like that:
+
+<table>
+    <thead>
+    <tr>
+        <th>Strategy</th>
+        <th>Blocking period</th>
+        <th>Default font</th>
+        <th>Swap period</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><code>auto</code></td>
+        <td class="text-gray-400">n/a</td>
+        <td class="text-gray-400">n/a</td>
+        <td class="text-gray-400">n/a</td>
+    </tr>
+    <tr>
+        <td><code>block</code></td>
+        <td>3 seconds</td>
+        <td>After block</td>
+        <td>When ready</td>
+    </tr>
+    <tr>
+        <td><code>swap</code></td>
+        <td>100ms</td>
+        <td>After block</td>
+        <td>When ready</td>
+    </tr>
+    <tr>
+        <td><code>fallback</code></td>
+        <td>100ms</td>
+        <td>After block</td>
+        <td>3 seconds</td>
+    </tr>
+    <tr>
+        <td><code>optional</code></td>
+        <td>None</td>
+        <td>When ready</td>
+        <td>When ready (first choice)</td>
+    </tr>
+    </tbody>
+</table>
+
+## Resources
+
+- [CSS Fonts Module Level 4](https://www.w3.org/TR/css-fonts-4/#font-display-desc)
+- [MDN - font-display](https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display)
+- [How to avoid layout shifts caused by web fonts](https://simonhearne.com/2021/layout-shifts-webfonts/#prevent-layout-shifts-with-font-display)
