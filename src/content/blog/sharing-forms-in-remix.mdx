@@ -1,0 +1,178 @@
+---
+title: Sharing forms in Remix
+description: Using the same form in multiple routes is easy with Remix
+date: '2023-09-03T13:00:00.000Z'
+tags:
+  - remix
+  - react
+---
+
+
+# The need for the same form in multiple states
+
+You have a form for creating and editing—let's say—customer information. Both states: creation and update, use the same fields and validation logic. It makes sense to keep all of this in the same place. However, two distinct actions will take place: creation and update. Also, the update form needs to have the initial values of the customer.
+
+The default way of doing this is to create a form component that receives the initial values and the action to be executed. This is a very common pattern in React. However, in Remix, we can do it a bit differently to get some interesting benefits.
+
+# Remix way: creating a route component
+
+Using [Remix's routes nesting](https://remix.run/docs/en/main/file-conventions/route-files-v2#nested-routes), we can create the hierarchy of routes for both update and creation actions while reusing the same form and adding specific requirements to the actions.
+
+Let's start with the basic idea of what we want to have in the app:
+- index page listing all customers,
+- each customer having an edit link,
+- "global" create button that will redirect to the creation form.
+
+In the code words, it looks like that:
+
+```tsx
+// app/routes/clients._index.tsx
+import { useLoaderData } from "@remix-run/react";
+
+export default function ClientsIndex() {
+    const data = useLoaderData();
+    return (
+        <div>
+            <h1>Clients</h1>
+            <ul>
+                {data.map((client) => (
+                    <li key={client.id}>
+                        <Link to={`/clients/${client.id}`}>{client.name}</Link>
+                    </li>
+                ))}
+            </ul>
+            <Link to="/clients/new">Create new client</Link>
+        </div>
+    )
+}
+```
+
+There are two routes using the same form: `clients.new.tsx` and `clients.$clientId.tsx`. Before filling them with code, let's create the shared one, that will hold the form. We're going to put in the `clients._form.tsx` file. Notice the underscore before `form`. Naming a file like that will make Remix use it as a template root while not putting the path in the URL. In other words, we can then nest further paths for editing and creation without having the `form` present.
+
+```tsx
+// app/routes/clients._form.tsx
+export default function ClintForm() {
+    return (
+        <form method="post">
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" />
+            <button>Submit</button>
+        </form>
+    )
+}
+```
+
+Now, we can create the routes for creation and update. Since both are going to be a child of the `_form` route, their file-name route needs to include it. Let's start with the creation one:
+
+```tsx
+// app/routes/clients._form.new.tsx
+import { ActionArgs, redirect } from "@remix-run/node";
+
+export const action = async ({ request }: ActionArgs) => {
+    await createClient(request);
+    return redirect("/clients");
+}
+
+export default function NewClient() {
+    return null;
+}
+```
+
+And the edit route:
+
+```tsx
+// app/routes/clients._form.$clientId.tsx
+import { ActionArgs, redirect } from "@remix-run/node";
+
+export const action = async ({ request }: ActionArgs) => {
+    await updateClient(request);
+    return redirect("/clients");
+}
+
+export default function EditClient() {
+    return null;
+}
+```
+
+Both routes look similar, with the only important difference being the data managing function (`createClient` and `updateClient`). Since the `_form` route doesn't have an `Outlet`, we don't need to return anything from the default components yet (we'll do it in the customisation section later).
+
+With this setup, both actions will now work and do what we want. Yet, we're missing the important functionality in the edit form: loading the client's data into the form. Let's do it now.
+
+For the edit form to receive the client data, it needs to be loaded in the edit component. The problem is, it needs to be accessed in the `_form`, a parent layout. This type of parent-child communication can be achieved using the [`useMatches`](https://remix.run/docs/en/main/hooks/use-matches) hook. The hook has access to all data loaded in the route hierarchy and can be accessed in any component in the hierarchy.
+
+```tsx
+// app/routes/clients._form.$clientId.tsx
+export const loader = async ({params}: LoaderArgs) => {
+    const client = await getClient(params.clientId);
+    return json({ client });
+}
+
+// … remaining code.
+
+// app/routes/clients._form.tsx
+import { useMatches } from "@remix-run/react";
+
+export default function ClintForm() {
+    const matches = useMatches();
+    const client = matches.at(-1)?.data?.client;
+    return (
+        <form method="post">
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" defaultValue={client?.name} />
+            <button>Submit</button>
+        </form>
+    )
+}
+```
+
+The optionality in multiple places ensures the form will work with and without the loaded data (for the creation path to work as well).
+
+# Customising the forms
+
+At this point, both forms are working correctly. There's one optional step we can take to make them display different content based on the function. Let's say, instead of the generic "Submit" button, we want to have "Create customer" and "Save changes" labels. Since this is a single change affecting the rendering, we can use the `<Outlet/>` to pass the desired strings.
+
+```tsx
+// app/routes/clients._form.tsx
+import { Outlet } from "@remix-run/react";
+export default function ClintForm() {
+    return (
+        <form method="post">
+            <label htmlFor="name">Name</label>
+            <input type="text" id="name" />
+            <button>
+                <Outlet/>
+            </button>
+        </form>
+    )
+}
+
+// app/routes/clients._form.$clientId.tsx
+export default function EditClient() {
+    return "Save changes";
+}
+
+// app/routes/clients._form.new.tsx
+export default function NewClient() {
+    return "Create customer";
+}
+```
+
+In case we would like to have more customisation options (e.g. change the form title, display some specific warnings, or prevent some fields from being edited in one type of the form), we could use the [`handle`](https://remix.run/docs/en/main/route/handle) functionality. It's a bit more complex, so we're not going to delve into it now, but it's still worth mentioning.
+
+# Additional benefits
+
+While the nested approach works very similarly to just extracting the form component, there's an important benefit to having a common parent route. We can place the common loader logic in just one file, and it will automatically get called in the nested routes. Imagine you have some permission-based access to the form. Instead of having the check in the `/new` and `/edit` routes, you can call it once in the `_form` route.
+
+```tsx
+// app/routes/clients._form.tsx
+export const loader = async ({request}: LoaderArgs) => {
+    await requirePermission(request, "clients");
+  return json({})
+}
+```
+
+Now both deeper routes are protected by the same permission check. The same goes for any data required to be loaded for the form to work (for example data for the select list). Just do it once and access it everywhere.
+
+# Summary
+
+Sharing components across multiple pages in Remix is a good alternative to the usual components sharing. It adds some handy features and makes the code easier to navigate and maintain. Next time you need to implement a functionality that will use similar or identical components in nested routes consider the approach described above.
