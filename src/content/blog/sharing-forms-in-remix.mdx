@@ -8,15 +8,15 @@ tags:
 ---
 
 
-# The need for the same form in multiple states
+## The need for the same form in multiple states
 
 You have a form for creating and editing—let's say—customer information. Both states: creation and update, use the same fields and validation logic. It makes sense to keep all of this in the same place. However, two distinct actions will take place: creation and update. Also, the update form needs to have the initial values of the customer.
 
 The default way of doing this is to create a form component that receives the initial values and the action to be executed. This is a very common pattern in React. However, in Remix, we can do it a bit differently to get some interesting benefits.
 
-# Remix way: creating a route component
+## Remix way: creating a route component
 
-Using [Remix's routes nesting](https://remix.run/docs/en/main/file-conventions/route-files-v2#nested-routes), we can create the hierarchy of routes for both update and creation actions while reusing the same form and adding specific requirements to the actions.
+Using [Remix's routes nesting](https://remix.run/docs/en/main/file-conventions/route-files-v2##nested-routes), we can create the hierarchy of routes for both update and creation actions while reusing the same form and adding specific requirements to the actions.
 
 Let's start with the basic idea of what we want to have in the app:
 - index page listing all customers,
@@ -127,7 +127,7 @@ export default function ClintForm() {
 
 The optionality in multiple places ensures the form will work with and without the loaded data (for the creation path to work as well).
 
-# Customising the forms
+## Customising the forms
 
 At this point, both forms are working correctly. There's one optional step we can take to make them display different content based on the function. Let's say, instead of the generic "Submit" button, we want to have "Create customer" and "Save changes" labels. Since this is a single change affecting the rendering, we can use the `<Outlet/>` to pass the desired strings.
 
@@ -159,7 +159,7 @@ export default function NewClient() {
 
 In case we would like to have more customisation options (e.g. change the form title, display some specific warnings, or prevent some fields from being edited in one type of the form), we could use the [`handle`](https://remix.run/docs/en/main/route/handle) functionality. It's a bit more complex, so we're not going to delve into it now, but it's still worth mentioning.
 
-# Additional benefits
+## Additional benefits
 
 While the nested approach works very similarly to just extracting the form component, there's an important benefit to having a common parent route. We can place the common loader logic in just one file, and it will automatically get called in the nested routes. Imagine you have some permission-based access to the form. Instead of having the check in the `/new` and `/edit` routes, you can call it once in the `_form` route.
 
@@ -173,6 +173,6 @@ export const loader = async ({request}: LoaderArgs) => {
 
 Now both deeper routes are protected by the same permission check. The same goes for any data required to be loaded for the form to work (for example data for the select list). Just do it once and access it everywhere.
 
-# Summary
+## Summary
 
 Sharing components across multiple pages in Remix is a good alternative to the usual components sharing. It adds some handy features and makes the code easier to navigate and maintain. Next time you need to implement a functionality that will use similar or identical components in nested routes consider the approach described above.
