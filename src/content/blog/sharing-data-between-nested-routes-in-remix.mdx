@@ -1,0 +1,78 @@
+---
+title: Sharing data between nested routes in Remix
+description: Remix enables two-way communication between nested routes using handles and outlet context.
+date: '2023-09-17T16:00:00.000Z'
+tags:
+  - remix
+  - react
+---
+
+## Nested routes
+
+Part of the Remix's main selling point is the use of modular design of routes. You can create nested hierarchies of routes responsible for the more detailed data (or just different data) than the parent reducing the amount of code required to be placed in a single component. This comes in handy in multiple typical scenarios, like layouts, application main UI and its specific sections, tabbed navigation, and so on.
+
+Often, those nested parts are quite independent and don't need to be aware of their ancestors or descendants. Yet, there are scenarios where this knowledge is necessary to properly construct the required functionalities. To handle that, Remix enables two-way communication either down or up the hierarchy using the route's handles and the outlet context.
+
+## Handles
+
+Every route in your navigation tree can expose a [route handle](https://remix.run/docs/en/main/route/handle). It's a constant that will store any value you want that will be accessible through the [useMatches](https://remix.run/docs/en/main/hooks/use-matches) hook in the tree.
+
+The common use case for this functionality is to expose the page name for breadcrumbs or some content for a layout that's more complex than using `<Outlet/>` will not be sufficient ([like multiple forms](/blog/sharing-forms-in-remix/)).
+
+The handle is relatively simple to use in the component exposing the data. The consuming component will need to do some searching to make sure it gets the right value as matches are stored as a list of all routes in the tree.
+
+```tsx
+// parent.tsx
+import { useMatches } from "@remix-run/react";
+
+export default function Parent() {
+    const pageTitle = useMatches()
+        // Get only the routes having the pageTitle handle.
+        .filter(match => match.handle && match.handle.pageTitle)
+        // Select the last (deepest) route with the handle.
+        ?.at(-1)?.handle.pageTitle;
+    return (
+        <div>
+            <h1>{pageTitle}</h1>
+            <Outlet />
+        </div>
+    )
+}
+
+// child.tsx
+export const handle = {
+    pageTitle: "Child page"
+}
+
+export default function Child() {
+    return <div>Child page content</div>
+}
+```
+
+Additionally, the handle object might expose a function that will be executed by the parent component which can then pass the full `match` object with the loaded data so that the handle's value itself can be built based on it (e.g. the title coming from the object's `name` property fetched from the API in the child component).
+
+## Outlet context
+
+The handle is a good way to pass some values up the navigation tree. For the downward direction of data flow, use the [`useOutletContext`](https://reactrouter.com/en/6.16.0/hooks/use-outlet-context) hook and pass the data as a prop to the `<Outlet/>` component.
+
+```tsx
+// parent.tsx
+export default function Parent() {
+    const value = {hello: "World!"}
+    return (
+        <div>
+            <Outlet value={value} />
+        </div>
+    )
+}
+
+// child.tsx
+import { useOutletContext } from "@remix-run/react";
+
+export default function Child() {
+    const value = useOutletContext();
+    return <div>{value.hello}</div> // Renders "World!"
+}
+```
+
+Optionally, the hook can be typed when writing in Typescript by providing the generic argument: `useOutletContext<{hello: string}>();`.
