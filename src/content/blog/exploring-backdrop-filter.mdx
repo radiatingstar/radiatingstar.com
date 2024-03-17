@@ -1,0 +1,265 @@
+---
+title: Exploring backdrop filter
+description: Looking into the way backdrop filters are applied to create interesting effects on elements.
+date: '2024-03-17T13:00:00.000Z'
+tags:
+  - css
+---
+
+import {Image} from 'astro:assets';
+import myImage from "../../assets/wolfgang-hasselmann-2IGGs9EOqT4-unsplash.jpg";
+
+## Backdrop Filter Property
+
+The `backdrop-filter` CSS property applies one or more filters to the area behind an element. This property can be used to create a frosted glass effect, or to apply color and alpha channel effects to the background of an element.
+
+This property is a sibling of the filter property. The only difference is that the filters here are applied to the element's background, rather than to the element itself.
+
+## Blur
+
+Blur creates a glassy effect for the background behind the blurred element. It can ad a small blur using values closer to 1 or 2 pixels, and a very blurred effect using larger values.
+
+The unit of measure is pixel (`px`). Values go from 0 up.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'blur(1px)'}}>
+      <p>blur(1px)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'blur(10px)'}}>
+      <p>blur(10px)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'blur(50px)'}}>
+      <p>blur(50px)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'blur(100px)'}}>
+      <p>blur(100px)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Brightness
+
+Used to dim or brighten the background. Values below 100% makes the background darker, up to the point of being black at 0%. Values above 100% makes the background brighter. The upper limit is not really defined, but with the higher values, the background is getting closer and closer to being white.
+
+Unit of measure is percentage (`%`). Values go from 0 up.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'brightness(0%)'}}>
+      <p>brightness(0%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'brightness(10%)'}}>
+      <p>brightness(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'brightness(50%)'}}>
+      <p>brightness(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'brightness(100%)'}}>
+      <p>brightness(100%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-black text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'brightness(200%)'}}>
+      <p>brightness(200%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Contrast
+
+Contrast manipulates the contrast of the background. Values below 100% makes the background less contrasted,
+up to the point of being completely gray at 0%. Values above 100% makes the background more contrasted.
+
+Unit of measure is percentage (`%`). Values go from 0 up.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'contrast(0%)'}}>
+      <p>contrast(0%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'contrast(10%)'}}>
+      <p>contrast(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'contrast(50%)'}}>
+      <p>contrast(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'contrast(100%)'}}>
+      <p>contrast(100%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'contrast(200%)'}}>
+      <p>contrast(200%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Grayscale
+
+Grayscale removes the color from the background and creates a monochromatic effect. Values go from 0% (no grayscale) to 100% (completely grayscale).
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute z-10 inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'grayscale(10%)'}}>
+      <p>grayscale(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'grayscale(50%)'}}>
+      <p>grayscale(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'grayscale(100%)'}}>
+      <p>grayscale(100%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Hue Rotate
+
+Hue rotate changes the color of the background. The value is an angle in degrees, and it can be positive or negative. The color wheel is used as a reference, and the angle is the amount of rotation applied to the colors.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute z-10 inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'hue-rotate(90deg)'}}>
+      <p>hue-rotate(90deg)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'hue-rotate(180deg)'}}>
+      <p>hue-rotate(180deg)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'hue-rotate(270deg)'}}>
+      <p>hue-rotate(270deg)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Invert
+
+Inversion of color allows to create an old photography negative effect on the background. The value is a percentage, and it goes from 0% (no inversion) to 100% (completely inverted). 50% inversion creates just a gray block.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute z-10 inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'invert(10%)'}}>
+      <p>invert(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'invert(50%)'}}>
+      <p>invert(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'invert(100%)'}}>
+      <p>invert(100%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Sepia
+
+Another old-school effect. Values goe from 0% to 100%.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute z-10 inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'sepia(10%)'}}>
+      <p>sepia(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'sepia(50%)'}}>
+      <p>sepia(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'sepia(100%)'}}>
+      <p>sepia(100%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Saturate
+
+Saturate increases or decreases the color saturation of the background. Values go from 0% (completely desaturated) to 100% (no change) and up.
+
+<figure class="relative">
+  <Image class="rounded" src={myImage} width={myImage.width / 2} densities={[1.5, 2]} alt=""/>
+  <div class="absolute z-10 inset-0 flex flex-col justify-center items-center gap-4">
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'saturate(10%)'}}>
+      <p>saturate(10%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'saturate(50%)'}}>
+      <p>saturate(50%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'saturate(100%)'}}>
+      <p>saturate(100%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'saturate(200%)'}}>
+      <p>saturate(200%)</p>
+    </div>
+    <div class="w-1/2 h-1/8 rounded-2xl flex text-white text-sm items-center justify-center"
+         style={{inset: "40% 30%", backdropFilter: 'saturate(1000%)'}}>
+      <p>saturate(1000%)</p>
+    </div>
+  </div>
+  <figcaption class="relative z-10 text-gray-400 text-sm">
+    <a href="https://unsplash.com/photos/three-trees-in-a-field-with-a-red-sky-in-the-background-2IGGs9EOqT4"
+       rel="noopener noreferrer">Photo by Wolfgang Hasselmann on Unsplash</a>
+  </figcaption>
+</figure>
+
+## Additional notes
+
+Backdrop filter can use an SVG as a source of the filter. The value of the property should be a URL to the SVG's `<filter>` element.
+
+While all the filters above are presented one by one, filters can be used together by declaring them with a space. For example, to make the inverted and blurred background, use `backdrop-filter: invert(100%) blur(10px)`.
