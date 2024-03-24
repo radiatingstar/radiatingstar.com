@@ -1,0 +1,84 @@
+---
+title: Notes on gradients
+description: Researching CSS gradients
+date: '2024-03-23T14:45:00.000Z'
+tags:
+  - css
+---
+
+## About of gradients
+
+There are 3 types of gradients browsers can render: linear, radial and conic. Those types have can have the repeating property to generate the in a repeating fashion.
+
+Gradients can be used in all places the normal image can, like in backgrounds. Teh advantage of using gradients is that they are dynamically created by the browser and can behave better when zoomed in than the raster renders.
+
+## Linear gradients
+
+The basic linear gradient declaration `linear-gradient(start-color, end-color)` creates a gradient starting from the top od the element with the `start-color` and spanning to the `end-color` at the bottom. This direction can be changed using either `to` declaration (e.g. `to right` or `to bottom right`) or by passing an angle. In case of an angle, `0deg` will create a gradient starting at the bottom and `180deg` will start from the top. `90deg` would be the equivalent of using `to right`, where the `start-color` is on the left.
+
+Gradient's colors can have the start and stop points defined. This makes sure the color will remain solid between those points, and will only start mixing outside of them. This can also create gradients with only solid colors, like rainbow or a flag, when the start and stop points match.
+
+<div style="background-image: linear-gradient(to right, red 50%, blue 50%);"
+     class="h-20 grid place-items-center text-sm text-white">
+  linear-gradient(to right, red 50%, blue 50%)
+</div>
+
+By default, the dominant color switches halfway through the colors, but you can add a color hint to change the behaviour to any point you want. The dominant color will start taking over at that point and continue up to the solid color start point.
+
+<div style="background-image: linear-gradient(to right, red, 20%, blue);"
+     class="h-20 grid place-items-center text-sm text-white">
+  linear-gradient(to right, red, 20%, blue)
+</div>
+
+Type of the color interpolation can be defined to create desirable effects. You can define the interpolation in `oklab` or `hsl`. Using `hsl` adds another option do define the length of the interpolation, either `shorter hue` or `longer hue`.
+
+<div style="background: linear-gradient(90deg in hsl shorter hue, red, blue);"
+     class="h-20 grid place-items-center text-sm text-white">
+  linear-gradient(90deg in hsl shorter hue, red, blue)
+</div>
+<div style="background: linear-gradient(90deg in hsl longer hue, red, blue);"
+     class="h-20 grid place-items-center text-sm text-white">
+  linear-gradient(90deg in hsl longer hue, red, blue)
+</div>
+
+## Radial gradient
+
+Radial gradient works by radiating the color change from some central point towards the edges. By default, it's the center of the element on which the gradient is defined. You can change it by setting the position using the `at x y` directional property.
+
+Radial gradients, unlike the linear ones, can be sized using length or keywords: `closest-corner`, `closest-side`, `farthest-corner` (default), and `farthest-side`. This will decide for how long the color change will go until it reached the solid state.
+
+Another thing is that you can decide if the gradient is going to be a `circle` or an `ellipse`.
+
+<div style="background: radial-gradient(
+    circle closest-side at 25% 75%,
+    red,
+    yellow 10%,
+    #1e90ff 50%,
+    beige
+ );" class="h-20 grid place-items-center text-black text-sm">
+  background: radial-gradient(
+  circle closest-side at 25% 75%,
+  red,
+  yellow 10%,
+  #1e90ff 50%,
+  beige);
+</div>
+
+## Conic gradient
+
+Conic gradient creates a gradient similar to the radial gradient, but with the color change rotation around the center (gradient's arc). Most of the conic gradient's properties are similar to the radial gradient. Additionally, you can specify the starting angle of the gradient.
+
+<div style="background: conic-gradient(from 45deg, red, orange 50%, yellow 85%, green)"
+     class="h-20 grid place-items-center text-black text-sm">
+  background: radial-gradient(
+  circle closest-side at 25% 75%,
+  red,
+  yellow 10%,
+  #1e90ff 50%,
+  beige);
+</div>
+
+## Resources
+
+- [Using CSS Gradients](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_images/Using_CSS_gradients)
+- [Linear gradient](https://developer.mozilla.org/en-US/docs/Web/CSS/gradient/linear-gradient)
