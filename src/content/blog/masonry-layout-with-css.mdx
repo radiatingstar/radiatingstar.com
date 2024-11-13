@@ -1,0 +1,86 @@
+---
+title: Masonry layout with CSS
+description: Use simple CSS rules to crate masonry layout
+date: '2024-11-13T13:00:00.000Z'
+tags:
+  - css
+---
+
+## Masonry layout
+
+It's a quite popular way of laying out a content of varying size. Usually a multimedia content, like images, videos or product cards. It makes the media retain it's original aspect ratio without any distortion or any need to prepare a specific size of an item beforehand.
+
+This type of layout can be achieved through multiple means: using JavaScript libraries for more control, or applying CSS for a basic and more common use case.
+
+As a side note, there's currently an [experimental support for masonry layout in Firefox](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_grid_layout/Masonry_layout), that will work on grid container.
+
+## Masonry with CSS
+
+To achieve the masonry layout for the most common use case (that is, one item per column), you can simply use the `columns` rule, together with its specific property rules for some customisation.
+
+For the HTML, you'll need a column container, and then just put the elements inside.
+
+```html
+<div class="column-container">
+    <img class="column-item" alt="">
+    <img class="column-item" alt="">
+    <img class="column-item" alt="">
+</img>
+```
+
+Then style those elements, applying the required rules. In this case, the `columns` rule that requires either the ideal number of columns (integer), ideal width of a column (width) or optionally, both of those values.
+
+```css
+.column-container {
+  columns: 3 200px;
+}
+```
+
+The effect is already fairly good. The images are properly split into desired amount of columns
+
+<div style="columns: 3 100px;">
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/qwe/200/300" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/ert/200/250" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/fhj/200/250" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/rty/200/280" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/tyu/200/290" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/uyi/200/250" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/uio/200/300" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/rup/200/290" alt=""/>
+  <img className="block m-0 w-full" src="https://picsum.photos/seed/asd/200/250" alt=""/>
+</div>
+
+With some further customisation, you can achieve better spacing between columns and items, by applying the `column-gap` rule on  the container, and adding a bottom margin to items.
+
+```css
+.column-container {
+  /* ... */
+  column-gap: 1rem;
+}
+
+.column-item {
+  margin-bottom: 1rem;
+}
+```
+
+<div style="columns: 3 100px; column-gap: 1rem;">
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/qwe/200/300" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/ert/200/250" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/fhj/200/250" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/rty/200/280" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/tyu/200/290" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/uyi/200/250" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/uio/200/300" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/rup/200/290" alt=""/>
+  <img className="block m-0 w-full" style="margin-bottom: 1rem;" width="200" src="https://picsum.photos/seed/asd/200/250" alt=""/>
+</div>
+
+Lastly, the layout is already responsive, but you might want to have some more level of control by removing the ideal column count and relying only on the column's width.
+
+## Drawbacks
+
+Using the `columns` property can be a quick win for some common scenarios, where the order of items is not necessary important or can be managed by the markup. However, when you need to put items in the row order, columns won't work by themselves, as the content is laid out top-to-bottom first. This will also not be a good solution for cases, when you need to load more content later (for example with infinite scroll).
+
+## Resources
+
+- [Columns property on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/columns)
