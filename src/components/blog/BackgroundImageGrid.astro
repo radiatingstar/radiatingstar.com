@@ -1,0 +1,35 @@
+---
+const {id, variant} = Astro.props
+---
+
+<div id={id} class="bg-slate-100 rounded-2xl p-4 grid gap-4 grid-cols-3">
+    {Array.from({length: 9}).map((_, index) => (
+        <div class="rounded-xl" style="height: 200px;"></div>
+    ))}
+</div>
+
+<script define:vars={{id, variant}}>
+    document.addEventListener("DOMContentLoaded", () => {
+        const container = document.getElementById(id);
+        const {left, top, width, height} = container.getBoundingClientRect();
+        const items = container.querySelectorAll('div');
+
+        items.forEach((item) => {
+            const {left: itemLeft, top: itemTop} = item.getBoundingClientRect();
+            switch (variant) {
+                case "gradient":
+                    item.style.backgroundImage = `linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)`
+                    break;
+                case "photo":
+                    item.style.backgroundImage = `url(https://picsum.photos/seed/ehyrtsg/1500/1000)`;
+                    break;
+                case "fancy":
+                    container.style.backgroundImage = 'url(https://picsum.photos/seed/ehyrtsg/1500/1000)'
+                    item.style.backgroundImage = `linear-gradient(217deg, rgba(255,0,0,.8), rgba(255,0,0,0) 70.71%), linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%), linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)`
+                    break;
+            }
+            item.style.backgroundSize = `${width}px ${height}px`;
+            item.style.backgroundPosition = `${left - itemLeft}px ${top - itemTop}px`;
+        });
+    })
+</script>

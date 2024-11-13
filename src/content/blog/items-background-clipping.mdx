@@ -1,0 +1,59 @@
+---
+title: Items background clipping
+description: Achieved clipped background image similar to text clip based on inside content
+date: '2024-11-14T13:00:00.000Z'
+tags:
+  - css
+---
+
+import BackgroundImageGrid from "../../components/blog/BackgroundImageGrid.astro"
+
+## Design problem
+
+Let's say you want to have a grid or a [masonry](/blog/masonry-layout-with-css) layout in such a way the container's background image will only be visible through the children, in a similar fashion the `bacground-clip: text` works. Unfortunately, there's no equivalent CSS property for clipping the image only where the children are, so a bit of JAvaScript code is necessary to achieve this effect.
+
+Before going into the code, this is the outcome you're going for. Notice the gradient looks like it's sharing one single image in the container's background and is only clipped by the child items.
+
+<BackgroundImageGrid id="intro" variant="gradient"/>
+
+## Implementation
+
+To implement this type of UI, rather than putting the background image on the container element, the image needs to be placed on all child elements. Then, to properly create the clipping effect, you only need to properly measure where the elements are in the space and use this measurement to position each background image inside the element.
+
+Lets setup some initial HTML structure. It's not exactly required to have it in any certain way. The only thing that's needed is to expose the ability to query required elements for later measurements.
+
+```html
+<div data-grid-container class="grid grid-cols-3 gap-4 p-4">
+    <div data-grid-item class="bg-gradient-to-r from-blue-400 to-blue-700"></div>
+    <!-- ... and more items -->
+</div>
+```
+
+Styles on the container element are not important, but you need to have some kind of grid, flexbox or columns layout (or event positioned elements) for the UI to make sense. The styling of children elements in not important, although you need to have some kind of background image defined for them. Data attributes on elements are only for querying, so you can replace them with an ID, class name or anything you want.
+
+Having the base covered, the important bits are in the JavaScript code. It's going to be responsible for taking proper measurements and setting the styles based on them. The two required values are `background-size` and `background-position`. First one is responsible for making sure there will be the illusion of the background image covering the whole space, and the second one ensures only the required part of that image is shown.
+
+```javascript
+const {left, top, width: containerWidth, height: containerHeight} = document.querySelector('[data-grid-container]').getBoundingClientRect();
+const items = document.querySelectorAll('[data-grid-item]');
+
+items.forEach((item) => {
+  const {left: itemLeft, top: itemTop} = item.getBoundingClientRect();
+  item.style.backgroundSize = `${containerWidth}px ${containerHeight}px`;
+  item.style.backgroundPosition = `${left - itemLeft}px ${top - itemTop}px`;
+});
+```
+
+That's everything. This type of UI can use any type of the image, so it's going to work well with, for example, a photo.
+
+<BackgroundImageGrid id="photo" variant="photo"/>
+
+Going even further, you can actually place an image on the parent element and then apply different type of background image, like a gradient, to create even more interesting effects.
+
+<BackgroundImageGrid id="fancy" variant="fancy"/>
+
+## Further improvements
+
+While the basic implementation is fine, this type of reliance on the DOM elements to exist may create some issues. Ensuring the script starts only when the dom is ready and adding some security checks if the elements where actually present will help.
+
+Another thing is responsiveness. As it is now, the geometry is only computed on initial load. To make sure all changes of the window's size by the client are not breaking the design, you may want to re-run the code on those changes.
