@@ -1,0 +1,45 @@
+---
+title: Gradient on the border
+description: Put a gradient on the element's border
+date: '2024-11-14T13:00:00.000Z'
+tags:
+  - css
+---
+
+## Border image property
+
+Putting the gradient border on an element is as simple as using the `border-image` property and passing a gradient definition with the slicing value.
+
+```css
+.border-image {
+    border-image: linear-gradient(to right, red, blue) 1;
+}
+```
+
+This will result in a box looking like that:
+
+<div style="border-image: linear-gradient(to right, red, blue) 1; margin: 0 auto; width: 200px; height: 50px; border-width: 10px;"></div>
+
+Border width can be configured by `border-width` property, as with any border. The additional number parameter at the end allows configuring which parts of the border should be shown. In case of a single `1`, the whole border wil be visible. You can change the vertical/horizontal visibility, or the standard top, right, bottom, left. There are also some other configurations possible. Just take a look at the [`border-image-slice` property description on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image-slice).
+
+The gradient border image only on the top and left edges:
+
+```css
+.border-image {
+    border-image: linear-gradient(to right, red, blue) 1 0 0 1;
+}
+```
+
+<div style="border-image: linear-gradient(to right, red, blue) 1 0 0 1; margin: 0 auto; width: 200px; height: 50px; border-width: 10px;"></div>
+
+## Additional properties
+
+You can change the outset of the border image with the `border-image-outset` property and giving it a length value.
+
+<div style="border-image: linear-gradient(to right, red, blue) 1; margin: 0 auto; width: 200px; height: 50px; border-width: 10px; background-image: linear-gradient(to right, red, blue); background-origin: border-box; border-image-outset: 20px;"></div>
+
+With the `border-image-repeat` you can control how the edge region of the border's image will behave. Will it stretch as a single element, repeat without any transformation, put space in between and so on.
+
+## Resources
+
+- [Border image property on MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/border-image)
