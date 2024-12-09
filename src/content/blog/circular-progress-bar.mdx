@@ -1,0 +1,79 @@
+---
+title: Circular progress bar
+description: Create an SVG progress bar component
+date: '2024-12-09T13:00:00.000Z'
+tags:
+  - css
+---
+
+<div class="w-[400px] h-[400px] place-content-center justify-center relative">
+  <div
+    class="w-[400px] h-[400px] rounded-full p-[30px]"
+    style="box-shadow: -1px -1px 5px 0 rgb(8,8,8), 3px 3px 5px black;"
+  >
+    <div
+      class="w-[340px] h-[340px] rounded-full flex items-center justify-center"
+      style="box-shadow: inset -1px -1px 5px 0 rgb(8,8,8), inset 3px 3px 5px black;"
+    >
+      <span class="text-2xl font-bold">65%</span>
+    </div>
+  </div>
+
+  <svg width="400" height="400" class="absolute top-0">
+    <defs>
+      <linearGradient id="lienarGradient">
+        <stop offset="0%" stop-color="darkorange"></stop>
+        <stop offset="100%" stop-color="yellow"></stop>
+      </linearGradient>
+    </defs>
+    <circle
+      cx="200"
+      cy="200"
+      r="185"
+      fill="none"
+      stroke="url(#lienarGradient)"
+      stroke-width="30"
+      stroke-dasharray="1165"
+      stroke-linecap="round"
+      stroke-dashoffset="200"
+    ></circle>
+  </svg>
+</div>
+
+```html
+<div class="w-[400px] h-[400px] place-content-center justify-center relative">
+  <div
+    class="w-[400px] h-[400px] rounded-full p-[30px]"
+    style="box-shadow: -1px -1px 5px 0 rgb(8,8,8), 3px 3px 5px black;"
+  >
+    <div
+      class="w-[340px] h-[340px] rounded-full flex items-center justify-center"
+      style="box-shadow: inset -1px -1px 5px 0 rgb(8,8,8), inset 3px 3px 5px black;"
+    >
+      <span class="text-2xl font-bold">65%</span>
+    </div>
+  </div>
+
+  <svg width="400" height="400" class="absolute top-0">
+    <defs>
+      <linearGradient id="lienarGradient">
+        <stop offset="0%" stop-color="darkorange"></stop>
+        <stop offset="100%" stop-color="yellow"></stop>
+      </linearGradient>
+    </defs>
+    <circle
+      cx="200"
+      cy="200"
+      r="185"
+      fill="none"
+      stroke="url(#lienarGradient)"
+      stroke-width="30"
+      stroke-dasharray="1165"
+      stroke-linecap="round"
+      stroke-dashoffset="200"
+    ></circle>
+  </svg>
+</div>
+```
+
+See the original [source](https://www.youtube.com/watch?v=zSidP96d15U) for additional info and animations.
